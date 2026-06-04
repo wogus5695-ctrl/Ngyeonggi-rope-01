@@ -1,0 +1,242 @@
+export const getHash = (str: string) => {
+  return str.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+};
+
+export interface DynamicHomeConfig {
+  h1: string;
+  summary: string;
+  regionText: string;
+  analysisTitle: string;
+  analysisDesc: string;
+  analysisBlocks: Array<{
+    title: string;
+    description: string;
+    checkpoints: string[];
+  }>;
+  processTitle: string;
+  processSteps: Array<{
+    title: string;
+    description: string;
+  }>;
+  faqTitle: string;
+  faqs: Array<{
+    question: string;
+    answer: string;
+  }>;
+}
+
+export const getDynamicHomeData = (region: string, service: string, hash: number) => {
+  const keyword = `${region} ${service}`;
+
+  // 6개 서비스 세분화 분류
+  let serviceType = '창틀코킹';
+  if (service.includes('빗물')) {
+    serviceType = '빗물누수';
+  } else if (service.includes('창틀') && service.includes('누수')) {
+    serviceType = '창틀누수';
+  } else if (service.includes('창틀') && service.includes('실리콘')) {
+    serviceType = '창틀실리콘';
+  } else if (service.includes('샷시') && service.includes('실리콘')) {
+    serviceType = '샷시실리콘';
+  } else if (service.includes('외벽')) {
+    serviceType = '외벽누수';
+  }
+
+  const configs: Record<string, DynamicHomeConfig> = {
+    '창틀코킹': {
+      h1: `${keyword} 전문가 5단계 밀착 설계`,
+      summary: `${region} 아파트 및 주택의 노후화된 외부 창문 실리콘을 완전히 긁어내고, 기밀성이 뛰어난 고탄성 실런트로 다시 코킹하여 미세 누수를 잡는 솔루션을 제공합니다.`,
+      regionText: `${region} 지역의 경우 사계절 온도 변화에 따라 샷시의 수축이 반복되므로, 외부에 메워진 실리콘이 신축 변형 범위를 견디지 못하고 터지는 틈새 누수가 빈번합니다.`,
+      analysisTitle: `${service} 노후 균열 및 흡착성 정밀 진단`,
+      analysisDesc: `${region} 지역의 ${service}은 단순히 실리콘을 메우기보다, 이전 코킹재의 부식 강도와 벽 단면의 습도 분포를 정밀 분석하는 것으로 시작됩니다.`,
+      analysisBlocks: [
+        {
+          title: "01. 마감재 들뜸 및 계면 박리 점검",
+          description: "샤시 모서리의 기존 실리콘이 단단하게 굳어 부서지거나 콘크리트 벽에서 탈락된 결함 범위를 전수 파악합니다.",
+          checkpoints: ["탄성 소실도 및 경화 상태 체크", "창틀 하부 조인트 밀접 이탈 진단", "물길이 이어지는 틈 유입로 조사"]
+        },
+        {
+          title: "02. 창틀 프레임 처짐 및 구조 균열 실사",
+          description: "샤시 자체의 수평 처짐 현상과 주변 옹벽의 선상 균열이 외부 누수에 결합되어 작용하고 있는지 검사합니다.",
+          checkpoints: ["콘크리트 미세 실크랙 분포 체크", "샤시 프레임 장력 및 휨 계측", "코너 접합 조인트 틈 분석"]
+        },
+        {
+          title: "03. 고부착 기밀 결속 약제 처방",
+          description: "피착 단면의 습기를 방조하고 분자 간 결착성을 낼 수 있는 프라이머 흡착 공정 약품을 선별합니다.",
+          checkpoints: ["고내후성 창호 실런트 도포 준비", "화학적 오염 유분 전용 스크래핑", "결착력 보강 계면 프라이머 처방"]
+        }
+      ],
+      processTitle: `틈새케어 ${service} 5단계 밀봉 프로세스`,
+      processSteps: [
+        { title: "원인 및 결함 부위 계측", description: "현장 방문 시 누수가 번진 깊이와 외부 코킹의 열화 요인을 세밀히 기록하여 기록서를 남깁니다." },
+        { title: "노후 마감 실리콘 100% 철거", description: "새 접착을 방해하는 기존 낡은 실리콘 잔여물과 내부 푸석한 옹벽 가루를 꼼꼼히 스크래핑해 긁어냅니다." },
+        { title: "기밀 강화 전용 흡착 프라이머 도포", description: "콘크리트 단면과 샷시 표면에 새 실리콘이 절대 들뜨지 않고 결속되도록 특수 프라이머를 바릅니다." },
+        { title: "창호 전용 비초산 실런트 충진", description: "기후 적응성이 뛰어난 외장 창호 실런트를 틈새 내부까지 강한 충진압으로 빈틈없이 채워 넣습니다." },
+        { title: "압착 실링 가이드 헤라 성형", description: "전용 헤라로 균일 압착하여 매끈하고 물이 흘러내리는 경사구배를 구현해 다듬고 완료합니다." }
+      ],
+      faqTitle: `${service} 관련 정밀 FAQ`,
+      faqs: [
+        { 
+          question: `${region} 창틀코킹은 언제 재시공해야 하나요?`, 
+          answer: `외부 코킹 수명은 보통 5~10년이지만 ${region} 기후 특성상 자외선과 습도 노출이 심한 곳은 더 일찍 갈라집니다. 비가 올 때 벽지가 누렇게 젖거나 실리콘 표면이 모래처럼 바스러진다면 즉시 시공해야 합니다.` 
+        },
+        { 
+          question: `${region} ${service} 시 덧방과 올제거는 어떤 차이가 있나요?`, 
+          answer: `기존 삭은 실리콘 위에 덧바르는 덧방은 1년 내에 다시 찢어져 빗물을 내부에 가둡니다. 반면 기존 마감재를 100% 제거하고 도포하는 올제거는 10년 이상의 견고한 수명을 약속합니다.` 
+        },
+        { 
+          question: "방문 예약 전 사진을 보내도 가견적 파악이 가능한가요?", 
+          answer: "네, 누수가 발생하는 실내외 창호 사진을 문자로 전송해 주시면, 평형대 구조 도면과 일치시켜 방문 없이도 오차가 적은 상세 견적 단가를 통보해 드립니다." 
+        }
+      ]
+    },
+    '빗물누수': {
+      h1: `${keyword} 과학적 원인 역추적 및 차단`,
+      summary: `${region} 아파트 베란다와 방 벽지로 빗물이 흘러드는 물길 현상을 완벽히 규명하고, 외벽 크랙과 샷시 이격 틈을 원천 봉쇄하여 내부 곰팡이 피해를 해결합니다.`,
+      regionText: `${region} 지역은 습도가 높은 여름철이나 태풍이 올 때 강한 횡풍으로 샤시 틈에 직접 비바람이 주입되어 반복적인 누수가 발생합니다.`,
+      analysisTitle: `${service} 물길 흔적 추적 진단`,
+      analysisDesc: `${region}의 ${service} 차단 핵심은 겉에만 실리콘을 바르는 것이 아니라, 외벽 상단과 위층 조인트 틈새로부터 유입되는 모든 물줄기 경로를 역추적하는 것입니다.`,
+      analysisBlocks: [
+        {
+          title: "01. 실내 번짐 궤적 및 벽체 수분 검사",
+          description: "물자국이 시작된 중심과 함습 상태를 정밀 계측하여 외부의 어느 좌표에서 물이 번졌는지 유추합니다.",
+          checkpoints: ["습도 검사기를 통한 함습율 분석", "도배지 훼손 상태 및 변색 궤적 계측", "실내 결로 현상과의 연관 관계 진단"]
+        },
+        {
+          title: "02. 외부 샷시 상단부 이음새 전수 검사",
+          description: "외부 옹벽 조인트의 들뜸, 상부 세대로부터 들이치는 물받이 균열 상태를 꼼꼼하게 점검합니다.",
+          checkpoints: ["상층부 세대 코킹 노후도 영향 여부 판단", "외벽 드라이비트 이음 조인트 들뜸 확인", "창틀 외부 몰딩 실링 균열 점검"]
+        },
+        {
+          title: "03. 빗물 튕김 구배 및 드레인 배수 보완",
+          description: "창틀 하부로 들어온 빗물이 배수구로 원활히 배출되고 외부 물은 벽을 타고 그냥 흘러내리도록 유도 성형합니다.",
+          checkpoints: ["구배 유도 코킹 성형 설계", "하부 물구멍 드레인 청소 및 배수 보조", "외벽 방수 보강 크랙 충진 설계"]
+        }
+      ],
+      processTitle: `틈새케어 ${service} 기밀 보완 프로세스`,
+      processSteps: [
+        { title: "유입로 장비 실사 및 범위 협의", description: "실내 얼룩 분석 및 외부 로프 점검을 병행하여 물줄기가 흘러드는 틈새 지점을 고객님께 투명히 고지합니다." },
+        { title: "수분 스케일 및 들뜬 마감재 탈거", description: "빗물이 닿아 썩어버린 물때와 들뜬 실리콘 레이어를 전용 도구로 한 올 남김없이 깨끗하게 긁어냅니다." },
+        { title: "접합 계착력 극대화 약제 처리", description: "벽체의 방수 성능을 유도하고 실리콘과의 인장 접합 강도를 2배 이상 키우는 프라이머 처리를 진행합니다." },
+        { title: "광폭 고무 방수 실런트 기밀 코킹", description: "샷시와 옹벽 이음 구간 전체에 두툼한 고무 방수 보호막이 생기도록 전용 실런트를 밀도 있게 채워 쏩니다." },
+        { title: "양화 보증 안내 및 최종 인도", description: "실런트의 외형 균일도를 최종 체크하고, 향후 누수가 재발하지 않도록 사후 관리 보증 체계를 알려드립니다." }
+      ],
+      faqTitle: `${service} 진단 Q&A`,
+      faqs: [
+        { 
+          question: `${region} 빗물누수 원인은 어떻게 찾아내나요?`, 
+          answer: `젖은 내부 자국의 궤도 분석과 외벽 옹벽 조인트의 들뜸, 상부 위층과의 경계 크랙을 로프 실사 및 고화질 분석을 통해 추적하여 누수 경로를 규명합니다.` 
+        },
+        { 
+          question: "창틀누수는 창틀 외부 실리콘 코킹만 바르면 해결되나요?", 
+          answer: "아닙니다. 창틀 주변 콘크리트 외벽의 진행성 크랙이나 위층 세대의 외부 코킹이 찢어진 균열을 타고 스며들 수 있으므로 외벽 및 상부 조인트를 함께 보수해야 차단됩니다." 
+        },
+        { 
+          question: "샷시 인근의 외벽누수 크랙도 함께 케어받을 수 있나요?", 
+          answer: "네, 틈새케어는 외벽 전용 고신축 보강 충진재를 보유하고 있어, 샷시 상단 외벽 옹벽에 가 진행된 크랙 보수 코킹까지 연계하여 작업합니다." 
+        }
+      ]
+    },
+    '창틀누수': {
+      h1: `${keyword} 샷시 유격 이격 밀봉 케어`,
+      summary: `${region} 지역 아파트 및 상가의 샷시 틈새 뒤틀림과 균열 틈을 찾아 정교하게 보수하여, 누수를 차단하고 겨울철 미세 황소바람을 함께 예방해 드립니다.`,
+      regionText: `${region} 지역은 연식이 오래된 구축 아파트 비율이 높아, 샷시를 감싸 지탱하던 우레탄폼과 실리콘이 열화되어 누수로 전이되는 사례가 대부분입니다.`,
+      analysisTitle: `${service} 이격 틈 정교 분석`,
+      analysisDesc: `${region}의 ${service}은 샤시의 변형과 옹벽 사이의 벌어진 틈을 메워주는 기밀 충진이 전부입니다. 얇게 덮기만 해서는 하자가 납니다.`,
+      analysisBlocks: [
+        {
+          title: "01. 샤시 프레임 이격 및 변동치 계측",
+          description: "태풍이나 강풍 발생 시 창호가 흔들리며 실리콘 모서리를 찢어발기는 거동 틈새 폭을 확인합니다.",
+          checkpoints: ["샤시 하부 프레임 이격 확인", "강풍 대비 진동 대응 마감 설계", "코너 접합 틈 균열 점검"]
+        },
+        {
+          title: "02. 레일 물배수 통로 이물질 상태 실사",
+          description: "샷시 창틀 자체의 물구멍 배수 밸브가 먼지로 막혀 고인 빗물이 넘쳐 실내로 넘어들어오는지 점검합니다.",
+          checkpoints: ["물구멍 레일 배출 원활도 확인", "창틀 샷시 하단 물 고임 현상 제거", "노후 실리콘 하단 침식 징후 조사"]
+        },
+        {
+          title: "03. 압착 헤라 두께 마감 및 조색 매칭",
+          description: "창호 자재의 질감과 컬러에 맞춰 인테리어 미관을 살릴 수 있는 실런트 조색 및 최적 시공 두께를 협의합니다.",
+          checkpoints: ["알루미늄/하이샤시 최적 컬러 조색", "광폭 시공 범위 및 압착 두께 계산", "헤라 성형 각도 최적화 설계"]
+        }
+      ],
+      processTitle: `틈새케어 ${service} 기밀 코킹 프로세스`,
+      processSteps: [
+        { title: "샤시 손상 방지 박리 작업", description: "샷시 금속 프레임에 흠집을 주지 않고 노후 실리콘만 정밀 분리해 내는 스크래퍼 기술을 적용합니다." },
+        { title: "먼지 스케일 브러싱 및 면처리", description: "프라이머가 제대로 흡착되도록 콘크리트 미세 분진과 오염물을 고속 부직포 브러시로 쓸어 냅니다." },
+        { title: "인장 보강 프라이머 약제 도포", description: "수축 이완 스트레스를 견딜 수 있도록 프라이머를 결합 계면에 충분히 도포하고 밀착 건조합니다." },
+        { title: "고내후 비초산 창호 전용 코킹", description: "햇빛 노출과 탄성에 가장 강한 창호 실런트를 코너 깊숙이 쏴서 빈틈없이 기밀을 채웁니다." },
+        { title: "표면 정밀 헤라 다듬질 마감", description: "헤라로 밀도 있게 눌러주어 미관을 향상시키고 유동 틈새가 없는 것을 체크 후 완료합니다." }
+      ],
+      faqTitle: `${service} 결함 해소 FAQ`,
+      faqs: [
+        { 
+          question: `${region} 창틀누수는 실리콘만 바르면 완벽히 차단되나요?`, 
+          answer: "일시적으로 빗물을 튕겨낼 수는 있으나, 누수 원인이 샷시 흔들림이나 상부 옹벽 균열에 기인한 경우 이를 함께 보강하지 않으면 재발 위험성이 높습니다." 
+        },
+        { 
+          question: `${region} 시공 시 덧방과 실리콘 올제거 공법의 수명 차이는 어느 정도인가요?`, 
+          answer: "덧방은 보통 1년 내외로 다시 갈라져 누수가 재발하지만, 기존 낡은 실리콘을 완전히 걷어낸 올제거 공법은 약 10년 이상의 확실한 기밀 수명을 가집니다." 
+        },
+        { 
+          question: "시공 접수 및 견적 상담은 주말에도 가능한가요?", 
+          answer: "네, 상담 접수는 365일 실시간 열려 있습니다. 주말이나 공휴일에도 사진을 찍어 보내주시면 담당자가 상세 가견적을 신속히 드립니다." 
+        }
+      ]
+    }
+  };
+
+  const config = configs[serviceType] || configs['창틀코킹'];
+
+  // 1. {지역명} {작업명} 상담이 필요하다면 틈새케어에서 창틀과 외벽 주변 상태를 먼저 확인합니다.
+  const dynamicBanner = `${region} ${service} 상담이 필요하다면 틈새케어에서 창틀과 외벽 주변 상태를 먼저 확인합니다.`;
+  
+  // 2. {지역명} 지역의 {작업명}은 단순 실리콘 보수보다 누수 원인 확인이 중요합니다.
+  const dynamicIntro = `${region} 지역의 ${service}은 단순 실리콘 보수보다 누수 원인 확인이 중요합니다.`;
+
+  // 3. 틈새케어는 {지역명} 현장에서 {작업명}이 필요한 원인을 확인하고 현장 상태에 맞는 보수 방식을 안내합니다.
+  const dynamicMethod = `틈새케어는 ${region} 현장에서 ${service}이 필요한 원인을 확인하고 현장 상태에 맞는 보수 방식을 안내합니다.`;
+
+  const ctaPatterns = [`${region} ${service} 정밀 상담 바로가기`];
+
+  const serviceBlocks: Record<string, string[]> = {
+    '창틀코킹': [
+      `창틀 실리콘은 햇빛과 바람에 노후화되는 소모성 구조물입니다. 틈새케어의 100% 철거 공정으로 다가오는 태풍에도 끄떡없는 견고함을 약속하십시오.`,
+      `틈새 누수를 방치하면 외벽 크랙이 심해지고 도배지가 모두 상합니다. 틈새케어 엔지니어의 꼼꼼한 마감으로 소중한 우리 집 가치를 오래 지키세요.`
+    ],
+    '빗물누수': [
+      `어떠한 태풍과 비바람에도 흔들림 없는 완벽한 실링! 틈새케어만의 고기밀 압착 마감 기술로 들이치는 빗물을 단호히 막습니다.`,
+      `반복되는 베란다 누수로 고민이신가요? 수많은 경기 북부 시공 경험을 가진 전문가가 빗물이 지나는 미세 물길을 정확히 메워드립니다.`
+    ],
+    '창틀누수': [
+      `오래된 샷시의 교체 비용이 부담되실 때, 틈새케어 실리콘 코킹으로 외풍과 누수 걱정을 한 번에 깔끔하게 해결해 보십시오.`,
+      `갈라지고 부스러진 샷시 마감재, 틈새케어 엔지니어의 손길로 정성스럽게 밀착 복원해 드립니다. 깨끗하고 기밀한 신축급 마감을 경험해보세요.`
+    ]
+  };
+
+  const blocks = serviceBlocks[serviceType] || serviceBlocks['창틀코킹'];
+
+  return {
+    metaTitle: `${region} ${service} | 창틀·샷시·외벽 누수 보수 전문 틈새케어`,
+    metaDesc: `${region} ${service} 상담이 필요하다면 틈새케어에서 창틀 실리콘, 샷시 틈새, 외벽 크랙 상태를 확인하고 현장에 맞는 보수 방법을 안내합니다.`,
+    h1: config.h1,
+    summary: config.summary,
+    regionText: config.regionText,
+    analysisTitle: config.analysisTitle,
+    analysisDesc: config.analysisDesc,
+    analysisBlocks: config.analysisBlocks,
+    processTitle: config.processTitle,
+    processSteps: config.processSteps,
+    faqTitle: config.faqTitle,
+    faqs: config.faqs,
+    portfolioTitle: `${region} ${service} 시공 사례`,
+    serviceBlock: blocks[hash % blocks.length],
+    ctaHeader: ctaPatterns[0],
+    
+    // 요구사항 동적 문구
+    dynamicBanner,
+    dynamicIntro,
+    dynamicMethod
+  };
+};
+export type DynamicHomeData = ReturnType<typeof getDynamicHomeData>;
