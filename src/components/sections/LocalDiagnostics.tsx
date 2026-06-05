@@ -1,106 +1,141 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function LocalDiagnostics() {
-  const [checkedList, setCheckedList] = useState<Record<number, boolean>>({
-    0: false,
-    1: false,
-    2: false,
-    3: false,
-  });
-
-  const diagnostics = [
-    "비가 오면 창틀 아래쪽이 젖습니다.",
-    "샷시 주변 실리콘이 갈라졌습니다.",
-    "창문 하부 몰딩이나 벽지가 젖습니다.",
-    "외벽 콘크리트에 실금이 보입니다.",
-  ];
-
-  const handleCheck = (idx: number) => {
-    setCheckedList((prev) => ({ ...prev, [idx]: !prev[idx] }));
-  };
-
-  const checkedCount = Object.values(checkedList).filter(Boolean).length;
-  const isWarning = checkedCount >= 2;
-
   return (
-    <section className="py-20 bg-slate-50 relative overflow-hidden">
+    <section className="py-24 bg-slate-50 relative overflow-hidden">
       {/* Background Accent */}
       <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#0d948805_1px,transparent_1px),linear-gradient(to_bottom,#0d948805_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-      
-      <div className="max-w-4xl mx-auto px-4 relative z-10">
-        <div className="text-center space-y-4 mb-12">
+
+      <div className="max-w-6xl mx-auto px-4 relative z-10">
+        {/* Section Header */}
+        <div className="text-center space-y-4 mb-16">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-teal-50 border border-teal-500/10 text-teal-700 text-xs font-bold rounded-full">
-            간이 자가진단
+            누수 위험 신호
           </div>
-          <h2 className="text-2.5xl sm:text-3.5xl font-black text-slate-900 tracking-tight leading-tight">
-            우리 집도 창틀 누수일 수 있습니다
+          <h2 className="text-3xl sm:text-4.5xl font-black text-slate-900 tracking-tight leading-tight max-w-2xl mx-auto">
+            이런 증상, 단순 습기가 아닐 수 있습니다
           </h2>
-          <p className="text-[14.5px] text-slate-500 max-w-lg mx-auto">
-            주요 누수 증상을 확인하고 우리 집의 안전 상태를 간편하게 진단해 보세요.
+          <p className="text-[14.5px] sm:text-[15.5px] text-slate-500 max-w-xl mx-auto leading-relaxed">
+            창틀 주변 누수는 처음에는 작은 물기처럼 보이지만, 시간이 지나면 벽지 들뜸, 곰팡이, 내부 마감재 손상으로 이어질 수 있습니다.
           </p>
         </div>
 
-        <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-100 shadow-xl shadow-slate-100/50 space-y-8">
-          {/* Checkbox grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {diagnostics.map((diag, idx) => (
-              <button
-                key={idx}
-                onClick={() => handleCheck(idx)}
-                type="button"
-                className={`flex items-start gap-4 p-5 rounded-2xl border text-left transition-all duration-200 ${
-                  checkedList[idx]
-                    ? "bg-teal-50/40 border-teal-500/30 shadow-xs"
-                    : "bg-white border-slate-100 hover:border-slate-200 hover:bg-slate-50/30"
-                }`}
-              >
-                <div
-                  className={`w-6 h-6 mt-0.5 rounded-lg flex items-center justify-center border transition-all ${
-                    checkedList[idx]
-                      ? "bg-teal-600 border-teal-600 text-white"
-                      : "bg-white border-slate-200"
-                  }`}
-                >
-                  {checkedList[idx] && (
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="3">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                  )}
+        {/* Content Layout Grid (Split screen) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          {/* Left Side: Warning Cards (Col span 7 or 8) */}
+          <div className="lg:col-span-8 space-y-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* Card 1 */}
+              <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-100 shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex items-start gap-4">
+                <div className="p-3 bg-teal-50/60 rounded-2xl shrink-0 text-teal-600">
+                  {/* Droplet SVG */}
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2.5C12 2.5 19 9.5 19 14.5C19 18.366 15.866 21.5 12 21.5C8.134 21.5 5 18.366 5 14.5C5 9.5 12 2.5 12 2.5Z" />
+                  </svg>
                 </div>
-                <span
-                  className={`text-[14.5px] leading-relaxed transition-colors ${
-                    checkedList[idx] ? "text-slate-800 font-semibold" : "text-slate-600"
-                  }`}
-                >
-                  {diag}
-                </span>
-              </button>
-            ))}
-          </div>
+                <div className="space-y-1.5">
+                  <h4 className="text-[16px] font-black text-slate-800 tracking-tight">창틀 아래쪽이 젖습니다</h4>
+                  <p className="text-[13px] text-slate-500 leading-relaxed">비가 온 뒤 창틀 하부나 몰딩 주변에 물기가 남습니다.</p>
+                </div>
+              </div>
 
-          {/* Diagnostic Result Banner */}
-          <div className="pt-2">
-            <div
-              className={`p-5 rounded-2xl transition-all duration-300 border text-center ${
-                isWarning
-                  ? "bg-teal-50/70 border-teal-500/20 text-teal-900"
-                  : "bg-slate-50 border-slate-100 text-slate-500"
-              }`}
-            >
-              <p className={`text-[14px] font-bold leading-relaxed ${isWarning ? "text-teal-700" : "text-slate-600"}`}>
-                {isWarning
-                  ? "✓ 2개 이상 해당된다면 창틀·외벽 주변 누수 진단이 필요할 수 있습니다."
-                  : `현재 ${checkedCount}개 항목 선택됨 (2개 이상 해당된다면 창틀·외벽 주변 누수 진단이 필요할 수 있습니다.)`}
+              {/* Card 2 */}
+              <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-100 shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex items-start gap-4">
+                <div className="p-3 bg-teal-50/60 rounded-2xl shrink-0 text-teal-600">
+                  {/* Broken/Split SVG */}
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                  </svg>
+                </div>
+                <div className="space-y-1.5">
+                  <h4 className="text-[16px] font-black text-slate-800 tracking-tight">실리콘이 갈라졌습니다</h4>
+                  <p className="text-[13px] text-slate-500 leading-relaxed">샷시 주변 실리콘이 들뜨거나 틈이 벌어져 있습니다.</p>
+                </div>
+              </div>
+
+              {/* Card 3 */}
+              <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-100 shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex items-start gap-4">
+                <div className="p-3 bg-teal-50/60 rounded-2xl shrink-0 text-teal-600">
+                  {/* Damaged Home SVG */}
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                  </svg>
+                </div>
+                <div className="space-y-1.5">
+                  <h4 className="text-[16px] font-black text-slate-800 tracking-tight">벽지나 몰딩이 들뜹니다</h4>
+                  <p className="text-[13px] text-slate-500 leading-relaxed">창문 아래 벽지, 몰딩, 마감재가 젖거나 변형됩니다.</p>
+                </div>
+              </div>
+
+              {/* Card 4 */}
+              <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-100 shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex items-start gap-4">
+                <div className="p-3 bg-teal-50/60 rounded-2xl shrink-0 text-teal-600">
+                  {/* Brick/Wall SVG */}
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18V6.75a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 6.75v11.25m-18 0h18" />
+                  </svg>
+                </div>
+                <div className="space-y-1.5">
+                  <h4 className="text-[16px] font-black text-slate-800 tracking-tight">외벽에 실금이 보입니다</h4>
+                  <p className="text-[13px] text-slate-500 leading-relaxed">외벽 크랙을 따라 빗물이 내부로 유입될 수 있습니다.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Warning Announcement Box */}
+            <div className="p-5 bg-teal-50/40 border border-teal-500/10 rounded-3xl flex items-start gap-4 shadow-3xs">
+              <div className="p-2 bg-teal-600/10 rounded-xl text-teal-700 shrink-0 mt-0.5">
+                {/* Alert/Warning SVG */}
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                </svg>
+              </div>
+              <p className="text-[14px] sm:text-[14.5px] font-bold text-slate-800 leading-relaxed">
+                2가지 이상 해당된다면 단순 실리콘 보수보다 창틀·외벽 주변 누수 진단이 먼저입니다.
               </p>
-              {isWarning && (
-                <p className="text-[12.5px] text-teal-600/90 mt-1 font-medium">
-                  아래 상담 신청을 통해 사진을 첨부해 주시면, 시공 전문가가 직접 원인을 분석하여 드립니다.
-                </p>
-              )}
             </div>
           </div>
+
+          {/* Right Side: Actual Leak Case Photo (Col span 4) */}
+          <div className="lg:col-span-4">
+            <div className="bg-white rounded-[32px] border border-slate-100 shadow-md p-3">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
+                <Image
+                  src="/leak-symptom.jpg"
+                  alt="실제 창틀 주변 실리콘 박리 및 누수 유입 현장"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 30vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-4 bg-slate-50 rounded-2xl mt-3">
+                <span className="inline-block text-[11px] font-extrabold text-teal-600 bg-teal-50 px-2 py-0.5 rounded-md mb-1.5">
+                  현장 정밀 검수 사진
+                </span>
+                <h4 className="text-[14px] font-bold text-slate-800">창틀 주변 실리콘 박리 현장</h4>
+                <p className="text-[12.5px] text-slate-500 mt-1 leading-relaxed">
+                  노화된 실리콘이 틈새에서 떨어져 나가 외벽 콘크리트와의 접합부 틈새로 비가 올 때마다 누수를 일으키는 실제 상황입니다.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Section Action CTA (Centered) */}
+        <div className="text-center pt-10 border-t border-slate-200/50 mt-16 flex flex-col items-center space-y-4">
+          <Link
+            href="#contact"
+            className="px-10 py-5 w-full sm:w-auto text-center bg-teal-600 hover:bg-teal-700 text-white text-[16.5px] font-black rounded-2xl shadow-md hover:shadow-lg transition-all"
+          >
+            증상 사진 보내고 무료 진단받기
+          </Link>
+          <p className="text-[13px] sm:text-[13.5px] text-slate-400 font-medium">
+            창틀, 실리콘, 외벽 사진만으로도 기본 상태를 먼저 확인해드릴 수 있습니다.
+          </p>
         </div>
       </div>
     </section>
