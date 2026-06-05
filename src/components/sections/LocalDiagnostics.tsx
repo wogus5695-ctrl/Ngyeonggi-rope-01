@@ -87,15 +87,15 @@ export default function LocalDiagnostics() {
             </div>
 
             {/* Warning Announcement Box */}
-            <div className="p-5 bg-teal-50/40 border border-teal-500/10 rounded-3xl flex items-center gap-4 shadow-3xs">
-              <div className="p-2.5 bg-teal-600/10 rounded-xl text-teal-700 shrink-0">
+            <div className="py-[26px] px-[32px] bg-teal-50/40 border border-teal-500/20 rounded-3xl flex items-start lg:items-center gap-[16px] shadow-3xs">
+              <div className="p-2.5 bg-teal-600/10 rounded-xl text-teal-700 shrink-0 flex-shrink-0 mt-1 lg:mt-0">
                 {/* Alert/Warning SVG */}
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                <svg className="w-[30px] h-[30px]" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
                 </svg>
               </div>
-              <p className="text-[15.5px] sm:text-[16.5px] lg:text-[17.5px] font-black text-slate-900 leading-relaxed">
-                2가지 이상 해당된다면 단순 실리콘 보수보다 창틀·외벽 주변 누수 진단이 먼저입니다.
+              <p className="flex-1 text-[16px] sm:text-[17.5px] lg:text-[19px] font-black text-slate-900 leading-[1.4]">
+                2가지 이상 해당된다면 단순 실리콘 보수보다 <span className="text-teal-600 font-black">창틀·외벽 주변 누수 진단</span>이 먼저입니다.
               </p>
             </div>
           </div>
