@@ -111,7 +111,7 @@ export default function LocalPortfolio({ title, portfolio }: LocalPortfolioProps
                   </span>
                 </div>
                 <h3 className="text-lg font-black text-white tracking-tight leading-snug">
-                  유리 주변 틈새 보수
+                  유리 실리콘 보수
                 </h3>
                 <div className="flex flex-wrap gap-2 pt-1">
                   <span className="text-[12px] font-bold text-teal-400">#유리실리콘</span>
@@ -142,7 +142,7 @@ export default function LocalPortfolio({ title, portfolio }: LocalPortfolioProps
                   </span>
                 </div>
                 <h3 className="text-lg font-black text-white tracking-tight leading-snug">
-                  창틀 하부 누수 보수
+                  창틀 실리콘 재작업
                 </h3>
                 <div className="flex flex-wrap gap-2 pt-1">
                   <span className="text-[12px] font-bold text-teal-400">#창틀실리콘</span>
