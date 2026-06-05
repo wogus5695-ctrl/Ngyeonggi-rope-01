@@ -124,8 +124,8 @@ export default async function Home({ searchParams }: Props) {
     processTitle = data.processTitle;
     processSteps = data.processSteps;
 
-    faqTitle = data.faqTitle;
-    faqList = data.faqs; // 동적으로 분산 변환된 FAQ 목록 매핑
+    faqTitle = data.faqTitle || "자주 묻는 질문";
+    faqList = data.faqs || BRAND_HUB_CONTENT.faqs; // 동적으로 분산 변환된 FAQ 목록 매핑 (유실 시 기본값 백업)
 
     portfolioTitle = data.portfolioTitle;
     ctaHeader = data.ctaHeader;

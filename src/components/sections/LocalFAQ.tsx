@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { BRAND_HUB_CONTENT } from "@/data/brandHub";
 
 interface FAQItem {
   question: string;
@@ -14,6 +15,7 @@ interface LocalFAQProps {
 
 export default function LocalFAQ({ title, faqs }: LocalFAQProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const displayFaqs = faqs && Array.isArray(faqs) && faqs.length > 0 ? faqs : BRAND_HUB_CONTENT.faqs;
 
   const toggleAccordion = (index: number) => {
     if (activeIndex === index) {
@@ -41,7 +43,7 @@ export default function LocalFAQ({ title, faqs }: LocalFAQProps) {
 
         {/* Accordion Container */}
         <div className="space-y-4">
-          {faqs.map((faq, idx) => {
+          {displayFaqs.map((faq, idx) => {
             const isOpen = activeIndex === idx;
 
             return (
