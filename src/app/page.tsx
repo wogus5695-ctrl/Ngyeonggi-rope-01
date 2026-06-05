@@ -223,9 +223,11 @@ export default async function Home({ searchParams }: Props) {
               
               {/* 메인 제목 */}
               <h2 className="text-[26px] sm:text-[32px] md:text-[36px] lg:text-[40px] font-black text-slate-900 tracking-tight leading-[1.25] max-w-3xl mx-auto">
-                <span className="block sm:inline">{heroLocation} {isValid ? service : "창틀코킹"} 상담,</span>{" "}
-                <span className="block sm:inline mt-1.5 sm:mt-0">
-                  <span className="text-teal-600">사진 한 장</span>으로 <span className="text-teal-600">먼저 확인</span>하세요
+                <span className="block">
+                  {isValid ? `${heroLocation} ${service}` : "틈새케어 빗물누수"} 상담,
+                </span>
+                <span className="block mt-1 sm:mt-2">
+                  <span className="text-teal-600">사진 한 장</span>으로 <span className="text-teal-600">먼저 확인</span>하세요.
                 </span>
               </h2>
               
