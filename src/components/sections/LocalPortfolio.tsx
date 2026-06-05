@@ -65,12 +65,12 @@ export default function LocalPortfolio({ title, portfolio }: LocalPortfolioProps
                 alt="외벽 크랙 보수로 빗물 유입 차단"
                 className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
               />
-              {/* Soft dark gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/25 to-transparent z-10"></div>
+              {/* Subtle dark gradient overlay only on the bottom 33% */}
+              <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-slate-950/65 to-transparent z-10"></div>
             </div>
 
             {/* Content Overlay */}
-            <div className="relative z-20 p-6 sm:p-8 md:p-10 space-y-3.5 mt-auto">
+            <div className="relative z-20 p-8 space-y-3 mt-auto">
               <div>
                 <span className="inline-block px-3 py-1 bg-teal-500/20 text-teal-300 font-extrabold text-[12px] rounded-full border border-teal-500/30 backdrop-blur-xs">
                   외벽 크랙
@@ -79,10 +79,7 @@ export default function LocalPortfolio({ title, portfolio }: LocalPortfolioProps
               <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight leading-snug">
                 외벽 크랙 보수로 빗물 유입 차단
               </h3>
-              <p className="text-[13.5px] sm:text-[14px] text-slate-200 leading-relaxed max-w-[540px]">
-                외벽 균열을 따라 빗물이 스며드는 현장으로, 크랙 부위와 창틀 주변 연결부를 함께 확인해 보수했습니다.
-              </p>
-              <div className="flex flex-wrap gap-2 pt-1.5">
+              <div className="flex flex-wrap gap-2 pt-1">
                 <span className="text-[12px] font-bold text-teal-400">#외벽크랙</span>
                 <span className="text-[12px] font-bold text-teal-400">#빗물누수</span>
                 <span className="text-[12px] font-bold text-teal-400">#균열보수</span>
@@ -99,25 +96,23 @@ export default function LocalPortfolio({ title, portfolio }: LocalPortfolioProps
               <div className="absolute inset-0 z-0">
                 <img
                   src="/case-glass.jpg"
-                  alt="유리 실리콘 보수로 창 주변 틈새 차단"
+                  alt="유리 주변 틈새 보수"
                   className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/25 to-transparent z-10"></div>
+                {/* Subtle dark gradient overlay only on the bottom 35% */}
+                <div className="absolute bottom-0 left-0 right-0 h-[35%] bg-gradient-to-t from-slate-950/65 to-transparent z-10"></div>
               </div>
 
               {/* Content Overlay */}
-              <div className="relative z-20 p-6 sm:p-8 space-y-2.5 mt-auto">
+              <div className="relative z-20 p-6 space-y-3 mt-auto">
                 <div>
-                  <span className="inline-block px-3 py-1 bg-teal-500/20 text-teal-300 font-extrabold text-[12px] rounded-full border border-teal-500/30 backdrop-blur-xs">
+                  <span className="inline-block px-2.5 py-0.5 bg-teal-500/20 text-teal-300 font-extrabold text-[11px] rounded-full border border-teal-500/30 backdrop-blur-xs">
                     유리 실리콘
                   </span>
                 </div>
-                <h3 className="text-lg sm:text-[19px] font-black text-white tracking-tight leading-snug">
-                  유리 실리콘 보수로 창 주변 틈새 차단
+                <h3 className="text-lg font-black text-white tracking-tight leading-snug">
+                  유리 주변 틈새 보수
                 </h3>
-                <p className="text-[13px] text-slate-200 leading-relaxed max-w-[480px]">
-                  유리와 프레임 사이 실리콘 노후 구간을 정리하고, 접착면을 확보해 재시공했습니다.
-                </p>
                 <div className="flex flex-wrap gap-2 pt-1">
                   <span className="text-[12px] font-bold text-teal-400">#유리실리콘</span>
                   <span className="text-[12px] font-bold text-teal-400">#창틀누수</span>
@@ -132,25 +127,23 @@ export default function LocalPortfolio({ title, portfolio }: LocalPortfolioProps
               <div className="absolute inset-0 z-0">
                 <img
                   src="/case-frame.jpg"
-                  alt="창틀 실리콘 재시공으로 하부 누수 보수"
+                  alt="창틀 하부 누수 보수"
                   className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/25 to-transparent z-10"></div>
+                {/* Subtle dark gradient overlay only on the bottom 35% */}
+                <div className="absolute bottom-0 left-0 right-0 h-[35%] bg-gradient-to-t from-slate-950/65 to-transparent z-10"></div>
               </div>
 
               {/* Content Overlay */}
-              <div className="relative z-20 p-6 sm:p-8 space-y-2.5 mt-auto">
+              <div className="relative z-20 p-6 space-y-3 mt-auto">
                 <div>
-                  <span className="inline-block px-3 py-1 bg-teal-500/20 text-teal-300 font-extrabold text-[12px] rounded-full border border-teal-500/30 backdrop-blur-xs">
+                  <span className="inline-block px-2.5 py-0.5 bg-teal-500/20 text-teal-300 font-extrabold text-[11px] rounded-full border border-teal-500/30 backdrop-blur-xs">
                     창틀 실리콘
                   </span>
                 </div>
-                <h3 className="text-lg sm:text-[19px] font-black text-white tracking-tight leading-snug">
-                  창틀 실리콘 재시공으로 하부 누수 보수
+                <h3 className="text-lg font-black text-white tracking-tight leading-snug">
+                  창틀 하부 누수 보수
                 </h3>
-                <p className="text-[13px] text-slate-200 leading-relaxed max-w-[480px]">
-                  창틀 하부와 외벽 접합부의 틈을 확인하고, 오염 부위를 정리한 뒤 실리콘 마감으로 보수했습니다.
-                </p>
                 <div className="flex flex-wrap gap-2 pt-1">
                   <span className="text-[12px] font-bold text-teal-400">#창틀실리콘</span>
                   <span className="text-[12px] font-bold text-teal-400">#창틀코킹</span>
