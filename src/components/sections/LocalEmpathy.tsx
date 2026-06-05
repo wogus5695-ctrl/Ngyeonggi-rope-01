@@ -34,13 +34,22 @@ export default function LocalEmpathy({ locationName, dynamicIntro }: LocalEmpath
             
             {/* Header copy */}
             <div className="space-y-3">
-              <div className="text-teal-400 text-[13px] font-black tracking-widest uppercase drop-shadow-sm">
+              <div
+                className="text-teal-400 text-[13px] font-black tracking-widest uppercase"
+                style={{ textShadow: "1px 1px 2.5px rgba(0, 0, 0, 0.85)" }}
+              >
                 WHY IT LEAKS AGAIN
               </div>
-              <h2 className="text-2xl sm:text-[28px] lg:text-[32px] font-black text-white tracking-tight leading-[1.25] drop-shadow-md">
+              <h2
+                className="text-2xl sm:text-[28px] lg:text-[32px] font-black text-white tracking-tight leading-[1.25]"
+                style={{ textShadow: "2px 2px 5px rgba(0, 0, 0, 0.95)" }}
+              >
                 창틀 누수는 보이는 틈만 막아서는 재발할 수 있습니다
               </h2>
-              <p className="text-[14px] text-slate-100 leading-relaxed font-semibold drop-shadow-sm">
+              <p
+                className="text-[14px] text-slate-100 leading-relaxed font-semibold"
+                style={{ textShadow: "1px 1px 3.5px rgba(0, 0, 0, 0.9)" }}
+              >
                 물이 보이는 위치와 실제 유입 지점은 다를 수 있습니다. 기존 실리콘 접착 상태, 샷시와 벽체 사이 틈, 외벽 크랙을 함께 확인해야 재누수 가능성을 줄일 수 있습니다.
               </p>
             </div>
@@ -110,7 +119,10 @@ export default function LocalEmpathy({ locationName, dynamicIntro }: LocalEmpath
                 우리 집 누수 원인 상담하기
               </Link>
               <div className="pl-1 space-y-1">
-                <p className="text-[12.5px] text-slate-200 font-medium drop-shadow-xs">
+                <p
+                  className="text-[12.5px] text-slate-200 font-medium"
+                  style={{ textShadow: "1px 1px 2.5px rgba(0, 0, 0, 0.85)" }}
+                >
                   창틀, 실리콘, 외벽 사진을 보내주시면 기본 상태를 먼저 확인해드립니다.
                 </p>
                 {/* SEO Preservation (Hidden visually but available for search engine crawlers) */}
