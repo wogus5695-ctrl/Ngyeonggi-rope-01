@@ -12,7 +12,6 @@ import { portfolioCases } from "@/data/portfolio";
 import LocalHero from "@/components/sections/LocalHero";
 import LocalDiagnostics from "@/components/sections/LocalDiagnostics";
 import LocalEmpathy from "@/components/sections/LocalEmpathy";
-import LocalServices from "@/components/sections/LocalServices";
 import LocalProcess from "@/components/sections/LocalProcess";
 import WhyProfessional from "@/components/sections/WhyProfessional";
 import LocalRegionInfo from "@/components/sections/LocalRegionInfo";
@@ -172,14 +171,6 @@ export default async function Home({ searchParams }: Props) {
           locationName={heroLocation}
           dynamicIntro={dynamicIntro || undefined}
         />
-
-        {/* 3. 서비스 안내 섹션 */}
-        <div id="services">
-          <LocalServices
-            locationName={heroLocation}
-            serviceTitle={isValid ? `${service} 솔루션` : "틈새 밀봉 전문 서비스"}
-          />
-        </div>
 
         {/* 4. 진단 중심 작업 방식 섹션 */}
         <div id="process">

@@ -48,11 +48,6 @@ export default function Footer({ dynamicKeyword }: FooterProps) {
             <h3 className="text-white text-[15px] font-bold mb-5 tracking-tight">서비스 안내</h3>
             <ul className="space-y-3.5 text-[14px]">
               <li>
-                <Link href="#services" className="hover:text-teal-400 transition-colors">
-                  정밀 틈새 진단
-                </Link>
-              </li>
-              <li>
                 <Link href="#process" className="hover:text-teal-400 transition-colors">
                   5단계 밀봉 시공 프로세스
                 </Link>

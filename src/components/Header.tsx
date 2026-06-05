@@ -62,9 +62,6 @@ export default function Header() {
 
         {/* 내비게이션 */}
         <nav className="hidden md:flex items-center gap-8 text-[14.5px] font-bold text-slate-600">
-          <Link href="#services" className="hover:text-teal-600 transition-colors">
-            서비스 진단
-          </Link>
           <Link href="#process" className="hover:text-teal-600 transition-colors">
             5단계 케어 프로세스
           </Link>
