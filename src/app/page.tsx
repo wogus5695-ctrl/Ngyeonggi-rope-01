@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ContactCTA from "@/components/ContactCTA";
-import ContactForm from "@/components/ContactForm";
 import FAQSchema from "@/components/FAQSchema";
 import { getMetadata } from "@/lib/seo";
 import { BRAND_HUB_CONTENT } from "@/data/brandHub";
@@ -210,29 +209,22 @@ export default async function Home({ searchParams }: Props) {
 
         {/* 마무리 CTA 및 상담 접수 폼 */}
         <section id="contact" className="py-24 bg-teal-50/15 relative">
-          <div className="absolute top-1/3 left-0 w-72 h-72 bg-emerald-100/30 rounded-full blur-3xl -z-10"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-emerald-100/30 rounded-full blur-3xl -z-10"></div>
           
-          <div className="max-w-5xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="max-w-[720px] mx-auto px-4 text-center space-y-7 relative z-10">
             {/* CTA Copy */}
-            <div className="lg:col-span-6 space-y-6 text-center lg:text-left">
-              <div className="text-teal-600 text-[13px] font-extrabold tracking-wider uppercase">
-                Consultation Request
-              </div>
-              <h2 className="text-3xl sm:text-4.5xl font-black text-slate-900 tracking-tight leading-tight">
-                {ctaHeader}
-              </h2>
-              <p className="text-[14.5px] text-slate-500 leading-relaxed max-w-sm mx-auto lg:mx-0">
-                {content.ctaSummary} 실내외에서 스마트폰으로 누수 흔적을 찍어 전송해 주시면 더 신속한 1차 상세 가견적 설계가 가능합니다.
-              </p>
-              
-              <div className="pt-4">
-                <ContactCTA />
-              </div>
+            <div className="text-teal-600 text-[13px] font-extrabold tracking-wider uppercase">
+              Consultation Request
             </div>
-
-            {/* CTA Form */}
-            <div className="lg:col-span-6">
-              <ContactForm />
+            <h2 className="text-3xl sm:text-4.5xl font-black text-slate-900 tracking-tight leading-tight">
+              {ctaHeader}
+            </h2>
+            <p className="text-[14.5px] sm:text-[15.5px] text-slate-500 leading-relaxed max-w-xl mx-auto">
+              {content.ctaSummary} 실내외에서 스마트폰으로 누수 흔적을 찍어 전송해 주시면 더 신속한 1차 상세 가견적 설계가 가능합니다.
+            </p>
+            
+            <div className="pt-2">
+              <ContactCTA />
             </div>
           </div>
         </section>
