@@ -10,6 +10,7 @@ import { portfolioCases } from "@/data/portfolio";
 
 // Modular Section Components
 import LocalHero from "@/components/sections/LocalHero";
+import LocalDiagnostics from "@/components/sections/LocalDiagnostics";
 import LocalEmpathy from "@/components/sections/LocalEmpathy";
 import LocalServices from "@/components/sections/LocalServices";
 import LocalProcess from "@/components/sections/LocalProcess";
@@ -153,6 +154,7 @@ export default async function Home({ searchParams }: Props) {
         <LocalHero
           locationName={heroLocation}
           serviceTitle={heroService}
+          serviceName={isValid ? service : "창틀코킹"}
           intro={heroIntro}
           keywords={[
             "100% 전면 철거 원칙",
@@ -161,6 +163,9 @@ export default async function Home({ searchParams }: Props) {
             "책임 무상 A/S 보증"
           ]}
         />
+
+        {/* 1-2. 간이 자가진단 섹션 (Hero 하단으로 이동) */}
+        <LocalDiagnostics />
 
         {/* 2. 문제 공감 섹션 */}
         <LocalEmpathy
