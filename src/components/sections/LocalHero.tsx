@@ -34,9 +34,12 @@ export default function LocalHero({ locationName, serviceTitle, serviceName, int
             </div>
 
             {/* H1 Title: 네이버 SEO 반영 및 동적 키워드 유지, 크기 확대 */}
-            <h1 className="text-3.5xl sm:text-[44px] lg:text-[48px] xl:text-[52px] font-black text-slate-900 leading-[1.15] tracking-tight">
-              <span className="text-teal-600 block sm:inline">{locationName}</span>{" "}
-              <span className="block sm:inline">{serviceName || "창틀코킹"} 전문 진단</span>
+            <h1 className="text-3.5xl sm:text-[44px] lg:text-[48px] xl:text-[52px] font-black text-slate-900 leading-[1.2] tracking-tight">
+              <span className="block">
+                <span className="text-teal-600">{locationName}</span>{" "}
+                <span>{serviceName || "창틀코킹"}</span>
+              </span>
+              <span className="block">전문진단</span>
             </h1>
 
             {/* Sub-copy (강조 문장) */}
