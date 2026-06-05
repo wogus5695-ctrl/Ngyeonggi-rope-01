@@ -16,68 +16,18 @@ export default function LocalEmpathy({ locationName, dynamicIntro }: LocalEmpath
       <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#0d948802_1px,transparent_1px),linear-gradient(to_bottom,#0d948802_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none"></div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-stretch">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
           
-          {/* Left: Actual Work Image (48%) */}
-          <div className="w-full lg:w-[48%] relative min-h-[420px] sm:min-h-[500px] lg:min-h-[620px] rounded-[32px] overflow-hidden shadow-lg group shrink-0">
-            {/* Image */}
+          {/* Left: Actual Work Image (48%) - Original ratio preserved with no overlays */}
+          <div className="w-full lg:w-[48%] rounded-[24px] overflow-hidden shadow-xs border border-slate-100/80 bg-slate-50 shrink-0">
             <Image
               src="/empathy-work.jpg"
               alt="실제 창틀 상부 코킹 보수 현장"
-              fill
-              sizes="(max-width: 1024px) 100vw, 48vw"
-              className="object-cover transition-transform duration-700 group-hover:scale-102"
+              width={800}
+              height={600}
+              className="w-full h-auto object-contain block"
               priority
             />
-
-            {/* Dark Overlay Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent z-10"></div>
-
-            {/* 3 Pin Labels - Hidden on Mobile */}
-            <div className="absolute inset-0 z-20 hidden md:block">
-              {/* Pin 1: 기존 실리콘 들뜸 */}
-              <div className="absolute top-[48%] left-[22%] flex items-center gap-2">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
-                </span>
-                <span className="bg-slate-900/80 backdrop-blur-xs text-white text-[11px] font-black px-2.5 py-1 rounded-full shadow-xs border border-white/10">
-                  기존 실리콘 들뜸
-                </span>
-              </div>
-
-              {/* Pin 2: 샷시 상부 틈 */}
-              <div className="absolute top-[32%] left-[62%] flex items-center gap-2">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
-                </span>
-                <span className="bg-slate-900/80 backdrop-blur-xs text-white text-[11px] font-black px-2.5 py-1 rounded-full shadow-xs border border-white/10">
-                  샷시 상부 틈
-                </span>
-              </div>
-
-              {/* Pin 3: 외벽·상부면 접합부 */}
-              <div className="absolute top-[62%] left-[45%] flex items-center gap-2">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
-                </span>
-                <span className="bg-slate-900/80 backdrop-blur-xs text-white text-[11px] font-black px-2.5 py-1 rounded-full shadow-xs border border-white/10">
-                  외벽·상부면 접합부
-                </span>
-              </div>
-            </div>
-
-            {/* Bottom Caption Overlay */}
-            <div className="absolute bottom-0 left-0 right-0 p-8 z-20 text-white space-y-1">
-              <h3 className="text-lg font-black text-white tracking-tight drop-shadow-md">
-                실제 창틀 상부 코킹 보수 현장
-              </h3>
-              <p className="text-[13px] text-slate-200 leading-relaxed font-medium drop-shadow-xs">
-                창틀 상부, 샷시 접합부, 외벽 면 상태를 함께 확인합니다.
-              </p>
-            </div>
           </div>
 
           {/* Right: Content Area (52%) */}
