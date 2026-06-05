@@ -15,7 +15,7 @@ export default function LocalEmpathy({ locationName, dynamicIntro }: LocalEmpath
       {/* Background Grid Accent */}
       <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#0d948802_1px,transparent_1px),linear-gradient(to_bottom,#0d948802_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none"></div>
 
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Mobile Header (Visible only on mobile/tablet, hidden on desktop) */}
         <div className="block lg:hidden space-y-3 mb-8">
@@ -30,7 +30,8 @@ export default function LocalEmpathy({ locationName, dynamicIntro }: LocalEmpath
           </p>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-10 lg:gap-14 items-center">
+        {/* 50:50 Desktop Split Layout with items-start for top alignment */}
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-14 items-start">
           
           {/* Left: Actual Work Image (50%) - Fully responsive, original ratio preserved with no overlays */}
           <div className="w-full lg:w-1/2 rounded-[24px] overflow-hidden shadow-3xs border border-slate-100/80 bg-slate-50 shrink-0">
@@ -44,8 +45,8 @@ export default function LocalEmpathy({ locationName, dynamicIntro }: LocalEmpath
             />
           </div>
 
-          {/* Right: Content Area (50%) */}
-          <div className="w-full lg:w-1/2 flex flex-col justify-center py-1">
+          {/* Right: Content Area (50%) - Top-aligned */}
+          <div className="w-full lg:w-1/2 flex flex-col justify-start py-0">
             
             {/* Desktop Header (Visible only on desktop, hidden on mobile/tablet) */}
             <div className="hidden lg:block space-y-3 mb-6">
