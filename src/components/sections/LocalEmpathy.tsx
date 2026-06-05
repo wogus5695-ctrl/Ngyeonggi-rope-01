@@ -23,8 +23,7 @@ export default function LocalEmpathy({ locationName, dynamicIntro }: LocalEmpath
           className="object-cover object-right"
           priority
         />
-        {/* Brightened overlays (very transparent over the image, slightly darker on the right side for readability) */}
-        <div className="absolute inset-0 bg-slate-950/30 lg:bg-gradient-to-r lg:from-slate-950/20 lg:via-slate-950/45 lg:to-slate-950/65 z-10 pointer-events-none"></div>
+        {/* Overlay filter completely removed as requested */}
       </div>
 
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full">
@@ -35,13 +34,13 @@ export default function LocalEmpathy({ locationName, dynamicIntro }: LocalEmpath
             
             {/* Header copy */}
             <div className="space-y-3">
-              <div className="text-teal-400 text-[13px] font-black tracking-widest uppercase">
+              <div className="text-teal-400 text-[13px] font-black tracking-widest uppercase drop-shadow-sm">
                 WHY IT LEAKS AGAIN
               </div>
-              <h2 className="text-2xl sm:text-[28px] lg:text-[32px] font-black text-white tracking-tight leading-[1.25]">
+              <h2 className="text-2xl sm:text-[28px] lg:text-[32px] font-black text-white tracking-tight leading-[1.25] drop-shadow-md">
                 창틀 누수는 보이는 틈만 막아서는 재발할 수 있습니다
               </h2>
-              <p className="text-[14px] text-slate-200 leading-relaxed">
+              <p className="text-[14px] text-slate-100 leading-relaxed font-semibold drop-shadow-sm">
                 물이 보이는 위치와 실제 유입 지점은 다를 수 있습니다. 기존 실리콘 접착 상태, 샷시와 벽체 사이 틈, 외벽 크랙을 함께 확인해야 재누수 가능성을 줄일 수 있습니다.
               </p>
             </div>
@@ -49,37 +48,37 @@ export default function LocalEmpathy({ locationName, dynamicIntro }: LocalEmpath
             {/* 3 Cause Cards (Semi-transparent Dark Glass Cards) */}
             <div className="space-y-2.5">
               {/* Card 1 */}
-              <div className="flex gap-3.5 p-4 bg-slate-900/40 backdrop-blur-xs border border-white/10 rounded-2xl hover:bg-slate-900/50 transition-all duration-300">
-                <div className="w-[40px] h-[40px] bg-teal-950/50 rounded-lg text-teal-400 shrink-0 flex items-center justify-center border border-teal-500/10">
+              <div className="flex gap-3.5 p-4 bg-slate-900/50 backdrop-blur-xs border border-white/10 rounded-2xl hover:bg-slate-900/60 transition-all duration-300">
+                <div className="w-[40px] h-[40px] bg-teal-950/60 rounded-lg text-teal-400 shrink-0 flex items-center justify-center border border-teal-500/10">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.656 48.656 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3l-3-3M3 12c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.017-.22.032-.441.046-.662M3 12l-3 3m3-3l3-3" />
                   </svg>
                 </div>
                 <div>
                   <h4 className="text-[15px] font-bold text-white">기존 실리콘 들뜸</h4>
-                  <p className="text-[13px] text-slate-300 leading-relaxed mt-0.5">
+                  <p className="text-[13px] text-slate-200 leading-relaxed mt-0.5 font-medium">
                     접착력이 떨어진 실리콘 위에 덮으면 시간이 지나며 함께 벌어질 수 있습니다.
                   </p>
                 </div>
               </div>
 
               {/* Card 2 */}
-              <div className="flex gap-3.5 p-4 bg-slate-900/40 backdrop-blur-xs border border-white/10 rounded-2xl hover:bg-slate-900/50 transition-all duration-300">
-                <div className="w-[40px] h-[40px] bg-teal-950/50 rounded-lg text-teal-400 shrink-0 flex items-center justify-center border border-teal-500/10">
+              <div className="flex gap-3.5 p-4 bg-slate-900/50 backdrop-blur-xs border border-white/10 rounded-2xl hover:bg-slate-900/60 transition-all duration-300">
+                <div className="w-[40px] h-[40px] bg-teal-950/60 rounded-lg text-teal-400 shrink-0 flex items-center justify-center border border-teal-500/10">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                   </svg>
                 </div>
                 <div>
                   <h4 className="text-[15px] font-bold text-white">샷시·벽체 접합부 틈</h4>
-                  <p className="text-[13px] text-slate-300 leading-relaxed mt-0.5">
+                  <p className="text-[13px] text-slate-200 leading-relaxed mt-0.5 font-medium">
                     프레임 주변의 작은 틈으로 빗물이 안쪽까지 스며들 수 있습니다.
                   </p>
                 </div>
               </div>
 
               {/* Card 3 */}
-              <div className="flex gap-3.5 p-4 bg-slate-900/40 backdrop-blur-xs border border-white/10 rounded-2xl hover:bg-slate-900/50 transition-all duration-300">
+              <div className="flex gap-3.5 p-4 bg-slate-900/50 backdrop-blur-xs border border-white/10 rounded-2xl hover:bg-slate-900/60 transition-all duration-300">
                 <div className="w-[40px] h-[40px] bg-teal-500/10 rounded-lg text-teal-400 shrink-0 flex items-center justify-center border border-teal-500/10">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12a7.5 7.5 0 11-15 0 7.5 7.5 0 0115 0z" />
@@ -88,7 +87,7 @@ export default function LocalEmpathy({ locationName, dynamicIntro }: LocalEmpath
                 </div>
                 <div>
                   <h4 className="text-[15px] font-bold text-white">외벽 크랙·상부 균열</h4>
-                  <p className="text-[13px] text-slate-300 leading-relaxed mt-0.5">
+                  <p className="text-[13px] text-slate-200 leading-relaxed mt-0.5 font-medium">
                     창틀 문제가 아니라 외벽 균열을 타고 물이 들어오는 경우도 있습니다.
                   </p>
                 </div>
@@ -96,7 +95,7 @@ export default function LocalEmpathy({ locationName, dynamicIntro }: LocalEmpath
             </div>
 
             {/* Slim Highlight Box (Semi-transparent Mint Glass) */}
-            <div className="p-4.5 bg-teal-950/45 border border-teal-500/20 rounded-2xl backdrop-blur-xs">
+            <div className="p-4.5 bg-teal-950/60 border border-teal-500/20 rounded-2xl backdrop-blur-xs">
               <p className="text-[14px] font-bold text-teal-100 leading-relaxed">
                 틈새케어는 ‘어디에 다시 쏠지’보다 <span className="text-teal-400 font-extrabold">‘어디서 물이 들어오는지’</span>를 먼저 확인합니다.
               </p>
@@ -111,7 +110,7 @@ export default function LocalEmpathy({ locationName, dynamicIntro }: LocalEmpath
                 우리 집 누수 원인 상담하기
               </Link>
               <div className="pl-1 space-y-1">
-                <p className="text-[12.5px] text-slate-300 font-medium">
+                <p className="text-[12.5px] text-slate-200 font-medium drop-shadow-xs">
                   창틀, 실리콘, 외벽 사진을 보내주시면 기본 상태를 먼저 확인해드립니다.
                 </p>
                 {/* SEO Preservation (Hidden visually but available for search engine crawlers) */}
