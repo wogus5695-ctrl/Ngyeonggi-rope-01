@@ -89,7 +89,7 @@ export default function RootLayout({
               "logo": `${SEO_CONFIG.baseUrl}/icon.svg`,
               "contactPoint": {
                 "@type": "ContactPoint",
-                "telephone": "010-1234-5678",
+                "telephone": "010-4667-5568",
                 "contactType": "customer service"
               }
             })

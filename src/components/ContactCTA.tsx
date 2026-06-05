@@ -21,7 +21,7 @@ export default function ContactCTA() {
 
       {/* 2순위: 전화 상담하기 */}
       <a
-        href="tel:010-1234-5678"
+        href="tel:010-4667-5568"
         className="flex items-center justify-center gap-2.5 w-full sm:w-auto px-8 py-4 bg-white border-2 border-teal-600/30 text-teal-800 hover:bg-teal-50/30 hover:border-teal-600/50 font-extrabold text-[15px] rounded-full hover:shadow-md hover:-translate-y-[1px] transition-all cursor-pointer"
       >
         <svg

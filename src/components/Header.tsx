@@ -85,7 +85,7 @@ export default function Header() {
             실시간 진단 의뢰
           </Link>
           <Link
-            href="tel:010-1234-5678" // 실제 상담용 가상 번호
+            href="tel:010-4667-5568" // 실제 상담용 가상 번호
             className="inline-flex md:hidden items-center justify-center w-10 h-10 bg-teal-50 border border-teal-500/10 text-teal-600 hover:bg-teal-100 transition-colors rounded-full"
           >
             <svg

@@ -43,7 +43,7 @@ export default function FloatingCallButton() {
           
           {/* 전화 버튼 */}
           <a
-            href="tel:010-1234-5678"
+            href="tel:010-4667-5568"
             className="w-9 h-9 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full flex items-center justify-center transition-colors"
           >
             <svg
