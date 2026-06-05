@@ -207,24 +207,60 @@ export default async function Home({ searchParams }: Props) {
           />
         </div>
 
-        {/* 마무리 CTA 및 상담 접수 폼 */}
-        <section id="contact" className="py-24 bg-teal-50/15 relative">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-emerald-100/30 rounded-full blur-3xl -z-10"></div>
+        {/* 마무리 CTA 및 상담 접수 폼 (강조 카드 리디자인) */}
+        <section id="contact" className="py-24 bg-teal-50/15 relative overflow-hidden">
+          {/* 백그라운드 블러 효과 */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-100/35 rounded-full blur-3xl -z-10"></div>
           
-          <div className="max-w-[720px] mx-auto px-4 text-center space-y-7 relative z-10">
-            {/* CTA Copy */}
-            <div className="text-teal-600 text-[13px] font-extrabold tracking-wider uppercase">
-              Consultation Request
-            </div>
-            <h2 className="text-3xl sm:text-4.5xl font-black text-slate-900 tracking-tight leading-tight">
-              {ctaHeader}
-            </h2>
-            <p className="text-[14.5px] sm:text-[15.5px] text-slate-500 leading-relaxed max-w-xl mx-auto">
-              {content.ctaSummary} 실내외에서 스마트폰으로 누수 흔적을 찍어 전송해 주시면 더 신속한 1차 상세 가견적 설계가 가능합니다.
-            </p>
-            
-            <div className="pt-2">
-              <ContactCTA />
+          <div className="max-w-[960px] mx-auto px-4 relative z-10">
+            {/* CTA 카드 컨테이너 */}
+            <div className="bg-white border border-teal-500/15 shadow-xl shadow-teal-950/[0.03] rounded-[32px] p-7 sm:p-10 md:p-14 text-center space-y-8">
+              
+              {/* 라벨 */}
+              <div className="text-teal-600 text-[13px] font-extrabold tracking-wider uppercase">
+                Consultation Request
+              </div>
+              
+              {/* 메인 제목 */}
+              <h2 className="text-[26px] sm:text-[32px] md:text-[36px] lg:text-[40px] font-black text-slate-900 tracking-tight leading-[1.25] max-w-3xl mx-auto">
+                <span className="block sm:inline">{heroLocation} {isValid ? service : "창틀코킹"} 상담,</span>{" "}
+                <span className="block sm:inline mt-1.5 sm:mt-0">
+                  <span className="text-teal-600">사진 한 장</span>으로 <span className="text-teal-600">먼저 확인</span>하세요
+                </span>
+              </h2>
+              
+              {/* 본문 설명 */}
+              <p className="text-[14.5px] sm:text-[15.5px] text-slate-500 leading-[1.7] max-w-[620px] mx-auto">
+                젖은 위치만 보고 덧방하면 재누수가 반복될 수 있습니다. 창틀·샷시·외벽 상태가 보이는 사진을 보내주시면 필요한 보수 방향을 먼저 안내해드립니다.
+              </p>
+              
+              {/* CTA 버튼 (카카오톡 1순위, 전화 2순위) */}
+              <div className="pt-2">
+                <ContactCTA />
+              </div>
+              
+              {/* 태그 안내 영역 */}
+              <div className="pt-4 border-t border-slate-100 max-w-md mx-auto space-y-3">
+                <div className="text-[13px] font-bold text-slate-400">
+                  사진 상담 시 확인 항목
+                </div>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  {["창틀 하부", "실리콘 갈라짐", "외벽 크랙", "샷시 접합부"].map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-3 py-1 bg-teal-50 text-teal-800 font-extrabold text-[12px] rounded-full border border-teal-500/10"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              
+              {/* 추가 신뢰 문구 */}
+              <div className="pt-2 text-[12.5px] text-slate-400 font-medium leading-relaxed">
+                현장 상태에 따라 덧방, 부분 제거, 올제거 여부를 구분해 안내합니다.
+              </div>
+              
             </div>
           </div>
         </section>
