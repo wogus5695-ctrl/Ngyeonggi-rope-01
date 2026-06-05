@@ -17,70 +17,172 @@ interface LocalPortfolioProps {
 
 export default function LocalPortfolio({ title, portfolio }: LocalPortfolioProps) {
   return (
-    <section className="section-py bg-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="max-w-3xl mx-auto text-center mb-16 space-y-4">
-          <div className="text-teal-600 text-[13px] font-extrabold tracking-wider uppercase">
-            Case Studies
+    <section className="py-24 bg-white relative">
+      
+      {/* SEO Crawler Safe Layer (Hidden visually but crawlable for search engines) */}
+      <div className="sr-only opacity-0 pointer-events-none absolute w-0 h-0 overflow-hidden" aria-hidden="true">
+        <h2>{title}</h2>
+        <ul>
+          {portfolio.map((item) => (
+            <li key={item.id}>
+              <h3>{item.title}</h3>
+              <p>{item.location} - {item.date} - {item.serviceType}</p>
+              <p>{item.description}</p>
+              <ul>
+                {item.highlights.map((hl, i) => (
+                  <li key={i}>{hl}</li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Visual Header */}
+        <div className="max-w-3xl mx-auto text-center mb-16 space-y-3">
+          <div className="text-teal-600 text-[13px] font-black tracking-widest uppercase">
+            CASE STUDIES
           </div>
-          <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight leading-tight">
-            {title}
+          <h2 className="text-3xl sm:text-[40px] font-black text-slate-900 tracking-tight leading-tight">
+            실제 빗물누수 해결 사례
           </h2>
-          <p className="text-[14.5px] text-slate-500 max-w-sm mx-auto leading-relaxed">
-            경기 북부 일대에서 직접 진단 및 밀봉 시공을 완수한 대표 레퍼런스입니다.
+          <p className="text-[15px] sm:text-[16px] text-slate-500 leading-relaxed max-w-lg mx-auto">
+            외벽 크랙, 유리 실리콘, 창틀 실리콘 등 누수 원인에 맞춰 진단·보수한 현장입니다.
           </p>
         </div>
 
-        {/* Portfolio Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {portfolio.map((item) => (
-            <div
-              key={item.id}
-              className="bg-white border border-teal-500/10 rounded-[28px] overflow-hidden shadow-2xs hover:shadow-lg transition-all hover:-translate-y-1.5 flex flex-col justify-between"
-            >
-              {/* Card Body */}
-              <div className="p-6 md:p-7 space-y-5">
-                {/* Meta details */}
-                <div className="flex items-center justify-between text-[12px] text-slate-400 font-semibold">
-                  <span>{item.location}</span>
-                  <span>{item.date}</span>
-                </div>
+        {/* Gallery Cards Grid (Asymmetric 바둑판식 배열) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+          
+          {/* Left Large Card (col-span-7) */}
+          <div className="lg:col-span-7 group relative rounded-[28px] overflow-hidden shadow-3xs hover:shadow-lg transition-all duration-500 h-[380px] sm:h-[480px] lg:h-[640px] flex flex-col justify-end">
+            {/* Background Image */}
+            <div className="absolute inset-0 z-0">
+              <img
+                src="/case-crack.jpg"
+                alt="외벽 크랙 보수로 빗물 유입 차단"
+                className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+              />
+              {/* Soft dark gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/25 to-transparent z-10"></div>
+            </div>
 
-                <div className="space-y-2">
-                  <span className="inline-block px-2.5 py-0.5 bg-teal-50 border border-teal-500/10 text-teal-600 font-bold text-[11px] rounded-md">
-                    {item.serviceType}
-                  </span>
-                  <h3 className="text-[16px] font-extrabold text-slate-800 tracking-tight leading-snug">
-                    {item.title}
-                  </h3>
-                </div>
-
-                <p className="text-[13px] text-slate-500 leading-relaxed">
-                  {item.description}
-                </p>
-
-                {/* Highlights */}
-                <div className="space-y-2.5 pt-2 border-t border-slate-50">
-                  <p className="text-[12px] font-extrabold text-slate-400 tracking-wider uppercase">Core Action</p>
-                  <ul className="space-y-1.5">
-                    {item.highlights.map((hl, index) => (
-                      <li key={index} className="flex items-start gap-2 text-[12.5px] text-slate-700 leading-normal">
-                        <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-1.5 flex-shrink-0"></span>
-                        <span>{hl}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+            {/* Content Overlay */}
+            <div className="relative z-20 p-6 sm:p-8 md:p-10 space-y-3.5 mt-auto">
+              <div>
+                <span className="inline-block px-3 py-1 bg-teal-500/20 text-teal-300 font-extrabold text-[12px] rounded-full border border-teal-500/30 backdrop-blur-xs">
+                  외벽 크랙
+                </span>
               </div>
-
-              {/* Bottom Decorative Banner */}
-              <div className="bg-teal-500/5 py-3 px-6 text-center border-t border-teal-500/5">
-                <span className="text-[12.5px] font-bold text-teal-700">시공 및 보증 관리 매뉴얼 배포 완료</span>
+              <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight leading-snug">
+                외벽 크랙 보수로 빗물 유입 차단
+              </h3>
+              <p className="text-[13.5px] sm:text-[14px] text-slate-200 leading-relaxed max-w-[540px]">
+                외벽 균열을 따라 빗물이 스며드는 현장으로, 크랙 부위와 창틀 주변 연결부를 함께 확인해 보수했습니다.
+              </p>
+              <div className="flex flex-wrap gap-2 pt-1.5">
+                <span className="text-[12px] font-bold text-teal-400">#외벽크랙</span>
+                <span className="text-[12px] font-bold text-teal-400">#빗물누수</span>
+                <span className="text-[12px] font-bold text-teal-400">#균열보수</span>
               </div>
             </div>
-          ))}
+          </div>
+
+          {/* Right Column containing 2 smaller cards (col-span-5) */}
+          <div className="lg:col-span-5 flex flex-col gap-6 lg:gap-8 justify-between">
+            
+            {/* Right Top Card */}
+            <div className="group relative rounded-[28px] overflow-hidden shadow-3xs hover:shadow-lg transition-all duration-500 h-[280px] sm:h-[320px] lg:h-[304px] flex flex-col justify-end">
+              {/* Background Image */}
+              <div className="absolute inset-0 z-0">
+                <img
+                  src="/case-glass.jpg"
+                  alt="유리 실리콘 보수로 창 주변 틈새 차단"
+                  className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/25 to-transparent z-10"></div>
+              </div>
+
+              {/* Content Overlay */}
+              <div className="relative z-20 p-6 sm:p-8 space-y-2.5 mt-auto">
+                <div>
+                  <span className="inline-block px-3 py-1 bg-teal-500/20 text-teal-300 font-extrabold text-[12px] rounded-full border border-teal-500/30 backdrop-blur-xs">
+                    유리 실리콘
+                  </span>
+                </div>
+                <h3 className="text-lg sm:text-[19px] font-black text-white tracking-tight leading-snug">
+                  유리 실리콘 보수로 창 주변 틈새 차단
+                </h3>
+                <p className="text-[13px] text-slate-200 leading-relaxed max-w-[480px]">
+                  유리와 프레임 사이 실리콘 노후 구간을 정리하고, 접착면을 확보해 재시공했습니다.
+                </p>
+                <div className="flex flex-wrap gap-2 pt-1">
+                  <span className="text-[12px] font-bold text-teal-400">#유리실리콘</span>
+                  <span className="text-[12px] font-bold text-teal-400">#창틀누수</span>
+                  <span className="text-[12px] font-bold text-teal-400">#고층작업</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Bottom Card */}
+            <div className="group relative rounded-[28px] overflow-hidden shadow-3xs hover:shadow-lg transition-all duration-500 h-[280px] sm:h-[320px] lg:h-[304px] flex flex-col justify-end">
+              {/* Background Image */}
+              <div className="absolute inset-0 z-0">
+                <img
+                  src="/case-frame.jpg"
+                  alt="창틀 실리콘 재시공으로 하부 누수 보수"
+                  className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/25 to-transparent z-10"></div>
+              </div>
+
+              {/* Content Overlay */}
+              <div className="relative z-20 p-6 sm:p-8 space-y-2.5 mt-auto">
+                <div>
+                  <span className="inline-block px-3 py-1 bg-teal-500/20 text-teal-300 font-extrabold text-[12px] rounded-full border border-teal-500/30 backdrop-blur-xs">
+                    창틀 실리콘
+                  </span>
+                </div>
+                <h3 className="text-lg sm:text-[19px] font-black text-white tracking-tight leading-snug">
+                  창틀 실리콘 재시공으로 하부 누수 보수
+                </h3>
+                <p className="text-[13px] text-slate-200 leading-relaxed max-w-[480px]">
+                  창틀 하부와 외벽 접합부의 틈을 확인하고, 오염 부위를 정리한 뒤 실리콘 마감으로 보수했습니다.
+                </p>
+                <div className="flex flex-wrap gap-2 pt-1">
+                  <span className="text-[12px] font-bold text-teal-400">#창틀실리콘</span>
+                  <span className="text-[12px] font-bold text-teal-400">#창틀코킹</span>
+                  <span className="text-[12px] font-bold text-teal-400">#하부누수</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
+
+        {/* Bottom CTA Area */}
+        <div className="mt-20 text-center space-y-5">
+          <div className="space-y-1.5">
+            <h4 className="text-lg sm:text-[20px] font-black text-slate-800 tracking-tight">
+              우리 집도 비슷한 증상인지 확인받아보세요.
+            </h4>
+            <p className="text-[13.5px] sm:text-[14.5px] text-slate-500 leading-relaxed">
+              창틀, 외벽, 실리콘 상태 사진을 보내주시면 기본 상태를 먼저 확인해드립니다.
+            </p>
+          </div>
+          
+          <div className="pt-2">
+            <a
+              href="#contact"
+              className="inline-flex items-center justify-center px-8 py-4 text-[15px] font-extrabold text-white bg-teal-600 hover:bg-teal-700 transition-all rounded-full shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 w-full sm:w-auto"
+            >
+              사진 보내고 상담받기
+            </a>
+          </div>
+        </div>
+
       </div>
     </section>
   );
