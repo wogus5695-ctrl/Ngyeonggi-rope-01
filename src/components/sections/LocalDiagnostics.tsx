@@ -126,15 +126,9 @@ export default function LocalDiagnostics() {
         </div>
 
         {/* Section Action CTA (Centered) */}
-        <div className="text-center pt-10 border-t border-slate-200/50 mt-16 flex flex-col items-center space-y-4">
-          <Link
-            href="#contact"
-            className="px-10 py-5 w-full sm:w-auto text-center bg-teal-600 hover:bg-teal-700 text-white text-[16.5px] font-black rounded-2xl shadow-md hover:shadow-lg transition-all"
-          >
-            증상 사진 보내고 무료 진단받기
-          </Link>
-          <p className="text-[13px] sm:text-[13.5px] text-slate-400 font-medium">
-            창틀, 실리콘, 외벽 사진만으로도 기본 상태를 먼저 확인해드릴 수 있습니다.
+        <div className="text-center pt-8 border-t border-slate-200/50 mt-16">
+          <p className="text-[13.5px] sm:text-[14.5px] text-slate-500 font-bold tracking-tight">
+            ※ 창틀, 실리콘, 외벽 사진만으로도 기본 상태를 먼저 확인해드릴 수 있습니다.
           </p>
         </div>
       </div>
