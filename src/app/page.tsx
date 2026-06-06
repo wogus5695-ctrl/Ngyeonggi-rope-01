@@ -221,10 +221,10 @@ export default async function Home({ searchParams }: Props) {
               {/* 메인 제목 */}
               <h2 className="text-[26px] sm:text-[32px] md:text-[36px] lg:text-[40px] font-black text-slate-900 tracking-tight leading-[1.25] max-w-3xl mx-auto">
                 <span className="block">
-                  {isValid ? `${heroLocation} ${service}` : "틈새케어 빗물누수"} 상담,
+                  {isValid ? `${heroLocation} ${service} 상담,` : "틈새케어 빗물누수 상담,"}
                 </span>
                 <span className="block mt-1 sm:mt-2">
-                  누수 원인부터 <span className="text-teal-600">빠르게 확인</span>하세요
+                  누수 원인부터 <span className="text-teal-600">빠르게 확인하세요</span>
                 </span>
               </h2>
               

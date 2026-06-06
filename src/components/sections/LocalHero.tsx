@@ -44,13 +44,13 @@ export default function LocalHero({ locationName, serviceTitle, serviceName, int
 
             {/* Sub-copy (강조 문장) */}
             <div className="text-[17px] sm:text-[19px] font-extrabold text-slate-800 tracking-tight leading-snug">
-              “창틀 틈새로 새는 빗물, 외벽까지 함께 확인합니다”
+              “외벽 균열과 샷시 접합부로 스며드는 빗물, 창틀 주변 증상까지 함께 확인합니다.”
             </div>
           </div>
 
           {/* Body Text: 가로폭 제어 및 가독성 개선 */}
-          <p className="text-[14.5px] sm:text-[15.5px] text-slate-500 leading-relaxed max-w-[520px]">
-            창틀 주변이 젖거나 벽지가 들뜬다면 단순 실리콘 문제가 아닐 수 있습니다. 틈새케어는 창틀, 샷시, 외벽 크랙까지 함께 확인해 재누수 가능성을 줄입니다.
+          <p className="text-[14.5px] sm:text-[15.5px] text-slate-500 leading-relaxed max-w-[520px] whitespace-pre-wrap">
+            {intro}
           </p>
 
           {/* Trust Badges Grid */}

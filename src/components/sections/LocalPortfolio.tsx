@@ -49,10 +49,8 @@ export default function LocalPortfolio({ title }: LocalPortfolioProps) {
               <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight leading-snug">
                 외벽 크랙 보수로 빗물 유입 차단
               </h3>
-              <div className="flex flex-wrap gap-2 pt-1">
-                <span className="text-[12px] font-bold text-teal-400">#외벽크랙</span>
-                <span className="text-[12px] font-bold text-teal-400">#빗물누수</span>
-                <span className="text-[12px] font-bold text-teal-400">#균열보수</span>
+              <div className="text-[12.5px] font-bold text-teal-400 pt-1 tracking-wide">
+                #외벽크랙 #빗물누수 #균열보수
               </div>
             </div>
           </div>
@@ -83,10 +81,8 @@ export default function LocalPortfolio({ title }: LocalPortfolioProps) {
                 <h3 className="text-lg font-black text-white tracking-tight leading-snug">
                   유리 실리콘 보수
                 </h3>
-                <div className="flex flex-wrap gap-2 pt-1">
-                  <span className="text-[12px] font-bold text-teal-400">#유리실리콘</span>
-                  <span className="text-[12px] font-bold text-teal-400">#창틀누수</span>
-                  <span className="text-[12px] font-bold text-teal-400">#고층작업</span>
+                <div className="text-[12.5px] font-bold text-teal-400 pt-1 tracking-wide">
+                  #유리실리콘 #창틀누수 #고층작업
                 </div>
               </div>
             </div>
@@ -114,10 +110,8 @@ export default function LocalPortfolio({ title }: LocalPortfolioProps) {
                 <h3 className="text-lg font-black text-white tracking-tight leading-snug">
                   창틀 실리콘 재작업
                 </h3>
-                <div className="flex flex-wrap gap-2 pt-1">
-                  <span className="text-[12px] font-bold text-teal-400">#창틀실리콘</span>
-                  <span className="text-[12px] font-bold text-teal-400">#창틀코킹</span>
-                  <span className="text-[12px] font-bold text-teal-400">#하부누수</span>
+                <div className="text-[12.5px] font-bold text-teal-400 pt-1 tracking-wide">
+                  #창틀실리콘 #창틀코킹 #하부누수
                 </div>
               </div>
             </div>

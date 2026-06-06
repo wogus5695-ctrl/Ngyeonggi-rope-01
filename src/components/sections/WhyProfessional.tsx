@@ -36,7 +36,6 @@ export default function WhyProfessional({ locationName, dynamicBanner }: WhyProf
                   </svg>
                 </div>
                 <div className="space-y-0.5">
-                  <span className="text-[10px] font-black text-teal-600 tracking-wider uppercase block">STEP 01</span>
                   <h4 className="text-[15px] font-bold text-slate-800">외부 유입</h4>
                   <p className="text-[13px] text-slate-500 font-medium">외벽 크랙 · 줄눈 틈</p>
                 </div>
@@ -58,7 +57,6 @@ export default function WhyProfessional({ locationName, dynamicBanner }: WhyProf
                   </svg>
                 </div>
                 <div className="space-y-0.5">
-                  <span className="text-[10px] font-black text-teal-600 tracking-wider uppercase block">STEP 02</span>
                   <h4 className="text-[15px] font-bold text-slate-800">틈새 이동</h4>
                   <p className="text-[13px] text-slate-500 font-medium">샷시 접합부 · 창틀 상부</p>
                 </div>
@@ -80,7 +78,6 @@ export default function WhyProfessional({ locationName, dynamicBanner }: WhyProf
                   </svg>
                 </div>
                 <div className="space-y-0.5">
-                  <span className="text-[10px] font-black text-teal-600 tracking-wider uppercase block">STEP 03</span>
                   <h4 className="text-[15px] font-bold text-slate-800">실내 증상</h4>
                   <p className="text-[13px] text-slate-500 font-medium">창틀 하부 · 몰딩 · 벽지 젖음</p>
                 </div>

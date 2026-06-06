@@ -28,7 +28,7 @@ export default function FloatingCallButton() {
         {/* 설명 문구 */}
         <div className="pl-2 sm:pl-3">
           <p className="text-[10.5px] text-teal-400 font-black tracking-wide">빠른 상담</p>
-          <p className="text-[13.5px] sm:text-[14.5px] text-white font-black tracking-tight leading-tight">창틀누수 즉시 상담</p>
+          <p className="text-[13.5px] sm:text-[14.5px] text-white font-black tracking-tight leading-tight">누수·코킹 즉시 상담</p>
         </div>
 
         {/* 버튼 그룹 */}

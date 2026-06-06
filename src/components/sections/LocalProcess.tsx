@@ -165,17 +165,6 @@ export default function LocalProcess({ title, process }: LocalProcessProps) {
           </p>
         </div>
 
-        {/* SEO Dynamic Process Steps Preservation (Hidden visually but discoverable for search engine crawl bots) */}
-        <div className="sr-only opacity-0 pointer-events-none absolute w-0 h-0 overflow-hidden">
-          <h3>{title}</h3>
-          {process.map((step, idx) => (
-            <div key={idx}>
-              <h4>{step.title}</h4>
-              <p>{step.description}</p>
-            </div>
-          ))}
-        </div>
-
       </div>
     </section>
   );
