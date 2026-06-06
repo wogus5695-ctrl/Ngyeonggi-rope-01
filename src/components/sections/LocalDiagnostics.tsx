@@ -95,7 +95,9 @@ export default function LocalDiagnostics() {
                 </svg>
               </div>
               <p className="flex-1 text-[16px] sm:text-[17.5px] lg:text-[19px] font-black text-slate-900 leading-[1.4]">
-                2가지 이상 해당된다면 단순 실리콘 보수보다 <span className="text-teal-600 font-black">창틀·외벽 주변 누수 진단</span>이 먼저입니다.
+                2가지 이상 해당된다면, 빠른시일 내에
+                <br />
+                <span className="text-teal-600 font-black">창틀 외벽 주변 누수 진단</span>이 필요합니다.
               </p>
             </div>
           </div>
