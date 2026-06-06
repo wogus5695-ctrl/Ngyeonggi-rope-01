@@ -117,7 +117,9 @@ export default function LocalHero({ locationName, serviceTitle, serviceName, int
               실제 외벽·창틀 주변 누수 점검 작업
             </h3>
             <p className="text-[13.5px] sm:text-[14px] text-slate-200 max-w-sm ml-auto leading-relaxed font-medium drop-shadow-sm">
-              고층 세대, 외벽 크랙, 샷시 주변 틈새까지 현장 상태에 맞춰 확인합니다.
+              고층 세대, 외벽 크랙, 샷시 주변 틈새까지
+              <br />
+              모든 요인을 체크합니다.
             </p>
           </div>
         </div>
