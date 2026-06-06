@@ -5,7 +5,6 @@ import ContactCTA from "@/components/ContactCTA";
 import FAQSchema from "@/components/FAQSchema";
 import { getMetadata } from "@/lib/seo";
 import { BRAND_HUB_CONTENT } from "@/data/brandHub";
-import { portfolioCases } from "@/data/portfolio";
 
 // Modular Section Components
 import LocalHero from "@/components/sections/LocalHero";
@@ -138,7 +137,6 @@ export default async function Home({ searchParams }: Props) {
   }
 
   const content = BRAND_HUB_CONTENT;
-  const representativePortfolio = portfolioCases.slice(0, 3);
 
   return (
     <div className="flex min-h-screen flex-col font-sans antialiased overflow-x-hidden">
@@ -195,7 +193,6 @@ export default async function Home({ searchParams }: Props) {
         <div id="cases">
           <LocalPortfolio
             title={portfolioTitle}
-            portfolio={representativePortfolio}
           />
         </div>
 
@@ -227,13 +224,13 @@ export default async function Home({ searchParams }: Props) {
                   {isValid ? `${heroLocation} ${service}` : "틈새케어 빗물누수"} 상담,
                 </span>
                 <span className="block mt-1 sm:mt-2">
-                  <span className="text-teal-600">사진 한 장</span>으로 <span className="text-teal-600">먼저 확인</span>하세요.
+                  누수 원인부터 <span className="text-teal-600">빠르게 확인</span>하세요
                 </span>
               </h2>
               
               {/* 본문 설명 */}
               <p className="text-[14.5px] sm:text-[15.5px] text-slate-500 leading-[1.7] max-w-[620px] mx-auto">
-                젖은 위치만 보고 덧방하면 재누수가 반복될 수 있습니다. 창틀·샷시·외벽 상태가 보이는 사진을 보내주시면 필요한 보수 방향을 먼저 안내해드립니다.
+                젖은 위치만 보고 덧방하면 재누수가 반복될 수 있습니다. 창틀·샷시·외벽 상태를 함께 확인해 필요한 보수 방향을 안내해드립니다.
               </p>
               
               {/* CTA 버튼 (카카오톡 1순위, 전화 2순위) */}

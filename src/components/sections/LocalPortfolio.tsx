@@ -1,42 +1,12 @@
 import React from "react";
 
-interface PortfolioCase {
-  id: string;
-  title: string;
-  location: string;
-  serviceType: string;
-  date: string;
-  description: string;
-  highlights: string[];
-}
-
 interface LocalPortfolioProps {
   title: string;
-  portfolio: PortfolioCase[];
 }
 
-export default function LocalPortfolio({ title, portfolio }: LocalPortfolioProps) {
+export default function LocalPortfolio({ title }: LocalPortfolioProps) {
   return (
     <section className="py-24 bg-white relative">
-      
-      {/* SEO Crawler Safe Layer (Hidden visually but crawlable for search engines) */}
-      <div className="sr-only opacity-0 pointer-events-none absolute w-0 h-0 overflow-hidden" aria-hidden="true">
-        <h2>{title}</h2>
-        <ul>
-          {portfolio.map((item) => (
-            <li key={item.id}>
-              <h3>{item.title}</h3>
-              <p>{item.location} - {item.date} - {item.serviceType}</p>
-              <p>{item.description}</p>
-              <ul>
-                {item.highlights.map((hl, i) => (
-                  <li key={i}>{hl}</li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ul>
-      </div>
 
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         

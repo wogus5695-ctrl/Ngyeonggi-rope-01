@@ -39,7 +39,7 @@ export default function LocalHero({ locationName, serviceTitle, serviceName, int
                 <span className="text-teal-600">{locationName}</span>{" "}
                 <span>{serviceName || "창틀코킹"}</span>
               </span>
-              <span className="block">전문진단</span>
+              <span className="block">전문 진단</span>
             </h1>
 
             {/* Sub-copy (강조 문장) */}

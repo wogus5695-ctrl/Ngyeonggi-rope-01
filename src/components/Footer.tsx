@@ -82,11 +82,6 @@ export default function Footer({ dynamicKeyword }: FooterProps) {
         {/* Footer Bottom / Dynamic SEO Hook */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[13px] text-slate-600">
           <p>© {new Date().getFullYear()} 틈새케어. All Rights Reserved.</p>
-          {dynamicKeyword && (
-            <p className="text-slate-500 bg-slate-800/40 border border-slate-800 px-3 py-1.5 rounded-lg text-[12px] font-medium">
-              현장 맞춤형 키워드 정보: <span className="text-teal-400 font-bold">{dynamicKeyword}</span>
-            </p>
-          )}
         </div>
       </div>
     </footer>
