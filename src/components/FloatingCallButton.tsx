@@ -24,27 +24,27 @@ export default function FloatingCallButton() {
         isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0 pointer-events-none"
       }`}
     >
-      <div className="bg-slate-900/90 backdrop-blur-md border border-white/10 rounded-full py-2.5 px-3 flex items-center justify-between shadow-2xl pulse-button">
+      <div className="bg-slate-900/95 backdrop-blur-md border border-white/10 rounded-full py-2 px-3 sm:py-2.5 sm:px-4 flex items-center justify-between shadow-2xl">
         {/* 설명 문구 */}
-        <div className="pl-4">
-          <p className="text-[10px] text-teal-400 font-bold tracking-wider uppercase">Quick Care</p>
-          <p className="text-[13px] text-white font-extrabold tracking-tight">전문 엔지니어 직통</p>
+        <div className="pl-2 sm:pl-3">
+          <p className="text-[10.5px] text-teal-400 font-black tracking-wide">빠른 상담</p>
+          <p className="text-[13.5px] sm:text-[14.5px] text-white font-black tracking-tight leading-tight">창틀누수 즉시 상담</p>
         </div>
 
         {/* 버튼 그룹 */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 shrink-0">
           {/* 간이 문의 */}
           <Link
             href="#contact"
-            className="px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white text-[12.5px] font-black rounded-full transition-colors"
+            className="px-3.5 py-2 sm:px-4 bg-teal-600 hover:bg-teal-700 hover:scale-[1.02] active:scale-[0.98] text-white text-[12.5px] font-black rounded-full transition-all duration-200"
           >
-            상담 신청
+            전화 상담
           </Link>
           
           {/* 전화 버튼 */}
           <a
             href="tel:010-4667-5568"
-            className="w-9 h-9 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full flex items-center justify-center transition-colors"
+            className="w-9 h-9 bg-emerald-500 hover:bg-emerald-600 hover:scale-[1.05] active:scale-[0.95] text-white rounded-full flex items-center justify-center transition-all duration-200"
           >
             <svg
               className="w-4.5 h-4.5"
