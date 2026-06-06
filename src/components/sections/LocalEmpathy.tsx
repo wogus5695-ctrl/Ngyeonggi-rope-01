@@ -42,9 +42,11 @@ export default function LocalEmpathy({ locationName, dynamicIntro }: LocalEmpath
               </div>
               <h2
                 className="text-2xl sm:text-[28px] lg:text-[32px] font-black text-white tracking-tight leading-[1.25]"
-                style={{ textShadow: "2px 2px 5px rgba(0, 0, 0, 0.95)" }}
+                style={{ textShadow: "2px 2px 3px rgba(0, 0, 0, 1), 0px 0px 10px rgba(0, 0, 0, 1)" }}
               >
-                창틀 누수는 보이는 틈만 막아서는 재발할 수 있습니다
+                창틀 누수는 보이는 틈만 막아서는
+                <br />
+                재발할 수 있습니다.
               </h2>
               <p
                 className="text-[14px] text-slate-100 leading-relaxed font-semibold"
