@@ -18,7 +18,7 @@ export const SEO_CONFIG = {
     "베란다빗물누수",
     "경기북부코킹"
   ],
-  baseUrl: "https://teumsaecare.co.kr", // 틈새케어 전용 임시 도메인
+  baseUrl: "https://www.teumsaecare.co.kr",
   ogImage: "/og-image.png",
 };
 
