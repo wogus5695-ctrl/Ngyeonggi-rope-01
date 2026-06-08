@@ -33,14 +33,7 @@ export default function Footer({ dynamicKeyword }: FooterProps) {
             <p className="text-[14px] leading-relaxed text-slate-400 mb-6">
               미세한 틈새와 외벽 균열을 추적 진단하여 누수의 고통에서 해방시켜 드립니다. 경기 북부(고양·파주·양주) 전용 케어 시스템을 운영하고 있습니다.
             </p>
-            <div className="flex gap-4">
-              <Link
-                href="/sitemap-gyeonggi-north"
-                className="text-[13px] font-medium text-teal-400 hover:underline underline-offset-4 decoration-teal-400/30"
-              >
-                경기북부 시공구역 안내 (HTML Sitemap)
-              </Link>
-            </div>
+
           </div>
 
           {/* Quick Links */}
