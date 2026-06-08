@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     "thumbnail": `${SEO_CONFIG.baseUrl}${SEO_CONFIG.ogImage}`,
   },
   verification: {
-    google: "g-xxxxxxxxxxxxxxxxxxxx", // 틈새케어 독자 구글 인증키 (가상)
+    google: "m7khjTSwiwpQwEz2VDHAKDGmsSzpDOt3w4cjLYZ0pYc", // 구글 인증키
     other: {
       "naver-site-verification": "b59b306500fb9d6d20422aabd4f4ef8fe90e98bf", // 네이버 인증키
     },
