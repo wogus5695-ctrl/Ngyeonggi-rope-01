@@ -19,7 +19,7 @@ export const SEO_CONFIG = {
     "경기북부코킹"
   ],
   baseUrl: "https://teumsaecare.co.kr", // 틈새케어 전용 임시 도메인
-  ogImage: "/icon.svg",
+  ogImage: "/og-image.png",
 };
 
 export function getMetadata(options: {
