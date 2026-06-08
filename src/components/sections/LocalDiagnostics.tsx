@@ -38,7 +38,10 @@ export default function LocalDiagnostics() {
                   </svg>
                 </div>
                 <div className="space-y-1.5">
-                  <h4 className="text-[16px] font-black text-slate-800 tracking-tight">창틀 아래쪽이 젖습니다</h4>
+                  <h4 className="text-[16px] font-black text-slate-800 tracking-tight">
+                    <span className="hidden sm:inline">창틀 아래쪽이 젖습니다</span>
+                    <span className="inline sm:hidden">창틀 아래쪽 젖음</span>
+                  </h4>
                   <p className="text-[13px] text-slate-500 leading-relaxed">비가 온 뒤 창틀 하부나 몰딩 주변에 물기가 남습니다.</p>
                 </div>
               </div>
@@ -52,7 +55,10 @@ export default function LocalDiagnostics() {
                   </svg>
                 </div>
                 <div className="space-y-1.5">
-                  <h4 className="text-[16px] font-black text-slate-800 tracking-tight">실리콘이 갈라졌습니다</h4>
+                  <h4 className="text-[16px] font-black text-slate-800 tracking-tight">
+                    <span className="hidden sm:inline">실리콘이 갈라졌습니다</span>
+                    <span className="inline sm:hidden">실리콘 갈라짐</span>
+                  </h4>
                   <p className="text-[13px] text-slate-500 leading-relaxed">샷시 주변 실리콘이 들뜨거나 틈이 벌어져 있습니다.</p>
                 </div>
               </div>
@@ -66,7 +72,10 @@ export default function LocalDiagnostics() {
                   </svg>
                 </div>
                 <div className="space-y-1.5">
-                  <h4 className="text-[16px] font-black text-slate-800 tracking-tight">벽지나 몰딩이 들뜹니다</h4>
+                  <h4 className="text-[16px] font-black text-slate-800 tracking-tight">
+                    <span className="hidden sm:inline">벽지나 몰딩이 들뜹니다</span>
+                    <span className="inline sm:hidden">벽지·몰딩 들뜸</span>
+                  </h4>
                   <p className="text-[13px] text-slate-500 leading-relaxed">창문 아래 벽지, 몰딩, 마감재가 젖거나 변형됩니다.</p>
                 </div>
               </div>
@@ -80,7 +89,10 @@ export default function LocalDiagnostics() {
                   </svg>
                 </div>
                 <div className="space-y-1.5">
-                  <h4 className="text-[16px] font-black text-slate-800 tracking-tight">외벽에 실금이 보입니다</h4>
+                  <h4 className="text-[16px] font-black text-slate-800 tracking-tight">
+                    <span className="hidden sm:inline">외벽에 실금이 보입니다</span>
+                    <span className="inline sm:hidden">외벽 실금</span>
+                  </h4>
                   <p className="text-[13px] text-slate-500 leading-relaxed">외벽 크랙을 따라 빗물이 내부로 유입될 수 있습니다.</p>
                 </div>
               </div>
@@ -95,9 +107,9 @@ export default function LocalDiagnostics() {
                 </svg>
               </div>
               <p className="flex-1 text-[16px] sm:text-[17.5px] lg:text-[19px] font-black text-slate-900 leading-[1.4]">
-                2가지 이상 해당된다면, 빠른시일 내에
+                2가지 이상 해당된다면 빠른 시일 내에
                 <br />
-                <span className="text-teal-600 font-black">창틀 외벽 주변 누수 진단</span>이 필요합니다.
+                <span className="text-teal-600 font-black">창틀·외벽 주변 누수 진단</span>이 필요합니다.
               </p>
             </div>
           </div>
@@ -128,10 +140,16 @@ export default function LocalDiagnostics() {
         </div>
 
         {/* Section Action CTA (Centered) */}
-        <div className="text-center pt-8 border-t border-slate-200/50 mt-16">
-          <p className="text-[13.5px] sm:text-[14.5px] text-slate-500 font-bold tracking-tight">
+        <div className="text-center pt-8 border-t border-slate-200/50 mt-16 flex flex-col items-center gap-3">
+          <p className="text-[13.5px] sm:text-[14.5px] text-slate-500 font-bold tracking-tight hidden sm:block">
             ※ 창틀, 실리콘, 외벽 사진만으로도 기본 상태를 먼저 확인해드릴 수 있습니다.
           </p>
+          <Link
+            href="#contact"
+            className="inline-flex sm:hidden items-center justify-center px-8 py-4.5 w-full text-center bg-teal-600 hover:bg-teal-700 text-white text-[15.5px] font-black rounded-2xl shadow-xs hover:shadow-sm transition-all"
+          >
+            사진 보내고 상태 확인하기
+          </Link>
         </div>
       </div>
     </section>

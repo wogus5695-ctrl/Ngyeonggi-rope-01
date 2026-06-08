@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
 interface ProcessStep {
   title: string;
@@ -13,6 +13,8 @@ interface LocalProcessProps {
 }
 
 export default function LocalProcess({ title, process }: LocalProcessProps) {
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
   // Hardcoded highly readable steps as requested by the user
   const steps = [
     {
@@ -67,92 +69,62 @@ export default function LocalProcess({ title, process }: LocalProcessProps) {
           </p>
         </div>
 
-        {/* Desktop 3+2 Grid Layout */}
-        <div className="hidden md:flex flex-col gap-6">
-          {/* Row 1: Steps 1, 2, 3 */}
-          <div className="grid grid-cols-3 gap-6">
-            {steps.slice(0, 3).map((step, idx) => (
-              <div
-                key={idx}
-                className="bg-white border border-slate-100/90 rounded-[24px] p-7.5 shadow-3xs hover:-translate-y-1 hover:shadow-2xs transition-all duration-300 flex flex-col justify-between"
-              >
-                <div className="space-y-4">
-                  <div className="text-teal-600 text-[11.5px] font-black tracking-wider uppercase">
-                    {step.step}
-                  </div>
-                  <div className="space-y-2.5">
-                    <h3 className="text-[18px] lg:text-[19px] font-bold text-slate-800 tracking-tight">
-                      {step.title}
-                    </h3>
-                    <p className="text-[14px] lg:text-[14.5px] text-slate-500 leading-[1.65]">
-                      {step.description}
-                    </p>
-                  </div>
-                </div>
-                <div className="mt-5">
-                  <span className="inline-block py-1 px-3 bg-teal-50 text-teal-700 text-[12px] font-bold rounded-full">
-                    {step.point}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Row 2: Steps 4, 5 (Centered with custom width to match grid sizing) */}
-          <div className="flex justify-center gap-6">
-            {steps.slice(3, 5).map((step, idx) => (
-              <div
-                key={idx}
-                className="w-[calc(33.333%-16px)] bg-white border border-slate-100/90 rounded-[24px] p-7.5 shadow-3xs hover:-translate-y-1 hover:shadow-2xs transition-all duration-300 flex flex-col justify-between"
-              >
-                <div className="space-y-4">
-                  <div className="text-teal-600 text-[11.5px] font-black tracking-wider uppercase">
-                    {step.step}
-                  </div>
-                  <div className="space-y-2.5">
-                    <h3 className="text-[18px] lg:text-[19px] font-bold text-slate-800 tracking-tight">
-                      {step.title}
-                    </h3>
-                    <p className="text-[14px] lg:text-[14.5px] text-slate-500 leading-[1.65]">
-                      {step.description}
-                    </p>
-                  </div>
-                </div>
-                <div className="mt-5">
-                  <span className="inline-block py-1 px-3 bg-teal-50 text-teal-700 text-[12px] font-bold rounded-full">
-                    {step.point}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Mobile 1-Column Timeline Layout */}
-        <div className="flex md:hidden flex-col gap-8 relative pl-6 border-l border-teal-500/20 ml-2">
+        {/* Unified Grid Layout (Zero HTML duplication for SEO) */}
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-6">
           {steps.map((step, idx) => (
-            <div key={idx} className="relative bg-white border border-slate-100 rounded-[24px] p-6 shadow-3xs flex flex-col justify-between">
-              
-              {/* Step circle indicator on the vertical timeline border */}
-              <div className="absolute left-[-30px] top-6 w-[10px] h-[10px] bg-teal-500 rounded-full border-2 border-white shadow-xs"></div>
-              
-              <div className="space-y-3">
-                <div className="text-teal-600 text-[11px] font-black tracking-wider uppercase">
-                  {step.step}
+            <div
+              key={idx}
+              onClick={() => {
+                setExpandedIndex(expandedIndex === idx ? null : idx);
+              }}
+              className={`bg-white border border-slate-100/90 rounded-[24px] p-6 sm:p-7.5 shadow-3xs hover:-translate-y-1 hover:shadow-2xs transition-all duration-300 flex flex-col justify-between cursor-pointer md:cursor-default col-span-1 md:col-span-2 ${
+                idx === 3 ? "md:col-start-2" : ""
+              }`}
+            >
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div className="text-teal-600 text-[11.5px] font-black tracking-wider uppercase">
+                    {step.step}
+                  </div>
+                  {/* Mobile-only toggle arrow indicator */}
+                  <div className="block md:hidden text-teal-600">
+                    <svg
+                      className={`w-4 h-4 transform transition-transform duration-300 ${
+                        expandedIndex === idx ? "rotate-180" : ""
+                      }`}
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                  </div>
                 </div>
-                <div className="space-y-2">
-                  <h3 className="text-[17px] font-bold text-slate-800 tracking-tight">
+                <div className="space-y-2.5">
+                  <h3 className="text-[17px] sm:text-[18px] lg:text-[19px] font-bold text-slate-800 tracking-tight">
                     {step.title}
                   </h3>
-                  <p className="text-[13.5px] text-slate-500 leading-relaxed">
-                    {step.description}
-                  </p>
+                  {/* On desktop, always visible. On mobile, collapsible */}
+                  <div className={`md:block transition-all duration-300 overflow-hidden ${
+                    expandedIndex === idx ? "max-h-40 opacity-100 mt-2" : "max-h-0 md:max-h-none opacity-0 md:opacity-100 pointer-events-none md:pointer-events-auto"
+                  }`}>
+                    <p className="text-[13.5px] sm:text-[14px] lg:text-[14.5px] text-slate-500 leading-relaxed md:leading-[1.65]">
+                      {step.description}
+                    </p>
+                  </div>
                 </div>
               </div>
-              <div className="mt-4">
-                <span className="inline-block py-1 px-2.5 bg-teal-50 text-teal-700 text-[11.5px] font-bold rounded-full">
+              <div className="mt-4 md:mt-5 flex items-center justify-between">
+                <span className="inline-block py-1 px-3 bg-teal-50 text-teal-700 text-[11.5px] sm:text-[12px] font-bold rounded-full">
                   {step.point}
                 </span>
+                {/* Mobile-only action helper text */}
+                {expandedIndex !== idx && (
+                  <span className="block md:hidden text-[11px] text-slate-400 font-medium animate-pulse">
+                    상세보기
+                  </span>
+                )}
               </div>
             </div>
           ))}

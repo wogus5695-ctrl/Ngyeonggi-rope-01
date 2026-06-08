@@ -45,10 +45,10 @@ export const getDynamicHomeData = (region: string, service: string, hash: number
   const configs: Record<string, DynamicHomeConfig> = {
     '창틀코킹': {
       h1: `${region} ${service} 전문 진단`,
-      summary: `${region} ${service}은 단순 실리콘 보수보다 창틀, 샷시, 외벽 주변 상태를 함께 확인하는 것이 중요합니다.`,
+      summary: `${region} ${service} 문제는 단순 실리콘 보수보다 창틀, 샷시, 외벽 주변 상태를 함께 확인하는 것이 중요합니다.`,
       regionText: `${region} 지역의 경우 사계절 온도 변화에 따라 샷시의 수축이 반복되므로, 외부에 메워진 실리콘이 신축 변형 범위를 견디지 못하고 터지는 틈새 누수가 빈번합니다.`,
       analysisTitle: `${service} 노후 균열 및 흡착성 정밀 진단`,
-      analysisDesc: `${region} 지역의 ${service}은 단순히 실리콘을 메우기보다, 이전 코킹재의 부식 강도와 벽 단면의 습도 분포를 정밀 분석하는 것으로 시작됩니다.`,
+      analysisDesc: `${region} 지역의 ${service} 시공은 단순히 실리콘을 메우기보다, 이전 코킹재의 부식 강도와 벽 단면의 습도 분포를 정밀 분석하는 것으로 시작됩니다.`,
       analysisBlocks: [
         {
           title: "01. 마감재 들뜸 및 계면 박리 점검",
@@ -104,7 +104,7 @@ export const getDynamicHomeData = (region: string, service: string, hash: number
     },
     '빗물누수': {
       h1: `${region} ${service} 전문 진단`,
-      summary: `${region} ${service}은 단순 실리콘 보수보다 창틀, 샷시, 외벽 주변 상태를 함께 확인하는 것이 중요합니다.`,
+      summary: `${region} ${service} 문제는 단순 실리콘 보수보다 창틀, 샷시, 외벽 주변 상태를 함께 확인하는 것이 중요합니다.`,
       regionText: `${region} 지역은 습도가 높은 여름철이나 태풍이 올 때 강한 횡풍으로 샤시 틈에 직접 비바람이 주입되어 반복적인 누수가 발생합니다.`,
       analysisTitle: `${service} 물길 흔적 추적 진단`,
       analysisDesc: `${region}의 ${service} 차단 핵심은 겉에만 실리콘을 바르는 것이 아니라, 외벽 상단과 위층 조인트 틈새로부터 유입되는 모든 물줄기 경로를 역추적하는 것입니다.`,
@@ -163,10 +163,10 @@ export const getDynamicHomeData = (region: string, service: string, hash: number
     },
     '창틀누수': {
       h1: `${region} ${service} 전문 진단`,
-      summary: `${region} ${service}은 단순 실리콘 보수보다 창틀, 샷시, 외벽 주변 상태를 함께 확인하는 것이 중요합니다.`,
+      summary: `${region} ${service} 문제는 단순 실리콘 보수보다 창틀, 샷시, 외벽 주변 상태를 함께 확인하는 것이 중요합니다.`,
       regionText: `${region} 지역은 연식이 오래된 구축 아파트 비율이 높아, 샷시를 감싸 지탱하던 우레탄폼과 실리콘이 열화되어 누수로 전이되는 사례가 대부분입니다.`,
       analysisTitle: `${service} 이격 틈 정교 분석`,
-      analysisDesc: `${region}의 ${service}은 샤시의 변형과 옹벽 사이의 벌어진 틈을 메워주는 기밀 충진이 전부입니다. 얇게 덮기만 해서는 하자가 납니다.`,
+      analysisDesc: `${region}의 ${service} 해결은 샤시의 변형과 옹벽 사이의 벌어진 틈을 메워주는 기밀 충진이 핵심입니다. 얇게 덮기만 해서는 하자가 납니다.`,
       analysisBlocks: [
         {
           title: "01. 샤시 프레임 이격 및 변동치 계측",
@@ -254,7 +254,7 @@ export const getDynamicHomeData = (region: string, service: string, hash: number
 
   return {
     metaTitle: `${region} ${service} | 창틀·샷시·외벽 누수 보수 전문 틈새케어`,
-    metaDesc: `${region} ${service}, 창틀누수, 샷시 실리콘, 외벽 크랙으로 인한 빗물누수 진단 및 보수 상담`,
+    metaDesc: `${region} ${service} 문제는 창틀, 샷시, 외벽 크랙 상태를 함께 확인해야 합니다. 사진 상담으로 기본 상태를 확인하고 필요한 보수 방향을 안내드립니다.`,
     h1: config.h1,
     summary: config.summary,
     regionText: config.regionText,

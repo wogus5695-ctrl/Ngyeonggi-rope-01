@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 
 interface WhyProfessionalProps {
   locationName: string;
@@ -18,8 +19,8 @@ export default function WhyProfessional({ locationName, dynamicBanner }: WhyProf
         {/* 2-Column Split: 40% Diagram / 60% Copy */}
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
           
-          {/* Left: Diagram Card (40%) */}
-          <div className="w-full lg:w-[40%] bg-[#f0fdfa]/30 border border-teal-500/10 rounded-[32px] p-8 sm:p-10 shadow-sm shrink-0 space-y-6 order-2 lg:order-1">
+          {/* Left: Diagram Card (40% - Hidden on mobile) */}
+          <div className="hidden md:block w-full lg:w-[40%] bg-[#f0fdfa]/30 border border-teal-500/10 rounded-[32px] p-8 sm:p-10 shadow-sm shrink-0 space-y-6 order-2 lg:order-1">
             <h3 className="text-[18px] font-extrabold text-slate-900 tracking-tight text-center">
               누수는 이렇게 이동할 수 있습니다
             </h3>
@@ -96,22 +97,56 @@ export default function WhyProfessional({ locationName, dynamicBanner }: WhyProf
               <h2 className="text-3xl sm:text-[36px] xl:text-[40px] font-black text-[#0f172a] tracking-tight leading-[1.25] mt-1">
                 창틀 누수는 젖은 위치보다<br className="hidden sm:inline" /> 물의 유입 경로를 먼저 봐야 합니다
               </h2>
-              <p className="text-[15px] sm:text-[16px] text-slate-500 leading-[1.7] pt-1">
+              <p className="hidden md:block text-[15px] sm:text-[16px] text-slate-500 leading-[1.7] pt-1">
                 실내에서 물이 보이는 곳과 실제 빗물이 들어오는 위치는 다를 수 있습니다. 외벽 크랙, 샷시 접합부, 창틀 상부 틈을 함께 확인해야 재누수 가능성을 줄일 수 있습니다.
               </p>
             </div>
 
-            {/* Highlight Note Box */}
-            <div className="p-6 bg-teal-50/40 border border-teal-500/10 rounded-2xl">
+            {/* Highlight Note Box (Hidden on mobile) */}
+            <div className="hidden md:block p-6 bg-teal-50/40 border border-teal-500/10 rounded-2xl">
               <p className="text-[14.5px] sm:text-[15.5px] font-bold text-slate-800 leading-relaxed">
                 젖은 곳만 막으면 원인은 남습니다. 틈새케어는 <span className="text-teal-600 font-extrabold">물이 시작된 지점</span>부터 확인합니다.
               </p>
             </div>
 
-            {/* Bottom Copy description */}
-            <p className="text-[13.5px] sm:text-[14px] text-slate-600 leading-relaxed">
+            {/* Bottom Copy description (Hidden on mobile) */}
+            <p className="hidden md:block text-[13.5px] sm:text-[14px] text-slate-600 leading-relaxed">
               빗물은 외벽 균열이나 샷시 주변 틈을 타고 이동한 뒤, 창틀 하부나 몰딩 뒤쪽에서 뒤늦게 나타나는 경우가 많습니다. 그래서 단순 덧방보다 유입 경로 확인이 먼저입니다.
             </p>
+
+            {/* Mobile Compressed Water Path Info (Visible only on mobile) */}
+            <div className="block md:hidden space-y-5">
+              {/* 3 Steps compressed list */}
+              <div className="space-y-3 bg-[#f0fdfa]/40 border border-teal-500/10 rounded-2xl p-5 shadow-3xs">
+                {[
+                  { label: "외부 유입", value: "외벽 크랙 · 줄눈 틈" },
+                  { label: "틈새 이동", value: "샷시 접합부 · 창틀 상부" },
+                  { label: "실내 증상", value: "창틀 하부 · 몰딩 · 벽지 젖음" }
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-3">
+                    <span className="w-20 text-[13px] font-black text-teal-700 bg-teal-50 px-2 py-1 rounded-md shrink-0 text-center border border-teal-500/10">
+                      {item.label}
+                    </span>
+                    <span className="text-[13.5px] text-slate-600 font-bold">
+                      {item.value}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Bottom text */}
+              <p className="text-[13.5px] text-slate-500 font-bold leading-relaxed pl-1">
+                젖은 위치만 막으면 원인은 남을 수 있습니다. 사진 상담으로 유입 경로를 먼저 확인해보세요.
+              </p>
+
+              {/* CTA Button */}
+              <Link
+                href="#contact"
+                className="block w-full text-center py-4 bg-teal-600 hover:bg-teal-700 text-white text-[15px] font-black rounded-2xl shadow-xs transition-all"
+              >
+                누수 경로 사진 상담하기
+              </Link>
+            </div>
 
             {/* SEO Dynamic Banner Hook (Hidden visually for crawlers) */}
             <span className="sr-only opacity-0 pointer-events-none absolute w-0 h-0 overflow-hidden">

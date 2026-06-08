@@ -221,7 +221,7 @@ export default async function Home({ searchParams }: Props) {
               {/* 메인 제목 */}
               <h2 className="text-[26px] sm:text-[32px] md:text-[36px] lg:text-[40px] font-black text-slate-900 tracking-tight leading-[1.25] max-w-3xl mx-auto">
                 <span className="block">
-                  {isValid ? `${heroLocation} ${service} 상담,` : "틈새케어 빗물누수 상담,"}
+                  {isValid ? `${heroLocation} ${service} 상담, ` : "틈새케어 빗물누수 상담, "}
                 </span>
                 <span className="block mt-1 sm:mt-2">
                   누수 원인부터 <span className="text-teal-600">빠르게 확인하세요</span>
@@ -233,7 +233,7 @@ export default async function Home({ searchParams }: Props) {
                 젖은 위치만 보고 덧방하면 재누수가 반복될 수 있습니다. 창틀·샷시·외벽 상태를 함께 확인해 필요한 보수 방향을 안내해드립니다.
               </p>
               
-              {/* CTA 버튼 (카카오톡 1순위, 전화 2순위) */}
+              {/* CTA 버튼 (전화 상담 위주, 카카오톡은 추후 활성화를 위해 비활성화됨) */}
               <div className="pt-2">
                 <ContactCTA />
               </div>

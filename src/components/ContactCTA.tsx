@@ -1,31 +1,40 @@
 import React from "react";
 
 export default function ContactCTA() {
+  // 추후 카카오톡 문의를 활성화하려면 true로 변경하세요.
+  const showKakao = false;
+
   return (
     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-2xl mx-auto">
       {/* 1순위: 카카오톡으로 사진 보내기 */}
-      <a
-        href="https://pf.kakao.com/_xxxxxx" // 가상의 카카오채널 링크
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex items-center justify-center gap-2.5 w-full sm:w-auto px-8 py-4.5 bg-teal-600 hover:bg-teal-700 text-white font-extrabold text-[15.5px] rounded-full shadow-md hover:shadow-lg hover:-translate-y-[1px] transition-all cursor-pointer"
-      >
-        <svg
-          className="w-5.5 h-5.5 fill-current"
-          viewBox="0 0 24 24"
+      {showKakao && (
+        <a
+          href="https://pf.kakao.com/_xxxxxx" // 가상의 카카오채널 링크
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center gap-2.5 w-full sm:w-auto px-8 py-4.5 bg-teal-600 hover:bg-teal-700 text-white font-extrabold text-[15.5px] rounded-full shadow-md hover:shadow-lg hover:-translate-y-[1px] transition-all cursor-pointer"
         >
-          <path d="M12 3c-4.97 0-9 3.185-9 7.11 0 2.507 1.65 4.718 4.14 5.923l-.84 3.092c-.1.37.13.74.5.74.15 0 .29-.05.4-.15l3.58-2.385c.4.05.8.08 1.22.08 4.97 0 9-3.185 9-7.11S16.97 3 12 3z" />
-        </svg>
-        카카오톡으로 사진 보내기
-      </a>
+          <svg
+            className="w-5.5 h-5.5 fill-current"
+            viewBox="0 0 24 24"
+          >
+            <path d="M12 3c-4.97 0-9 3.185-9 7.11 0 2.507 1.65 4.718 4.14 5.923l-.84 3.092c-.1.37.13.74.5.74.15 0 .29-.05.4-.15l3.58-2.385c.4.05.8.08 1.22.08 4.97 0 9-3.185 9-7.11S16.97 3 12 3z" />
+          </svg>
+          카카오톡으로 사진 보내기
+        </a>
+      )}
 
       {/* 2순위: 전화 상담하기 */}
       <a
         href="tel:010-4667-5568"
-        className="flex items-center justify-center gap-2.5 w-full sm:w-auto px-8 py-4 bg-white border-2 border-teal-600/30 text-teal-800 hover:bg-teal-50/30 hover:border-teal-600/50 font-extrabold text-[15px] rounded-full hover:shadow-md hover:-translate-y-[1px] transition-all cursor-pointer"
+        className={`flex items-center justify-center gap-2.5 w-full sm:w-auto px-8 py-4.5 font-extrabold text-[15.5px] rounded-full hover:-translate-y-[1px] transition-all cursor-pointer ${
+          showKakao
+            ? "bg-white border-2 border-teal-600/30 text-teal-800 hover:bg-teal-50/30 hover:border-teal-600/50 hover:shadow-md"
+            : "bg-teal-600 hover:bg-teal-700 text-white shadow-md hover:shadow-lg"
+        }`}
       >
         <svg
-          className="w-4.5 h-4.5 text-teal-600"
+          className={`w-4.5 h-4.5 ${showKakao ? "text-teal-600" : "text-white"}`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
