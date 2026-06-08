@@ -83,7 +83,7 @@ export default async function Home({ searchParams }: Props) {
   // 기본 브랜드 설정 (Fallback)
   let heroLocation = "틈새케어";
   let heroService = "프리미엄 틈새 누수 정밀 차단";
-  let heroIntro = `창틀 누수와 빗물 유입은 시간이 지날수록 건물을 망가뜨리는 위험 신호입니다.\n틈새케어는 타성에 젖은 실리콘 덧방 시공을 배제하고,\n기존 마감재 전면 탈거 후 강력 접합 시공을 수행합니다.\n한 방울의 빗물도 새지 않게 틈새와 외벽 균열을 철저하게 진단하여 메워드립니다.`;
+  let heroIntro = `창틀 누수와 빗물 유입은 시간이 지날수록 건물을 망가뜨리는 위험 신호입니다.\n틈새케어는 타성에 젖은 실리콘 덧방 시공을 배제하고,\n기존 마감재 전면 탈거 후 강력 접합 시공을 수행합니다.\n재누수 가능성을 줄이는 방향으로 틈새와 외벽 균열을 철저하게 진단하여 메워드립니다.`;
   
   let analysisTitle = "";
   let analysisIntro = BRAND_HUB_CONTENT.empathyDesc;

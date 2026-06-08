@@ -237,7 +237,7 @@ export default function LocalPortfolio({ title }: LocalPortfolioProps) {
               href="#contact"
               className="inline-flex items-center justify-center px-8 py-4 text-[15px] font-extrabold text-white bg-teal-600 hover:bg-teal-700 transition-all rounded-full shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 w-full sm:w-auto"
             >
-              사진 보내고 상담받기
+              누수 원인 사진 상담
             </a>
           </div>
         </div>

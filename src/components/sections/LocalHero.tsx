@@ -79,13 +79,13 @@ export default function LocalHero({ locationName, serviceTitle, serviceName, int
               href="#contact"
               className="px-8 py-5 w-full sm:w-auto text-center bg-teal-600 hover:bg-teal-700 text-white text-[16px] font-black rounded-2xl shadow-md hover:shadow-lg transition-all"
             >
-              사진 보내고 무료 진단받기
+              사진 보내고 무료 진단
             </Link>
             <Link
               href="#process"
               className="px-8 py-5 w-full sm:w-auto text-center bg-white hover:bg-slate-50 text-slate-700 text-[16px] font-bold rounded-2xl border border-slate-200 shadow-2xs hover:shadow-sm transition-all"
             >
-              창틀누수 원인 확인하기
+              우리 집 증상 확인받기
             </Link>
           </div>
         </div>

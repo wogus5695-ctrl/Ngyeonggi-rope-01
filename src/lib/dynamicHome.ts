@@ -235,13 +235,25 @@ export const getDynamicHomeData = (region: string, service: string, hash: number
 
   const ctaPatterns = [`${region} ${service} 상담, 누수 원인부터 빠르게 확인하세요`];
 
+  // 작업명별 보조문구 동적 정의
+  let summary = `${region} ${service} 문제는 단순 실리콘 보수보다 창틀, 샷시, 외벽 주변 상태를 함께 확인하는 것이 중요합니다.`;
+  if (service.includes('창틀누수')) {
+    summary = `${region} ${service} 현장에서 비 온 뒤 창틀 하부나 벽지 주변이 젖는다면 창틀, 샷시, 외벽 크랙을 함께 확인해야 합니다.`;
+  } else if (service.includes('빗물누수')) {
+    summary = `${region} ${service} 발생 시, 젖은 위치와 실제 물이 들어오는 지점은 다를 수 있습니다. 사진 상담으로 유입 경로를 먼저 확인해보세요.`;
+  } else if (service.includes('실리콘') || service.includes('코킹')) {
+    summary = `${region} ${service} 시공 시, 갈라진 실리콘을 덮기 전에 기존 접착 상태와 샷시 주변 틈을 먼저 확인해야 합니다.`;
+  } else if (service.includes('외벽')) {
+    summary = `${region} ${service} 발생 시, 외벽 균열을 타고 빗물이 이동하면 실내 창틀 하부에서 뒤늦게 나타날 수 있습니다.`;
+  }
+
   const serviceBlocks: Record<string, string[]> = {
     '창틀코킹': [
       `창틀 실리콘은 햇빛과 바람에 노후화되는 소모성 구조물입니다. 틈새케어의 100% 철거 공정으로 다가오는 태풍에도 끄떡없는 견고함을 약속하십시오.`,
       `틈새 누수를 방치하면 외벽 크랙이 심해지고 도배지가 모두 상합니다. 틈새케어 엔지니어의 꼼꼼한 마감으로 소중한 우리 집 가치를 오래 지키세요.`
     ],
     '빗물누수': [
-      `어떠한 태풍과 비바람에도 흔들림 없는 완벽한 실링! 틈새케어만의 고기밀 압착 마감 기술로 들이치는 빗물을 단호히 막습니다.`,
+      `어떠한 태풍 and 비바람에도 흔들림 없는 완벽한 실링! 틈새케어만의 고기밀 압착 마감 기술로 들이치는 빗물을 단호히 막습니다.`,
       `반복되는 베란다 누수로 고민이신가요? 수많은 경기 북부 시공 경험을 가진 전문가가 빗물이 지나는 미세 물길을 정확히 메워드립니다.`
     ],
     '창틀누수': [
@@ -256,7 +268,7 @@ export const getDynamicHomeData = (region: string, service: string, hash: number
     metaTitle: `${region} ${service} | 창틀·샷시·외벽 누수 보수 전문 틈새케어`,
     metaDesc: `${region} ${service} 문제는 창틀, 샷시, 외벽 크랙 상태를 함께 확인해야 합니다. 사진 상담으로 기본 상태를 확인하고 필요한 보수 방향을 안내드립니다.`,
     h1: config.h1,
-    summary: config.summary,
+    summary: summary,
     regionText: config.regionText,
     analysisTitle: config.analysisTitle,
     analysisDesc: config.analysisDesc,
