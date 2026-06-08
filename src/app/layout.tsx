@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   verification: {
     google: "g-xxxxxxxxxxxxxxxxxxxx", // 틈새케어 독자 구글 인증키 (가상)
     other: {
-      "naver-site-verification": "n-xxxxxxxxxxxxxxxxxxxx", // 네이버 인증키 (가상)
+      "naver-site-verification": "b59b306500fb9d6d20422aabd4f4ef8fe90e98bf", // 네이버 인증키
     },
   },
   icons: {
