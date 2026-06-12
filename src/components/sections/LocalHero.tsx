@@ -30,7 +30,7 @@ export default function LocalHero({ locationName, serviceTitle, serviceName, int
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[center_right]"
+          className="object-cover object-left"
         />
 
         {/* 어두운 오버레이 & 그라데이션 */}
@@ -52,7 +52,9 @@ export default function LocalHero({ locationName, serviceTitle, serviceName, int
 
           {/* 설명 문구 */}
           <p className="text-[15.5px] text-slate-200 mt-3.5 leading-relaxed font-medium [text-shadow:0_1px_4px_rgba(0,0,0,0.5)] max-w-sm">
-            외벽 균열과 샷시 틈, 창틀 주변 누수까지 함께 확인합니다.
+            외벽 균열과 샷시 틈,
+            <br />
+            창틀 주변 누수까지 함께 확인합니다.
           </p>
         </div>
       </section>
