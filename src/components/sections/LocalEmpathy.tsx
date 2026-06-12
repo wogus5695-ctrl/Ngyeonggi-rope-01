@@ -156,10 +156,5 @@ export default function LocalEmpathy({ locationName, dynamicIntro }: LocalEmpath
         </div>
       </div>
     </section>
-
-          </div>
-        </div>
-      </div>
-    </section>
   );
 }
