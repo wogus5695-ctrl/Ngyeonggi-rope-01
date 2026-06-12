@@ -16,7 +16,7 @@ export default function LocalHero({ locationName, serviceTitle, serviceName, int
   // PC/태블릿에서 사용할 본문 문구 처리 (폴백 긴 문장은 요약본으로 교체, 동적 문구는 유지)
   const isFallbackIntro = intro.includes("\n") || !locationName || locationName === "틈새케어";
   const pcIntro = isFallbackIntro
-    ? "단순 실리콘 덧방보다 창틀, 샷시, 외벽 상태를 함께 확인해 재누수 가능성을 줄이는 방향으로 진단합니다."
+    ? "단순 실리콘 덧방보다 창틀, 샷시, 외벽 상태를 함께 확인해\n재누수 가능성을 줄이는 방향으로 진단합니다."
     : intro;
 
   return (
@@ -90,12 +90,14 @@ export default function LocalHero({ locationName, serviceTitle, serviceName, int
 
               {/* Sub-copy (강조 문장) */}
               <div className="text-[16.5px] lg:text-[19px] font-extrabold text-slate-800 tracking-tight leading-snug">
-                “외벽 균열과 샷시 접합부로 스며드는 빗물, 창틀 주변 증상까지 함께 확인합니다.”
+                “외벽 균열과 샷시 접합부로 스며드는 빗물,
+                <br />
+                창틀 주변 증상까지 함께 확인합니다.”
               </div>
             </div>
 
             {/* Body Text */}
-            <p className="text-[14.5px] lg:text-[15px] text-slate-500 leading-relaxed max-w-[500px]">
+            <p className="text-[14.5px] lg:text-[15px] text-slate-500 leading-relaxed max-w-[500px] whitespace-pre-line">
               {pcIntro}
             </p>
 

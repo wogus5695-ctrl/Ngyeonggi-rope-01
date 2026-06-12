@@ -242,7 +242,7 @@ export const getDynamicHomeData = (region: string, service: string, hash: number
   } else if (service.includes('빗물누수')) {
     summary = `${region} ${service} 발생 시, 젖은 위치와 실제 물이 들어오는 지점은 다를 수 있습니다. 사진 상담으로 유입 경로를 먼저 확인해보세요.`;
   } else if (service.includes('실리콘') || service.includes('코킹')) {
-    summary = `${region} ${service} 시공 시, 갈라진 실리콘을 덮기 전에 기존 접착 상태와 샷시 주변 틈을 먼저 확인해야 합니다.`;
+    summary = `${region} ${service} 시공 시, 갈라진 실리콘을 덮기 전에\n기존 접착 상태와 샷시 주변 틈을 먼저 확인해야 합니다.`;
   } else if (service.includes('외벽')) {
     summary = `${region} ${service} 발생 시, 외벽 균열을 타고 빗물이 이동하면 실내 창틀 하부에서 뒤늦게 나타날 수 있습니다.`;
   }
