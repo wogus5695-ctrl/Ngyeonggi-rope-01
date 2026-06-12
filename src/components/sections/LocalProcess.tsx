@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 
 interface ProcessStep {
   title: string;
@@ -30,7 +30,7 @@ export default function LocalProcess({ title, process }: LocalProcessProps) {
     {
       step: "STEP 03",
       title: "접착면 세척·건조",
-      description: "먼지, 이물질, 습기를 정리해 접착 불량과 들뜸 가능성을 줄입니다.",
+      description: "먼지, 이물질, 습기를 정리해 접착 불량 and 들뜸 가능성을 줄입니다.",
       point: "바탕면 정리"
     },
     {
@@ -78,79 +78,61 @@ export default function LocalProcess({ title, process }: LocalProcessProps) {
           </p>
         </div>
 
-        {/* 1. Mobile Compact Timeline List (md 미만 노출) */}
-        <div className="block md:hidden space-y-2.5 max-w-md mx-auto">
+        {/* Unified 5-Step Layout (No duplicate map for PC/MO) */}
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-3.5 md:gap-6 max-w-md md:max-w-none mx-auto">
           {steps.map((step, idx) => (
             <div
               key={idx}
-              className="flex items-center justify-between px-4.5 py-3.5 bg-white border border-slate-100 rounded-2xl shadow-3xs"
-              style={{ minHeight: "72px" }}
+              className={`bg-white border border-slate-100 rounded-2xl md:rounded-[24px] p-4.5 md:p-7.5 shadow-3xs transition-all duration-300 col-span-1 md:col-span-2 ${
+                idx === 3 ? "md:col-start-2" : ""
+              } flex flex-row md:flex-col md:justify-between items-center md:items-start justify-between min-h-[72px] md:min-h-0 md:h-auto`}
             >
-              <div className="flex items-center gap-3.5">
-                {/* Left Step Badge */}
-                <div className="w-[34px] h-[34px] bg-teal-50 text-teal-600 rounded-full flex items-center justify-center font-black text-[13.5px] shrink-0 border border-teal-500/5">
-                  {step.step.replace("STEP ", "")}
+              {/* Left/Top Area (Step badge & Title/Desc) */}
+              <div className="flex flex-row md:flex-col items-center md:items-start gap-3.5 md:gap-4 w-full">
+                {/* Step Badge */}
+                <div className="w-[34px] h-[34px] md:w-auto md:h-auto bg-teal-50 md:bg-transparent text-teal-600 text-[13.5px] md:text-[11.5px] font-black tracking-wider uppercase rounded-full md:rounded-none flex items-center justify-center shrink-0 border border-teal-500/5 md:border-none">
+                  <span className="md:hidden">{step.step.replace("STEP ", "")}</span>
+                  <span className="hidden md:inline">{step.step}</span>
                 </div>
                 
-                {/* Center Content */}
-                <div className="flex flex-col justify-center">
-                  <h3 className="text-[15px] font-bold text-slate-800 leading-tight">
+                {/* Title & Desc/Point container */}
+                <div className="flex flex-col md:space-y-2.5 text-left">
+                  <h3 className="text-[15px] md:text-[17px] sm:text-[18px] lg:text-[19px] font-bold text-slate-800 tracking-tight leading-tight">
                     {step.title}
                   </h3>
-                  <span className="text-[12px] text-teal-600 font-extrabold mt-1">
+                  {/* PC Description (Hidden on mobile) */}
+                  <p className="hidden md:block text-[13.5px] sm:text-[14px] lg:text-[14.5px] text-slate-500 leading-relaxed md:leading-[1.65]">
+                    {step.description}
+                  </p>
+                  {/* Mobile Point */}
+                  <span className="block md:hidden text-[12px] text-teal-600 font-extrabold mt-1">
                     {step.point}
                   </span>
                 </div>
               </div>
 
-              {/* Right Indicator Check Icon */}
-              <div className="text-teal-500/80 pr-1 shrink-0">
-                <svg className="w-4.5 h-4.5" fill="none" stroke="currentColor" strokeWidth="3.5" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                </svg>
-              </div>
-            </div>
-          ))}
-
-          {/* Mobile Slim Conclusion Note */}
-          <div className="mt-5 py-3 px-4 bg-teal-50/45 border border-teal-500/10 rounded-xl text-center">
-            <p className="text-[13px] font-bold text-slate-700 leading-normal">
-              현장 상태에 따라 덧방, 부분 제거, 올제거 방식을 구분해 안내합니다.
-            </p>
-          </div>
-        </div>
-
-        {/* 2. PC Grid Card Layout (md 이상 노출) */}
-        <div className="hidden md:grid grid-cols-1 md:grid-cols-6 gap-6">
-          {steps.map((step, idx) => (
-            <div
-              key={idx}
-              className={`bg-white border border-slate-100/90 rounded-[24px] p-6 sm:p-7.5 shadow-3xs hover:-translate-y-1 hover:shadow-2xs transition-all duration-300 flex flex-col justify-between col-span-1 md:col-span-2 ${
-                idx === 3 ? "md:col-start-2" : ""
-              }`}
-            >
-              <div className="space-y-4">
-                <div className="text-teal-600 text-[11.5px] font-black tracking-wider uppercase">
-                  {step.step}
-                </div>
-                <div className="space-y-2.5">
-                  <h3 className="text-[17px] sm:text-[18px] lg:text-[19px] font-bold text-slate-800 tracking-tight">
-                    {step.title}
-                  </h3>
-                  <div className="block mt-2">
-                    <p className="text-[13.5px] sm:text-[14px] lg:text-[14.5px] text-slate-500 leading-relaxed md:leading-[1.65]">
-                      {step.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="mt-4 md:mt-5 flex items-center justify-between">
-                <span className="inline-block py-1 px-3 bg-teal-50 text-teal-700 text-[11.5px] sm:text-[12px] font-bold rounded-full">
+              {/* Right/Bottom Area (Icon on mobile, Point tag on PC) */}
+              <div className="mt-0 md:mt-5 flex items-center justify-end md:justify-between w-auto md:w-full shrink-0">
+                {/* PC Point Tag (Hidden on mobile) */}
+                <span className="hidden md:inline-block py-1 px-3 bg-teal-50 text-teal-700 text-[11.5px] sm:text-[12px] font-bold rounded-full">
                   {step.point}
                 </span>
+                {/* Mobile Check Icon (Hidden on PC) */}
+                <div className="block md:hidden text-teal-500/80 pr-1 shrink-0">
+                  <svg className="w-4.5 h-4.5" fill="none" stroke="currentColor" strokeWidth="3.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                  </svg>
+                </div>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Mobile Slim Conclusion Note */}
+        <div className="block md:hidden mt-5 py-3 px-4 bg-teal-50/45 border border-teal-500/10 rounded-xl text-center max-w-md mx-auto">
+          <p className="text-[13px] font-bold text-slate-700 leading-normal">
+            현장 상태에 따라 덧방, 부분 제거, 올제거 방식을 구분해 안내합니다.
+          </p>
         </div>
 
         {/* PC Section Bottom Conclusion Note Box */}

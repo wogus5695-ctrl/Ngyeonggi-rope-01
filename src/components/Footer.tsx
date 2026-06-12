@@ -42,7 +42,7 @@ export default function Footer({ dynamicKeyword }: FooterProps) {
             <ul className="space-y-3.5 text-[14px]">
               <li>
                 <Link href="#process" className="hover:text-teal-400 transition-colors">
-                  5단계 밀봉 시공 프로세스
+                  5단계 창틀코킹 프로세스
                 </Link>
               </li>
               <li>

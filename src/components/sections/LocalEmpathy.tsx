@@ -52,20 +52,12 @@ export default function LocalEmpathy({ locationName, dynamicIntro }: LocalEmpath
                 들어오는 길을 봐야 합니다
               </h2>
               
-              {/* PC Description (md 이상 노출) */}
+              {/* Description (Unified for PC/MO) */}
               <p
-                className="hidden md:block text-[14px] lg:text-[14.5px] text-slate-100 leading-relaxed font-semibold"
+                className="text-[14.5px] md:text-[14px] lg:text-[14.5px] text-slate-100 leading-relaxed font-semibold"
                 style={{ textShadow: "1px 1px 3px rgba(0, 0, 0, 0.9)" }}
               >
-                물이 보이는 위치와 실제 유입 지점은 다를 수 있습니다. 외벽 크랙, 샷시 접합부, 기존 실리콘 상태를 함께 확인해야 합니다.
-              </p>
-              
-              {/* MO Description (md 미만 노출) */}
-              <p
-                className="block md:hidden text-[14.5px] text-slate-200 leading-relaxed font-medium"
-                style={{ textShadow: "1px 1px 3px rgba(0, 0, 0, 0.9)" }}
-              >
-                물이 보이는 곳과 들어오는 곳은 다를 수 있습니다. 외벽 크랙과 샷시 틈까지 함께 확인합니다.
+                물이 보이는 곳과 실제 유입 지점은 다를 수 있습니다. 외벽 크랙, 샷시 접합부, 기존 실리콘 상태를 함께 확인해야 합니다.
               </p>
             </div>
 

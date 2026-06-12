@@ -43,12 +43,12 @@ export default function LocalHero({ locationName, serviceTitle, serviceName, int
             틈새케어
           </div>
 
-          {/* H1 제목 */}
-          <h1 className="text-[34px] font-black text-white leading-[1.15] tracking-tight [text-shadow:0_2px_8px_rgba(0,0,0,0.6)]">
+          {/* Mobile Heading */}
+          <div className="text-[34px] font-black text-white leading-[1.15] tracking-tight [text-shadow:0_2px_8px_rgba(0,0,0,0.6)]">
             <span className="text-teal-400">{locationName}</span> {serviceName || "창틀코킹"}
             <br />
             전문 진단
-          </h1>
+          </div>
 
           {/* 설명 문구 */}
           <p className="text-[15.5px] text-slate-200 mt-3.5 leading-relaxed font-medium [text-shadow:0_1px_4px_rgba(0,0,0,0.5)] max-w-sm">
