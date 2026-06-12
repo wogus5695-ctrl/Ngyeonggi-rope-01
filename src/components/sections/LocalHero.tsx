@@ -30,11 +30,11 @@ export default function LocalHero({ locationName, serviceTitle, serviceName, int
           fill
           priority
           sizes="100vw"
-          className="object-cover object-left"
+          className="object-cover object-[30%_center]"
         />
 
         {/* 어두운 오버레이 & 그라데이션 */}
-        <div className="absolute inset-0 bg-black/55 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent z-10"></div>
 
         {/* 모바일 텍스트 콘텐츠 (좌측 하단 배치) */}
         <div className="absolute bottom-12 left-0 w-full px-6 z-20 flex flex-col justify-end text-left">
