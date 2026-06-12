@@ -10,14 +10,14 @@ interface WhyProfessionalProps {
 
 export default function WhyProfessional({ locationName, dynamicBanner }: WhyProfessionalProps) {
   return (
-    <section className="py-20 bg-white relative overflow-hidden">
+    <section className="py-12 md:py-20 bg-white relative overflow-hidden">
       {/* Background soft decoration */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-teal-500/5 rounded-full blur-[120px] -z-10"></div>
 
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* 2-Column Split: 40% Diagram / 60% Copy */}
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
           
           {/* Left: Diagram Card (40% - Hidden on mobile) */}
           <div className="hidden md:block w-full lg:w-[40%] bg-[#f0fdfa]/30 border border-teal-500/10 rounded-[32px] p-8 sm:p-10 shadow-sm shrink-0 space-y-6 order-2 lg:order-1">
@@ -80,75 +80,103 @@ export default function WhyProfessional({ locationName, dynamicBanner }: WhyProf
                 </div>
                 <div className="space-y-0.5">
                   <h4 className="text-[15px] font-bold text-slate-800">실내 증상</h4>
-                  <p className="text-[13px] text-slate-500 font-medium">창틀 하부 · 몰딩 · 벽지 젖음</p>
+                  <p className="text-[13px] text-slate-500 font-medium">창틀 하부 · 벽지 젖음</p>
                 </div>
               </div>
 
             </div>
           </div>
 
-          {/* Right: Content Area (60%) */}
-          <div className="w-full lg:w-[60%] flex flex-col justify-center space-y-6 order-1 lg:order-2 max-w-[640px]">
+          {/* Right: Content Area (60% on PC, Full on Mobile) */}
+          <div className="w-full lg:w-[60%] flex flex-col justify-center space-y-5.5 md:space-y-6 order-1 lg:order-2 max-w-[640px]">
             
-            <div className="space-y-3">
+            <div className="space-y-3.5 text-center lg:text-left">
               <div className="text-teal-600 text-[13px] font-black tracking-widest uppercase">
-                WATER PATH DIAGNOSIS
+                <span className="hidden md:inline">WATER PATH DIAGNOSIS</span>
+                <span className="inline md:hidden">WATER PATH</span>
               </div>
-              <h2 className="text-3xl sm:text-[36px] xl:text-[40px] font-black text-[#0f172a] tracking-tight leading-[1.25] mt-1">
-                창틀 누수는 젖은 위치보다<br className="hidden sm:inline" /> 물의 유입 경로를 먼저 봐야 합니다
+              
+              {/* Heading */}
+              <h2 className="text-[28px] sm:text-[36px] xl:text-[38px] font-black text-[#0f172a] tracking-tight leading-[1.2]">
+                젖은 곳보다
+                <br />
+                물이 들어온 길을 봅니다
               </h2>
-              <p className="hidden md:block text-[15px] sm:text-[16px] text-slate-500 leading-[1.7] pt-1">
-                실내에서 물이 보이는 곳과 실제 빗물이 들어오는 위치는 다를 수 있습니다. 외벽 크랙, 샷시 접합부, 창틀 상부 틈을 함께 확인해야 재누수 가능성을 줄일 수 있습니다.
+              
+              {/* Sub-description */}
+              <p className="text-[14.5px] sm:text-[15.5px] text-slate-500 leading-relaxed max-w-[500px] mx-auto lg:mx-0">
+                물이 보이는 곳과 들어온 곳은 다를 수 있습니다.
+                <br />
+                외벽·샷시·창틀 상부를 함께 확인합니다.
               </p>
             </div>
 
-            {/* Highlight Note Box (Hidden on mobile) */}
-            <div className="hidden md:block p-6 bg-teal-50/40 border border-teal-500/10 rounded-2xl">
-              <p className="text-[14.5px] sm:text-[15.5px] font-bold text-slate-800 leading-relaxed">
-                젖은 곳만 막으면 원인은 남습니다. 틈새케어는 <span className="text-teal-600 font-extrabold">물이 시작된 지점</span>부터 확인합니다.
-              </p>
-            </div>
-
-            {/* Bottom Copy description (Hidden on mobile) */}
-            <p className="hidden md:block text-[13.5px] sm:text-[14px] text-slate-600 leading-relaxed">
-              빗물은 외벽 균열이나 샷시 주변 틈을 타고 이동한 뒤, 창틀 하부나 몰딩 뒤쪽에서 뒤늦게 나타나는 경우가 많습니다. 그래서 단순 덧방보다 유입 경로 확인이 먼저입니다.
-            </p>
-
-            {/* Mobile Compressed Water Path Info (Visible only on mobile) */}
-            <div className="block md:hidden space-y-5">
-              {/* 3 Steps compressed list */}
-              <div className="space-y-3 bg-[#f0fdfa]/40 border border-teal-500/10 rounded-2xl p-5 shadow-3xs">
-                {[
-                  { label: "외부 유입", value: "외벽 크랙 · 줄눈 틈" },
-                  { label: "틈새 이동", value: "샷시 접합부 · 창틀 상부" },
-                  { label: "실내 증상", value: "창틀 하부 · 몰딩 · 벽지 젖음" }
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-center gap-3">
-                    <span className="w-20 text-[13px] font-black text-teal-700 bg-teal-50 px-2 py-1 rounded-md shrink-0 text-center border border-teal-500/10">
-                      {item.label}
-                    </span>
-                    <span className="text-[13.5px] text-slate-600 font-bold">
-                      {item.value}
-                    </span>
-                  </div>
-                ))}
+            {/* 3. Mobile Compact Vertical Flow (Visible only on Mobile) */}
+            <div className="block md:hidden space-y-2 max-w-sm mx-auto w-full">
+              
+              {/* Step 1 */}
+              <div className="flex gap-4 p-4 bg-white border border-teal-500/5 shadow-3xs rounded-2xl items-center" style={{ minHeight: "68px" }}>
+                <div className="w-9 h-9 bg-teal-50 rounded-xl text-teal-600 shrink-0 flex items-center justify-center border border-teal-500/5 shadow-3xs">
+                  <svg className="w-4.5 h-4.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z" />
+                  </svg>
+                </div>
+                <div className="text-left">
+                  <h4 className="text-[15px] font-bold text-slate-850 leading-none">외부 유입</h4>
+                  <p className="text-[13px] text-slate-500 font-medium mt-1.5">외벽 크랙 · 줄눈 틈</p>
+                </div>
               </div>
 
-              {/* Bottom text */}
-              <p className="text-[13.5px] text-slate-500 font-bold leading-relaxed pl-1">
-                젖은 위치만 막으면 원인은 남을 수 있습니다. 사진 상담으로 유입 경로를 먼저 확인해보세요.
-              </p>
+              {/* Down Arrow Connector */}
+              <div className="flex justify-center py-0.5">
+                <svg className="w-4.5 h-4.5 text-teal-500/40" fill="none" stroke="currentColor" strokeWidth="3.5" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3" />
+                </svg>
+              </div>
 
-              {/* CTA Button */}
-              <Link
-                href="#contact"
-                className="block w-full text-center py-4 bg-teal-600 hover:bg-teal-700 text-white text-[15px] font-black rounded-2xl shadow-xs transition-all"
-              >
-                누수 경로 사진 상담하기
-              </Link>
+              {/* Step 2 */}
+              <div className="flex gap-4 p-4 bg-white border border-teal-500/5 shadow-3xs rounded-2xl items-center" style={{ minHeight: "68px" }}>
+                <div className="w-9 h-9 bg-teal-50 rounded-xl text-teal-600 shrink-0 flex items-center justify-center border border-teal-500/5 shadow-3xs">
+                  <svg className="w-4.5 h-4.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+                  </svg>
+                </div>
+                <div className="text-left">
+                  <h4 className="text-[15px] font-bold text-slate-850 leading-none">틈새 이동</h4>
+                  <p className="text-[13px] text-slate-500 font-medium mt-1.5">샷시 접합부 · 창틀 상부</p>
+                </div>
+              </div>
+
+              {/* Down Arrow Connector */}
+              <div className="flex justify-center py-0.5">
+                <svg className="w-4.5 h-4.5 text-teal-500/40" fill="none" stroke="currentColor" strokeWidth="3.5" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3" />
+                </svg>
+              </div>
+
+              {/* Step 3 */}
+              <div className="flex gap-4 p-4 bg-white border border-teal-500/5 shadow-3xs rounded-2xl items-center" style={{ minHeight: "68px" }}>
+                <div className="w-9 h-9 bg-teal-50 rounded-xl text-teal-600 shrink-0 flex items-center justify-center border border-teal-500/5 shadow-3xs">
+                  <svg className="w-4.5 h-4.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                  </svg>
+                </div>
+                <div className="text-left">
+                  <h4 className="text-[15px] font-bold text-slate-850 leading-none">실내 증상</h4>
+                  <p className="text-[13px] text-slate-500 font-medium mt-1.5">창틀 하부 · 벽지 젖음</p>
+                </div>
+              </div>
+
             </div>
 
-            {/* SEO Dynamic Banner Hook (Hidden visually for crawlers) */}
+            {/* Highlight Note Box (Slim box) */}
+            <div className="p-4.5 bg-teal-50/45 border border-teal-500/10 rounded-2xl text-center lg:text-left">
+              <p className="text-[14px] sm:text-[14.5px] font-bold text-slate-805 leading-relaxed">
+                젖은 곳만 막지 않고, <span className="text-teal-600 font-extrabold">물이 시작된 지점</span>을 먼저 봅니다.
+              </p>
+            </div>
+
+            {/* SEO Dynamic Banner Hook (Always present for crawlers) */}
             <span className="sr-only opacity-0 pointer-events-none absolute w-0 h-0 overflow-hidden">
               {dynamicBanner || `${locationName} 주변 창틀 균열 상담이 필요하시다면, 틈새케어의 외벽 크랙 및 샷시 전수 점검을 먼저 권해드립니다.`}
             </span>
