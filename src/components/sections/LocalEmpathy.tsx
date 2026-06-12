@@ -23,10 +23,10 @@ export default function LocalEmpathy({ locationName, dynamicIntro }: LocalEmpath
           className="object-cover object-right"
           priority
         />
-        {/* Mobile: 65% dark overlay. PC: 20% dark overlay */}
-        <div className="absolute inset-0 bg-black/65 md:bg-black/20 z-10 pointer-events-none"></div>
+        {/* Mobile: 40% dark overlay. PC: 10% dark overlay */}
+        <div className="absolute inset-0 bg-black/40 md:bg-black/10 z-10 pointer-events-none"></div>
         {/* Mobile: bottom-to-top dark gradient. PC: right-to-left dark gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/85 to-black/40 md:bg-gradient-to-l md:from-slate-950 md:via-slate-950/85 md:to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/55 to-black/10 md:bg-gradient-to-l md:from-slate-950/90 md:via-slate-950/50 md:to-transparent z-10 pointer-events-none"></div>
       </div>
 
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full">
