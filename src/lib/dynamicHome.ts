@@ -45,6 +45,16 @@ export const getDynamicHomeData = (region: string, service: string, hash: number
     localFeature = "특히 파주시 권역은 운정신도시를 포함하여 대단지 아파트가 활발하게 조성된 한편, 인근 평야지대 및 지형 특성상 강한 바람을 동반한 폭우가 들이치면서 창틀 상하부 실리콘 이격과 외벽 조인트 틈새의 누수 유입이 두드러집니다.";
   } else if (parent.includes("양주시") || region.includes("양주") || region.includes("옥정") || region.includes("고읍") || region.includes("덕정")) {
     localFeature = "특히 양주시 권역은 옥정신도시 등 신축 대단지의 창틀 몰딩 프레임 수축 팽창에 따른 틈새 발생과 기존 구도심 아파트/빌라의 콘크리트 옹벽 미세 균열이 복합 작용하여 물길을 형성하는 경향이 있습니다.";
+  } else if (parent.includes("구리시") || region.includes("구리") || region.includes("인창") || region.includes("교문") || region.includes("수택")) {
+    localFeature = "특히 구리시 권역은 서울 인접 배후도시로서 노후 아파트 단지와 상가 주택이 밀집하여, 창틀 주변 코킹재의 부식 경화와 외벽 몰딩 접합부 균열로 인한 누수 발생 비중이 높습니다.";
+  } else if (parent.includes("의정부시") || region.includes("의정부") || region.includes("호원") || region.includes("신곡") || region.includes("민락")) {
+    localFeature = "특히 의정부시 권역은 신곡동, 호원동 등의 구축 단지 및 민락지구 등의 신축 아파트가 혼재되어 있어, 옹벽 선상 균열과 샷시 조인트 이음새 결함 상태를 종합 진단하는 것이 효과적입니다.";
+  } else if (parent.includes("동두천시") || region.includes("동두천") || region.includes("지행") || region.includes("생연") || region.includes("송내")) {
+    localFeature = "특히 동두천시 권역은 지행역 인근 아파트 및 생연동 구도심 빌라 주택 등에서 연식 노후화에 의한 외부 실리콘 박리 및 프레임 흔들림 틈새 누수 현상이 흔히 확인됩니다.";
+  } else if (parent.includes("남양주시") || region.includes("남양주") || region.includes("다산") || region.includes("와부") || region.includes("별내") || region.includes("진접")) {
+    localFeature = "특히 남양주시 권역은 와부읍 등의 한강 인근 구축 아파트와 다산·별내지구 등 신도시 신축 창호 마감재 수축 결함이 겹쳐, 창틀 하부 빗물 배출 드레인과 크랙 상태를 면밀히 점검해야 합니다.";
+  } else if (parent.includes("광주시") || region.includes("광주") || region.includes("경안") || region.includes("태전") || region.includes("오포") || region.includes("신현")) {
+    localFeature = "특히 경기도 광주시 권역은 오포, 신현동 등의 대규모 빌라·연립 밀집 단지와 경안동 일대 구축 창호가 많아, 외벽 조인트 틈새 방수와 샤시 실링 두께 마감을 꼼꼼하게 다뤄야 합니다.";
   } else {
     localFeature = "특히 경기 북부 권역은 노후 아파트와 빌라가 복합적으로 혼재되어 있어, 단순 실리콘 덧방 방식보다는 외벽 이음새와 창틀 프레임의 결함 강도를 입체적으로 진단하고 보수해야 재누수를 방지할 수 있습니다.";
   }

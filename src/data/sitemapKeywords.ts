@@ -63,11 +63,115 @@ export const YANGJU_REGIONS = [
   "남면"
 ];
 
+export const GURI_REGIONS = [
+  "구리",
+  "구리시",
+  "갈매동",
+  "사노동",
+  "인창동",
+  "교문동",
+  "수택동",
+  "아천동",
+  "토평동"
+];
+
+export const UIJEONGBU_REGIONS = [
+  "의정부",
+  "의정부시",
+  "의정부동",
+  "호원동",
+  "장암동",
+  "신곡동",
+  "용현동",
+  "민락동",
+  "낙양동",
+  "자일동",
+  "금오동",
+  "가능동",
+  "녹양동",
+  "고산동",
+  "산곡동"
+];
+
+export const DONGDUCHEON_REGIONS = [
+  "동두천",
+  "동두천시",
+  "생연동",
+  "지행동",
+  "송내동",
+  "광암동",
+  "걸산동",
+  "보산동",
+  "동두천동",
+  "안흥동",
+  "상봉암동",
+  "하봉암동"
+];
+
+export const NAMYANGJU_REGIONS = [
+  "남양주",
+  "남양주시",
+  "와부읍",
+  "진접읍",
+  "화도읍",
+  "진건읍",
+  "오남읍",
+  "퇴계원읍",
+  "별내면",
+  "수동면",
+  "조안면",
+  "호평동",
+  "평내동",
+  "금곡동",
+  "일패동",
+  "이패동",
+  "삼패동",
+  "수석동",
+  "지금동",
+  "도농동",
+  "다산동",
+  "별내동"
+];
+
+export const GWANGJU_REGIONS = [
+  "광주",
+  "광주시",
+  "경안동",
+  "쌍령동",
+  "송정동",
+  "회덕동",
+  "탄벌동",
+  "목현동",
+  "삼동",
+  "중대동",
+  "직동",
+  "태전동",
+  "장지동",
+  "목동",
+  "신현동",
+  "능평동",
+  "오포동",
+  "양벌동",
+  "고산동",
+  "초월읍",
+  "곤지암읍",
+  "도척면",
+  "퇴촌면",
+  "남종면",
+  "남한산성면"
+];
+
 export const REGIONS_DB = [
   { city: "고양시", areas: GOYANG_REGIONS },
   { city: "파주시", areas: PAJU_REGIONS },
-  { city: "양주시", areas: YANGJU_REGIONS }
+  { city: "양주시", areas: YANGJU_REGIONS },
+  { city: "구리시", areas: GURI_REGIONS },
+  { city: "의정부시", areas: UIJEONGBU_REGIONS },
+  { city: "동두천시", areas: DONGDUCHEON_REGIONS },
+  { city: "남양주시", areas: NAMYANGJU_REGIONS },
+  { city: "광주시", areas: GWANGJU_REGIONS }
 ];
+
 
 export const SERVICES = [
   "창틀코킹",
