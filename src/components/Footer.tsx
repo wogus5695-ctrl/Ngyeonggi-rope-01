@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import Link from "next/link";
 
 interface FooterProps {
@@ -67,7 +67,7 @@ export default function Footer({ dynamicKeyword }: FooterProps) {
             <ul className="space-y-2 text-[13px] text-slate-500">
               <li>상담 가능 시간: 오전 8시 ~ 오후 8시 (일요일 휴무)</li>
               <li>주요 시공 지역: 경기도 고양시, 파주시, 양주시 및 인접 동 지역</li>
-              <li>상호명: 레인가드 | 대표 엔지니어: 김도진</li>
+              <li>상호명: 레인픽스 | 사업자 명: 최형화 | 사업자 번호: 877-09-03230</li>
             </ul>
           </div>
         </div>
