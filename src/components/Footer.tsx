@@ -62,7 +62,7 @@ export default function Footer({ dynamicKeyword }: FooterProps) {
           <div>
             <h3 className="text-white text-[15px] font-bold mb-5 tracking-tight">엔지니어 상담 센터</h3>
             <p className="text-[20px] font-black text-teal-400 mb-3 hover:text-teal-300 transition-colors">
-              <a href="tel:010-4667-5568">010-4667-5568</a>
+              <a href="tel:010-9419-6832">010-9419-6832</a>
             </p>
             <ul className="space-y-2 text-[13px] text-slate-500">
               <li>상담 가능 시간: 오전 8시 ~ 오후 8시 (일요일 휴무)</li>

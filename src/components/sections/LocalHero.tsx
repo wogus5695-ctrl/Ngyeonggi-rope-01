@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React from "react";
 import Link from "next/link";
@@ -130,7 +130,7 @@ export default function LocalHero({ locationName, serviceTitle, serviceName, int
                 무료 상담 신청
               </Link>
               <Link
-                href="tel:010-4667-5568"
+                href="tel:010-9419-6832"
                 className="px-6 py-4 w-full sm:w-auto text-center bg-white hover:bg-slate-50 text-slate-700 text-[15px] font-bold rounded-xl border border-slate-200 shadow-2xs hover:shadow-sm transition-all"
               >
                 전화 상담
