@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import Link from "next/link";
@@ -113,7 +113,7 @@ export default function LocalEmpathy({ locationName, dynamicIntro }: LocalEmpath
             {/* PC Highlight Box (md 이상 노출) */}
             <div className="hidden md:block p-4.5 bg-teal-950/70 border border-teal-500/20 rounded-2xl backdrop-blur-xs">
               <p className="text-[14px] font-bold text-teal-100 leading-relaxed">
-                틈새케어는 ‘어디에 다시 쏠지’보다 <span className="text-teal-400 font-extrabold">‘어디서 물이 들어오는지’</span>를 먼저 확인합니다.
+                레인가드는 ‘어디에 다시 쏠지’보다 <span className="text-teal-400 font-extrabold">‘어디서 물이 들어오는지’</span>를 먼저 확인합니다.
               </p>
             </div>
 

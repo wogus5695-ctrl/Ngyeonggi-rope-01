@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import Link from "next/link";
 
 interface FooterProps {
@@ -27,7 +27,7 @@ export default function Footer({ dynamicKeyword }: FooterProps) {
                 </svg>
               </div>
               <span className="text-[17px] font-extrabold tracking-tight text-white">
-                틈새케어
+                레인가드
               </span>
             </div>
             <p className="text-[14px] leading-relaxed text-slate-400 mb-6">
@@ -67,14 +67,14 @@ export default function Footer({ dynamicKeyword }: FooterProps) {
             <ul className="space-y-2 text-[13px] text-slate-500">
               <li>상담 가능 시간: 오전 8시 ~ 오후 8시 (일요일 휴무)</li>
               <li>주요 시공 지역: 경기도 고양시, 파주시, 양주시 및 인접 동 지역</li>
-              <li>상호명: 틈새케어 | 대표 엔지니어: 김도진</li>
+              <li>상호명: 레인가드 | 대표 엔지니어: 김도진</li>
             </ul>
           </div>
         </div>
 
         {/* Footer Bottom / Dynamic SEO Hook */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[13px] text-slate-600">
-          <p>© {new Date().getFullYear()} 틈새케어. All Rights Reserved.</p>
+          <p>© {new Date().getFullYear()} 레인가드. All Rights Reserved.</p>
         </div>
       </div>
     </footer>

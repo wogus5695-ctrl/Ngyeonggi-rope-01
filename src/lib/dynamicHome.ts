@@ -1,4 +1,4 @@
-import { TEUMSAE_ALLOWED_REGIONS } from "@/data/allowedKeywords";
+﻿import { TEUMSAE_ALLOWED_REGIONS } from "@/data/allowedKeywords";
 
 export const getHash = (str: string) => {
   return str.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
@@ -281,23 +281,23 @@ export const getDynamicHomeData = (region: string, service: string, hash: number
 
   const serviceBlocks: Record<string, string[]> = {
     '창틀코킹': [
-      `창틀 실리콘은 햇빛과 바람에 노후화되는 소모성 구조물입니다. 틈새케어의 100% 철거 공정으로 다가오는 태풍에도 끄떡없는 견고함을 약속하십시오.`,
-      `틈새 누수를 방치하면 외벽 크랙이 심해지고 도배지가 모두 상합니다. 틈새케어 엔지니어의 꼼꼼한 마감으로 소중한 우리 집 가치를 오래 지키세요.`
+      `창틀 실리콘은 햇빛과 바람에 노후화되는 소모성 구조물입니다. 레인가드의 100% 철거 공정으로 다가오는 태풍에도 끄떡없는 견고함을 약속하십시오.`,
+      `틈새 누수를 방치하면 외벽 크랙이 심해지고 도배지가 모두 상합니다. 레인가드 엔지니어의 꼼꼼한 마감으로 소중한 우리 집 가치를 오래 지키세요.`
     ],
     '빗물누수': [
-      `어떠한 태풍 and 비바람에도 흔들림 없는 완벽한 실링! 틈새케어만의 고기밀 압착 마감 기술로 들이치는 빗물을 단호히 막습니다.`,
+      `어떠한 태풍과 비바람에도 흔들림 없는 완벽한 실링! 레인가드만의 고기밀 압착 마감 기술로 들이치는 빗물을 단호히 막습니다.`,
       `반복되는 베란다 누수로 고민이신가요? 수많은 경기 북부 시공 경험을 가진 전문가가 빗물이 지나는 미세 물길을 정확히 메워드립니다.`
     ],
     '창틀누수': [
-      `오래된 샷시의 교체 비용이 부담되실 때, 틈새케어 실리콘 코킹으로 외풍과 누수 걱정을 한 번에 깔끔하게 해결해 보십시오.`,
-      `갈라지고 부스러진 샷시 마감재, 틈새케어 엔지니어의 손길로 정성스럽게 밀착 복원해 드립니다. 깨끗하고 기밀한 신축급 마감을 경험해보세요.`
+      `오래된 샷시의 교체 비용이 부담되실 때, 레인가드 실리콘 코킹으로 외풍과 누수 걱정을 한 번에 깔끔하게 해결해 보십시오.`,
+      `갈라지고 부스러진 샷시 마감재, 레인가드 엔지니어의 손길로 정성스럽게 밀착 복원해 드립니다. 깨끗하고 기밀한 신축급 마감을 경험해보세요.`
     ]
   };
 
   const blocks = serviceBlocks[serviceType] || serviceBlocks['창틀코킹'];
 
   return {
-    metaTitle: `${region} ${service} | 창틀·샷시·외벽 누수 보수 전문 틈새케어`,
+    metaTitle: `${region} ${service} | 창틀·샷시·외벽 누수 보수 전문 레인가드`,
     metaDesc: `${region} ${service} 문제는 창틀, 샷시, 외벽 크랙 상태를 함께 확인해야 합니다. 사진 상담으로 기본 상태를 확인하고 필요한 보수 방향을 안내드립니다.`,
     h1: config.h1,
     summary: summary,

@@ -24,11 +24,11 @@ type Props = {
 
 // 허용된 키워드 및 지역 유효성 안전 검증 헬퍼
 function validateKeyword(k: string | undefined): { isValid: boolean; region: string; service: string } {
-  if (!k) return { isValid: false, region: "틈새케어", service: "창틀코킹" };
+  if (!k) return { isValid: false, region: "레인가드", service: "창틀코킹" };
 
   const decoded = decodeURIComponent(k);
   const parts = decoded.split("-");
-  if (parts.length < 2) return { isValid: false, region: "틈새케어", service: "창틀코킹" };
+  if (parts.length < 2) return { isValid: false, region: "레인가드", service: "창틀코킹" };
 
   const [rawRegion, rawService] = parts;
   
@@ -46,7 +46,7 @@ function validateKeyword(k: string | undefined): { isValid: boolean; region: str
   }
 
   // 매칭 실패 시 기본값 안전 처리
-  return { isValid: false, region: "틈새케어", service: "창틀코킹" };
+  return { isValid: false, region: "레인가드", service: "창틀코킹" };
 }
 
 export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
@@ -81,15 +81,15 @@ export default async function Home({ searchParams }: Props) {
   const { isValid, region, service } = validateKeyword(k);
 
   // 기본 브랜드 설정 (Fallback)
-  let heroLocation = "틈새케어";
+  let heroLocation = "레인가드";
   let heroService = "프리미엄 틈새 누수 정밀 차단";
-  let heroIntro = `창틀 누수와 빗물 유입은 시간이 지날수록 건물을 망가뜨리는 위험 신호입니다.\n틈새케어는 타성에 젖은 실리콘 덧방 시공을 배제하고,\n기존 마감재 전면 탈거 후 강력 접합 시공을 수행합니다.\n재누수 가능성을 줄이는 방향으로 틈새와 외벽 균열을 철저하게 진단하여 메워드립니다.`;
+  let heroIntro = `창틀 누수와 빗물 유입은 시간이 지날수록 건물을 망가뜨리는 위험 신호입니다.\n레인가드는 타성에 젖은 실리콘 덧방 시공을 배제하고,\n기존 마감재 전면 탈거 후 강력 접합 시공을 수행합니다.\n재누수 가능성을 줄이는 방향으로 틈새와 외벽 균열을 철저하게 진단하여 메워드립니다.`;
   
   let analysisTitle = "";
   let analysisIntro = BRAND_HUB_CONTENT.empathyDesc;
   let analysisBlocks: any[] | undefined = undefined;
   
-  let processTitle = "틈새케어만의 5단계 정석 밀봉 프로세스";
+  let processTitle = "레인가드만의 5단계 정석 밀봉 프로세스";
   let processSteps: any[] = BRAND_HUB_CONTENT.workProcess;
   
   let faqTitle = "자주 묻는 질문";
@@ -221,7 +221,7 @@ export default async function Home({ searchParams }: Props) {
               {/* 메인 제목 */}
               <h2 className="text-[26px] sm:text-[32px] md:text-[36px] lg:text-[40px] font-black text-slate-900 tracking-tight leading-[1.25] max-w-3xl mx-auto">
                 <span className="block">
-                  {isValid ? `${heroLocation} ${service} 상담, ` : "틈새케어 빗물누수 상담, "}
+                  {isValid ? `${heroLocation} ${service} 상담, ` : "레인가드 빗물누수 상담, "}
                 </span>
                 <span className="block mt-1 sm:mt-2">
                   누수 원인부터 <span className="text-teal-600">빠르게 확인하세요</span>

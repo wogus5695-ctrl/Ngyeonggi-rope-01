@@ -7,7 +7,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = getMetadata({
-  title: '경기 북부 창틀코킹 시공 서비스 지역 안내 | 틈새케어',
+  title: '경기 북부 창틀코킹 시공 서비스 지역 안내 | 레인가드',
   description: '고양시, 파주시, 양주시를 비롯한 경기 북부 전 지역의 창틀코킹, 창틀누수, 빗물누수, 외벽누수 정밀 시공 페이지 리스트입니다.',
   path: '/sitemap-gyeonggi-north',
   noIndex: false, // 네이버 및 구글의 색인(인덱싱)을 위해 noindex 해제
@@ -32,7 +32,7 @@ export default function SitemapGyeonggiNorthPage() {
             
             {/* 상단 기획 안내 문구 (Thin Content 방지) */}
             <p className="text-[14.5px] sm:text-[15.5px] text-slate-600 leading-relaxed bg-white border border-teal-500/5 p-6 rounded-3xl shadow-3xs">
-              틈새케어는 경기 북부 지역의 창틀코킹, 창틀누수, 빗물누수, 창틀실리콘, 샷시실리콘, 외벽누수 상담을 지원합니다. 
+              레인가드는 경기 북부 지역의 창틀코킹, 창틀누수, 빗물누수, 창틀실리콘, 샷시실리콘, 외벽누수 상담을 지원합니다. 
               아래 지역별 서비스 페이지를 통해 필요한 작업 내용을 확인할 수 있습니다. 
               각 지역 현장에 매칭된 기밀 실링 전담 엔지니어가 책임 시공을 약속합니다.
             </p>

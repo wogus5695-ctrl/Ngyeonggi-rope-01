@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
@@ -56,7 +56,7 @@ export default function Header() {
             </svg>
           </div>
           <span className="text-[17px] font-extrabold tracking-tight text-slate-800">
-            틈새케어
+            레인가드
           </span>
         </Link>
 

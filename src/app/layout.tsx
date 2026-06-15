@@ -19,9 +19,9 @@ export const metadata: Metadata = {
   title: SEO_CONFIG.title,
   description: SEO_CONFIG.description,
   keywords: SEO_CONFIG.keywords,
-  authors: [{ name: "틈새케어" }],
-  creator: "틈새케어",
-  publisher: "틈새케어",
+  authors: [{ name: "레인가드" }],
+  creator: "레인가드",
+  publisher: "레인가드",
   alternates: {
     canonical: SEO_CONFIG.baseUrl,
   },
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     title: SEO_CONFIG.title.default,
     description: SEO_CONFIG.description,
     url: SEO_CONFIG.baseUrl,
-    siteName: "틈새케어",
+    siteName: "레인가드",
     locale: "ko_KR",
     type: "website",
     images: [
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
         url: SEO_CONFIG.ogImage,
         width: 800,
         height: 600,
-        alt: "틈새케어 대표 이미지",
+        alt: "레인가드 대표 이미지",
       },
     ],
   },
@@ -84,7 +84,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "틈새케어",
+              "name": "레인가드",
               "url": SEO_CONFIG.baseUrl,
               "logo": `${SEO_CONFIG.baseUrl}/icon.svg`,
               "contactPoint": {
@@ -102,7 +102,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "name": "틈새케어",
+              "name": "레인가드",
               "url": SEO_CONFIG.baseUrl,
               "potentialAction": {
                 "@type": "SearchAction",

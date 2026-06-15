@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import Link from "next/link";
@@ -14,7 +14,7 @@ interface LocalHeroProps {
 
 export default function LocalHero({ locationName, serviceTitle, serviceName, intro, keywords }: LocalHeroProps) {
   // PC/태블릿에서 사용할 본문 문구 처리 (폴백 긴 문장은 요약본으로 교체, 동적 문구는 유지)
-  const isFallbackIntro = intro.includes("\n") || !locationName || locationName === "틈새케어";
+  const isFallbackIntro = intro.includes("\n") || !locationName || locationName === "레인가드";
   const pcIntro = isFallbackIntro
     ? "단순 실리콘 덧방보다 창틀, 샷시, 외벽 상태를 함께 확인해\n재누수 가능성을 줄이는 방향으로 진단합니다."
     : intro;
@@ -40,7 +40,7 @@ export default function LocalHero({ locationName, serviceTitle, serviceName, int
         <div className="absolute bottom-12 left-0 w-full px-6 z-20 flex flex-col justify-end text-left">
           {/* 브랜드명 */}
           <div className="text-teal-400 font-black text-[13.5px] tracking-widest uppercase mb-1.5">
-            틈새케어
+            레인가드
           </div>
 
           {/* Mobile Heading */}
@@ -76,7 +76,7 @@ export default function LocalHero({ locationName, serviceTitle, serviceName, int
             <div className="space-y-3">
               {/* Brand Name */}
               <div className="text-teal-600 font-black text-[13.5px] tracking-widest uppercase">
-                틈새케어
+                레인가드
               </div>
 
               {/* H1 Title: 네이버 SEO 반영 및 동적 키워드 유지 */}
