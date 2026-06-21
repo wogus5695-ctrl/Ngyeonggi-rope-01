@@ -162,7 +162,7 @@ export default function LocalDiagnostics({ isWaterproofing }: LocalDiagnosticsPr
             <div className="bg-white rounded-[32px] border border-slate-100 shadow-md p-3">
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
                 <Image
-                  src={isWaterproofing ? "/waterproof-diagnostic.png" : "/leak-symptom.jpg"}
+                  src={isWaterproofing ? "/waterproof-diagnostic.jpg" : "/leak-symptom.jpg"}
                   alt={isWaterproofing ? "실제 옥상 바닥 균열 방수 보강 작업 현장" : "실제 창틀 주변 실리콘 박리 및 누수 유입 현장"}
                   fill
                   sizes="(max-width: 1024px) 100vw, 30vw"
