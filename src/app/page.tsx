@@ -66,11 +66,13 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
 
   const hash = getHash(`${region}-${service}`);
   const data = getDynamicHomeData(region, service, hash);
+  const isWaterproofing = ["외벽방수", "옥상방수", "건물방수", "외벽도색"].includes(service);
 
   return getMetadata({
     title: data.metaTitle,
     description: data.metaDesc,
     path: `/?k=${k}`,
+    ogImage: isWaterproofing ? "/og-image-waterproof.jpg" : undefined,
   });
 }
 
@@ -147,7 +149,7 @@ export default async function Home({ searchParams }: Props) {
       {/* FAQ 구조화 데이터 자동 주입 */}
       <FAQSchema faqs={faqList} />
 
-      <Header phone={phone} />
+      <Header phone={phone} isWaterproofing={isWaterproofing} />
 
       <main className="flex-grow bg-white">
         {/* 1. 히어로 섹션 */}
@@ -157,21 +159,32 @@ export default async function Home({ searchParams }: Props) {
           serviceName={isValid ? service : "창틀코킹"}
           phone={phone}
           intro={heroIntro}
-          keywords={[
-            "100% 전면 철거 원칙",
-            analysisDynamicKeyword ? `${analysisDynamicKeyword} 정밀 검수` : "열화상 틈새 진단",
-            "5단계 밀봉 전용 자재",
-            "책임 무상 A/S 보증"
-          ]}
+          isWaterproofing={isWaterproofing}
+          keywords={
+            isWaterproofing
+              ? [
+                  "100% 정석 V-컷팅 시공",
+                  analysisDynamicKeyword ? `${analysisDynamicKeyword} 정밀 진단` : "건물 균열 정밀 진단",
+                  "고탄성 외벽 방수 실런트",
+                  "책임 무상 A/S 보증"
+                ]
+              : [
+                  "100% 전면 철거 원칙",
+                  analysisDynamicKeyword ? `${analysisDynamicKeyword} 정밀 검수` : "열화상 틈새 진단",
+                  "5단계 밀봉 전용 자재",
+                  "책임 무상 A/S 보증"
+                ]
+          }
         />
 
         {/* 1-2. 간이 자가진단 섹션 (Hero 하단으로 이동) */}
-        <LocalDiagnostics />
+        <LocalDiagnostics isWaterproofing={isWaterproofing} />
 
         {/* 2. 문제 공감 섹션 */}
         <LocalEmpathy
           locationName={heroLocation}
           dynamicIntro={dynamicIntro || undefined}
+          isWaterproofing={isWaterproofing}
         />
 
         {/* 4. 진단 중심 작업 방식 섹션 */}
@@ -179,6 +192,7 @@ export default async function Home({ searchParams }: Props) {
           <LocalProcess
             title={processTitle}
             process={processSteps}
+            isWaterproofing={isWaterproofing}
           />
         </div>
 
@@ -186,18 +200,21 @@ export default async function Home({ searchParams }: Props) {
         <WhyProfessional
           locationName={heroLocation}
           dynamicBanner={dynamicBanner || undefined}
+          isWaterproofing={isWaterproofing}
         />
 
         {/* 6. 경기 북부 권역 안내 섹션 */}
         <LocalRegionInfo
           locationName={heroLocation}
           dynamicMethod={dynamicMethod || undefined}
+          isWaterproofing={isWaterproofing}
         />
 
         {/* 7. 시공 레퍼런스 사례 */}
         <div id="cases">
           <LocalPortfolio
             title={portfolioTitle}
+            isWaterproofing={isWaterproofing}
           />
         </div>
 
@@ -235,7 +252,9 @@ export default async function Home({ searchParams }: Props) {
               
               {/* 본문 설명 */}
               <p className="text-[14.5px] sm:text-[15.5px] text-slate-500 leading-[1.7] max-w-[620px] mx-auto">
-                젖은 위치만 보고 덧방하면 재누수가 반복될 수 있습니다. 창틀·샷시·외벽 상태를 함께 확인해 필요한 보수 방향을 안내해드립니다.
+                {isWaterproofing 
+                  ? "들뜬 부위만 대충 덮으면 재누수가 반복될 수 있습니다. 외벽 균열, 옥상 우레탄, 조인트 방수 상태를 함께 확인해 필요한 보수 방향을 안내해드립니다."
+                  : "젖은 위치만 보고 덧방하면 재누수가 반복될 수 있습니다. 창틀·샷시·외벽 상태를 함께 확인해 필요한 보수 방향을 안내해드립니다."}
               </p>
               
               {/* CTA 버튼 (전화 상담 위주, 카카오톡은 추후 활성화를 위해 비활성화됨) */}
@@ -249,7 +268,10 @@ export default async function Home({ searchParams }: Props) {
                   사진 상담 시 확인 항목
                 </div>
                 <div className="flex flex-wrap gap-2 justify-center">
-                  {["창틀 하부", "실리콘 갈라짐", "외벽 크랙", "샷시 접합부"].map((tag) => (
+                  {(isWaterproofing 
+                    ? ["외벽 균열", "옥상 우레탄", "방수 코팅", "조인트 균열"]
+                    : ["창틀 하부", "실리콘 갈라짐", "외벽 크랙", "샷시 접합부"]
+                  ).map((tag) => (
                     <span
                       key={tag}
                       className="px-3 py-1 bg-teal-50 text-teal-800 font-extrabold text-[12px] rounded-full border border-teal-500/10"
@@ -270,7 +292,7 @@ export default async function Home({ searchParams }: Props) {
         </section>
       </main>
 
-      <Footer dynamicKeyword={analysisDynamicKeyword} phone={phone} />
+      <Footer dynamicKeyword={analysisDynamicKeyword} phone={phone} isWaterproofing={isWaterproofing} />
       <FloatingCallButton phone={phone} />
     </div>
   );

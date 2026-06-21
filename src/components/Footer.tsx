@@ -4,9 +4,10 @@ import Link from "next/link";
 interface FooterProps {
   dynamicKeyword?: string;
   phone?: string;
+  isWaterproofing?: boolean;
 }
 
-export default function Footer({ dynamicKeyword, phone = "010-9419-6832" }: FooterProps) {
+export default function Footer({ dynamicKeyword, phone = "010-9419-6832", isWaterproofing }: FooterProps) {
   return (
     <footer className="bg-slate-900 text-slate-400 py-16 px-4 md:px-8 border-t border-slate-800">
       <div className="max-w-6xl mx-auto">
@@ -32,7 +33,9 @@ export default function Footer({ dynamicKeyword, phone = "010-9419-6832" }: Foot
               </span>
             </div>
             <p className="text-[14px] leading-relaxed text-slate-400 mb-6">
-              미세한 틈새와 외벽 균열을 추적 진단하여 누수의 고통에서 해방시켜 드립니다. 경기 북부(고양·파주·양주) 전용 케어 시스템을 운영하고 있습니다.
+              {isWaterproofing 
+                ? "건물 외벽 균열과 옥상 방수층 결함을 정밀 분석하여 건물의 내구성을 보존하고 누수 문제를 확실하게 해결합니다. 경기 북부 전용 케어 시스템을 운영합니다."
+                : "미세한 틈새와 외벽 균열을 추적 진단하여 누수의 고통에서 해방시켜 드립니다. 경기 북부(고양·파주·양주) 전용 케어 시스템을 운영하고 있습니다."}
             </p>
 
           </div>
@@ -43,12 +46,12 @@ export default function Footer({ dynamicKeyword, phone = "010-9419-6832" }: Foot
             <ul className="space-y-3.5 text-[14px]">
               <li>
                 <Link href="#process" className="hover:text-teal-400 transition-colors">
-                  5단계 창틀코킹 프로세스
+                  {isWaterproofing ? "4단계 책임 방수 프로세스" : "5단계 창틀코킹 프로세스"}
                 </Link>
               </li>
               <li>
                 <Link href="#costs" className="hover:text-teal-400 transition-colors">
-                  코킹 견적 단가 구성 요인
+                  {isWaterproofing ? "방수 견적 구성 요인" : "코킹 견적 단가 구성 요인"}
                 </Link>
               </li>
               <li>

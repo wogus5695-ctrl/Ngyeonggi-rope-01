@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React from "react";
 import Link from "next/link";
@@ -7,9 +7,72 @@ import Image from "next/image";
 interface LocalEmpathyProps {
   locationName: string;
   dynamicIntro?: string;
+  isWaterproofing?: boolean;
 }
 
-export default function LocalEmpathy({ locationName, dynamicIntro }: LocalEmpathyProps) {
+export default function LocalEmpathy({ locationName, dynamicIntro, isWaterproofing }: LocalEmpathyProps) {
+  const empathyCards = isWaterproofing
+    ? [
+        {
+          title: "콘크리트 외벽 노화",
+          desc: "방치하면 철근 부식 및 구조 균열 심화",
+          icon: (
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.656 48.656 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3l-3-3M3 12c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7.017-.22.032-.441.046-.662M3 12l-3 3m3-3l3-3" />
+            </svg>
+          )
+        },
+        {
+          title: "옥상 우레탄 들뜸",
+          desc: "균열 사이로 물이 고여 지속적 누수 발생",
+          icon: (
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+          )
+        },
+        {
+          title: "외벽 몰딩·조인트 균열",
+          desc: "건물 전체 벽체를 타고 흘러내리는 빗물 침투",
+          icon: (
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12a7.5 7.5 0 11-15 0 7.5 7.5 0 0115 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9.013 9l3 3.5 1.987-2.5" />
+            </svg>
+          )
+        }
+      ]
+    : [
+        {
+          title: "기존 실리콘 들뜸",
+          desc: "덮어도 함께 벌어질 수 있음",
+          icon: (
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.656 48.656 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3l-3-3M3 12c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7.017-.22.032-.441.046-.662M3 12l-3 3m3-3l3-3" />
+            </svg>
+          )
+        },
+        {
+          title: "샷시·벽체 접합부 틈",
+          desc: "빗물이 안쪽으로 스며드는 통로",
+          icon: (
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+          )
+        },
+        {
+          title: "외벽 크랙·상부 균열",
+          desc: "창틀 밖에서 시작되는 유입 경로",
+          icon: (
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12a7.5 7.5 0 11-15 0 7.5 7.5 0 0115 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9.013 9l3 3.5 1.987-2.5" />
+            </svg>
+          )
+        }
+      ];
+
   return (
     <section className="relative min-h-[680px] lg:min-h-[760px] flex items-center py-12 lg:py-20 overflow-hidden bg-slate-950">
       
@@ -26,7 +89,7 @@ export default function LocalEmpathy({ locationName, dynamicIntro }: LocalEmpath
         {/* Mobile: 40% dark overlay. PC: 10% dark overlay */}
         <div className="absolute inset-0 bg-black/40 md:bg-black/10 z-10 pointer-events-none"></div>
         {/* Mobile: bottom-to-top dark gradient. PC: right-to-left dark gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/55 to-black/10 md:bg-gradient-to-l md:from-slate-950/90 md:via-slate-950/50 md:to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent md:bg-gradient-to-l md:from-slate-950/90 md:via-slate-950/50 md:to-transparent z-10 pointer-events-none"></div>
       </div>
 
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full">
@@ -47,9 +110,19 @@ export default function LocalEmpathy({ locationName, dynamicIntro }: LocalEmpath
                 className="text-[26px] sm:text-[30px] lg:text-[32px] font-black text-white tracking-tight leading-[1.2]"
                 style={{ textShadow: "2px 2px 3px rgba(0, 0, 0, 0.9)" }}
               >
-                누수는 보이는 곳보다
-                <br />
-                들어오는 길을 봐야 합니다
+                {isWaterproofing ? (
+                  <>
+                    방수는 표면 마감보다
+                    <br />
+                    근본적인 균열 제어가 핵심입니다
+                  </>
+                ) : (
+                  <>
+                    누수는 보이는 곳보다
+                    <br />
+                    들어오는 길을 봐야 합니다
+                  </>
+                )}
               </h2>
               
               {/* Description (Unified for PC/MO) */}
@@ -57,70 +130,48 @@ export default function LocalEmpathy({ locationName, dynamicIntro }: LocalEmpath
                 className="text-[14.5px] md:text-[14px] lg:text-[14.5px] text-slate-100 leading-relaxed font-semibold"
                 style={{ textShadow: "1px 1px 3px rgba(0, 0, 0, 0.9)" }}
               >
-                물이 보이는 곳과 실제 유입 지점은 다를 수 있습니다. 외벽 크랙, 샷시 접합부, 기존 실리콘 상태를 함께 확인해야 합니다.
+                {isWaterproofing
+                  ? "물이 번지는 곳과 실제 원인 균열은 다를 수 있습니다. 콘크리트 외벽 균열, 옥상 우레탄 들뜸, 조인트 마감을 함께 진단해야 합니다."
+                  : "물이 보이는 곳과 실제 유입 지점은 다를 수 있습니다. 외벽 크랙, 샷시 접합부, 기존 실리콘 상태를 함께 확인해야 합니다."}
               </p>
             </div>
 
             {/* 3 Cause Cards (Opaque dark cards with 1-line descriptions) */}
             <div className="space-y-3">
-              {/* Card 1 */}
-              <div className="flex gap-3.5 p-4 bg-slate-950/85 backdrop-blur-md border border-white/10 rounded-2xl hover:bg-slate-900/80 transition-all duration-300">
-                <div className="w-[40px] h-[40px] bg-teal-950/60 rounded-lg text-teal-400 shrink-0 flex items-center justify-center border border-teal-500/10">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.656 48.656 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3l-3-3M3 12c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7.017-.22.032-.441.046-.662M3 12l-3 3m3-3l3-3" />
-                  </svg>
+              {empathyCards.map((card, idx) => (
+                <div key={idx} className="flex gap-3.5 p-4 bg-slate-950/85 backdrop-blur-md border border-white/10 rounded-2xl hover:bg-slate-900/80 transition-all duration-300">
+                  <div className="w-[40px] h-[40px] bg-teal-950/60 rounded-lg text-teal-400 shrink-0 flex items-center justify-center border border-teal-500/10">
+                    {card.icon}
+                  </div>
+                  <div>
+                    <h4 className="text-[15.5px] md:text-[16px] font-extrabold text-white leading-none">{card.title}</h4>
+                    <p className="text-[13px] md:text-[13.5px] text-slate-300 leading-normal mt-1.5 font-medium">
+                      {card.desc}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="text-[15.5px] md:text-[16px] font-extrabold text-white leading-none">기존 실리콘 들뜸</h4>
-                  <p className="text-[13px] md:text-[13.5px] text-slate-300 leading-normal mt-1.5 font-medium">
-                    덮어도 함께 벌어질 수 있음
-                  </p>
-                </div>
-              </div>
-
-              {/* Card 2 */}
-              <div className="flex gap-3.5 p-4 bg-slate-950/85 backdrop-blur-md border border-white/10 rounded-2xl hover:bg-slate-900/80 transition-all duration-300">
-                <div className="w-[40px] h-[40px] bg-teal-950/60 rounded-lg text-teal-400 shrink-0 flex items-center justify-center border border-teal-500/10">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                  </svg>
-                </div>
-                <div>
-                  <h4 className="text-[15.5px] md:text-[16px] font-extrabold text-white leading-none">샷시·벽체 접합부 틈</h4>
-                  <p className="text-[13px] md:text-[13.5px] text-slate-300 leading-normal mt-1.5 font-medium">
-                    빗물이 안쪽으로 스며드는 통로
-                  </p>
-                </div>
-              </div>
-
-              {/* Card 3 */}
-              <div className="flex gap-3.5 p-4 bg-slate-950/85 backdrop-blur-md border border-white/10 rounded-2xl hover:bg-slate-900/80 transition-all duration-300">
-                <div className="w-[40px] h-[40px] bg-teal-500/10 rounded-lg text-teal-400 shrink-0 flex items-center justify-center border border-teal-500/10">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12a7.5 7.5 0 11-15 0 7.5 7.5 0 0115 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9.013 9l3 3.5 1.987-2.5" />
-                  </svg>
-                </div>
-                <div>
-                  <h4 className="text-[15.5px] md:text-[16px] font-extrabold text-white leading-none">외벽 크랙·상부 균열</h4>
-                  <p className="text-[13px] md:text-[13.5px] text-slate-300 leading-normal mt-1.5 font-medium">
-                    창틀 밖에서 시작되는 유입 경로
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
 
             {/* PC Highlight Box (md 이상 노출) */}
             <div className="hidden md:block p-4.5 bg-teal-950/70 border border-teal-500/20 rounded-2xl backdrop-blur-xs">
               <p className="text-[14px] font-bold text-teal-100 leading-relaxed">
-                레인가드는 ‘어디에 다시 쏠지’보다 <span className="text-teal-400 font-extrabold">‘어디서 물이 들어오는지’</span>를 먼저 확인합니다.
+                {isWaterproofing ? (
+                  <>
+                    레인가드는 ‘단순히 칠하기’보다 <span className="text-teal-400 font-extrabold">‘건물 전체의 방수 장벽’</span>을 완벽히 재건합니다.
+                  </>
+                ) : (
+                  <>
+                    레인가드는 ‘어디에 다시 쏠지’보다 <span className="text-teal-400 font-extrabold">‘어디서 물이 들어오는지’</span>를 먼저 확인합니다.
+                  </>
+                )}
               </p>
             </div>
 
             {/* MO Highlight Slim Box (md 미만 노출) */}
             <div className="block md:hidden py-2.5 px-4 bg-teal-950/70 border border-teal-500/20 rounded-xl">
               <p className="text-[13.5px] font-bold text-teal-300 text-center">
-                “물이 시작된 지점부터 확인합니다.”
+                {isWaterproofing ? "“건물의 모든 균열 틈새를 차단합니다.”" : "“물이 시작된 지점부터 확인합니다.”"}
               </p>
             </div>
 
@@ -134,7 +185,9 @@ export default function LocalEmpathy({ locationName, dynamicIntro }: LocalEmpath
               </Link>
               <div className="pl-1">
                 <p className="text-[11.5px] text-slate-400 font-medium">
-                  창틀, 실리콘, 외벽 사진을 보내주시면 기본 상태를 먼저 확인해드립니다.
+                  {isWaterproofing 
+                    ? "외벽 균열, 옥상 바닥 상태 사진을 보내주시면 기본 견적을 안내해드립니다."
+                    : "창틀, 실리콘, 외벽 사진을 보내주시면 기본 상태를 먼저 확인해드립니다."}
                 </p>
               </div>
             </div>

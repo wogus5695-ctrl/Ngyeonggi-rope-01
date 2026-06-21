@@ -5,42 +5,76 @@ import React from "react";
 interface WhyProfessionalProps {
   locationName: string;
   dynamicBanner?: string;
+  isWaterproofing?: boolean;
 }
 
-export default function WhyProfessional({ locationName, dynamicBanner }: WhyProfessionalProps) {
+export default function WhyProfessional({ locationName, dynamicBanner, isWaterproofing }: WhyProfessionalProps) {
   // Shared data for diagram steps to prevent duplication in DOM
-  const diagramSteps = [
-    {
-      step: "01",
-      title: "외부 유입",
-      desc: "외벽 크랙 · 줄눈 틈",
-      icon: (
-        <svg className="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z" />
-        </svg>
-      )
-    },
-    {
-      step: "02",
-      title: "틈새 이동",
-      desc: "샷시 접합부 · 창틀 상부",
-      icon: (
-        <svg className="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
-        </svg>
-      )
-    },
-    {
-      step: "03",
-      title: "실내 증상",
-      desc: "창틀 하부 · 벽지 젖음",
-      icon: (
-        <svg className="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-        </svg>
-      )
-    }
-  ];
+  const diagramSteps = isWaterproofing
+    ? [
+        {
+          step: "01",
+          title: "외부 크랙",
+          desc: "콘크리트 옹벽 · 옥상 들뜸",
+          icon: (
+            <svg className="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z" />
+            </svg>
+          )
+        },
+        {
+          step: "02",
+          title: "균열 이동",
+          desc: "콘크리트 공극 · 조인트 틈",
+          icon: (
+            <svg className="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+            </svg>
+          )
+        },
+        {
+          step: "03",
+          title: "내부 피해",
+          desc: "벽면 젖음 · 곰팡이 유발",
+          icon: (
+            <svg className="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+            </svg>
+          )
+        }
+      ]
+    : [
+        {
+          step: "01",
+          title: "외부 유입",
+          desc: "외벽 크랙 · 줄눈 틈",
+          icon: (
+            <svg className="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z" />
+            </svg>
+          )
+        },
+        {
+          step: "02",
+          title: "틈새 이동",
+          desc: "샷시 접합부 · 창틀 상부",
+          icon: (
+            <svg className="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+            </svg>
+          )
+        },
+        {
+          step: "03",
+          title: "실내 증상",
+          desc: "창틀 하부 · 벽지 젖음",
+          icon: (
+            <svg className="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+            </svg>
+          )
+        }
+      ];
 
   return (
     <section className="py-12 md:py-20 bg-white relative overflow-hidden">
@@ -55,7 +89,7 @@ export default function WhyProfessional({ locationName, dynamicBanner }: WhyProf
           {/* Left Column: Unified Diagram (PC: Left column, Mobile: under text description) */}
           <div className="w-full lg:w-[40%] bg-[#f0fdfa]/30 border border-teal-500/10 rounded-[28px] md:rounded-[32px] p-5 sm:p-8 lg:p-10 shadow-3xs shrink-0 order-2 lg:order-1 max-w-md lg:max-w-none mx-auto lg:mx-0">
             <h3 className="hidden md:block text-[18px] font-extrabold text-slate-900 tracking-tight text-center mb-6">
-              누수는 이렇게 이동할 수 있습니다
+              {isWaterproofing ? "누수는 균열을 통해 이동합니다" : "누수는 이렇게 이동할 수 있습니다"}
             </h3>
 
             {/* 3-Step Flow Diagram (Fully unified, no duplicates) */}
@@ -97,23 +131,51 @@ export default function WhyProfessional({ locationName, dynamicBanner }: WhyProf
               
               {/* Heading */}
               <h2 className="text-[28px] sm:text-[36px] xl:text-[38px] font-black text-[#0f172a] tracking-tight leading-[1.2]">
-                젖은 곳보다
-                <br />
-                물이 들어온 길을 봅니다
+                {isWaterproofing ? (
+                  <>
+                    젖은 곳보다
+                    <br />
+                    물이 스며든 균열을 봅니다
+                  </>
+                ) : (
+                  <>
+                    젖은 곳보다
+                    <br />
+                    물이 들어온 길을 봅니다
+                  </>
+                )}
               </h2>
               
               {/* Sub-description */}
               <p className="text-[14.5px] sm:text-[15.5px] text-slate-500 leading-relaxed max-w-[500px] mx-auto lg:mx-0">
-                물이 보이는 곳과 들어온 곳은 다를 수 있습니다.
-                <br />
-                외벽·샷시·창틀 상부를 함께 확인합니다.
+                {isWaterproofing ? (
+                  <>
+                    물이 보이는 곳과 스며든 콘크리트 균열은 다를 수 있습니다.
+                    <br />
+                    외벽·옥상·조인트 균열을 함께 확인합니다.
+                  </>
+                ) : (
+                  <>
+                    물이 보이는 곳과 들어온 곳은 다를 수 있습니다.
+                    <br />
+                    외벽·샷시·창틀 상부를 함께 확인합니다.
+                  </>
+                )}
               </p>
             </div>
 
             {/* Highlight Note Box (Slim box, centered on mobile, left-aligned on desktop) */}
             <div className="p-4.5 bg-teal-50/45 border border-teal-500/10 rounded-2xl text-center lg:text-left">
               <p className="text-[14px] sm:text-[14.5px] font-bold text-slate-800 leading-relaxed">
-                젖은 곳만 막지 않고, <span className="text-teal-600 font-extrabold">물이 시작된 지점</span>을 먼저 봅니다.
+                {isWaterproofing ? (
+                  <>
+                    표면만 덮지 않고, <span className="text-teal-600 font-extrabold">물이 침투하는 균열 자체</span>를 차단합니다.
+                  </>
+                ) : (
+                  <>
+                    젖은 곳만 막지 않고, <span className="text-teal-600 font-extrabold">물이 시작된 지점</span>을 먼저 봅니다.
+                  </>
+                )}
               </p>
             </div>
 

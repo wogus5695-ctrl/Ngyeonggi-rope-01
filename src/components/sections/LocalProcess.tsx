@@ -1,51 +1,81 @@
-﻿"use client";
+"use client";
 
 import React from "react";
 
 interface ProcessStep {
   title: string;
   description: string;
+  point: string;
+  step: string;
 }
 
 interface LocalProcessProps {
   title: string;
-  process: ProcessStep[];
+  process: any[];
+  isWaterproofing?: boolean;
 }
 
-export default function LocalProcess({ title, process }: LocalProcessProps) {
+export default function LocalProcess({ title, process, isWaterproofing }: LocalProcessProps) {
   // Hardcoded highly readable steps as requested by the user
-  const steps = [
-    {
-      step: "STEP 01",
-      title: "누수 원인 진단",
-      description: "창틀 하부, 샷시 틈, 외벽 크랙을 함께 확인해 물이 들어오는 지점을 먼저 파악합니다.",
-      point: "유입 지점 확인"
-    },
-    {
-      step: "STEP 02",
-      title: "기존 실리콘 정리",
-      description: "들뜬 실리콘 and 오염물을 제거해 새 실리콘이 붙을 수 있는 바탕을 만듭니다.",
-      point: "노후 실리콘 제거"
-    },
-    {
-      step: "STEP 03",
-      title: "접착면 세척·건조",
-      description: "먼지, 이물질, 습기를 정리해 접착 불량 and 들뜸 가능성을 줄입니다.",
-      point: "바탕면 정리"
-    },
-    {
-      step: "STEP 04",
-      title: "상태별 코킹 시공",
-      description: "현장 상태에 따라 덧방, 부분 제거, 올제거 방식을 구분해 시공합니다.",
-      point: "시공 방식 구분"
-    },
-    {
-      step: "STEP 05",
-      title: "마감 검수·안내",
-      description: "마감 상태와 취약 부위를 확인하고, 이후 관리 방법을 안내합니다.",
-      point: "마감 확인"
-    }
-  ];
+  const steps = isWaterproofing
+    ? [
+        {
+          step: "STEP 01",
+          title: "균열 V-컷팅 및 청소",
+          description: "방수재 주입 공간 확보를 위해 크랙 부위를 깎아내고 먼지 등 이물질을 깨끗이 청소합니다.",
+          point: "균열 부위 정리"
+        },
+        {
+          step: "STEP 02",
+          title: "하도 프라이머 도포",
+          description: "균열 내부 깊숙이 방수 프라이머를 도포하여 보수 자재가 완벽하게 결착되도록 합니다.",
+          point: "접착력 강화"
+        },
+        {
+          step: "STEP 03",
+          title: "방수재 주입 및 충진",
+          description: "균열 틈새를 기밀하게 메워주고 물이 침투하지 못하도록 방수 실런트를 충진합니다.",
+          point: "실런트 주입"
+        },
+        {
+          step: "STEP 04",
+          title: "방수 코팅 및 검수",
+          description: "도포면을 보호 코팅으로 마감하여 내구성을 확보하고 방수 효과를 최종 검수합니다.",
+          point: "최종 마감 검수"
+        }
+      ]
+    : [
+        {
+          step: "STEP 01",
+          title: "누수 원인 진단",
+          description: "창틀 하부, 샷시 틈, 외벽 크랙을 함께 확인해 물이 들어오는 지점을 먼저 파악합니다.",
+          point: "유입 지점 확인"
+        },
+        {
+          step: "STEP 02",
+          title: "기존 실리콘 정리",
+          description: "들뜬 실리콘 and 오염물을 제거해 새 실리콘이 붙을 수 있는 바탕을 만듭니다.",
+          point: "노후 실리콘 제거"
+        },
+        {
+          step: "STEP 03",
+          title: "접착면 세척·건조",
+          description: "먼지, 이물질, 습기를 정리해 접착 불량 and 들뜸 가능성을 줄입니다.",
+          point: "바탕면 정리"
+        },
+        {
+          step: "STEP 04",
+          title: "상태별 코킹 시공",
+          description: "현장 상태에 따라 덧방, 부분 제거, 올제거 방식을 구분해 시공합니다.",
+          point: "시공 방식 구분"
+        },
+        {
+          step: "STEP 05",
+          title: "마감 검수·안내",
+          description: "마감 상태와 취약 부위를 확인하고, 이후 관리 방법을 안내합니다.",
+          point: "마감 확인"
+        }
+      ];
 
   return (
     <section className="py-12 md:py-16 bg-white relative overflow-hidden">
@@ -61,30 +91,34 @@ export default function LocalProcess({ title, process }: LocalProcessProps) {
           </div>
           {/* PC Title */}
           <h2 className="hidden md:block text-3xl sm:text-[38px] font-black text-slate-900 tracking-tight leading-[1.2]">
-            재누수를 줄이는 5단계 창틀코킹 프로세스
+            {isWaterproofing ? "재누수를 줄이는 4단계 책임 방수 프로세스" : "재누수를 줄이는 5단계 창틀코킹 프로세스"}
           </h2>
           {/* MO Title */}
           <h2 className="block md:hidden text-[26px] sm:text-[28px] font-black text-slate-900 tracking-tight leading-[1.2]">
-            재누수를 줄이는 5단계 프로세스
+            {isWaterproofing ? "재누수를 줄이는 4단계 방수 프로세스" : "재누수를 줄이는 5단계 프로세스"}
           </h2>
           
           {/* PC Sub-desc */}
           <p className="hidden md:block text-[14.5px] sm:text-[15.5px] text-slate-500 max-w-[640px] mx-auto leading-relaxed">
-            실리콘을 덮기 전에 원인을 확인하고, 바탕면 정리부터 마감 검수까지 순서대로 진행합니다.
+            {isWaterproofing 
+              ? "건물 균열 및 방수층을 확인하고, 바탕면 V-컷팅 정리부터 마감 검수까지 순서대로 진행합니다."
+              : "실리콘을 덮기 전에 원인을 확인하고, 바탕면 정리부터 마감 검수까지 순서대로 진행합니다."}
           </p>
           {/* MO Sub-desc */}
           <p className="block md:hidden text-[14.5px] text-slate-500 max-w-[640px] mx-auto leading-relaxed">
-            원인 확인부터 마감 검수까지 순서대로 진행합니다.
+            {isWaterproofing
+              ? "건물 균열 진단부터 마감 검수까지 순서대로 진행합니다."
+              : "원인 확인부터 마감 검수까지 순서대로 진행합니다."}
           </p>
         </div>
 
-        {/* Unified 5-Step Layout (No duplicate map for PC/MO) */}
-        <div className="grid grid-cols-1 md:grid-cols-6 gap-3.5 md:gap-6 max-w-md md:max-w-none mx-auto">
+        {/* Unified 5-Step Layout / 4-Step Layout */}
+        <div className={`grid grid-cols-1 ${isWaterproofing ? "md:grid-cols-4" : "md:grid-cols-6"} gap-3.5 md:gap-6 max-w-md md:max-w-none mx-auto`}>
           {steps.map((step, idx) => (
             <div
               key={idx}
-              className={`bg-white border border-slate-100 rounded-2xl md:rounded-[24px] p-4.5 md:p-7.5 shadow-3xs transition-all duration-300 col-span-1 md:col-span-2 ${
-                idx === 3 ? "md:col-start-2" : ""
+              className={`bg-white border border-slate-100 rounded-2xl md:rounded-[24px] p-4.5 md:p-7.5 shadow-3xs transition-all duration-300 ${
+                isWaterproofing ? "col-span-1" : `col-span-1 md:col-span-2 ${idx === 3 ? "md:col-start-2" : ""}`
               } flex flex-row md:flex-col md:justify-between items-center md:items-start justify-between min-h-[72px] md:min-h-0 md:h-auto`}
             >
               {/* Left/Top Area (Step badge & Title/Desc) */}
@@ -131,14 +165,18 @@ export default function LocalProcess({ title, process }: LocalProcessProps) {
         {/* Mobile Slim Conclusion Note */}
         <div className="block md:hidden mt-5 py-3 px-4 bg-teal-50/45 border border-teal-500/10 rounded-xl text-center max-w-md mx-auto">
           <p className="text-[13px] font-bold text-slate-700 leading-normal">
-            현장 상태에 따라 덧방, 부분 제거, 올제거 방식을 구분해 안내합니다.
+            {isWaterproofing 
+              ? "건물의 상태와 균열 깊이에 따라 필요한 방수 보수 공법을 적용합니다."
+              : "현장 상태에 따라 덧방, 부분 제거, 올제거 방식을 구분해 안내합니다."}
           </p>
         </div>
 
         {/* PC Section Bottom Conclusion Note Box */}
         <div className="hidden md:block mt-12 p-5 bg-teal-50/40 border border-teal-500/10 rounded-2xl max-w-3xl mx-auto text-center">
           <p className="text-[14px] sm:text-[14.5px] font-bold text-slate-800 leading-relaxed">
-            레인가드는 현장 상태에 따라 필요한 시공 방식을 구분해 재누수 가능성을 줄이는 방향으로 작업합니다.
+            {isWaterproofing
+              ? "레인가드는 건물의 노화 원인을 분석하여 옥상 및 외벽 균열 상태에 알맞은 방수 보강 공사를 수행합니다."
+              : "레인가드는 현장 상태에 따라 필요한 시공 방식을 구분해 재누수 가능성을 줄이는 방향으로 작업합니다."}
           </p>
         </div>
 

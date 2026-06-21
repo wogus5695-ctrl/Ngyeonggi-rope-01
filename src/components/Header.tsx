@@ -5,9 +5,10 @@ import Link from "next/link";
 
 interface HeaderProps {
   phone?: string;
+  isWaterproofing?: boolean;
 }
 
-export default function Header({ phone = "010-9419-6832" }: HeaderProps) {
+export default function Header({ phone = "010-9419-6832", isWaterproofing }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -67,10 +68,10 @@ export default function Header({ phone = "010-9419-6832" }: HeaderProps) {
         {/* 내비게이션 */}
         <nav className="hidden md:flex items-center gap-8 text-[14.5px] font-bold text-slate-600">
           <Link href="#process" className="hover:text-teal-600 transition-colors">
-            5단계 케어 프로세스
+            {isWaterproofing ? "4단계 케어 프로세스" : "5단계 케어 프로세스"}
           </Link>
           <Link href="#costs" className="hover:text-teal-600 transition-colors">
-            견적 요인
+            {isWaterproofing ? "방수 견적 요인" : "견적 요인"}
           </Link>
           <Link href="#faq" className="hover:text-teal-600 transition-colors">
             자주 묻는 질문

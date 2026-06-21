@@ -4,7 +4,97 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-export default function LocalDiagnostics() {
+interface LocalDiagnosticsProps {
+  isWaterproofing?: boolean;
+}
+
+export default function LocalDiagnostics({ isWaterproofing }: LocalDiagnosticsProps) {
+  const diagnosticCards = isWaterproofing
+    ? [
+        {
+          titlePC: "외벽·천장이 젖습니다",
+          titleMO: "외벽·천장 젖음",
+          description: "비가 온 뒤 벽면에 물기가 번지거나 얼룩이 생깁니다.",
+          icon: (
+            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.5C12 2.5 19 9.5 19 14.5C19 18.366 15.866 21.5 12 21.5C8.134 21.5 5 18.366 5 14.5C5 9.5 12 2.5 12 2.5Z" />
+            </svg>
+          )
+        },
+        {
+          titlePC: "우레탄 방수층이 들떴습니다",
+          titleMO: "방수층 들뜸",
+          description: "옥상 우레탄 방수 바닥이 부풀어 오르거나 갈라졌습니다.",
+          icon: (
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+            </svg>
+          )
+        },
+        {
+          titlePC: "벽지나 몰딩에 곰팡이가 핍니다",
+          titleMO: "벽지·몰딩 곰팡이",
+          description: "외벽과 닿는 실내 벽지에 곰팡이가 피거나 마감재가 손상됩니다.",
+          icon: (
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+            </svg>
+          )
+        },
+        {
+          titlePC: "콘크리트 외벽 균열이 심합니다",
+          titleMO: "외벽 균열",
+          description: "콘크리트 옹벽 크랙을 따라 외부 빗물이 스며들어 번집니다.",
+          icon: (
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18V6.75a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 6.75v11.25m-18 0h18" />
+            </svg>
+          )
+        }
+      ]
+    : [
+        {
+          titlePC: "창틀 아래쪽이 젖습니다",
+          titleMO: "창틀 아래쪽 젖음",
+          description: "비가 온 뒤 창틀 하부나 몰딩 주변에 물기가 남습니다.",
+          icon: (
+            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.5C12 2.5 19 9.5 19 14.5C19 18.366 15.866 21.5 12 21.5C8.134 21.5 5 18.366 5 14.5C5 9.5 12 2.5 12 2.5Z" />
+            </svg>
+          )
+        },
+        {
+          titlePC: "실리콘이 갈라졌습니다",
+          titleMO: "실리콘 갈라짐",
+          description: "샷시 주변 실리콘이 들뜨거나 틈이 벌어져 있습니다.",
+          icon: (
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+            </svg>
+          )
+        },
+        {
+          titlePC: "벽지나 몰딩이 들뜹니다",
+          titleMO: "벽지·몰딩 들뜸",
+          description: "창문 아래 벽지, 몰딩, 마감재가 젖거나 변형됩니다.",
+          icon: (
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+            </svg>
+          )
+        },
+        {
+          titlePC: "외벽에 실금이 보입니다",
+          titleMO: "외벽 실금",
+          description: "외벽 크랙을 따라 빗물이 내부로 유입될 수 있습니다.",
+          icon: (
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18V6.75a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 6.75v11.25m-18 0h18" />
+            </svg>
+          )
+        }
+      ];
+
   return (
     <section className="py-24 bg-slate-50 relative overflow-hidden">
       {/* Background Accent */}
@@ -17,10 +107,14 @@ export default function LocalDiagnostics() {
             누수 위험 신호
           </div>
           <h2 className="text-3xl sm:text-4.5xl font-black text-slate-900 tracking-tight leading-tight max-w-2xl mx-auto">
-            이런 증상, 단순 습기가 아닐 수 있습니다
+            {isWaterproofing 
+              ? "이런 증상, 건물 균열 및 방수층 손상일 수 있습니다"
+              : "이런 증상, 단순 습기가 아닐 수 있습니다"}
           </h2>
           <p className="text-[14.5px] sm:text-[15.5px] text-slate-500 max-w-xl mx-auto leading-relaxed">
-            창틀 주변 누수는 처음에는 작은 물기처럼 보이지만, 시간이 지나면 벽지 들뜸, 곰팡이, 내부 마감재 손상으로 이어질 수 있습니다.
+            {isWaterproofing
+              ? "건물 외벽이나 옥상 방수층 균열은 물이 건물 내부로 침투하여 콘크리트를 부식시키고 심각한 누수를 유발합니다."
+              : "창틀 주변 누수는 처음에는 작은 물기처럼 보이지만, 시간이 지나면 벽지 들뜸, 곰팡이, 내부 마감재 손상으로 이어질 수 있습니다."}
           </p>
         </div>
 
@@ -29,73 +123,20 @@ export default function LocalDiagnostics() {
           {/* Left Side: Warning Cards (Col span 7 or 8) */}
           <div className="lg:col-span-8 space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {/* Card 1 */}
-              <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-100 shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex items-start gap-4">
-                <div className="p-3 bg-teal-50/60 rounded-2xl shrink-0 text-teal-600">
-                  {/* Droplet SVG */}
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2.5C12 2.5 19 9.5 19 14.5C19 18.366 15.866 21.5 12 21.5C8.134 21.5 5 18.366 5 14.5C5 9.5 12 2.5 12 2.5Z" />
-                  </svg>
+              {diagnosticCards.map((card, idx) => (
+                <div key={idx} className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-100 shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex items-start gap-4">
+                  <div className="p-3 bg-teal-50/60 rounded-2xl shrink-0 text-teal-600">
+                    {card.icon}
+                  </div>
+                  <div className="space-y-1.5">
+                    <h4 className="text-[16px] font-black text-slate-800 tracking-tight">
+                      <span className="hidden sm:inline">{card.titlePC}</span>
+                      <span className="inline sm:hidden">{card.titleMO}</span>
+                    </h4>
+                    <p className="text-[13px] text-slate-500 leading-relaxed">{card.description}</p>
+                  </div>
                 </div>
-                <div className="space-y-1.5">
-                  <h4 className="text-[16px] font-black text-slate-800 tracking-tight">
-                    <span className="hidden sm:inline">창틀 아래쪽이 젖습니다</span>
-                    <span className="inline sm:hidden">창틀 아래쪽 젖음</span>
-                  </h4>
-                  <p className="text-[13px] text-slate-500 leading-relaxed">비가 온 뒤 창틀 하부나 몰딩 주변에 물기가 남습니다.</p>
-                </div>
-              </div>
-
-              {/* Card 2 */}
-              <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-100 shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex items-start gap-4">
-                <div className="p-3 bg-teal-50/60 rounded-2xl shrink-0 text-teal-600">
-                  {/* Broken/Split SVG */}
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
-                  </svg>
-                </div>
-                <div className="space-y-1.5">
-                  <h4 className="text-[16px] font-black text-slate-800 tracking-tight">
-                    <span className="hidden sm:inline">실리콘이 갈라졌습니다</span>
-                    <span className="inline sm:hidden">실리콘 갈라짐</span>
-                  </h4>
-                  <p className="text-[13px] text-slate-500 leading-relaxed">샷시 주변 실리콘이 들뜨거나 틈이 벌어져 있습니다.</p>
-                </div>
-              </div>
-
-              {/* Card 3 */}
-              <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-100 shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex items-start gap-4">
-                <div className="p-3 bg-teal-50/60 rounded-2xl shrink-0 text-teal-600">
-                  {/* Damaged Home SVG */}
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-                  </svg>
-                </div>
-                <div className="space-y-1.5">
-                  <h4 className="text-[16px] font-black text-slate-800 tracking-tight">
-                    <span className="hidden sm:inline">벽지나 몰딩이 들뜹니다</span>
-                    <span className="inline sm:hidden">벽지·몰딩 들뜸</span>
-                  </h4>
-                  <p className="text-[13px] text-slate-500 leading-relaxed">창문 아래 벽지, 몰딩, 마감재가 젖거나 변형됩니다.</p>
-                </div>
-              </div>
-
-              {/* Card 4 */}
-              <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-100 shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex items-start gap-4">
-                <div className="p-3 bg-teal-50/60 rounded-2xl shrink-0 text-teal-600">
-                  {/* Brick/Wall SVG */}
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18V6.75a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 6.75v11.25m-18 0h18" />
-                  </svg>
-                </div>
-                <div className="space-y-1.5">
-                  <h4 className="text-[16px] font-black text-slate-800 tracking-tight">
-                    <span className="hidden sm:inline">외벽에 실금이 보입니다</span>
-                    <span className="inline sm:hidden">외벽 실금</span>
-                  </h4>
-                  <p className="text-[13px] text-slate-500 leading-relaxed">외벽 크랙을 따라 빗물이 내부로 유입될 수 있습니다.</p>
-                </div>
-              </div>
+              ))}
             </div>
 
             {/* Warning Announcement Box */}
@@ -109,7 +150,9 @@ export default function LocalDiagnostics() {
               <p className="flex-1 text-[16px] sm:text-[17.5px] lg:text-[19px] font-black text-slate-900 leading-[1.4]">
                 2가지 이상 해당된다면 빠른 시일 내에
                 <br />
-                <span className="text-teal-600 font-black">창틀·외벽 주변 누수 진단</span>이 필요합니다.
+                <span className="text-teal-600 font-black">
+                  {isWaterproofing ? "건물 외벽·옥상 방수 정밀 진단" : "창틀·외벽 주변 누수 진단"}
+                </span>이 필요합니다.
               </p>
             </div>
           </div>
@@ -119,8 +162,8 @@ export default function LocalDiagnostics() {
             <div className="bg-white rounded-[32px] border border-slate-100 shadow-md p-3">
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
                 <Image
-                  src="/leak-symptom.jpg"
-                  alt="실제 창틀 주변 실리콘 박리 및 누수 유입 현장"
+                  src={isWaterproofing ? "/og-image-waterproof.jpg" : "/leak-symptom.jpg"}
+                  alt={isWaterproofing ? "실제 외벽 크랙 보강 및 방수 작업 현장" : "실제 창틀 주변 실리콘 박리 및 누수 유입 현장"}
                   fill
                   sizes="(max-width: 1024px) 100vw, 30vw"
                   className="object-cover"
@@ -130,9 +173,13 @@ export default function LocalDiagnostics() {
                 <span className="inline-block text-[11px] font-extrabold text-teal-600 bg-teal-50 px-2 py-0.5 rounded-md mb-1.5">
                   현장 정밀 검수 사진
                 </span>
-                <h4 className="text-[14px] font-bold text-slate-800">창틀 주변 실리콘 박리 현장</h4>
+                <h4 className="text-[14px] font-bold text-slate-800">
+                  {isWaterproofing ? "외벽 균열 및 방수 보강 작업" : "창틀 주변 실리콘 박리 현장"}
+                </h4>
                 <p className="text-[12.5px] text-slate-500 mt-1 leading-relaxed">
-                  노화된 실리콘이 틈새에서 떨어져 나가 외벽 콘크리트와의 접합부 틈새로 비가 올 때마다 누수를 일으키는 실제 상황입니다.
+                  {isWaterproofing 
+                    ? "노후화된 건물 외벽의 콘크리트 미세 크랙을 보강하고 기밀 방수 처리를 적용하여 누수를 차단하는 고소 로프 작업 현장입니다."
+                    : "노화된 실리콘이 틈새에서 떨어져 나가 외벽 콘크리트와의 접합부 틈새로 비가 올 때마다 누수를 일으키는 실제 상황입니다."}
                 </p>
               </div>
             </div>
@@ -142,7 +189,9 @@ export default function LocalDiagnostics() {
         {/* Section Action CTA (Centered) */}
         <div className="text-center pt-8 border-t border-slate-200/50 mt-16 flex flex-col items-center gap-3">
           <p className="text-[13.5px] sm:text-[14.5px] text-slate-500 font-bold tracking-tight hidden sm:block">
-            ※ 창틀, 실리콘, 외벽 사진만으로도 기본 상태를 먼저 확인해드릴 수 있습니다.
+            {isWaterproofing
+              ? "※ 외벽 균열, 옥상 바닥 상태 사진만으로도 기본 견적을 먼저 확인해드릴 수 있습니다."
+              : "※ 창틀, 실리콘, 외벽 사진만으로도 기본 상태를 먼저 확인해드릴 수 있습니다."}
           </p>
           <Link
             href="#contact"
