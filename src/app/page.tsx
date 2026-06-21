@@ -166,13 +166,13 @@ export default async function Home({ searchParams }: Props) {
                   "100% 정석 V-컷팅 시공",
                   analysisDynamicKeyword ? `${analysisDynamicKeyword} 정밀 진단` : "건물 균열 정밀 진단",
                   "고탄성 외벽 방수 실런트",
-                  "책임 무상 A/S 보증"
+                  "철저한 책임 A/S 보증"
                 ]
               : [
                   "100% 전면 철거 원칙",
                   analysisDynamicKeyword ? `${analysisDynamicKeyword} 정밀 검수` : "열화상 틈새 진단",
                   "5단계 밀봉 전용 자재",
-                  "책임 무상 A/S 보증"
+                  "철저한 책임 A/S 보증"
                 ]
           }
         />

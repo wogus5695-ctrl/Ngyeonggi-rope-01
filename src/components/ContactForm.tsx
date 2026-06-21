@@ -119,7 +119,7 @@ export default function ContactForm() {
           type="submit"
           className="w-full py-4 text-[15px] font-black text-white bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 rounded-xl shadow-md transition-all cursor-pointer"
         >
-          무상 실사 및 견적 상담 접수하기
+          현장 실사 및 견적 상담 접수하기
         </button>
       </div>
       

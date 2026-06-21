@@ -124,7 +124,7 @@ export default function LocalHero({
                     "외벽 균열 보강",
                     "옥상 우레탄 방수",
                     "건물 외벽 도색",
-                    "상담 후 무료 견적"
+                    "상담 후 견적 안내"
                   ]
                 : [
                     "재누수 원인 확인",
@@ -151,7 +151,7 @@ export default function LocalHero({
                 href="#contact"
                 className="px-6 py-4 w-full sm:w-auto text-center bg-teal-600 hover:bg-teal-700 text-white text-[15px] font-black rounded-xl shadow-sm hover:shadow-md transition-all"
               >
-                무료 상담 신청
+                간편 상담 신청
               </Link>
               <Link
                 href={`tel:${phone}`}
