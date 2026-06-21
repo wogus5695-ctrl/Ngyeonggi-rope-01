@@ -3,9 +3,10 @@ import Link from "next/link";
 
 interface FooterProps {
   dynamicKeyword?: string;
+  phone?: string;
 }
 
-export default function Footer({ dynamicKeyword }: FooterProps) {
+export default function Footer({ dynamicKeyword, phone = "010-9419-6832" }: FooterProps) {
   return (
     <footer className="bg-slate-900 text-slate-400 py-16 px-4 md:px-8 border-t border-slate-800">
       <div className="max-w-6xl mx-auto">
@@ -62,7 +63,7 @@ export default function Footer({ dynamicKeyword }: FooterProps) {
           <div>
             <h3 className="text-white text-[15px] font-bold mb-5 tracking-tight">엔지니어 상담 센터</h3>
             <p className="text-[20px] font-black text-teal-400 mb-3 hover:text-teal-300 transition-colors">
-              <a href="tel:010-9419-6832">010-9419-6832</a>
+              <a href={`tel:${phone}`}>{phone}</a>
             </p>
             <ul className="space-y-2 text-[13px] text-slate-500">
               <li>상담 가능 시간: 오전 8시 ~ 오후 8시 (일요일 휴무)</li>

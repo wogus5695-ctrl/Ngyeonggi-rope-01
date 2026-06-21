@@ -89,6 +89,60 @@ export default function SitemapGyeonggiNorthPage() {
             })}
           </div>
 
+          {/* 방수 시공 서비스 안내 섹션 추가 */}
+          <section className="mt-20 pt-16 border-t border-slate-200/60">
+            <header className="mb-12 text-center max-w-3xl mx-auto space-y-4">
+              <h2 className="text-3xl font-black text-slate-900 tracking-tight leading-tight">
+                방수 시공 서비스 안내
+              </h2>
+              <p className="text-[14.5px] sm:text-[15.5px] text-slate-600 leading-relaxed bg-white border border-blue-500/5 p-6 rounded-3xl shadow-3xs">
+                외벽방수, 옥상방수, 건물방수, 외벽도색 등 방수 관련 시공이 필요한 지역을 선택해 주세요.
+                아래 지역별 서비스 페이지를 통해 상세한 공사 내용을 확인할 수 있습니다.
+              </p>
+            </header>
+
+            <div className="bg-white border border-blue-500/5 rounded-[32px] p-6.5 sm:p-9 shadow-xs">
+              <div className="flex items-center gap-3.5 mb-8 pb-4 border-b border-slate-100">
+                <span className="w-1.5 h-6 bg-blue-600 rounded-full"></span>
+                <h3 className="text-xl font-bold text-slate-800 tracking-tight">
+                  경기 북부 지역 방수 키워드
+                </h3>
+              </div>
+
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+                {(() => {
+                  const waterproofingServices = ["외벽방수", "옥상방수", "건물방수", "외벽도색"];
+                  const combinedWaterproofingKeywords: { label: string; area: string; service: string }[] = [];
+                  
+                  REGIONS_DB.forEach(region => {
+                    region.areas.forEach(area => {
+                      waterproofingServices.forEach(service => {
+                        combinedWaterproofingKeywords.push({
+                          label: `${area}-${service}`,
+                          area: area,
+                          service: service
+                        });
+                      });
+                    });
+                  });
+
+                  return combinedWaterproofingKeywords.map((kw, i) => {
+                    const targetUrl = `/?k=${encodeURIComponent(kw.label)}`;
+                    return (
+                      <Link
+                        key={i}
+                        href={targetUrl}
+                        className="block px-3 py-3.5 bg-blue-50/30 border border-blue-100/50 hover:bg-blue-100/40 text-blue-900 hover:text-blue-700 text-[13px] font-semibold text-center rounded-2xl transition-all shadow-3xs hover:shadow-xs"
+                      >
+                        {kw.area}-{kw.service}
+                      </Link>
+                    );
+                  });
+                })()}
+              </div>
+            </div>
+          </section>
+
           {/* Back Home */}
           <div className="mt-16 text-center">
             <Link

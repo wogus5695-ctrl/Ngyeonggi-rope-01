@@ -8,11 +8,12 @@ interface LocalHeroProps {
   locationName: string;
   serviceTitle: string;
   serviceName?: string; // H1에 매핑할 동적 작업명
+  phone?: string;
   intro: string;
   keywords: string[];
 }
 
-export default function LocalHero({ locationName, serviceTitle, serviceName, intro, keywords }: LocalHeroProps) {
+export default function LocalHero({ locationName, serviceTitle, serviceName, phone = "010-9419-6832", intro, keywords }: LocalHeroProps) {
   // PC/태블릿에서 사용할 본문 문구 처리 (폴백 긴 문장은 요약본으로 교체, 동적 문구는 유지)
   const isFallbackIntro = intro.includes("\n") || !locationName || locationName === "레인가드";
   const pcIntro = isFallbackIntro
@@ -130,7 +131,7 @@ export default function LocalHero({ locationName, serviceTitle, serviceName, int
                 무료 상담 신청
               </Link>
               <Link
-                href="tel:010-9419-6832"
+                href={`tel:${phone}`}
                 className="px-6 py-4 w-full sm:w-auto text-center bg-white hover:bg-slate-50 text-slate-700 text-[15px] font-bold rounded-xl border border-slate-200 shadow-2xs hover:shadow-sm transition-all"
               >
                 전화 상담

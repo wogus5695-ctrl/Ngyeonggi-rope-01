@@ -1,6 +1,10 @@
 import React from "react";
 
-export default function ContactCTA() {
+interface ContactCTAProps {
+  phone?: string;
+}
+
+export default function ContactCTA({ phone = "010-9419-6832" }: ContactCTAProps) {
   // 추후 카카오톡 문의를 활성화하려면 true로 변경하세요.
   const showKakao = false;
 
@@ -26,7 +30,7 @@ export default function ContactCTA() {
 
       {/* 2순위: 전화 상담하기 */}
       <a
-        href="tel:010-9419-6832"
+        href={`tel:${phone}`}
         className={`flex items-center justify-center gap-2.5 w-full sm:w-auto px-8 py-4.5 font-extrabold text-[15.5px] rounded-full hover:-translate-y-[1px] transition-all cursor-pointer ${
           showKakao
             ? "bg-white border-2 border-teal-600/30 text-teal-800 hover:bg-teal-50/30 hover:border-teal-600/50 hover:shadow-md"

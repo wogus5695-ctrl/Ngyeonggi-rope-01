@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ContactCTA from "@/components/ContactCTA";
 import FAQSchema from "@/components/FAQSchema";
+import FloatingCallButton from "@/components/FloatingCallButton";
 import { getMetadata } from "@/lib/seo";
 import { BRAND_HUB_CONTENT } from "@/data/brandHub";
 
@@ -38,7 +39,7 @@ function validateKeyword(k: string | undefined): { isValid: boolean; region: str
     (r) => r.name === rawRegion || r.slug === rawRegion || rawRegion.includes(r.name)
   );
 
-  const allowedServices = ["창틀코킹", "창틀누수", "빗물누수", "창틀실리콘", "샷시실리콘", "외벽누수"];
+  const allowedServices = ["창틀코킹", "창틀누수", "빗물누수", "창틀실리콘", "샷시실리콘", "외벽누수", "외벽방수", "옥상방수", "건물방수", "외벽도색"];
   const isServiceAllowed = allowedServices.includes(rawService);
 
   if (isRegionAllowed && isServiceAllowed) {
@@ -79,6 +80,9 @@ export default async function Home({ searchParams }: Props) {
 
   // 1. 키워드 검증 및 기본값 분기
   const { isValid, region, service } = validateKeyword(k);
+
+  const isWaterproofing = isValid && ["외벽방수", "옥상방수", "건물방수", "외벽도색"].includes(service);
+  const phone = isWaterproofing ? "010-4667-5568" : "010-9419-6832";
 
   // 기본 브랜드 설정 (Fallback)
   let heroLocation = "레인가드";
@@ -143,7 +147,7 @@ export default async function Home({ searchParams }: Props) {
       {/* FAQ 구조화 데이터 자동 주입 */}
       <FAQSchema faqs={faqList} />
 
-      <Header />
+      <Header phone={phone} />
 
       <main className="flex-grow bg-white">
         {/* 1. 히어로 섹션 */}
@@ -151,6 +155,7 @@ export default async function Home({ searchParams }: Props) {
           locationName={heroLocation}
           serviceTitle={heroService}
           serviceName={isValid ? service : "창틀코킹"}
+          phone={phone}
           intro={heroIntro}
           keywords={[
             "100% 전면 철거 원칙",
@@ -235,7 +240,7 @@ export default async function Home({ searchParams }: Props) {
               
               {/* CTA 버튼 (전화 상담 위주, 카카오톡은 추후 활성화를 위해 비활성화됨) */}
               <div className="pt-2">
-                <ContactCTA />
+                <ContactCTA phone={phone} />
               </div>
               
               {/* 태그 안내 영역 */}
@@ -265,7 +270,8 @@ export default async function Home({ searchParams }: Props) {
         </section>
       </main>
 
-      <Footer dynamicKeyword={analysisDynamicKeyword} />
+      <Footer dynamicKeyword={analysisDynamicKeyword} phone={phone} />
+      <FloatingCallButton phone={phone} />
     </div>
   );
 }

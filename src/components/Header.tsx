@@ -3,7 +3,11 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 
-export default function Header() {
+interface HeaderProps {
+  phone?: string;
+}
+
+export default function Header({ phone = "010-9419-6832" }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -85,7 +89,7 @@ export default function Header() {
             실시간 진단 의뢰
           </Link>
           <Link
-            href="tel:010-9419-6832" // 실제 상담용 가상 번호
+            href={`tel:${phone}`} // 실제 상담용 가상 번호
             className="inline-flex md:hidden items-center justify-center w-10 h-10 bg-teal-50 border border-teal-500/10 text-teal-600 hover:bg-teal-100 transition-colors rounded-full"
           >
             <svg

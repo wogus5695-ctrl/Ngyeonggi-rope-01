@@ -3,7 +3,11 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 
-export default function FloatingCallButton() {
+interface FloatingCallButtonProps {
+  phone?: string;
+}
+
+export default function FloatingCallButton({ phone = "010-9419-6832" }: FloatingCallButtonProps) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -43,7 +47,7 @@ export default function FloatingCallButton() {
           
           {/* 전화 버튼 */}
           <a
-            href="tel:010-9419-6832"
+            href={`tel:${phone}`}
             className="w-9 h-9 bg-emerald-500 hover:bg-emerald-600 hover:scale-[1.05] active:scale-[0.95] text-white rounded-full flex items-center justify-center transition-all duration-200"
           >
             <svg
