@@ -162,8 +162,8 @@ export default function LocalDiagnostics({ isWaterproofing }: LocalDiagnosticsPr
             <div className="bg-white rounded-[32px] border border-slate-100 shadow-md p-3">
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
                 <Image
-                  src={isWaterproofing ? "/og-image-waterproof.jpg" : "/leak-symptom.jpg"}
-                  alt={isWaterproofing ? "실제 외벽 크랙 보강 및 방수 작업 현장" : "실제 창틀 주변 실리콘 박리 및 누수 유입 현장"}
+                  src={isWaterproofing ? "/waterproof-diagnostic.png" : "/leak-symptom.jpg"}
+                  alt={isWaterproofing ? "실제 옥상 바닥 균열 방수 보강 작업 현장" : "실제 창틀 주변 실리콘 박리 및 누수 유입 현장"}
                   fill
                   sizes="(max-width: 1024px) 100vw, 30vw"
                   className="object-cover"
@@ -174,11 +174,11 @@ export default function LocalDiagnostics({ isWaterproofing }: LocalDiagnosticsPr
                   현장 정밀 검수 사진
                 </span>
                 <h4 className="text-[14px] font-bold text-slate-800">
-                  {isWaterproofing ? "외벽 균열 및 방수 보강 작업" : "창틀 주변 실리콘 박리 현장"}
+                  {isWaterproofing ? "옥상 바닥 균열 방수 보강 작업" : "창틀 주변 실리콘 박리 현장"}
                 </h4>
                 <p className="text-[12.5px] text-slate-500 mt-1 leading-relaxed">
                   {isWaterproofing 
-                    ? "노후화된 건물 외벽의 콘크리트 미세 크랙을 보강하고 기밀 방수 처리를 적용하여 누수를 차단하는 고소 로프 작업 현장입니다."
+                    ? "노후화된 건물 옥상 바닥의 콘크리트 균열을 정밀 보수하고 기밀 방수 실링 처리를 적용해 누수 원인을 차단하는 현장입니다."
                     : "노화된 실리콘이 틈새에서 떨어져 나가 외벽 콘크리트와의 접합부 틈새로 비가 올 때마다 누수를 일으키는 실제 상황입니다."}
                 </p>
               </div>
