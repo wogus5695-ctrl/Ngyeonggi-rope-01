@@ -11,7 +11,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   REGIONS_DB.forEach(region => {
     region.areas.forEach(area => {
+      // 기존 6대 서비스
       SERVICES.forEach(service => {
+        regionalUrls.push({
+          url: `${baseUrl}/?k=${encodeURIComponent(`${area}-${service}`)}`,
+          lastModified: new Date(),
+          changeFrequency: 'monthly',
+          priority: 0.8,
+        });
+      });
+
+      // 신규 방수 4대 서비스
+      const waterproofingServices = ["외벽방수", "옥상방수", "건물방수", "외벽도색"];
+      waterproofingServices.forEach(service => {
         regionalUrls.push({
           url: `${baseUrl}/?k=${encodeURIComponent(`${area}-${service}`)}`,
           lastModified: new Date(),
