@@ -175,8 +175,8 @@ export default function LocalProcess({ title, process, isWaterproofing }: LocalP
         <div className="hidden md:block mt-12 p-5 bg-teal-50/40 border border-teal-500/10 rounded-2xl max-w-3xl mx-auto text-center">
           <p className="text-[14px] sm:text-[14.5px] font-bold text-slate-800 leading-relaxed">
             {isWaterproofing
-              ? "레인가드는 건물의 노화 원인을 분석하여 옥상 및 외벽 균열 상태에 알맞은 방수 보강 공사를 수행합니다."
-              : "레인가드는 현장 상태에 따라 필요한 시공 방식을 구분해 재누수 가능성을 줄이는 방향으로 작업합니다."}
+              ? "틈새케어는 건물의 노화 원인을 분석하여 옥상 및 외벽 균열 상태에 알맞은 방수 보강 공사를 수행합니다."
+              : "틈새케어는 현장 상태에 따라 필요한 시공 방식을 구분해 재누수 가능성을 줄이는 방향으로 작업합니다."}
           </p>
         </div>
 

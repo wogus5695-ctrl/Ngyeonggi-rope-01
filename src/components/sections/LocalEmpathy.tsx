@@ -158,11 +158,11 @@ export default function LocalEmpathy({ locationName, dynamicIntro, isWaterproofi
               <p className="text-[14px] font-bold text-teal-100 leading-relaxed">
                 {isWaterproofing ? (
                   <>
-                    레인가드는 ‘단순히 칠하기’보다 <span className="text-teal-400 font-extrabold">‘건물 전체의 방수 장벽’</span>을 완벽히 재건합니다.
+                    틈새케어는 ‘단순히 칠하기’보다 <span className="text-teal-400 font-extrabold">‘건물 전체의 방수 장벽’</span>을 완벽히 재건합니다.
                   </>
                 ) : (
                   <>
-                    레인가드는 ‘어디에 다시 쏠지’보다 <span className="text-teal-400 font-extrabold">‘어디서 물이 들어오는지’</span>를 먼저 확인합니다.
+                    틈새케어는 ‘어디에 다시 쏠지’보다 <span className="text-teal-400 font-extrabold">‘어디서 물이 들어오는지’</span>를 먼저 확인합니다.
                   </>
                 )}
               </p>

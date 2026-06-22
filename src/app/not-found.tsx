@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -29,7 +29,7 @@ export default function NotFound() {
           
           <p className="text-[14px] text-slate-500 leading-relaxed mb-8">
             존재하지 않거나 만료된 시공 페이지 경로입니다. 
-            주소가 올바른지 확인하시거나 아래 홈 버튼을 통해 레인가드 정밀 검수를 다시 이용해 주세요.
+            주소가 올바른지 확인하시거나 아래 홈 버튼을 통해 틈새케어 정밀 검수를 다시 이용해 주세요.
           </p>
 
           <Link

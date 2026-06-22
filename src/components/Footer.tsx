@@ -29,7 +29,7 @@ export default function Footer({ dynamicKeyword, phone = "010-9419-6832", isWate
                 </svg>
               </div>
               <span className="text-[17px] font-extrabold tracking-tight text-white">
-                레인가드
+                틈새케어
               </span>
             </div>
             <p className="text-[14px] leading-relaxed text-slate-400 mb-6">
@@ -78,7 +78,7 @@ export default function Footer({ dynamicKeyword, phone = "010-9419-6832", isWate
 
         {/* Footer Bottom / Dynamic SEO Hook */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[13px] text-slate-600">
-          <p>© {new Date().getFullYear()} 레인가드. All Rights Reserved.</p>
+          <p>© {new Date().getFullYear()} 틈새케어. All Rights Reserved.</p>
         </div>
       </div>
     </footer>

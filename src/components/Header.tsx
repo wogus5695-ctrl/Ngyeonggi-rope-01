@@ -61,7 +61,7 @@ export default function Header({ phone = "010-9419-6832", isWaterproofing }: Hea
             </svg>
           </div>
           <span className="text-[17px] font-extrabold tracking-tight text-slate-800">
-            레인가드
+            틈새케어
           </span>
         </Link>
 

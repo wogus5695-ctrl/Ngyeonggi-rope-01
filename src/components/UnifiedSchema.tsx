@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 
 interface FAQItem {
   question: string;
@@ -38,7 +38,7 @@ export default function UnifiedSchema({
     "description": description,
     "publisher": {
       "@type": "Organization",
-      "name": "레인가드",
+      "name": "틈새케어",
       "logo": {
         "@type": "ImageObject",
         "url": "https://teumsaecare.co.kr/web-thumbnail.jpg"

@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 
 interface LocalCostsProps {
   costFactors: string[];
@@ -48,7 +48,7 @@ export default function LocalCosts({ costFactors }: LocalCostsProps) {
             합리적인 견적 산출 3대 요소
           </h2>
           <p className="text-[14.5px] text-slate-500 max-w-lg mx-auto leading-relaxed">
-            레인가드는 불투명한 임의 청구 없이 투명한 세부 산정 기준을 통보해 드립니다.
+            틈새케어는 불투명한 임의 청구 없이 투명한 세부 산정 기준을 통보해 드립니다.
           </p>
         </div>
 

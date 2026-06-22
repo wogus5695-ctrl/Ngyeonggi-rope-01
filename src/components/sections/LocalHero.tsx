@@ -24,7 +24,7 @@ export default function LocalHero({
   isWaterproofing 
 }: LocalHeroProps) {
   // PC/태블릿에서 사용할 본문 문구 처리 (폴백 긴 문장은 요약본으로 교체, 동적 문구는 유지)
-  const isFallbackIntro = intro.includes("\n") || !locationName || locationName === "레인가드";
+  const isFallbackIntro = intro.includes("\n") || !locationName || locationName === "틈새케어";
   const pcIntro = isFallbackIntro
     ? isWaterproofing
       ? "단순 땜질식 방수보다 외벽 균열, 옥상 우레탄, 조인트 방수 상태를 확인해\n누수의 근본적인 원인을 해결하고 방수 수명을 극대화합니다."
@@ -54,7 +54,7 @@ export default function LocalHero({
         <div className="absolute bottom-12 left-0 w-full px-6 z-20 flex flex-col justify-end text-left">
           {/* 브랜드명 */}
           <div className="text-teal-400 font-black text-[13.5px] tracking-widest uppercase mb-1.5">
-            레인가드
+            틈새케어
           </div>
 
           {/* Mobile Heading */}
@@ -92,7 +92,7 @@ export default function LocalHero({
             <div className="space-y-3">
               {/* Brand Name */}
               <div className="text-teal-600 font-black text-[13.5px] tracking-widest uppercase">
-                레인가드
+                틈새케어
               </div>
 
               {/* H1 Title: 네이버 SEO 반영 및 동적 키워드 유지 */}
