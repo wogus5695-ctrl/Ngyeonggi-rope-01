@@ -1,1 +1,1 @@
-export const kakaoChannelUrl = "https://pf.kakao.com/_REPLACE_ME/chat";
+export const kakaoChannelUrl = "http://pf.kakao.com/_xjbFxfX";
