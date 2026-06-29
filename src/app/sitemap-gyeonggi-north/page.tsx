@@ -16,7 +16,7 @@ export const metadata: Metadata = getMetadata({
 export default function SitemapGyeonggiNorthPage() {
   return (
     <div className="font-sans antialiased bg-slate-50 min-h-screen flex flex-col">
-      <Header />
+      <Header hideKakao={true} />
       
       <main className="flex-grow pt-32 pb-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">

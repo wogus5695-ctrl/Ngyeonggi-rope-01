@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { kakaoChannelUrl } from "@/data/config";
 
 interface LocalHeroProps {
   locationName: string;
@@ -147,18 +148,24 @@ export default function LocalHero({
 
             {/* Action CTA Buttons (PC에서만 유지) */}
             <div className="pt-2 flex flex-row items-center gap-3">
-              <Link
-                href="#contact"
-                className="px-6 py-4 w-full sm:w-auto text-center bg-teal-600 hover:bg-teal-700 text-white text-[15px] font-black rounded-xl shadow-sm hover:shadow-md transition-all"
-              >
-                간편 상담 신청
-              </Link>
-              <Link
+              <a
                 href={`tel:${phone}`}
-                className="px-6 py-4 w-full sm:w-auto text-center bg-white hover:bg-slate-50 text-slate-700 text-[15px] font-bold rounded-xl border border-slate-200 shadow-2xs hover:shadow-sm transition-all"
+                className="px-6 py-4 w-full sm:w-auto text-center bg-teal-600 hover:bg-teal-700 text-white text-[15px] font-black rounded-xl shadow-sm hover:shadow-md transition-all cursor-pointer"
+                data-cta="phone"
+                aria-label="전화 상담"
               >
-                전화 상담
-              </Link>
+                전화 상담하기
+              </a>
+              <a
+                href={kakaoChannelUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-4 w-full sm:w-auto text-center bg-[#FEE500] hover:bg-[#FDD800] text-slate-900 text-[15px] font-black rounded-xl shadow-sm hover:shadow-md border border-[#EBE300]/20 transition-all cursor-pointer"
+                data-cta="kakao"
+                aria-label="카카오톡 채널 상담"
+              >
+                카톡 사진 상담
+              </a>
             </div>
           </div>
         </div>

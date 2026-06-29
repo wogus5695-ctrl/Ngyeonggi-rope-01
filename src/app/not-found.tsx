@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 export default function NotFound() {
   return (
     <div className="flex min-h-screen flex-col font-sans antialiased bg-slate-50">
-      <Header />
+      <Header hideKakao={true} />
       
       <main className="flex-grow flex items-center justify-center pt-32 pb-24 px-4">
         <div className="max-w-md w-full bg-white border border-teal-500/10 rounded-[32px] p-8 md:p-12 text-center shadow-xl relative overflow-hidden">

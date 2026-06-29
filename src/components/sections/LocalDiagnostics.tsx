@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { kakaoChannelUrl } from "@/data/config";
 
 interface LocalDiagnosticsProps {
   isWaterproofing?: boolean;
@@ -188,17 +189,23 @@ export default function LocalDiagnostics({ isWaterproofing }: LocalDiagnosticsPr
 
         {/* Section Action CTA (Centered) */}
         <div className="text-center pt-8 border-t border-slate-200/50 mt-16 flex flex-col items-center gap-3">
-          <p className="text-[13.5px] sm:text-[14.5px] text-slate-500 font-bold tracking-tight hidden sm:block">
-            {isWaterproofing
-              ? "※ 외벽 균열, 옥상 바닥 상태 사진만으로도 기본 견적을 먼저 확인해드릴 수 있습니다."
-              : "※ 창틀, 실리콘, 외벽 사진만으로도 기본 상태를 먼저 확인해드릴 수 있습니다."}
+          <p className="text-[13.5px] sm:text-[14.5px] text-slate-500 font-bold tracking-tight leading-relaxed max-w-2xl mx-auto px-4">
+            <span>
+              {isWaterproofing
+                ? "※ 외벽 균열, 옥상 바닥 상태 사진만으로도 기본 견적을 먼저 확인해드릴 수 있습니다."
+                : "※ 창틀, 실리콘, 외벽 사진만으로도 기본 상태를 먼저 확인해드릴 수 있습니다."}
+            </span>
+            <a
+              href={kakaoChannelUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-teal-600 hover:text-teal-700 font-black underline ml-1.5 inline-flex items-center gap-0.5"
+              data-cta="kakao"
+              aria-label="카카오톡 채널 상담"
+            >
+              사진으로 증상 확인받기 &rarr;
+            </a>
           </p>
-          <Link
-            href="#contact"
-            className="inline-flex sm:hidden items-center justify-center px-8 py-4.5 w-full text-center bg-teal-600 hover:bg-teal-700 text-white text-[15.5px] font-black rounded-2xl shadow-xs hover:shadow-sm transition-all"
-          >
-            사진 보내고 상태 확인하기
-          </Link>
         </div>
       </div>
     </section>
