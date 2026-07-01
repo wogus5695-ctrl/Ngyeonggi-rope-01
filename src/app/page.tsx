@@ -84,7 +84,7 @@ export default async function Home({ searchParams }: Props) {
   const { isValid, region, service } = validateKeyword(k);
 
   const isWaterproofing = isValid && ["외벽방수", "옥상방수", "건물방수", "외벽도색"].includes(service);
-  const phone = isWaterproofing ? "010-4667-5568" : "010-9419-6832";
+  const phone = isWaterproofing ? "010-4667-5568" : "010-3951-6831";
 
   // 기본 브랜드 설정 (Fallback)
   let heroLocation = "틈새케어";

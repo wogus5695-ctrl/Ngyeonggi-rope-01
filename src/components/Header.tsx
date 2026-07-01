@@ -10,7 +10,7 @@ interface HeaderProps {
   hideKakao?: boolean;
 }
 
-export default function Header({ phone = "010-9419-6832", isWaterproofing, hideKakao }: HeaderProps) {
+export default function Header({ phone = "010-3951-6831", isWaterproofing, hideKakao }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {

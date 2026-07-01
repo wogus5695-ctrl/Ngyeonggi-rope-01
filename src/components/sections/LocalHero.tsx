@@ -19,7 +19,7 @@ export default function LocalHero({
   locationName, 
   serviceTitle, 
   serviceName, 
-  phone = "010-9419-6832", 
+  phone = "010-3951-6831", 
   intro, 
   keywords,
   isWaterproofing 
