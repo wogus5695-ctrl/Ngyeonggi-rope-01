@@ -153,7 +153,89 @@ export const TEUMSAE_ALLOWED_REGIONS: Record<string, AllowedRegion> = {
   "docheok-myeon": { slug: "docheok-myeon", name: "도척면", province: "gyeonggi", parentDistrict: "광주시" },
   "toechon-myeon": { slug: "toechon-myeon", name: "퇴촌면", province: "gyeonggi", parentDistrict: "광주시" },
   "namjong-myeon": { slug: "namjong-myeon", name: "남종면", province: "gyeonggi", parentDistrict: "광주시" },
-  "namhansanseong-myeon": { slug: "namhansanseong-myeon", name: "남한산성면", province: "gyeonggi", parentDistrict: "광주시" }
+  "namhansanseong-myeon": { slug: "namhansanseong-myeon", name: "남한산성면", province: "gyeonggi", parentDistrict: "광주시" },
+
+  // 서울 동북권 자치구 및 대표 동 (중복 방지를 위해 seoul- 접두사 사용)
+  // 1. 도봉구
+  "seoul-dobong": { slug: "seoul-dobong", name: "도봉구", province: "seoul" },
+  "seoul-ssangmun": { slug: "seoul-ssangmun", name: "쌍문동", province: "seoul", parentDistrict: "서울시 도봉구" },
+  "seoul-banghak": { slug: "seoul-banghak", name: "방학동", province: "seoul", parentDistrict: "서울시 도봉구" },
+  "seoul-chang": { slug: "seoul-chang", name: "창동", province: "seoul", parentDistrict: "서울시 도봉구" },
+  "seoul-dobong-dong": { slug: "seoul-dobong-dong", name: "도봉동", province: "seoul", parentDistrict: "서울시 도봉구" },
+
+  // 2. 강북구
+  "seoul-gangbuk": { slug: "seoul-gangbuk", name: "강북구", province: "seoul" },
+  "seoul-mia": { slug: "seoul-mia", name: "미아동", province: "seoul", parentDistrict: "서울시 강북구" },
+  "seoul-beon": { slug: "seoul-beon", name: "번동", province: "seoul", parentDistrict: "서울시 강북구" },
+  "seoul-suyu": { slug: "seoul-suyu", name: "수유동", province: "seoul", parentDistrict: "서울시 강북구" },
+  "seoul-ui": { slug: "seoul-ui", name: "우이동", province: "seoul", parentDistrict: "서울시 강북구" },
+
+  // 3. 성북구
+  "seoul-seongbuk": { slug: "seoul-seongbuk", name: "성북구", province: "seoul" },
+  "seoul-seongbuk-dong": { slug: "seoul-seongbuk-dong", name: "성북동", province: "seoul", parentDistrict: "서울시 성북구" },
+  "seoul-samseon": { slug: "seoul-samseon", name: "삼선동", province: "seoul", parentDistrict: "서울시 성북구" },
+  "seoul-dongseon": { slug: "seoul-dongseon", name: "동선동", province: "seoul", parentDistrict: "서울시 성북구" },
+  "seoul-donam": { slug: "seoul-donam", name: "돈암동", province: "seoul", parentDistrict: "서울시 성북구" },
+  "seoul-anam": { slug: "seoul-anam", name: "안암동", province: "seoul", parentDistrict: "서울시 성북구" },
+  "seoul-bomun": { slug: "seoul-bomun", name: "보문동", province: "seoul", parentDistrict: "서울시 성북구" },
+  "seoul-jeongneung": { slug: "seoul-jeongneung", name: "정릉동", province: "seoul", parentDistrict: "서울시 성북구" },
+  "seoul-gireum": { slug: "seoul-gireum", name: "길음동", province: "seoul", parentDistrict: "서울시 성북구" },
+  "seoul-jongam": { slug: "seoul-jongam", name: "종암동", province: "seoul", parentDistrict: "서울시 성북구" },
+  "seoul-wolgok": { slug: "seoul-wolgok", name: "월곡동", province: "seoul", parentDistrict: "서울시 성북구" },
+  "seoul-jangwi": { slug: "seoul-jangwi", name: "장위동", province: "seoul", parentDistrict: "서울시 성북구" },
+  "seoul-seokgwan": { slug: "seoul-seokgwan", name: "석관동", province: "seoul", parentDistrict: "서울시 성북구" },
+
+  // 4. 노원구
+  "seoul-nowon": { slug: "seoul-nowon", name: "노원구", province: "seoul" },
+  "seoul-wolgye": { slug: "seoul-wolgye", name: "월계동", province: "seoul", parentDistrict: "서울시 노원구" },
+  "seoul-gongneung": { slug: "seoul-gongneung", name: "공릉동", province: "seoul", parentDistrict: "서울시 노원구" },
+  "seoul-hagye": { slug: "seoul-hagye", name: "하계동", province: "seoul", parentDistrict: "서울시 노원구" },
+  "seoul-junggye": { slug: "seoul-junggye", name: "중계동", province: "seoul", parentDistrict: "서울시 노원구" },
+  "seoul-sanggye": { slug: "seoul-sanggye", name: "상계동", province: "seoul", parentDistrict: "서울시 노원구" },
+
+  // 5. 중랑구
+  "seoul-jungnang": { slug: "seoul-jungnang", name: "중랑구", province: "seoul" },
+  "seoul-myeonmok": { slug: "seoul-myeonmok", name: "면목동", province: "seoul", parentDistrict: "서울시 중랑구" },
+  "seoul-sangbong": { slug: "seoul-sangbong", name: "상봉동", province: "seoul", parentDistrict: "서울시 중랑구" },
+  "seoul-junghwa": { slug: "seoul-junghwa", name: "중화동", province: "seoul", parentDistrict: "서울시 중랑구" },
+  "seoul-muk": { slug: "seoul-muk", name: "묵동", province: "seoul", parentDistrict: "서울시 중랑구" },
+  "seoul-mangwoo": { slug: "seoul-mangwoo", name: "망우동", province: "seoul", parentDistrict: "서울시 중랑구" },
+  "seoul-sinnae": { slug: "seoul-sinnae", name: "신내동", province: "seoul", parentDistrict: "서울시 중랑구" },
+
+  // 6. 동대문구
+  "seoul-dongdaemun": { slug: "seoul-dongdaemun", name: "동대문구", province: "seoul" },
+  "seoul-yongsin": { slug: "seoul-yongsin", name: "용신동", province: "seoul", parentDistrict: "서울시 동대문구" },
+  "seoul-jegi": { slug: "seoul-jegi", name: "제기동", province: "seoul", parentDistrict: "서울시 동대문구" },
+  "seoul-jeonnong": { slug: "seoul-jeonnong", name: "전농동", province: "seoul", parentDistrict: "서울시 동대문구" },
+  "seoul-dapsimni": { slug: "seoul-dapsimni", name: "답십리동", province: "seoul", parentDistrict: "서울시 동대문구" },
+  "seoul-jangan": { slug: "seoul-jangan", name: "장안동", province: "seoul", parentDistrict: "서울시 동대문구" },
+  "seoul-cheongryangri": { slug: "seoul-cheongryangri", name: "청량리동", province: "seoul", parentDistrict: "서울시 동대문구" },
+  "seoul-hoegi": { slug: "seoul-hoegi", name: "회기동", province: "seoul", parentDistrict: "서울시 동대문구" },
+  "seoul-hwigyeong": { slug: "seoul-hwigyeong", name: "휘경동", province: "seoul", parentDistrict: "서울시 동대문구" },
+  "seoul-imun": { slug: "seoul-imun", name: "이문동", province: "seoul", parentDistrict: "서울시 동대문구" },
+
+  // 7. 성동구
+  "seoul-seongdong": { slug: "seoul-seongdong", name: "성동구", province: "seoul" },
+  "seoul-wangsimni": { slug: "seoul-wangsimni", name: "왕십리동", province: "seoul", parentDistrict: "서울시 성동구" },
+  "seoul-majang": { slug: "seoul-majang", name: "마장동", province: "seoul", parentDistrict: "서울시 성동구" },
+  "seoul-sageun": { slug: "seoul-sageun", name: "사근동", province: "seoul", parentDistrict: "서울시 성동구" },
+  "seoul-haengdang": { slug: "seoul-haengdang", name: "행당동", province: "seoul", parentDistrict: "서울시 성동구" },
+  "seoul-eungbong": { slug: "seoul-eungbong", name: "응봉동", province: "seoul", parentDistrict: "서울시 성동구" },
+  "seoul-geumho": { slug: "seoul-geumho", name: "금호동", province: "seoul", parentDistrict: "서울시 성동구" },
+  "seoul-oksu": { slug: "seoul-oksu", name: "옥수동", province: "seoul", parentDistrict: "서울시 성동구" },
+  "seoul-seongsu": { slug: "seoul-seongsu", name: "성수동", province: "seoul", parentDistrict: "서울시 성동구" },
+  "seoul-songjeong": { slug: "seoul-songjeong", name: "송정동", province: "seoul", parentDistrict: "서울시 성동구" },
+  "seoul-yongdap": { slug: "seoul-yongdap", name: "용답동", province: "seoul", parentDistrict: "서울시 성동구" },
+
+  // 8. 광진구
+  "seoul-gwangjin": { slug: "seoul-gwangjin", name: "광진구", province: "seoul" },
+  "seoul-hwayang": { slug: "seoul-hwayang", name: "화양동", province: "seoul", parentDistrict: "서울시 광진구" },
+  "seoul-gunja": { slug: "seoul-gunja", name: "군자동", province: "seoul", parentDistrict: "서울시 광진구" },
+  "seoul-junggok": { slug: "seoul-junggok", name: "중곡동", province: "seoul", parentDistrict: "서울시 광진구" },
+  "seoul-neung": { slug: "seoul-neung", name: "능동", province: "seoul", parentDistrict: "서울시 광진구" },
+  "seoul-guui": { slug: "seoul-guui", name: "구의동", province: "seoul", parentDistrict: "서울시 광진구" },
+  "seoul-gwangjang": { slug: "seoul-gwangjang", name: "광장동", province: "seoul", parentDistrict: "서울시 광진구" },
+  "seoul-jayang": { slug: "seoul-jayang", name: "자양동", province: "seoul", parentDistrict: "서울시 광진구" }
 };
 
 

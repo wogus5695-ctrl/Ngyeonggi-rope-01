@@ -1,17 +1,20 @@
 import { MetadataRoute } from 'next';
 import { portfolioCases } from '@/data/portfolio';
-import { REGIONS_DB, SERVICES } from '@/data/sitemapKeywords';
+import { REGIONS_DB, SEOUL_EAST_REGIONS_DB, SERVICES } from '@/data/sitemapKeywords';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://teumsaecare.co.kr';
 
   // 1. 대표 동적변환 랜딩 URL 대량 생성 (/?k=지역명-작업명)
-  // 49개 지역명 * 6개 서비스 = 294개 조합
   const regionalUrls: MetadataRoute.Sitemap = [];
+  const waterproofingServices = ["외벽방수", "옥상방수", "건물방수", "외벽도색"];
 
-  REGIONS_DB.forEach(region => {
+  // 경기 북부 + 서울 동북권 통합 리스트 생성
+  const allRegionGroups = [...REGIONS_DB, ...SEOUL_EAST_REGIONS_DB];
+
+  allRegionGroups.forEach(region => {
     region.areas.forEach(area => {
-      // 기존 6대 서비스
+      // 6대 창틀코킹 서비스
       SERVICES.forEach(service => {
         regionalUrls.push({
           url: `${baseUrl}/?k=${encodeURIComponent(`${area}-${service}`)}`,
@@ -21,8 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         });
       });
 
-      // 신규 방수 4대 서비스
-      const waterproofingServices = ["외벽방수", "옥상방수", "건물방수", "외벽도색"];
+      // 4대 방수 서비스
       waterproofingServices.forEach(service => {
         regionalUrls.push({
           url: `${baseUrl}/?k=${encodeURIComponent(`${area}-${service}`)}`,

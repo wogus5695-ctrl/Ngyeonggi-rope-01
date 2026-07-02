@@ -161,6 +161,16 @@ export const GWANGJU_REGIONS = [
   "남한산성면"
 ];
 
+// 서울 동북권 지역군 상세 정의 (대표 동명 통합 완료)
+export const SEOUL_DOBONG_REGIONS = ["도봉구", "쌍문동", "방학동", "창동", "도봉동"];
+export const SEOUL_GANGBUK_REGIONS = ["강북구", "미아동", "번동", "수유동", "우이동"];
+export const SEOUL_SEONGBUK_REGIONS = ["성북구", "성북동", "삼선동", "동선동", "돈암동", "안암동", "보문동", "정릉동", "길음동", "종암동", "월곡동", "장위동", "석관동"];
+export const SEOUL_NOWON_REGIONS = ["노원구", "월계동", "공릉동", "하계동", "중계동", "상계동"];
+export const SEOUL_JUNGNANG_REGIONS = ["중랑구", "면목동", "상봉동", "중화동", "묵동", "망우동", "신내동"];
+export const SEOUL_DONGDAEMUN_REGIONS = ["동대문구", "용신동", "제기동", "전농동", "답십리동", "장안동", "청량리동", "회기동", "휘경동", "이문동"];
+export const SEOUL_SEONGDONG_REGIONS = ["성동구", "왕십리동", "마장동", "사근동", "행당동", "응봉동", "금호동", "옥수동", "성수동", "송정동", "용답동"];
+export const SEOUL_GWANGJIN_REGIONS = ["광진구", "화양동", "군자동", "중곡동", "능동", "구의동", "광장동", "자양동"];
+
 export const REGIONS_DB = [
   { city: "고양시", areas: GOYANG_REGIONS },
   { city: "파주시", areas: PAJU_REGIONS },
@@ -170,6 +180,17 @@ export const REGIONS_DB = [
   { city: "동두천시", areas: DONGDUCHEON_REGIONS },
   { city: "남양주시", areas: NAMYANGJU_REGIONS },
   { city: "광주시", areas: GWANGJU_REGIONS }
+];
+
+export const SEOUL_EAST_REGIONS_DB = [
+  { city: "도봉구", areas: SEOUL_DOBONG_REGIONS },
+  { city: "강북구", areas: SEOUL_GANGBUK_REGIONS },
+  { city: "성북구", areas: SEOUL_SEONGBUK_REGIONS },
+  { city: "노원구", areas: SEOUL_NOWON_REGIONS },
+  { city: "중랑구", areas: SEOUL_JUNGNANG_REGIONS },
+  { city: "동대문구", areas: SEOUL_DONGDAEMUN_REGIONS },
+  { city: "성동구", areas: SEOUL_SEONGDONG_REGIONS },
+  { city: "광진구", areas: SEOUL_GWANGJIN_REGIONS }
 ];
 
 
