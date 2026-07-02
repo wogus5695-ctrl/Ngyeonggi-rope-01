@@ -3,7 +3,7 @@ import { portfolioCases } from '@/data/portfolio';
 import { REGIONS_DB, SEOUL_EAST_REGIONS_DB, SERVICES } from '@/data/sitemapKeywords';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://teumsaecare.co.kr';
+  const baseUrl = 'https://www.teumsaecare.co.kr';
 
   // 1. 대표 동적변환 랜딩 URL 대량 생성 (/?k=지역명-작업명)
   const regionalUrls: MetadataRoute.Sitemap = [];
@@ -60,9 +60,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   ];
 
-  return [
+  const allUrls = [
     ...staticUrls,
     ...portfolioUrls,
     ...regionalUrls,
   ];
+
+  // 중복 URL 방지 필터링
+  const uniqueUrls: MetadataRoute.Sitemap = [];
+  const seenUrls = new Set<string>();
+
+  for (const item of allUrls) {
+    if (!seenUrls.has(item.url)) {
+      seenUrls.add(item.url);
+      uniqueUrls.push(item);
+    }
+  }
+
+  return uniqueUrls;
 }
