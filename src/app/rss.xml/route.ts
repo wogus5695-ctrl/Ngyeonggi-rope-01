@@ -15,35 +15,19 @@ export async function GET() {
     <atom:link href="${baseUrl}/rss.xml" rel="self" type="application/rss+xml" />
 
     <item>
-      <title>틈새케어 창틀코킹·방수 시공 상담</title>
-      <link>${baseUrl}/</link>
-      <description><![CDATA[아파트/빌라 창틀누수, 베란다 빗물유입, 건물 외벽방수 및 옥상 우레탄 방수 시공 상담 안내 및 전담 엔지니어 기밀 케어 서비스]]></description>
-      <pubDate>Thu, 02 Jul 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">${baseUrl}/</guid>
-    </item>
-
-    <item>
-      <title>틈새케어 서비스 지역 키워드 안내</title>
+      <title>틈새케어 서울 전 지역 창틀코킹·방수 시공 서비스 안내</title>
       <link>${baseUrl}/sitemap-gyeonggi-north</link>
-      <description><![CDATA[경기 북부(고양, 파주, 양주, 구리, 의정부, 동두천, 남양주, 광주) 및 서울 전 지역(동북·서북·도심·동남·서남권) 창틀코킹·방수 시공 서비스 구역 목록 안내 페이지]]></description>
+      <description><![CDATA[서울 동북권, 서북권, 도심권, 동남권, 서남권의 창틀코킹·빗물누수·외벽방수·옥상방수 서비스 지역 안내]]></description>
       <pubDate>Thu, 02 Jul 2026 00:00:00 GMT</pubDate>
       <guid isPermaLink="true">${baseUrl}/sitemap-gyeonggi-north</guid>
     </item>
 
     <item>
-      <title>서울 전 지역 창틀코킹 안내</title>
-      <link>${baseUrl}/sitemap-gyeonggi-north</link>
-      <description><![CDATA[서울 전역(도봉·강북·성북·노원·중랑·동대문·성동·광진·은평·서대문·마포·용산·중구·종로·강동·송파·강남·서초·동작·관악·금천·영등포·양천·구로·강서구) 아파트 및 빌라 창틀실리콘 코킹, 샷시 틈새 빗물누수 보수 안내]]></description>
+      <title>틈새케어 창틀코킹·방수 시공 상담</title>
+      <link>${baseUrl}/</link>
+      <description><![CDATA[아파트/빌라 창틀누수, 베란다 빗물유입, 건물 외벽방수 및 옥상 우레탄 방수 시공 상담 안내 및 전담 엔지니어 기밀 케어 서비스]]></description>
       <pubDate>Thu, 02 Jul 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">${baseUrl}/sitemap-gyeonggi-north#seoul-caulking</guid>
-    </item>
-
-    <item>
-      <title>서울 전 지역 방수 시공 안내</title>
-      <link>${baseUrl}/sitemap-gyeonggi-north</link>
-      <description><![CDATA[서울 전 권역 외벽방수, 옥상 우레탄 방수, 건물 방수 크랙 보수 및 외벽 도색 시공 안내]]></description>
-      <pubDate>Thu, 02 Jul 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">${baseUrl}/sitemap-gyeonggi-north#seoul-waterproof</guid>
+      <guid isPermaLink="true">${baseUrl}/</guid>
     </item>
   </channel>
 </rss>`;
