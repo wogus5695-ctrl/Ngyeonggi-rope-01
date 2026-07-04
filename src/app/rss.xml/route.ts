@@ -8,7 +8,7 @@ export async function GET() {
   <channel>
     <title>틈새케어 창틀코킹 및 방수 시공</title>
     <link>${baseUrl}</link>
-    <description>수도권(경기 북부 및 서울 동북권) 창틀코킹, 빗물누수, 외벽방수, 옥상방수 정밀 시공 및 상담 전문 틈새케어입니다.</description>
+    <description>수도권(경기 북부 및 서울 전 지역) 창틀코킹, 빗물누수, 외벽방수, 옥상방수 정밀 시공 및 상담 전문 틈새케어입니다.</description>
     <language>ko</language>
     <pubDate>${new Date().toUTCString()}</pubDate>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
@@ -25,23 +25,23 @@ export async function GET() {
     <item>
       <title>틈새케어 서비스 지역 키워드 안내</title>
       <link>${baseUrl}/sitemap-gyeonggi-north</link>
-      <description><![CDATA[경기 북부(고양, 파주, 양주, 구리, 의정부, 동두천, 남양주, 광주) 및 서울 동북권(도봉, 강북, 성북, 노원, 중랑, 동대문, 성동, 광진) 창틀코킹·방수 시공 서비스 구역 목록 안내 페이지]]></description>
+      <description><![CDATA[경기 북부(고양, 파주, 양주, 구리, 의정부, 동두천, 남양주, 광주) 및 서울 전 지역(동북·서북·도심·동남·서남권) 창틀코킹·방수 시공 서비스 구역 목록 안내 페이지]]></description>
       <pubDate>Thu, 02 Jul 2026 00:00:00 GMT</pubDate>
       <guid isPermaLink="true">${baseUrl}/sitemap-gyeonggi-north</guid>
     </item>
 
     <item>
-      <title>서울 동북권 창틀코킹 안내</title>
+      <title>서울 전 지역 창틀코킹 안내</title>
       <link>${baseUrl}/sitemap-gyeonggi-north</link>
-      <description><![CDATA[도봉구, 강북구, 성북구, 노원구, 중랑구, 동대문구, 성동구, 광진구 전 지역 아파트 및 빌라 창틀실리콘 코킹, 샷시 틈새 빗물누수 보수 안내]]></description>
+      <description><![CDATA[서울 전역(도봉·강북·성북·노원·중랑·동대문·성동·광진·은평·서대문·마포·용산·중구·종로·강동·송파·강남·서초·동작·관악·금천·영등포·양천·구로·강서구) 아파트 및 빌라 창틀실리콘 코킹, 샷시 틈새 빗물누수 보수 안내]]></description>
       <pubDate>Thu, 02 Jul 2026 00:00:00 GMT</pubDate>
       <guid isPermaLink="true">${baseUrl}/sitemap-gyeonggi-north#seoul-caulking</guid>
     </item>
 
     <item>
-      <title>서울 동북권 방수 시공 안내</title>
+      <title>서울 전 지역 방수 시공 안내</title>
       <link>${baseUrl}/sitemap-gyeonggi-north</link>
-      <description><![CDATA[도봉구, 강북구, 성북구, 노원구, 중랑구, 동대문구, 성동구, 광진구 등 서울 동북 권역 외벽방수, 옥상 우레탄 방수, 건물 방수 크랙 보수 및 외벽 도색 시공 안내]]></description>
+      <description><![CDATA[서울 전 권역 외벽방수, 옥상 우레탄 방수, 건물 방수 크랙 보수 및 외벽 도색 시공 안내]]></description>
       <pubDate>Thu, 02 Jul 2026 00:00:00 GMT</pubDate>
       <guid isPermaLink="true">${baseUrl}/sitemap-gyeonggi-north#seoul-waterproof</guid>
     </item>

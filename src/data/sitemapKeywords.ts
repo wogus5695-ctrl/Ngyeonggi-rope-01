@@ -171,6 +171,253 @@ export const SEOUL_DONGDAEMUN_REGIONS = ["동대문구", "용신동", "제기동
 export const SEOUL_SEONGDONG_REGIONS = ["성동구", "왕십리동", "마장동", "사근동", "행당동", "응봉동", "금호동", "옥수동", "성수동", "송정동", "용답동"];
 export const SEOUL_GWANGJIN_REGIONS = ["광진구", "화양동", "군자동", "중곡동", "능동", "구의동", "광장동", "자양동"];
 
+// ==================== 서울 서북권 상세 정의 ====================
+export const SEOUL_EUNPYEONG_REGIONS = [
+  "은평구",
+  "녹번동",
+  "불광동",
+  "갈현동",
+  "구산동",
+  "대조동",
+  "응암동",
+  "역촌동",
+  "신사동",
+  "증산동",
+  "수색동",
+  "진관동"
+];
+export const SEOUL_SEODAEMUN_REGIONS = [
+  "서대문구",
+  "충현동",
+  "천연동",
+  "북아현동",
+  "신촌동",
+  "연희동",
+  "홍제동",
+  "홍은동",
+  "남가좌동",
+  "북가좌동"
+];
+export const SEOUL_MAPO_REGIONS = [
+  "마포구",
+  "공덕동",
+  "아현동",
+  "도화동",
+  "용강동",
+  "대흥동",
+  "염리동",
+  "신수동",
+  "서강동",
+  "서교동",
+  "합정동",
+  "망원동",
+  "연남동",
+  "성산동",
+  "상암동"
+];
+
+// ==================== 서울 도심권 상세 정의 ====================
+export const SEOUL_YONGSAN_REGIONS = [
+  "용산구",
+  "후암동",
+  "용산동",
+  "남영동",
+  "청파동",
+  "원효로",
+  "효창동",
+  "용문동",
+  "한강로",
+  "이촌동",
+  "이태원동",
+  "한남동",
+  "서빙고동",
+  "보광동"
+];
+export const SEOUL_JUNGGU_REGIONS = [
+  "중구",
+  "소공동",
+  "회현동",
+  "명동",
+  "필동",
+  "장충동",
+  "광희동",
+  "을지로",
+  "신당동",
+  "다산동",
+  "약수동",
+  "청구동",
+  "동화동",
+  "황학동",
+  "중림동",
+  "충무로"
+];
+export const SEOUL_JONGNO_REGIONS = [
+  "종로구",
+  "청운효자동",
+  "사직동",
+  "삼청동",
+  "부암동",
+  "평창동",
+  "무악동",
+  "교남동",
+  "가회동",
+  "종로",
+  "이화동",
+  "혜화동",
+  "창신동",
+  "숭인동",
+  "명륜동"
+];
+
+// ==================== 서울 동남권 상세 정의 ====================
+export const SEOUL_GANGDONG_REGIONS = [
+  "강동구",
+  "강일동",
+  "상일동",
+  "명일동",
+  "고덕동",
+  "암사동",
+  "천호동",
+  "성내동",
+  "길동",
+  "둔촌동"
+];
+export const SEOUL_SONGPA_REGIONS = [
+  "송파구",
+  "잠실동",
+  "신천동",
+  "풍납동",
+  "송파동",
+  "석촌동",
+  "삼전동",
+  "가락동",
+  "문정동",
+  "장지동",
+  "방이동",
+  "오금동",
+  "거여동",
+  "마천동",
+  "위례동"
+];
+export const SEOUL_GANGNAM_REGIONS = [
+  "강남구",
+  "신사동",
+  "논현동",
+  "압구정동",
+  "청담동",
+  "삼성동",
+  "대치동",
+  "역삼동",
+  "도곡동",
+  "개포동",
+  "일원동",
+  "수서동",
+  "세곡동"
+];
+export const SEOUL_SEOCHO_REGIONS = [
+  "서초구",
+  "서초동",
+  "잠원동",
+  "반포동",
+  "방배동",
+  "양재동",
+  "우면동",
+  "내곡동"
+];
+
+// ==================== 서울 서남권 상세 정의 ====================
+export const SEOUL_DONGJAK_REGIONS = [
+  "동작구",
+  "노량진동",
+  "상도동",
+  "흑석동",
+  "사당동",
+  "대방동",
+  "신대방동"
+];
+export const SEOUL_GWANAK_REGIONS = [
+  "관악구",
+  "봉천동",
+  "신림동",
+  "남현동"
+];
+export const SEOUL_GEUMCHEON_REGIONS = [
+  "금천구",
+  "가산동",
+  "독산동",
+  "시흥동"
+];
+export const SEOUL_YEONGDEUNGPO_REGIONS = [
+  "영등포구",
+  "영등포동",
+  "여의도동",
+  "당산동",
+  "도림동",
+  "문래동",
+  "양평동",
+  "신길동",
+  "대림동"
+];
+export const SEOUL_YANGCHEON_REGIONS = [
+  "양천구",
+  "목동",
+  "신월동",
+  "신정동"
+];
+export const SEOUL_GURO_REGIONS = [
+  "구로구",
+  "신도림동",
+  "구로동",
+  "가리봉동",
+  "고척동",
+  "개봉동",
+  "오류동",
+  "수궁동",
+  "항동"
+];
+export const SEOUL_GANGSEO_REGIONS = [
+  "강서구",
+  "염창동",
+  "등촌동",
+  "화곡동",
+  "가양동",
+  "발산동",
+  "공항동",
+  "방화동",
+  "우장산동",
+  "마곡동"
+];
+
+export const SEOUL_WEST_REGIONS_DB = [
+  { city: "은평구", areas: SEOUL_EUNPYEONG_REGIONS },
+  { city: "서대문구", areas: SEOUL_SEODAEMUN_REGIONS },
+  { city: "마포구", areas: SEOUL_MAPO_REGIONS }
+];
+
+export const SEOUL_CENTER_REGIONS_DB = [
+  { city: "용산구", areas: SEOUL_YONGSAN_REGIONS },
+  { city: "중구", areas: SEOUL_JUNGGU_REGIONS },
+  { city: "종로구", areas: SEOUL_JONGNO_REGIONS }
+];
+
+export const SEOUL_SOUTH_EAST_REGIONS_DB = [
+  { city: "강동구", areas: SEOUL_GANGDONG_REGIONS },
+  { city: "송파구", areas: SEOUL_SONGPA_REGIONS },
+  { city: "강남구", areas: SEOUL_GANGNAM_REGIONS },
+  { city: "서초구", areas: SEOUL_SEOCHO_REGIONS }
+];
+
+export const SEOUL_SOUTH_WEST_REGIONS_DB = [
+  { city: "동작구", areas: SEOUL_DONGJAK_REGIONS },
+  { city: "관악구", areas: SEOUL_GWANAK_REGIONS },
+  { city: "금천구", areas: SEOUL_GEUMCHEON_REGIONS },
+  { city: "영등포구", areas: SEOUL_YEONGDEUNGPO_REGIONS },
+  { city: "양천구", areas: SEOUL_YANGCHEON_REGIONS },
+  { city: "구로구", areas: SEOUL_GURO_REGIONS },
+  { city: "강서구", areas: SEOUL_GANGSEO_REGIONS }
+];
+
+
 export const REGIONS_DB = [
   { city: "고양시", areas: GOYANG_REGIONS },
   { city: "파주시", areas: PAJU_REGIONS },

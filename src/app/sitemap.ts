@@ -1,6 +1,14 @@
 import { MetadataRoute } from 'next';
 import { portfolioCases } from '@/data/portfolio';
-import { REGIONS_DB, SEOUL_EAST_REGIONS_DB, SERVICES } from '@/data/sitemapKeywords';
+import {
+  REGIONS_DB,
+  SEOUL_EAST_REGIONS_DB,
+  SEOUL_WEST_REGIONS_DB,
+  SEOUL_CENTER_REGIONS_DB,
+  SEOUL_SOUTH_EAST_REGIONS_DB,
+  SEOUL_SOUTH_WEST_REGIONS_DB,
+  SERVICES
+} from '@/data/sitemapKeywords';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.teumsaecare.co.kr';
@@ -9,8 +17,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const regionalUrls: MetadataRoute.Sitemap = [];
   const waterproofingServices = ["외벽방수", "옥상방수", "건물방수", "외벽도색"];
 
-  // 경기 북부 + 서울 동북권 통합 리스트 생성
-  const allRegionGroups = [...REGIONS_DB, ...SEOUL_EAST_REGIONS_DB];
+  // 경기 북부 + 서울 전 권역(동북·서북·도심·동남·서남) 통합 리스트 생성
+  const allRegionGroups = [
+    ...REGIONS_DB,
+    ...SEOUL_EAST_REGIONS_DB,
+    ...SEOUL_WEST_REGIONS_DB,
+    ...SEOUL_CENTER_REGIONS_DB,
+    ...SEOUL_SOUTH_EAST_REGIONS_DB,
+    ...SEOUL_SOUTH_WEST_REGIONS_DB
+  ];
 
   allRegionGroups.forEach(region => {
     region.areas.forEach(area => {
