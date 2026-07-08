@@ -6,7 +6,7 @@ interface ContactCTAProps {
   isWaterproofing?: boolean;
 }
 
-export default function ContactCTA({ phone = "010-3951-6831", isWaterproofing }: ContactCTAProps) {
+export default function ContactCTA({ phone = "050-7871-3590", isWaterproofing }: ContactCTAProps) {
   return (
     <div className="flex flex-col items-center gap-4 w-full">
       <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-2xl mx-auto">
