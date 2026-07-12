@@ -7,6 +7,10 @@ import {
   SEOUL_CENTER_REGIONS_DB,
   SEOUL_SOUTH_EAST_REGIONS_DB,
   SEOUL_SOUTH_WEST_REGIONS_DB,
+  GYEONGGI_WEST_REGIONS_DB,
+  GYEONGGI_MID_REGIONS_DB,
+  GYEONGGI_SOUTH_EAST_REGIONS_DB,
+  GYEONGGI_SOUTH_REGIONS_DB,
   SERVICES
 } from '@/data/sitemapKeywords';
 
@@ -17,9 +21,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const regionalUrls: MetadataRoute.Sitemap = [];
   const waterproofingServices = ["외벽방수", "옥상방수", "건물방수", "외벽도색"];
 
-  // 경기 북부 + 서울 전 권역(동북·서북·도심·동남·서남) 통합 리스트 생성
+  // 경기 북부/서부/중부/동남부/남부 + 서울 전 권역(동북·서북·도심·동남·서남) 통합 리스트 생성
   const allRegionGroups = [
     ...REGIONS_DB,
+    ...GYEONGGI_WEST_REGIONS_DB,
+    ...GYEONGGI_MID_REGIONS_DB,
+    ...GYEONGGI_SOUTH_EAST_REGIONS_DB,
+    ...GYEONGGI_SOUTH_REGIONS_DB,
     ...SEOUL_EAST_REGIONS_DB,
     ...SEOUL_WEST_REGIONS_DB,
     ...SEOUL_CENTER_REGIONS_DB,

@@ -388,6 +388,272 @@ export const SEOUL_GANGSEO_REGIONS = [
   "마곡동"
 ];
 
+// ==================== 경기 서북·서부권 상세 정의 ====================
+export const GYEONGGI_GIMPO_REGIONS = [
+  "김포",
+  "김포시",
+  "김포본동",
+  "사우동",
+  "풍무동",
+  "장기동",
+  "구래동",
+  "마산동",
+  "운양동",
+  "고촌읍",
+  "양촌읍",
+  "통진읍",
+  "대곶면",
+  "월곶면",
+  "하성면"
+];
+export const GYEONGGI_BUCHEON_REGIONS = [
+  "부천",
+  "부천시",
+  "심곡동",
+  "원미동",
+  "소사동",
+  "역곡동",
+  "춘의동",
+  "도당동",
+  "약대동",
+  "중동",
+  "상동",
+  "송내동",
+  "소사본동",
+  "괴안동",
+  "범박동",
+  "옥길동",
+  "고강동",
+  "원종동",
+  "오정동",
+  "삼정동",
+  "내동",
+  "여월동",
+  "작동"
+];
+export const GYEONGGI_GWANGMYEONG_REGIONS = [
+  "광명",
+  "광명시",
+  "광명동",
+  "철산동",
+  "하안동",
+  "소하동",
+  "일직동",
+  "노온사동",
+  "가학동",
+  "옥길동"
+];
+export const GYEONGGI_SIHEUNG_REGIONS = [
+  "시흥",
+  "시흥시",
+  "대야동",
+  "신천동",
+  "은행동",
+  "매화동",
+  "목감동",
+  "능곡동",
+  "장곡동",
+  "월곶동",
+  "정왕동",
+  "배곧동",
+  "군자동",
+  "연성동",
+  "과림동",
+  "신현동",
+  "거모동",
+  "하중동",
+  "하상동",
+  "물왕동"
+];
+
+export const GYEONGGI_WEST_REGIONS_DB = [
+  { city: "김포시", areas: GYEONGGI_GIMPO_REGIONS },
+  { city: "부천시", areas: GYEONGGI_BUCHEON_REGIONS },
+  { city: "광명시", areas: GYEONGGI_GWANGMYEONG_REGIONS },
+  { city: "시흥시", areas: GYEONGGI_SIHEUNG_REGIONS }
+];
+
+// ==================== 경기 중부권 상세 정의 ====================
+export const GYEONGGI_ANYANG_REGIONS = [
+  "안양",
+  "안양시",
+  "만안구",
+  "동안구",
+  "안양동",
+  "석수동",
+  "박달동",
+  "비산동",
+  "관양동",
+  "평촌동",
+  "호계동",
+  "범계동",
+  "부림동",
+  "달안동",
+  "갈산동",
+  "귀인동"
+];
+export const GYEONGGI_GWACHEON_REGIONS = [
+  "과천",
+  "과천시",
+  "중앙동",
+  "갈현동",
+  "별양동",
+  "부림동",
+  "과천동",
+  "문원동",
+  "원문동",
+  "주암동",
+  "막계동"
+];
+export const GYEONGGI_UIWANG_REGIONS = [
+  "의왕",
+  "의왕시",
+  "고천동",
+  "부곡동",
+  "오전동",
+  "내손동",
+  "청계동",
+  "포일동",
+  "학의동",
+  "왕곡동",
+  "삼동",
+  "월암동",
+  "이동"
+];
+export const GYEONGGI_GUNPO_REGIONS = [
+  "군포",
+  "군포시",
+  "군포동",
+  "당동",
+  "당정동",
+  "부곡동",
+  "산본동",
+  "금정동",
+  "재궁동",
+  "오금동",
+  "수리동",
+  "궁내동",
+  "광정동",
+  "대야미동",
+  "도마교동",
+  "송부동"
+];
+
+// ==================== 경기 동남권 상세 정의 ====================
+export const GYEONGGI_SEONGNAM_REGIONS = [
+  "성남",
+  "성남시",
+  "수정구",
+  "중원구",
+  "분당구",
+  "신흥동",
+  "태평동",
+  "수진동",
+  "단대동",
+  "산성동",
+  "양지동",
+  "복정동",
+  "위례동",
+  "창곡동",
+  "고등동",
+  "시흥동",
+  "성남동",
+  "중앙동",
+  "금광동",
+  "은행동",
+  "상대원동",
+  "하대원동",
+  "도촌동",
+  "분당동",
+  "수내동",
+  "정자동",
+  "서현동",
+  "이매동",
+  "야탑동",
+  "판교동",
+  "삼평동",
+  "백현동",
+  "운중동",
+  "금곡동",
+  "구미동"
+];
+export const GYEONGGI_HANAM_REGIONS = [
+  "하남",
+  "하남시",
+  "천현동",
+  "신장동",
+  "덕풍동",
+  "풍산동",
+  "미사동",
+  "망월동",
+  "감일동",
+  "위례동",
+  "초이동",
+  "감북동",
+  "춘궁동"
+];
+
+export const GYEONGGI_MID_REGIONS_DB = [
+  { city: "안양시", areas: GYEONGGI_ANYANG_REGIONS },
+  { city: "과천시", areas: GYEONGGI_GWACHEON_REGIONS },
+  { city: "의왕시", areas: GYEONGGI_UIWANG_REGIONS },
+  { city: "군포시", areas: GYEONGGI_GUNPO_REGIONS }
+];
+
+export const GYEONGGI_SOUTH_EAST_REGIONS_DB = [
+  { city: "성남시", areas: GYEONGGI_SEONGNAM_REGIONS },
+  { city: "하남시", areas: GYEONGGI_HANAM_REGIONS }
+];
+
+// ==================== 경기 남부권 상세 정의 ====================
+export const GYEONGGI_SUWON_REGIONS = [
+  "수원",
+  "수원시",
+  "장안구",
+  "권선구",
+  "팔달구",
+  "영통구",
+  "파장동",
+  "정자동",
+  "이목동",
+  "율전동",
+  "천천동",
+  "영화동",
+  "송죽동",
+  "조원동",
+  "연무동",
+  "세류동",
+  "평동",
+  "서둔동",
+  "구운동",
+  "금곡동",
+  "호매실동",
+  "권선동",
+  "곡반정동",
+  "입북동",
+  "당수동",
+  "팔달로",
+  "매교동",
+  "매산동",
+  "고등동",
+  "화서동",
+  "지동",
+  "우만동",
+  "인계동",
+  "매탄동",
+  "원천동",
+  "이의동",
+  "하동",
+  "영통동",
+  "신동",
+  "망포동",
+  "광교"
+];
+
+export const GYEONGGI_SOUTH_REGIONS_DB = [
+  { city: "수원시", areas: GYEONGGI_SUWON_REGIONS }
+];
+
 export const SEOUL_WEST_REGIONS_DB = [
   { city: "은평구", areas: SEOUL_EUNPYEONG_REGIONS },
   { city: "서대문구", areas: SEOUL_SEODAEMUN_REGIONS },
