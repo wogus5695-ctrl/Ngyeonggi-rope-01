@@ -7,7 +7,7 @@ interface FooterProps {
   isWaterproofing?: boolean;
 }
 
-export default function Footer({ dynamicKeyword, phone = "050-7871-3590", isWaterproofing }: FooterProps) {
+export default function Footer({ dynamicKeyword, phone = "010-3951-6831", isWaterproofing }: FooterProps) {
   return (
     <footer className="bg-slate-900 text-slate-400 py-16 px-4 md:px-8 border-t border-slate-800">
       <div className="max-w-6xl mx-auto">

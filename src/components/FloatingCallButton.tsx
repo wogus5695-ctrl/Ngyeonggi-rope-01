@@ -7,7 +7,7 @@ interface FloatingCallButtonProps {
   phone?: string;
 }
 
-export default function FloatingCallButton({ phone = "050-7871-3590" }: FloatingCallButtonProps) {
+export default function FloatingCallButton({ phone = "010-3951-6831" }: FloatingCallButtonProps) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
