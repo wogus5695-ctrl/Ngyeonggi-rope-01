@@ -26,7 +26,7 @@ export const metadata: Metadata = getMetadata({
 });
 
 export default function SitemapGyeonggiNorthPage() {
-  const waterproofingServices = ["외벽방수", "옥상방수", "건물방수", "외벽도색"];
+  const waterproofingServices = ["외벽방수", "옥상방수", "건물방수", "외벽도색", "지붕방수", "지붕보수", "지붕누수"];
 
   const gyeonggiWestCaulkingGroups = [
     { title: "경기 서북·서부권 창틀코킹 서비스 안내", db: GYEONGGI_WEST_REGIONS_DB },
@@ -430,7 +430,7 @@ export default function SitemapGyeonggiNorthPage() {
                 value={(() => {
                   const urls: string[] = [];
                   const baseUrl = "https://www.teumsaecare.co.kr";
-                  const waterproofingServices = ["외벽방수", "옥상방수", "건물방수", "외벽도색"];
+                  const waterproofingServices = ["외벽방수", "옥상방수", "건물방수", "외벽도색", "지붕방수", "지붕보수", "지붕누수"];
 
                   // 1. 창틀코킹
                   allRegionsForTextArea.forEach(region => {

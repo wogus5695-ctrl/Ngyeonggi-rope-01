@@ -9,6 +9,7 @@ interface LocalHeroProps {
   locationName: string;
   serviceTitle: string;
   serviceName?: string; // H1에 매핑할 동적 작업명
+  serviceSuffix?: string; // H1 및 모바일 헤딩 접미사 ("전문 진단" | "전문 상담")
   phone?: string;
   intro: string;
   keywords: string[];
@@ -19,6 +20,7 @@ export default function LocalHero({
   locationName, 
   serviceTitle, 
   serviceName, 
+  serviceSuffix = "전문 진단",
   phone = "010-3951-6831", 
   intro, 
   keywords,
@@ -62,7 +64,7 @@ export default function LocalHero({
           <div className="text-[34px] font-black text-white leading-[1.15] tracking-tight [text-shadow:0_2px_8px_rgba(0,0,0,0.6)]">
             <span className="text-teal-400">{locationName}</span> {serviceName || (isWaterproofing ? "건물방수" : "창틀코킹")}
             <br />
-            전문 진단
+            {serviceSuffix}
           </div>
 
           {/* 설명 문구 */}
@@ -102,7 +104,7 @@ export default function LocalHero({
                   <span className="text-teal-600">{locationName}</span>{" "}
                   <span>{serviceName || (isWaterproofing ? "건물방수" : "창틀코킹")}</span>
                 </span>
-                <span className="block">전문 진단</span>
+                <span className="block">{serviceSuffix}</span>
               </h1>
 
               {/* Sub-copy (강조 문장) */}
@@ -197,7 +199,7 @@ export default function LocalHero({
               </h3>
               <p className="text-[13.5px] sm:text-[14px] text-slate-200 max-w-sm ml-auto leading-relaxed font-medium drop-shadow-sm">
                 {isWaterproofing 
-                  ? "노후 건물 외벽 균열, 옥상 우레탄 들뜸까지\n완벽하게 차단합니다."
+                  ? "노후 건물 외벽 균열, 옥상 우레탄 들뜸까지\n체계적으로 차단합니다."
                   : "고층 세대, 외벽 크랙, 샷시 주변 틈새까지\n모든 요인을 체크합니다."}
               </p>
             </div>

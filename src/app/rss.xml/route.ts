@@ -15,10 +15,10 @@ export async function GET() {
     <atom:link href="${baseUrl}/rss.xml" rel="self" type="application/rss+xml" />
 
     <item>
-      <title>틈새케어 서울 및 경기 전 지역 창틀코킹·방수 시공 서비스 안내</title>
+      <title>틈새케어 서울 및 경기 전 지역 창틀코킹·방수·지붕방수 시공 서비스 안내</title>
       <link>${baseUrl}/sitemap-gyeonggi-north</link>
-      <description><![CDATA[경기 북부, 서북·서부권(김포·부천·광명·시흥), 중부권(안양·과천·의왕·군포), 동남권(성남·하남), 남부권(수원) 및 서울 전역의 창틀코킹·방수 시공 서비스 안내]]></description>
-      <pubDate>Sun, 12 Jul 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[경기 북부, 서북·서부권(김포·부천·광명·시흥), 중부권(안양·과천·의왕·군포), 동남권(성남·하남), 남부권(수원) 및 서울 전역의 창틀코킹·외벽방수·옥상방수·지붕방수·지붕보수·지붕누수 정밀 시공 서비스 안내]]></description>
+      <pubDate>Mon, 21 Sep 2026 00:00:00 GMT</pubDate>
       <guid isPermaLink="true">${baseUrl}/sitemap-gyeonggi-north</guid>
     </item>
 

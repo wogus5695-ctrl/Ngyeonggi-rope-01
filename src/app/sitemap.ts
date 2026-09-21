@@ -19,7 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // 1. 대표 동적변환 랜딩 URL 대량 생성 (/?k=지역명-작업명)
   const regionalUrls: MetadataRoute.Sitemap = [];
-  const waterproofingServices = ["외벽방수", "옥상방수", "건물방수", "외벽도색"];
+  const waterproofingServices = ["외벽방수", "옥상방수", "건물방수", "외벽도색", "지붕방수", "지붕보수", "지붕누수"];
 
   // 경기 북부/서부/중부/동남부/남부 + 서울 전 권역(동북·서북·도심·동남·서남) 통합 리스트 생성
   const allRegionGroups = [

@@ -39,7 +39,11 @@ function validateKeyword(k: string | undefined): { isValid: boolean; region: str
     (r) => r.name === rawRegion || r.slug === rawRegion || rawRegion.includes(r.name)
   );
 
-  const allowedServices = ["창틀코킹", "창틀누수", "빗물누수", "창틀실리콘", "샷시실리콘", "외벽누수", "외벽방수", "옥상방수", "건물방수", "외벽도색"];
+  const allowedServices = [
+    "창틀코킹", "창틀누수", "빗물누수", "창틀실리콘", "샷시실리콘", "외벽누수",
+    "외벽방수", "옥상방수", "건물방수", "외벽도색",
+    "지붕방수", "지붕보수", "지붕누수"
+  ];
   const isServiceAllowed = allowedServices.includes(rawService);
 
   if (isRegionAllowed && isServiceAllowed) {
@@ -66,7 +70,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
 
   const hash = getHash(`${region}-${service}`);
   const data = getDynamicHomeData(region, service, hash);
-  const isWaterproofing = ["외벽방수", "옥상방수", "건물방수", "외벽도색"].includes(service);
+  const isWaterproofing = ["외벽방수", "옥상방수", "건물방수", "외벽도색", "지붕방수", "지붕보수", "지붕누수"].includes(service);
 
   return getMetadata({
     title: data.metaTitle,
@@ -83,7 +87,7 @@ export default async function Home({ searchParams }: Props) {
   // 1. 키워드 검증 및 기본값 분기
   const { isValid, region, service } = validateKeyword(k);
 
-  const isWaterproofing = isValid && ["외벽방수", "옥상방수", "건물방수", "외벽도색"].includes(service);
+  const isWaterproofing = isValid && ["외벽방수", "옥상방수", "건물방수", "외벽도색", "지붕방수", "지붕보수", "지붕누수"].includes(service);
   const phone = isWaterproofing ? "010-4667-5568" : "010-3951-6831";
 
   // 기본 브랜드 설정 (Fallback)
@@ -157,6 +161,7 @@ export default async function Home({ searchParams }: Props) {
           locationName={heroLocation}
           serviceTitle={heroService}
           serviceName={isValid ? service : "창틀코킹"}
+          serviceSuffix={isValid && service.startsWith("지붕") ? "전문 상담" : "전문 진단"}
           phone={phone}
           intro={heroIntro}
           isWaterproofing={isWaterproofing}
