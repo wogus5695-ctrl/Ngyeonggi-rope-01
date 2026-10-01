@@ -32,26 +32,31 @@ export function getMetadata(options: {
   const { title, description, path, ogImage, noIndex } = options;
   const url = `${SEO_CONFIG.baseUrl}${path || ''}`;
   const finalOgImage = ogImage || SEO_CONFIG.ogImage;
+  const isWaterproofImage = finalOgImage.includes('waterproof');
+  const imageWidth = isWaterproofImage ? 1024 : 1200;
+  const imageHeight = isWaterproofImage ? 768 : 630;
+
+  const isDynamicQuery = Boolean(path && path.includes('?k='));
 
   return {
     title: title,
     description: description || SEO_CONFIG.description,
     keywords: SEO_CONFIG.keywords,
-    alternates: {
+    alternates: isDynamicQuery ? undefined : {
       canonical: url,
     },
     openGraph: {
       title: title ? `${title} | 틈새케어` : SEO_CONFIG.title.default,
       description: description || SEO_CONFIG.description,
-      url: url,
+      url: isDynamicQuery ? undefined : url,
       siteName: "틈새케어",
       locale: "ko_KR",
       type: "website",
       images: [
         {
           url: finalOgImage,
-          width: 800,
-          height: 600,
+          width: imageWidth,
+          height: imageHeight,
           alt: title || "틈새케어",
         },
       ],

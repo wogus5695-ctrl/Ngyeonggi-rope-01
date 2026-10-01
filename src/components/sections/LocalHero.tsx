@@ -36,6 +36,13 @@ export default function LocalHero({
 
   const heroImage = isWaterproofing ? "/og-image-waterproof.jpg" : "/hero-work.jpg";
 
+  const isDynamic = Boolean(locationName && locationName !== "틈새케어");
+  const actionType = (serviceName || serviceTitle || "").includes("누수") ? "점검 작업" : "시공 작업";
+  const currentService = serviceName || (isWaterproofing ? "건물방수" : "창틀코킹");
+  const heroAlt = isDynamic
+    ? `${locationName} ${currentService} ${actionType}`
+    : (isWaterproofing ? "실제 건물 외벽 균열 방수 시공 작업" : "실제 외벽 및 창틀 주변 누수 점검 작업");
+
   return (
     <>
       {/* 1. 모바일 전용 Hero 영역 (md 미만 노출) */}
@@ -43,7 +50,7 @@ export default function LocalHero({
         {/* 실제 작업 이미지 배경 */}
         <Image
           src={heroImage}
-          alt={isWaterproofing ? "실제 건물 외벽 균열 방수 시공 작업" : "실제 외벽 및 창틀 주변 누수 점검 작업"}
+          alt={heroAlt}
           fill
           priority
           sizes="100vw"
@@ -179,7 +186,7 @@ export default function LocalHero({
             {/* Actual image background */}
             <Image
               src={heroImage}
-              alt={isWaterproofing ? "실제 건물 외벽 균열 방수 시공 작업" : "실제 외벽 및 창틀 주변 누수 점검 작업"}
+              alt={heroAlt}
               fill
               sizes="(max-width: 1024px) 100vw, 54vw"
               className="object-cover transition-transform duration-700 hover:scale-103"

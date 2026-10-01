@@ -21,21 +21,17 @@ export const metadata: Metadata = {
   authors: [{ name: "틈새케어" }],
   creator: "틈새케어",
   publisher: "틈새케어",
-  alternates: {
-    canonical: SEO_CONFIG.baseUrl,
-  },
   openGraph: {
     title: SEO_CONFIG.title.default,
     description: SEO_CONFIG.description,
-    url: SEO_CONFIG.baseUrl,
     siteName: "틈새케어",
     locale: "ko_KR",
     type: "website",
     images: [
       {
         url: SEO_CONFIG.ogImage,
-        width: 800,
-        height: 600,
+        width: 1200,
+        height: 630,
         alt: "틈새케어 대표 이미지",
       },
     ],
@@ -86,6 +82,7 @@ export default function RootLayout({
               "name": "틈새케어",
               "url": SEO_CONFIG.baseUrl,
               "logo": `${SEO_CONFIG.baseUrl}/icon.svg`,
+              "image": `${SEO_CONFIG.baseUrl}/og-image.png`,
               "contactPoint": {
                 "@type": "ContactPoint",
                 "telephone": "010-3951-6831",

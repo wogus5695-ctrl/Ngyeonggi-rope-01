@@ -148,8 +148,42 @@ export default async function Home({ searchParams }: Props) {
 
   const content = BRAND_HUB_CONTENT;
 
+  const canonicalUrl = isValid ? `https://www.teumsaecare.co.kr/?k=${k}` : "https://www.teumsaecare.co.kr/";
+  const schemaImage = isWaterproofing 
+    ? "https://www.teumsaecare.co.kr/og-image-waterproof.jpg" 
+    : "https://www.teumsaecare.co.kr/og-image.png";
+
   return (
     <div className="flex min-h-screen flex-col font-sans antialiased overflow-x-hidden">
+      {/* 동적 canonical 및 og:url 명시적 주입 (Next.js 루트 쿼리 파라미터 보존) */}
+      {isValid && (
+        <>
+          <link rel="canonical" href={canonicalUrl} />
+          <meta property="og:url" content={canonicalUrl} />
+        </>
+      )}
+
+      {/* 구조화 데이터 JSON-LD (Service 및 image 필드 포함) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": isWaterproofing ? "RoofingContractor" : "HomeAndConstructionBusiness",
+            "name": isValid ? `${heroLocation} ${service} - 틈새케어` : "틈새케어",
+            "url": canonicalUrl,
+            "image": schemaImage,
+            "telephone": phone,
+            "description": isValid ? heroIntro : BRAND_HUB_CONTENT.intro,
+            "address": {
+              "@type": "PostalAddress",
+              "addressRegion": heroLocation || "수도권",
+              "addressCountry": "KR"
+            }
+          })
+        }}
+      />
+
       {/* FAQ 구조화 데이터 자동 주입 */}
       <FAQSchema faqs={faqList} />
 
