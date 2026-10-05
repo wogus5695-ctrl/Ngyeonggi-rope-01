@@ -14,6 +14,8 @@ interface LocalHeroProps {
   intro: string;
   keywords: string[];
   isWaterproofing?: boolean;
+  subCopy?: string;
+  badgeText?: string;
 }
 
 export default function LocalHero({ 
@@ -24,7 +26,9 @@ export default function LocalHero({
   phone = "010-3951-6831", 
   intro, 
   keywords,
-  isWaterproofing 
+  isWaterproofing,
+  subCopy,
+  badgeText
 }: LocalHeroProps) {
   // PC/태블릿에서 사용할 본문 문구 처리 (폴백 긴 문장은 요약본으로 교체, 동적 문구는 유지)
   const isFallbackIntro = intro.includes("\n") || !locationName || locationName === "틈새케어";
@@ -75,10 +79,10 @@ export default function LocalHero({
           </div>
 
           {/* 설명 문구 */}
-          <p className="text-[15.5px] text-slate-200 mt-3.5 leading-relaxed font-medium [text-shadow:0_1px_4px_rgba(0,0,0,0.5)] max-w-sm">
-            {isWaterproofing 
+          <p className="text-[15.5px] text-slate-200 mt-3.5 leading-relaxed font-medium [text-shadow:0_1px_4px_rgba(0,0,0,0.5)] max-w-sm whitespace-pre-line">
+            {subCopy ? subCopy.replace(/[“”"]/g, "") : (isWaterproofing 
               ? "건물 외벽 균열과\n노후 방수층 누출까지 함께 진단합니다."
-              : "외벽 균열과 샷시 틈,\n창틀 주변 누수까지 함께 확인합니다."}
+              : "외벽 균열과 샷시 틈,\n창틀 주변 누수까지 함께 확인합니다.")}
           </p>
         </div>
       </section>
@@ -94,9 +98,9 @@ export default function LocalHero({
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-teal-50 border border-teal-500/20 text-teal-700 text-[12.5px] font-extrabold rounded-full self-start">
               <span className="w-1.5 h-1.5 bg-teal-500 rounded-full animate-ping"></span>
-              {isWaterproofing 
+              {badgeText || (isWaterproofing 
                 ? "경기 북부 건물 외벽·옥상 방수 전문 진단"
-                : "경기 북부 창틀 누수·코킹 진단"}
+                : "경기 북부 창틀 누수·코킹 진단")}
             </div>
 
             <div className="space-y-3">
@@ -115,10 +119,10 @@ export default function LocalHero({
               </h1>
 
               {/* Sub-copy (강조 문장) */}
-              <div className="text-[16.5px] lg:text-[19px] font-extrabold text-slate-800 tracking-tight leading-snug">
-                {isWaterproofing 
+              <div className="text-[16.5px] lg:text-[19px] font-extrabold text-slate-800 tracking-tight leading-snug whitespace-pre-line">
+                {subCopy || (isWaterproofing 
                   ? "“건물 외벽 균열과 노후 방수층으로 스며드는 누수, \n정밀 방수 시공으로 확실하게 잡아드립니다.”"
-                  : "“외벽 균열과 샷시 접합부로 스며드는 빗물,\n창틀 주변 증상까지 함께 확인합니다.”"}
+                  : "“외벽 균열과 샷시 접합부로 스며드는 빗물,\n창틀 주변 증상까지 함께 확인합니다.”")}
               </div>
             </div>
 
@@ -129,19 +133,22 @@ export default function LocalHero({
 
             {/* Trust Badges Grid */}
             <div className="grid grid-cols-2 gap-2.5 pt-1">
-              {(isWaterproofing
-                ? [
-                    "외벽 균열 보강",
-                    "옥상 우레탄 방수",
-                    "건물 외벽 도색",
-                    "상담 후 견적 안내"
-                  ]
-                : [
-                    "재누수 원인 확인",
-                    "외벽 크랙 점검",
-                    "상태별 시공 구분",
-                    "상담 후 견적 안내"
-                  ]
+              {(keywords && keywords.length === 4
+                ? keywords
+                : (isWaterproofing
+                    ? [
+                        "외벽 균열 보강",
+                        "옥상 우레탄 방수",
+                        "건물 외벽 도색",
+                        "상담 후 견적 안내"
+                      ]
+                    : [
+                        "재누수 원인 확인",
+                        "외벽 크랙 점검",
+                        "상태별 시공 구분",
+                        "상담 후 견적 안내"
+                      ]
+                  )
               ).map((badge, idx) => (
                 <div
                   key={idx}

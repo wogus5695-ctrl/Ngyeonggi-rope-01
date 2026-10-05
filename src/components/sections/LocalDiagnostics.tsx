@@ -7,10 +7,26 @@ import { kakaoChannelUrl } from "@/data/config";
 
 interface LocalDiagnosticsProps {
   isWaterproofing?: boolean;
+  diagnosticsBadge?: string;
+  diagnosticsHeadline?: string;
+  diagnosticsDesc?: string;
+  customCards?: Array<{
+    titlePC: string;
+    titleMO: string;
+    description: string;
+  }>;
+  alertText?: string;
 }
 
-export default function LocalDiagnostics({ isWaterproofing }: LocalDiagnosticsProps) {
-  const diagnosticCards = isWaterproofing
+export default function LocalDiagnostics({
+  isWaterproofing,
+  diagnosticsBadge,
+  diagnosticsHeadline,
+  diagnosticsDesc,
+  customCards,
+  alertText
+}: LocalDiagnosticsProps) {
+  const defaultCards = isWaterproofing
     ? [
         {
           titlePC: "외벽·천장이 젖습니다",
@@ -96,6 +112,13 @@ export default function LocalDiagnostics({ isWaterproofing }: LocalDiagnosticsPr
         }
       ];
 
+  const diagnosticCards = customCards && customCards.length > 0
+    ? customCards.map((card, idx) => ({
+        ...card,
+        icon: defaultCards[idx % defaultCards.length].icon
+      }))
+    : defaultCards;
+
   return (
     <section className="py-24 bg-slate-50 relative overflow-hidden">
       {/* Background Accent */}
@@ -105,17 +128,17 @@ export default function LocalDiagnostics({ isWaterproofing }: LocalDiagnosticsPr
         {/* Section Header */}
         <div className="text-center space-y-4 mb-16">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-teal-50 border border-teal-500/10 text-teal-700 text-xs font-bold rounded-full">
-            누수 위험 신호
+            {diagnosticsBadge || "누수 위험 신호"}
           </div>
-          <h2 className="text-3xl sm:text-4.5xl font-black text-slate-900 tracking-tight leading-tight max-w-2xl mx-auto">
-            {isWaterproofing 
+          <h2 className="text-3xl sm:text-4.5xl font-black text-slate-900 tracking-tight leading-tight max-w-2xl mx-auto whitespace-pre-line">
+            {diagnosticsHeadline || (isWaterproofing 
               ? "이런 증상, 건물 균열 및 방수층 손상일 수 있습니다"
-              : "이런 증상, 단순 습기가 아닐 수 있습니다"}
+              : "이런 증상, 단순 습기가 아닐 수 있습니다")}
           </h2>
           <p className="text-[14.5px] sm:text-[15.5px] text-slate-500 max-w-xl mx-auto leading-relaxed">
-            {isWaterproofing
+            {diagnosticsDesc || (isWaterproofing
               ? "건물 외벽이나 옥상 방수층 균열은 물이 건물 내부로 침투하여 콘크리트를 부식시키고 심각한 누수를 유발합니다."
-              : "창틀 주변 누수는 처음에는 작은 물기처럼 보이지만, 시간이 지나면 벽지 들뜸, 곰팡이, 내부 마감재 손상으로 이어질 수 있습니다."}
+              : "창틀 주변 누수는 처음에는 작은 물기처럼 보이지만, 시간이 지나면 벽지 들뜸, 곰팡이, 내부 마감재 손상으로 이어질 수 있습니다.")}
           </p>
         </div>
 
@@ -149,11 +172,23 @@ export default function LocalDiagnostics({ isWaterproofing }: LocalDiagnosticsPr
                 </svg>
               </div>
               <p className="flex-1 text-[16px] sm:text-[17.5px] lg:text-[19px] font-black text-slate-900 leading-[1.4]">
-                2가지 이상 해당된다면 빠른 시일 내에
-                <br />
-                <span className="text-teal-600 font-black">
-                  {isWaterproofing ? "건물 외벽·옥상 방수 정밀 진단" : "창틀·외벽 주변 누수 진단"}
-                </span>이 필요합니다.
+                {alertText ? (
+                  <>
+                    해당 증상이 나타난다면 빠른 시일 내에
+                    <br />
+                    <span className="text-teal-600 font-black">
+                      {alertText}
+                    </span>이 필요합니다.
+                  </>
+                ) : (
+                  <>
+                    2가지 이상 해당된다면 빠른 시일 내에
+                    <br />
+                    <span className="text-teal-600 font-black">
+                      {isWaterproofing ? "건물 외벽·옥상 방수 정밀 진단" : "창틀·외벽 주변 누수 진단"}
+                    </span>이 필요합니다.
+                  </>
+                )}
               </p>
             </div>
           </div>

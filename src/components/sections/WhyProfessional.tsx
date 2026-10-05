@@ -5,10 +5,12 @@ import React from "react";
 interface WhyProfessionalProps {
   locationName: string;
   dynamicBanner?: string;
+  dynamicBannerOverride?: string;
   isWaterproofing?: boolean;
 }
 
-export default function WhyProfessional({ locationName, dynamicBanner, isWaterproofing }: WhyProfessionalProps) {
+export default function WhyProfessional({ locationName, dynamicBanner, dynamicBannerOverride, isWaterproofing }: WhyProfessionalProps) {
+  const effectiveBanner = dynamicBannerOverride || dynamicBanner;
   // Shared data for diagram steps to prevent duplication in DOM
   const diagramSteps = isWaterproofing
     ? [
@@ -181,7 +183,7 @@ export default function WhyProfessional({ locationName, dynamicBanner, isWaterpr
 
             {/* SEO Dynamic Banner Hook (Always present for crawlers, containing no duplicate terms) */}
             <span className="sr-only opacity-0 pointer-events-none absolute w-0 h-0 overflow-hidden">
-              {dynamicBanner || `${locationName} 창틀 코킹 및 샷시 틈새 결함 보수. 원인 진단부터 마감 검수까지 정밀 시공합니다.`}
+              {effectiveBanner || `${locationName} 창틀 코킹 및 샷시 틈새 결함 보수. 원인 진단부터 마감 검수까지 정밀 시공합니다.`}
             </span>
 
           </div>

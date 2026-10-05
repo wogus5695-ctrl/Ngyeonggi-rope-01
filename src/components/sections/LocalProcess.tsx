@@ -9,15 +9,33 @@ interface ProcessStep {
   step: string;
 }
 
+interface ProcessStep {
+  title: string;
+  description: string;
+  point: string;
+  step: string;
+}
+
 interface LocalProcessProps {
   title: string;
   process: any[];
   isWaterproofing?: boolean;
+  customSteps?: ProcessStep[];
+  customTitle?: { pc: string; mo: string };
+  customSubDesc?: { pc: string; mo: string };
+  customNote?: { pc: string; mo: string };
 }
 
-export default function LocalProcess({ title, process, isWaterproofing }: LocalProcessProps) {
-  // Hardcoded highly readable steps as requested by the user
-  const steps = isWaterproofing
+export default function LocalProcess({
+  title,
+  process,
+  isWaterproofing,
+  customSteps,
+  customTitle,
+  customSubDesc,
+  customNote
+}: LocalProcessProps) {
+  const defaultSteps = isWaterproofing
     ? [
         {
           step: "STEP 01",
@@ -77,6 +95,10 @@ export default function LocalProcess({ title, process, isWaterproofing }: LocalP
         }
       ];
 
+  const steps = customSteps && customSteps.length > 0 ? customSteps : defaultSteps;
+  const isCustom4Steps = customSteps && customSteps.length === 4;
+  const is4StepsLayout = isWaterproofing || isCustom4Steps;
+
   return (
     <section className="py-12 md:py-16 bg-white relative overflow-hidden">
       {/* Background Grid Accent */}
@@ -91,34 +113,34 @@ export default function LocalProcess({ title, process, isWaterproofing }: LocalP
           </div>
           {/* PC Title */}
           <h2 className="hidden md:block text-3xl sm:text-[38px] font-black text-slate-900 tracking-tight leading-[1.2]">
-            {isWaterproofing ? "재누수를 줄이는 4단계 책임 방수 프로세스" : "재누수를 줄이는 5단계 창틀코킹 프로세스"}
+            {customTitle?.pc || (isWaterproofing ? "재누수를 줄이는 4단계 책임 방수 프로세스" : "재누수를 줄이는 5단계 창틀코킹 프로세스")}
           </h2>
           {/* MO Title */}
           <h2 className="block md:hidden text-[26px] sm:text-[28px] font-black text-slate-900 tracking-tight leading-[1.2]">
-            {isWaterproofing ? "재누수를 줄이는 4단계 방수 프로세스" : "재누수를 줄이는 5단계 프로세스"}
+            {customTitle?.mo || (isWaterproofing ? "재누수를 줄이는 4단계 방수 프로세스" : "재누수를 줄이는 5단계 프로세스")}
           </h2>
           
           {/* PC Sub-desc */}
           <p className="hidden md:block text-[14.5px] sm:text-[15.5px] text-slate-500 max-w-[640px] mx-auto leading-relaxed">
-            {isWaterproofing 
+            {customSubDesc?.pc || (isWaterproofing 
               ? "건물 균열 및 방수층을 확인하고, 바탕면 V-컷팅 정리부터 마감 검수까지 순서대로 진행합니다."
-              : "실리콘을 덮기 전에 원인을 확인하고, 바탕면 정리부터 마감 검수까지 순서대로 진행합니다."}
+              : "실리콘을 덮기 전에 원인을 확인하고, 바탕면 정리부터 마감 검수까지 순서대로 진행합니다.")}
           </p>
           {/* MO Sub-desc */}
           <p className="block md:hidden text-[14.5px] text-slate-500 max-w-[640px] mx-auto leading-relaxed">
-            {isWaterproofing
+            {customSubDesc?.mo || (isWaterproofing
               ? "건물 균열 진단부터 마감 검수까지 순서대로 진행합니다."
-              : "원인 확인부터 마감 검수까지 순서대로 진행합니다."}
+              : "원인 확인부터 마감 검수까지 순서대로 진행합니다.")}
           </p>
         </div>
 
         {/* Unified 5-Step Layout / 4-Step Layout */}
-        <div className={`grid grid-cols-1 ${isWaterproofing ? "md:grid-cols-4" : "md:grid-cols-6"} gap-3.5 md:gap-6 max-w-md md:max-w-none mx-auto`}>
+        <div className={`grid grid-cols-1 ${is4StepsLayout ? "md:grid-cols-4" : "md:grid-cols-6"} gap-3.5 md:gap-6 max-w-md md:max-w-none mx-auto`}>
           {steps.map((step, idx) => (
             <div
               key={idx}
               className={`bg-white border border-slate-100 rounded-2xl md:rounded-[24px] p-4.5 md:p-7.5 shadow-3xs transition-all duration-300 ${
-                isWaterproofing ? "col-span-1" : `col-span-1 md:col-span-2 ${idx === 3 ? "md:col-start-2" : ""}`
+                is4StepsLayout ? "col-span-1" : `col-span-1 md:col-span-2 ${idx === 3 ? "md:col-start-2" : ""}`
               } flex flex-row md:flex-col md:justify-between items-center md:items-start justify-between min-h-[72px] md:min-h-0 md:h-auto`}
             >
               {/* Left/Top Area (Step badge & Title/Desc) */}
@@ -165,18 +187,18 @@ export default function LocalProcess({ title, process, isWaterproofing }: LocalP
         {/* Mobile Slim Conclusion Note */}
         <div className="block md:hidden mt-5 py-3 px-4 bg-teal-50/45 border border-teal-500/10 rounded-xl text-center max-w-md mx-auto">
           <p className="text-[13px] font-bold text-slate-700 leading-normal">
-            {isWaterproofing 
+            {customNote?.mo || (isWaterproofing 
               ? "건물의 상태와 균열 깊이에 따라 필요한 방수 보수 공법을 적용합니다."
-              : "현장 상태에 따라 덧방, 부분 제거, 올제거 방식을 구분해 안내합니다."}
+              : "현장 상태에 따라 덧방, 부분 제거, 올제거 방식을 구분해 안내합니다.")}
           </p>
         </div>
 
         {/* PC Section Bottom Conclusion Note Box */}
         <div className="hidden md:block mt-12 p-5 bg-teal-50/40 border border-teal-500/10 rounded-2xl max-w-3xl mx-auto text-center">
           <p className="text-[14px] sm:text-[14.5px] font-bold text-slate-800 leading-relaxed">
-            {isWaterproofing
+            {customNote?.pc || (isWaterproofing
               ? "틈새케어는 건물의 노화 원인을 분석하여 옥상 및 외벽 균열 상태에 알맞은 방수 보강 공사를 수행합니다."
-              : "틈새케어는 현장 상태에 따라 필요한 시공 방식을 구분해 재누수 가능성을 줄이는 방향으로 작업합니다."}
+              : "틈새케어는 현장 상태에 따라 필요한 시공 방식을 구분해 재누수 가능성을 줄이는 방향으로 작업합니다.")}
           </p>
         </div>
 

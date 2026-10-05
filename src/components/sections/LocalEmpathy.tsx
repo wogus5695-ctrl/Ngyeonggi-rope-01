@@ -7,11 +7,26 @@ import Image from "next/image";
 interface LocalEmpathyProps {
   locationName: string;
   dynamicIntro?: string;
+  dynamicIntroOverride?: string;
   isWaterproofing?: boolean;
+  empathyHeadline?: string;
+  empathyDesc?: string;
+  customCards?: Array<{
+    title: string;
+    desc: string;
+  }>;
 }
 
-export default function LocalEmpathy({ locationName, dynamicIntro, isWaterproofing }: LocalEmpathyProps) {
-  const empathyCards = isWaterproofing
+export default function LocalEmpathy({ 
+  locationName, 
+  dynamicIntro, 
+  dynamicIntroOverride,
+  isWaterproofing,
+  empathyHeadline,
+  empathyDesc,
+  customCards
+}: LocalEmpathyProps) {
+  const defaultCards = isWaterproofing
     ? [
         {
           title: "콘크리트 외벽 노화",
@@ -73,6 +88,14 @@ export default function LocalEmpathy({ locationName, dynamicIntro, isWaterproofi
         }
       ];
 
+  const empathyCards = customCards && customCards.length === 3
+    ? customCards.map((c, i) => ({
+        title: c.title,
+        desc: c.desc,
+        icon: defaultCards[i].icon
+      }))
+    : defaultCards;
+
   return (
     <section className="relative min-h-[680px] lg:min-h-[760px] flex items-center py-12 lg:py-20 overflow-hidden bg-slate-950">
       
@@ -107,10 +130,12 @@ export default function LocalEmpathy({ locationName, dynamicIntro, isWaterproofi
                 WHY IT LEAKS AGAIN
               </div>
               <h2
-                className="text-[26px] sm:text-[30px] lg:text-[32px] font-black text-white tracking-tight leading-[1.2]"
+                className="text-[26px] sm:text-[30px] lg:text-[32px] font-black text-white tracking-tight leading-[1.2] whitespace-pre-line"
                 style={{ textShadow: "2px 2px 3px rgba(0, 0, 0, 0.9)" }}
               >
-                {isWaterproofing ? (
+                {empathyHeadline ? (
+                  empathyHeadline
+                ) : isWaterproofing ? (
                   <>
                     방수는 표면 마감보다
                     <br />
@@ -130,9 +155,9 @@ export default function LocalEmpathy({ locationName, dynamicIntro, isWaterproofi
                 className="text-[14.5px] md:text-[14px] lg:text-[14.5px] text-slate-100 leading-relaxed font-semibold"
                 style={{ textShadow: "1px 1px 3px rgba(0, 0, 0, 0.9)" }}
               >
-                {isWaterproofing
+                {empathyDesc || (isWaterproofing
                   ? "물이 번지는 곳과 실제 원인 균열은 다를 수 있습니다. 콘크리트 외벽 균열, 옥상 우레탄 들뜸, 조인트 마감을 함께 진단해야 합니다."
-                  : "물이 보이는 곳과 실제 유입 지점은 다를 수 있습니다. 외벽 크랙, 샷시 접합부, 기존 실리콘 상태를 함께 확인해야 합니다."}
+                  : "물이 보이는 곳과 실제 유입 지점은 다를 수 있습니다. 외벽 크랙, 샷시 접합부, 기존 실리콘 상태를 함께 확인해야 합니다.")}
               </p>
             </div>
 
@@ -194,7 +219,7 @@ export default function LocalEmpathy({ locationName, dynamicIntro, isWaterproofi
 
             {/* SEO Preservation (Hidden but crawlable) */}
             <span className="sr-only opacity-0 pointer-events-none absolute w-0 h-0 overflow-hidden">
-              {dynamicIntro || `${locationName} 지역의 외부 코킹 보수는 단순한 실리콘 처방보다 정확한 누수 지점 실사가 먼저입니다.`}
+              {dynamicIntroOverride || dynamicIntro || `${locationName} 지역의 외부 코킹 보수는 단순한 실리콘 처방보다 정확한 누수 지점 실사가 먼저입니다.`}
             </span>
 
           </div>

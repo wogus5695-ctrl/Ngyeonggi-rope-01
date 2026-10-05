@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ContactCTA from "@/components/ContactCTA";
@@ -18,6 +19,9 @@ import LocalFAQ from "@/components/sections/LocalFAQ";
 import LocalPortfolio from "@/components/sections/LocalPortfolio";
 import { getDynamicHomeData, getHash } from "@/lib/dynamicHome";
 import { TEUMSAE_ALLOWED_REGIONS } from "@/data/allowedKeywords";
+import { isSeoPilotKeyword, normalizeKeyword } from "@/data/seoPilotConfig";
+import { PILOT_SERVICE_CONTENTS } from "@/data/pilotContentConfig";
+import { getPilotMetadata } from "@/data/pilotMetadataConfig";
 
 type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -57,26 +61,45 @@ function validateKeyword(k: string | undefined): { isValid: boolean; region: str
 export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
   const unresolvedParams = await searchParams;
   const k = typeof unresolvedParams.k === 'string' ? unresolvedParams.k : undefined;
+  console.log('[DEBUG generateMetadata] k =', k);
 
-  const { isValid, region, service } = validateKeyword(k);
+  if (k !== undefined) {
+    const { isValid, region, service } = validateKeyword(k);
+    if (!isValid) {
+      notFound();
+    }
 
-  if (!isValid) {
-    return getMetadata({
-      title: BRAND_HUB_CONTENT.subtitle,
-      description: BRAND_HUB_CONTENT.intro,
-      path: "/",
+    const hash = getHash(`${region}-${service}`);
+    const data = getDynamicHomeData(region, service, hash);
+    const isWaterproofing = ["외벽방수", "옥상방수", "건물방수", "외벽도색", "지붕방수", "지붕보수", "지붕누수"].includes(service);
+    const cleanK = decodeURIComponent(k);
+
+    const isPilot = isSeoPilotKeyword(cleanK);
+    const pilotMeta = isPilot ? getPilotMetadata(normalizeKeyword(cleanK)) : null;
+
+    const baseMeta = getMetadata({
+      title: pilotMeta ? pilotMeta.title : data.metaTitle,
+      description: pilotMeta ? pilotMeta.description : data.metaDesc,
+      path: `/?k=${encodeURIComponent(cleanK)}`,
+      ogImage: isWaterproofing ? "/og-image-waterproof.jpg" : undefined,
     });
+
+    return {
+      ...baseMeta,
+      alternates: undefined,
+      openGraph: {
+        ...baseMeta.openGraph,
+        title: pilotMeta ? pilotMeta.ogTitle : baseMeta.openGraph?.title,
+        description: pilotMeta ? pilotMeta.ogDescription : baseMeta.openGraph?.description,
+        url: undefined,
+      },
+    };
   }
 
-  const hash = getHash(`${region}-${service}`);
-  const data = getDynamicHomeData(region, service, hash);
-  const isWaterproofing = ["외벽방수", "옥상방수", "건물방수", "외벽도색", "지붕방수", "지붕보수", "지붕누수"].includes(service);
-
   return getMetadata({
-    title: data.metaTitle,
-    description: data.metaDesc,
-    path: `/?k=${k}`,
-    ogImage: isWaterproofing ? "/og-image-waterproof.jpg" : undefined,
+    title: BRAND_HUB_CONTENT.subtitle,
+    description: BRAND_HUB_CONTENT.intro,
+    path: "/",
   });
 }
 
@@ -84,7 +107,14 @@ export default async function Home({ searchParams }: Props) {
   const unresolvedParams = await searchParams;
   const k = typeof unresolvedParams.k === 'string' ? unresolvedParams.k : undefined;
 
-  // 1. 키워드 검증 및 기본값 분기
+  // 1. k 쿼리 파라미터 유입 시 유효성 검증 (무효 키워드는 404 반환)
+  if (k !== undefined) {
+    const { isValid } = validateKeyword(k);
+    if (!isValid) {
+      notFound();
+    }
+  }
+
   const { isValid, region, service } = validateKeyword(k);
 
   const isWaterproofing = isValid && ["외벽방수", "옥상방수", "건물방수", "외벽도색", "지붕방수", "지붕보수", "지붕누수"].includes(service);
@@ -146,24 +176,26 @@ export default async function Home({ searchParams }: Props) {
     dynamicMethod = data.dynamicMethod;
   }
 
+  // 3단계 Pilot 키워드 확인 및 콘텐츠 분기
+  const isPilot = isValid && k ? isSeoPilotKeyword(k) : false;
+  const pilotContent = isPilot ? PILOT_SERVICE_CONTENTS[service] : null;
+
   const content = BRAND_HUB_CONTENT;
 
-  const canonicalUrl = isValid ? `https://www.teumsaecare.co.kr/?k=${k}` : "https://www.teumsaecare.co.kr/";
+  const canonicalUrl = isValid && k ? `https://www.teumsaecare.co.kr/?k=${encodeURIComponent(k)}` : "https://www.teumsaecare.co.kr/";
   const schemaImage = isWaterproofing 
     ? "https://www.teumsaecare.co.kr/og-image-waterproof.jpg" 
     : "https://www.teumsaecare.co.kr/og-image.png";
 
   return (
     <div className="flex min-h-screen flex-col font-sans antialiased overflow-x-hidden">
-      {/* 동적 canonical 및 og:url 명시적 주입 (Next.js 루트 쿼리 파라미터 보존) */}
-      {isValid && (
-        <>
+      {/* 동적페이지 전용 canonical 및 og:url 명시적 head 주입 */}
+      {isValid && k && (
+        <head>
           <link rel="canonical" href={canonicalUrl} />
           <meta property="og:url" content={canonicalUrl} />
-        </>
+        </head>
       )}
-
-      {/* 구조화 데이터 JSON-LD (Service 및 image 필드 포함) */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -184,8 +216,8 @@ export default async function Home({ searchParams }: Props) {
         }}
       />
 
-      {/* FAQ 구조화 데이터 자동 주입 */}
-      <FAQSchema faqs={faqList} />
+      {/* FAQ 구조화 데이터 자동 주입 (Pilot인 경우 Visible FAQ와 100% 동기화) */}
+      <FAQSchema faqs={pilotContent ? pilotContent.faq.faqs : faqList} />
 
       <Header phone={phone} isWaterproofing={isWaterproofing} />
 
@@ -197,10 +229,14 @@ export default async function Home({ searchParams }: Props) {
           serviceName={isValid ? service : "창틀코킹"}
           serviceSuffix={isValid && service.startsWith("지붕") ? "전문 상담" : "전문 진단"}
           phone={phone}
-          intro={heroIntro}
+          intro={pilotContent ? pilotContent.hero.intro(heroLocation) : heroIntro}
           isWaterproofing={isWaterproofing}
+          subCopy={pilotContent?.hero.subCopy}
+          badgeText={pilotContent?.hero.badgeText}
           keywords={
-            isWaterproofing
+            pilotContent
+              ? pilotContent.hero.badges
+              : isWaterproofing
               ? [
                   "100% 정석 V-컷팅 시공",
                   analysisDynamicKeyword ? `${analysisDynamicKeyword} 정밀 진단` : "건물 균열 정밀 진단",
@@ -217,35 +253,65 @@ export default async function Home({ searchParams }: Props) {
         />
 
         {/* 1-2. 간이 자가진단 섹션 (Hero 하단으로 이동) */}
-        <LocalDiagnostics isWaterproofing={isWaterproofing} />
+        <LocalDiagnostics
+          isWaterproofing={isWaterproofing}
+          diagnosticsBadge={pilotContent?.diagnostics.badge}
+          diagnosticsHeadline={pilotContent?.diagnostics.headline}
+          diagnosticsDesc={pilotContent?.diagnostics.description}
+          customCards={pilotContent?.diagnostics.cards}
+          alertText={pilotContent?.diagnostics.alertText}
+        />
 
         {/* 2. 문제 공감 섹션 */}
         <LocalEmpathy
           locationName={heroLocation}
-          dynamicIntro={dynamicIntro || undefined}
+          dynamicIntro={
+            pilotContent
+              ? (service === "지붕보수"
+                  ? `${heroLocation}에서 지붕 부위 노후나 손상이 의심된다면 상태와 보수 범위를 함께 확인하는 것이 먼저입니다.`
+                  : undefined)
+              : (dynamicIntro || undefined)
+          }
           isWaterproofing={isWaterproofing}
+          empathyHeadline={pilotContent?.empathy.headline}
+          empathyDesc={pilotContent?.empathy.description}
+          customCards={pilotContent?.empathy.cards}
         />
 
         {/* 4. 진단 중심 작업 방식 섹션 */}
         <div id="process">
           <LocalProcess
-            title={processTitle}
-            process={processSteps}
+            title={pilotContent ? pilotContent.process.title.pc : processTitle}
+            process={pilotContent ? [] : processSteps}
             isWaterproofing={isWaterproofing}
+            customSteps={pilotContent?.process.steps}
+            customTitle={pilotContent?.process.title}
+            customSubDesc={pilotContent?.process.subDesc}
+            customNote={pilotContent?.process.conclusionNote}
           />
         </div>
 
         {/* 5. 왜 전문업체가 필요한지 설명하는 섹션 */}
         <WhyProfessional
           locationName={heroLocation}
-          dynamicBanner={dynamicBanner || undefined}
+          dynamicBanner={
+            pilotContent
+              ? (service === "지붕보수"
+                  ? `${heroLocation}에서 지붕 부위 노후나 손상이 의심된다면 상태와 보수 범위를 함께 확인하는 것이 먼저입니다.`
+                  : undefined)
+              : (dynamicBanner || undefined)
+          }
           isWaterproofing={isWaterproofing}
         />
 
         {/* 6. 경기 북부 권역 안내 섹션 */}
         <LocalRegionInfo
           locationName={heroLocation}
-          dynamicMethod={dynamicMethod || undefined}
+          dynamicMethod={
+            pilotContent?.regionInfoText
+              ? pilotContent.regionInfoText(heroLocation)
+              : (dynamicMethod || undefined)
+          }
           isWaterproofing={isWaterproofing}
         />
 
@@ -260,8 +326,8 @@ export default async function Home({ searchParams }: Props) {
         {/* 8. FAQ 섹션 */}
         <div id="faq">
           <LocalFAQ
-            title={faqTitle}
-            faqs={faqList}
+            title={pilotContent ? pilotContent.faq.title : faqTitle}
+            faqs={pilotContent ? pilotContent.faq.faqs : faqList}
           />
         </div>
 

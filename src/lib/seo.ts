@@ -30,7 +30,8 @@ export function getMetadata(options: {
   noIndex?: boolean;
 }): Metadata {
   const { title, description, path, ogImage, noIndex } = options;
-  const url = `${SEO_CONFIG.baseUrl}${path || ''}`;
+  const targetPath = path || '';
+  const url = `${SEO_CONFIG.baseUrl}${targetPath}`;
   const finalOgImage = ogImage || SEO_CONFIG.ogImage;
   const isWaterproofImage = finalOgImage.includes('waterproof');
   const imageWidth = isWaterproofImage ? 1024 : 1200;
@@ -39,16 +40,17 @@ export function getMetadata(options: {
   const isDynamicQuery = Boolean(path && path.includes('?k='));
 
   return {
+    metadataBase: new URL(SEO_CONFIG.baseUrl),
     title: title,
     description: description || SEO_CONFIG.description,
     keywords: SEO_CONFIG.keywords,
     alternates: isDynamicQuery ? undefined : {
-      canonical: url,
+      canonical: targetPath || '/',
     },
     openGraph: {
       title: title ? `${title} | 틈새케어` : SEO_CONFIG.title.default,
       description: description || SEO_CONFIG.description,
-      url: isDynamicQuery ? undefined : url,
+      url: isDynamicQuery ? undefined : (targetPath || '/'),
       siteName: "틈새케어",
       locale: "ko_KR",
       type: "website",
@@ -68,7 +70,6 @@ export function getMetadata(options: {
       images: [finalOgImage],
     },
     robots: noIndex ? { index: false, follow: true } : undefined,
-    metadataBase: new URL(SEO_CONFIG.baseUrl),
     other: {
       "thumbnail": `${SEO_CONFIG.baseUrl}${finalOgImage}`,
     }
