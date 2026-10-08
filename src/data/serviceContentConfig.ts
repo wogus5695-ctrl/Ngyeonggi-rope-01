@@ -745,9 +745,9 @@ export const SERVICE_CONTENT_CONFIG: Record<string, ServiceContentItem> = {
     businessEntityId: "RAINFIX",
     verifiedFactKeys: ["ECO_PENETRATING_WATER_REPELLENT"],
     metadata: {
-      titleTemplate: (region) => `${region} 외벽방수 | 외벽 균열 상태 확인 및 방수 상담 - 틈새케어`,
+      titleTemplate: (region) => `${region} 외벽방수 | 외벽 상태 확인 및 방수 상담 - 틈새케어`,
       descriptionTemplate: (region, parent) => 
-        `${parent ? `${parent} ` : ""}${region} 외벽방수 상담. 외벽 균열과 마감 상태를 확인하고 현장에 맞는 방수 보수 범위를 안내합니다.`
+        `${parent ? `${parent} ` : ""}${region} 외벽방수 상담. 건물 외벽의 균열이나 마감 상태를 확인하고 필요한 방수 작업 범위를 안내합니다.`
     },
     hero: {
       headline: (region) => `${region} 외벽방수 현장 점검 및 상담`,

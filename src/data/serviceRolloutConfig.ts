@@ -10,7 +10,9 @@
  * - 문제 발생 시 해당 서비스명을 배열에서 제거하여 즉시 1줄 롤백 가능.
  */
 
-export const SERVICE_INTENT_ROLLOUT_SERVICES: readonly string[] = [] as const;
+export const SERVICE_INTENT_ROLLOUT_SERVICES: readonly string[] = [
+  "외벽방수"
+] as const;
 
 /**
  * 특정 서비스가 전면 롤아웃(Full Rollout) 활성화 대상인지 판정합니다.
