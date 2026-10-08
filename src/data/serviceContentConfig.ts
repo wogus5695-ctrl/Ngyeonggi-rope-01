@@ -852,9 +852,9 @@ export const SERVICE_CONTENT_CONFIG: Record<string, ServiceContentItem> = {
     businessEntityId: "RAINFIX",
     verifiedFactKeys: ["ROOFTOP_URETHANE_3MM_NATIONAL_STD"],
     metadata: {
-      titleTemplate: (region) => `${region} 옥상방수 | 옥상 바닥 상태 점검 및 방수 상담 - 틈새케어`,
+      titleTemplate: (region) => `${region} 옥상방수 | 옥상 상태 확인 및 방수 상담 - 틈새케어`,
       descriptionTemplate: (region, parent) => 
-        `${parent ? `${parent} ` : ""}${region} 옥상방수 상담. 옥상 우레탄 바닥의 들뜸과 갈라짐 상태를 확인하고 필요한 방수 작업 범위를 안내합니다.`
+        `${parent ? `${parent} ` : ""}${region} 옥상방수 상담. 옥상 바닥의 노후·손상 상태를 확인하고 필요한 방수 작업 범위를 안내합니다.`
     },
     hero: {
       headline: (region) => `${region} 옥상방수 현장 점검 및 상담`,
