@@ -959,9 +959,9 @@ export const SERVICE_CONTENT_CONFIG: Record<string, ServiceContentItem> = {
     businessEntityId: "RAINFIX",
     verifiedFactKeys: [],
     metadata: {
-      titleTemplate: (region) => `${region} 건물방수 | 건물 누수 취약 부위 종합 점검 - 틈새케어`,
+      titleTemplate: (region) => `${region} 건물방수 | 건물 상태 확인 및 방수 상담 - 틈새케어`,
       descriptionTemplate: (region, parent) => 
-        `${parent ? `${parent} ` : ""}${region} 건물방수 상담. 외벽·창호·옥상 등 건물 외피 전반의 누수 취약 상태를 확인하고 필요한 보수 범위를 안내합니다.`
+        `${parent ? `${parent} ` : ""}${region} 건물방수 상담. 건물의 누수 의심 부위와 외부 마감 상태를 확인하고 필요한 방수 작업 범위를 안내합니다.`
     },
     hero: {
       headline: (region) => `${region} 건물방수 현장 점검 및 상담`,
