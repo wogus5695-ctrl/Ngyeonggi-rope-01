@@ -34,8 +34,8 @@ export default function Footer({ dynamicKeyword, phone = "010-3951-6831", isWate
             </div>
             <p className="text-[14px] leading-relaxed text-slate-400 mb-6">
               {isWaterproofing 
-                ? "건물 외벽 균열과 옥상 방수층 결함을 정밀 분석하여 건물의 내구성을 보존하고 누수 원인을 체계적으로 해결합니다. 경기 북부 전용 케어 시스템을 운영합니다."
-                : "미세한 틈새와 외벽 균열을 추적 진단하여 누수의 고통에서 해방시켜 드립니다. 경기 북부(고양·파주·양주) 전용 케어 시스템을 운영하고 있습니다."}
+                ? "건물 외벽 균열과 옥상 방수층 상태를 확인하여 누수 원인과 보수 범위를 체계적으로 파악합니다. 서울·인천·경기 수도권 서비스를 운영합니다."
+                : "미세한 틈새와 외벽 균열 상태를 살펴 누수 원인을 확인해 드립니다. 서울·인천·경기 수도권 서비스를 운영하고 있습니다."}
             </p>
 
           </div>
@@ -64,13 +64,13 @@ export default function Footer({ dynamicKeyword, phone = "010-3951-6831", isWate
 
           {/* Contact Details */}
           <div>
-            <h3 className="text-white text-[15px] font-bold mb-5 tracking-tight">엔지니어 상담 센터</h3>
+            <h3 className="text-white text-[15px] font-bold mb-5 tracking-tight">고객 상담 센터</h3>
             <p className="text-[20px] font-black text-teal-400 mb-3 hover:text-teal-300 transition-colors">
               <a href={`tel:${phone}`}>{phone}</a>
             </p>
             <ul className="space-y-2 text-[13px] text-slate-500">
               <li>상담 가능 시간: 오전 8시 ~ 오후 8시 (일요일 휴무)</li>
-              <li>주요 시공 지역: 경기도 고양시, 파주시, 양주시 및 인접 동 지역</li>
+              <li>주요 시공 지역: 서울·인천·경기 수도권 전 지역</li>
               {isWaterproofing ? (
                 <li>상호명: 레인픽스 | 사업자 명: 최형화 | 사업자 번호: 877-09-03230</li>
               ) : (

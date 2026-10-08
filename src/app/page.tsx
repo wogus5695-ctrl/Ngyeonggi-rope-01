@@ -14,7 +14,6 @@ import LocalDiagnostics from "@/components/sections/LocalDiagnostics";
 import LocalEmpathy from "@/components/sections/LocalEmpathy";
 import LocalProcess from "@/components/sections/LocalProcess";
 import WhyProfessional from "@/components/sections/WhyProfessional";
-import LocalRegionInfo from "@/components/sections/LocalRegionInfo";
 import LocalFAQ from "@/components/sections/LocalFAQ";
 import LocalPortfolio from "@/components/sections/LocalPortfolio";
 import { getDynamicHomeData, getHash } from "@/lib/dynamicHome";
@@ -37,7 +36,7 @@ function validateKeyword(k: string | undefined): { isValid: boolean; region: str
 
   const [rawRegion, rawService] = parts;
   
-  // 경기 북부 화이트리스트 검증 (allowedKeywords 기반)
+  // 화이트리스트 검증 (allowedKeywords 기반)
   // 입력된 지역이 allowedKeywords에 명시되어 있거나 그 일부분인지 체크
   const isRegionAllowed = Object.values(TEUMSAE_ALLOWED_REGIONS).some(
     (r) => r.name === rawRegion || r.slug === rawRegion || rawRegion.includes(r.name)
@@ -122,8 +121,8 @@ export default async function Home({ searchParams }: Props) {
 
   // 기본 브랜드 설정 (Fallback)
   let heroLocation = "틈새케어";
-  let heroService = "프리미엄 틈새 누수 정밀 차단";
-  let heroIntro = `창틀 누수와 빗물 유입은 시간이 지날수록 건물을 망가뜨리는 위험 신호입니다.\n틈새케어는 타성에 젖은 실리콘 덧방 시공을 배제하고,\n기존 마감재 전면 탈거 후 강력 접합 시공을 수행합니다.\n재누수 가능성을 줄이는 방향으로 틈새와 외벽 균열을 철저하게 진단하여 메워드립니다.`;
+  let heroService = "창틀 틈새 및 누수 원인 진단";
+  let heroIntro = `창틀 주변 누수와 빗물 유입 흔적은 방치할수록 손상이 커질 수 있습니다.\n틈새케어는 단순 실리콘 덧방보다 기존 실리콘 상태와 외벽 균열을 확인하고,\n현장 상태에 맞는 보수 작업 범위를 안내해 드립니다.`;
   
   let analysisTitle = "";
   let analysisIntro = BRAND_HUB_CONTENT.empathyDesc;
@@ -149,7 +148,7 @@ export default async function Home({ searchParams }: Props) {
     const data = getDynamicHomeData(region, service, hash);
 
     heroLocation = `${region}`;
-    heroService = `${service} 전문 엔지니어 케어`;
+    heroService = `${service} 전문 상담 및 시공`;
     heroIntro = data.summary;
 
     analysisTitle = data.analysisTitle;
@@ -300,17 +299,6 @@ export default async function Home({ searchParams }: Props) {
                   ? `${heroLocation}에서 지붕 부위 노후나 손상이 의심된다면 상태와 보수 범위를 함께 확인하는 것이 먼저입니다.`
                   : undefined)
               : (dynamicBanner || undefined)
-          }
-          isWaterproofing={isWaterproofing}
-        />
-
-        {/* 6. 경기 북부 권역 안내 섹션 */}
-        <LocalRegionInfo
-          locationName={heroLocation}
-          dynamicMethod={
-            pilotContent?.regionInfoText
-              ? pilotContent.regionInfoText(heroLocation)
-              : (dynamicMethod || undefined)
           }
           isWaterproofing={isWaterproofing}
         />

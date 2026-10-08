@@ -99,8 +99,8 @@ export default function LocalHero({
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-teal-50 border border-teal-500/20 text-teal-700 text-[12.5px] font-extrabold rounded-full self-start">
               <span className="w-1.5 h-1.5 bg-teal-500 rounded-full animate-ping"></span>
               {badgeText || (isWaterproofing 
-                ? "경기 북부 건물 외벽·옥상 방수 전문 진단"
-                : "경기 북부 창틀 누수·코킹 진단")}
+                ? "수도권 건물 외벽·옥상 방수 전문 진단"
+                : "서울·인천·경기 창틀 누수·코킹 진단")}
             </div>
 
             <div className="space-y-3">
