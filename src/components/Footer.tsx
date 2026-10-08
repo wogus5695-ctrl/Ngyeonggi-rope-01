@@ -45,6 +45,11 @@ export default function Footer({ dynamicKeyword, phone = "010-3951-6831", isWate
             <h3 className="text-white text-[15px] font-bold mb-5 tracking-tight">서비스 안내</h3>
             <ul className="space-y-3.5 text-[14px]">
               <li>
+                <Link href="/sitemap" className="hover:text-teal-400 transition-colors">
+                  서비스 지역 안내
+                </Link>
+              </li>
+              <li>
                 <Link href="#process" className="hover:text-teal-400 transition-colors">
                   {isWaterproofing ? "4단계 책임 방수 프로세스" : "5단계 창틀코킹 프로세스"}
                 </Link>

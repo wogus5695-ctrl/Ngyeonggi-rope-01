@@ -81,6 +81,9 @@ export default function Header({ phone = "010-3951-6831", isWaterproofing, hideK
           <Link href="#cases" className="hover:text-teal-600 transition-colors">
             시공 레퍼런스
           </Link>
+          <Link href="/sitemap" className="hover:text-teal-600 transition-colors">
+            서비스 지역
+          </Link>
         </nav>
 
         {/* 액션 버튼 */}

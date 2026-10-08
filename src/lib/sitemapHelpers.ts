@@ -45,10 +45,28 @@ export function getStaticSitemapEntries(): SitemapUrlEntry[] {
       priority: 1.0,
     },
     {
-      url: `${BASE_URL}/sitemap-gyeonggi-north`,
+      url: `${BASE_URL}/sitemap`,
       lastModified: new Date().toISOString(),
       changeFrequency: 'weekly',
       priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/sitemap-seoul`,
+      lastModified: new Date().toISOString(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/sitemap-gyeonggi`,
+      lastModified: new Date().toISOString(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/sitemap-gyeonggi-north`,
+      lastModified: new Date().toISOString(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
     }
   ];
 
