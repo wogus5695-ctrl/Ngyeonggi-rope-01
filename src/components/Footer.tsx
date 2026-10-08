@@ -5,9 +5,10 @@ interface FooterProps {
   dynamicKeyword?: string;
   phone?: string;
   isWaterproofing?: boolean;
+  processLinkText?: string;
 }
 
-export default function Footer({ dynamicKeyword, phone = "010-3951-6831", isWaterproofing }: FooterProps) {
+export default function Footer({ dynamicKeyword, phone = "010-3951-6831", isWaterproofing, processLinkText }: FooterProps) {
   return (
     <footer className="bg-slate-900 text-slate-400 py-16 px-4 md:px-8 border-t border-slate-800">
       <div className="max-w-6xl mx-auto">
@@ -51,7 +52,7 @@ export default function Footer({ dynamicKeyword, phone = "010-3951-6831", isWate
               </li>
               <li>
                 <Link href="#process" className="hover:text-teal-400 transition-colors">
-                  {isWaterproofing ? "4단계 책임 방수 프로세스" : "5단계 창틀코킹 프로세스"}
+                  {processLinkText || (isWaterproofing ? "4단계 책임 방수 프로세스" : "5단계 창틀코킹 프로세스")}
                 </Link>
               </li>
               <li>

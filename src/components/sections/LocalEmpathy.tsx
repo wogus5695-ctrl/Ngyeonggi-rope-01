@@ -15,6 +15,7 @@ interface LocalEmpathyProps {
     title: string;
     desc: string;
   }>;
+  highlightText?: React.ReactNode;
 }
 
 export default function LocalEmpathy({ 
@@ -24,7 +25,8 @@ export default function LocalEmpathy({
   isWaterproofing,
   empathyHeadline,
   empathyDesc,
-  customCards
+  customCards,
+  highlightText
 }: LocalEmpathyProps) {
   const defaultCards = isWaterproofing
     ? [
@@ -181,7 +183,9 @@ export default function LocalEmpathy({
             {/* PC Highlight Box (md 이상 노출) */}
             <div className="hidden md:block p-4.5 bg-teal-950/70 border border-teal-500/20 rounded-2xl backdrop-blur-xs">
               <p className="text-[14px] font-bold text-teal-100 leading-relaxed">
-                {isWaterproofing ? (
+                {highlightText ? (
+                  highlightText
+                ) : isWaterproofing ? (
                   <>
                     틈새케어는 ‘단순히 칠하기’보다 <span className="text-teal-400 font-extrabold">‘건물 전체의 방수 장벽’</span>을 완벽히 재건합니다.
                   </>
