@@ -1173,9 +1173,9 @@ export const SERVICE_CONTENT_CONFIG: Record<string, ServiceContentItem> = {
     businessEntityId: "RAINFIX",
     verifiedFactKeys: [],
     metadata: {
-      titleTemplate: (region) => `${region} 지붕방수 | 지붕 표면 상태 점검 및 방수 상담 - 틈새케어`,
+      titleTemplate: (region) => `${region} 지붕방수 | 지붕 상태 확인 및 방수 상담 - 틈새케어`,
       descriptionTemplate: (region, parent) => 
-        `${parent ? `${parent} ` : ""}${region} 지붕방수 상담. 지붕 표면의 노후 균열과 빗물 유입 가능성을 확인하고 필요한 방수 작업 범위를 안내합니다.`
+        `${parent ? `${parent} ` : ""}${region} 지붕방수 상담. 지붕 표면과 이음 부위의 노후·손상 상태를 확인하고 필요한 방수 작업 범위를 안내합니다.`
     },
     hero: {
       headline: (region) => `${region} 지붕방수 현장 점검 및 상담`,
@@ -1260,16 +1260,16 @@ export const SERVICE_CONTENT_CONFIG: Record<string, ServiceContentItem> = {
       title: "지붕 방수 관련 자주 묻는 질문",
       faqs: (region) => [
         {
-          question: `${region} 단독주택이나 공장 지붕 방수는 어떻게 진행되나요?`,
-          answer: "지붕 구조와 마감 형태에 따라 상부 균열 부위 보수 및 방수 도포 작업을 안전 수칙에 맞춰 진행합니다."
+          question: `${region} 지붕방수 상담은 어떻게 진행되나요?`,
+          answer: "지붕의 형태와 노후 상태를 먼저 확인한 뒤, 현장에 적합한 보수 범위와 필요한 작업 방향을 안내합니다."
         },
         {
-          question: "지붕을 전부 뜯어내지 않고도 방수가 가능한가요?",
-          answer: "골조 손상이 심각하지 않다면 상부 틈새 보수 및 전용 방수 시공을 통해 개선되는 경우가 많습니다."
+          question: "지붕 전체를 교체하지 않고 부분 방수도 가능한가요?",
+          answer: "지붕의 손상 부위와 상태를 점검하여 전체 교체가 아닌 필요한 구간 위주로 보수 및 방수 작업이 가능한지 확인해 드립니다."
         },
         {
-          question: "비가 새는 정확한 위치를 어떻게 찾나요?",
-          answer: "실내 천장 젖음 위치와 상부 지붕의 물길 및 이음매 상태를 대조하여 의심 부위를 좁혀나갑니다."
+          question: "빗물이 스며드는 위치는 어떻게 확인하나요?",
+          answer: "실내 누수 흔적과 지붕 표면 상태를 함께 확인해 누수가 의심되는 부위와 추가 확인이 필요한 범위를 안내합니다."
         }
       ]
     }
