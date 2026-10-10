@@ -1066,9 +1066,9 @@ export const SERVICE_CONTENT_CONFIG: Record<string, ServiceContentItem> = {
     businessEntityId: "RAINFIX",
     verifiedFactKeys: [],
     metadata: {
-      titleTemplate: (region) => `${region} 외벽도색 | 외벽 바탕면 점검 및 도장 상담 - 틈새케어`,
+      titleTemplate: (region) => `${region} 외벽도색 | 외벽 상태 확인 및 도색 상담 - 틈새케어`,
       descriptionTemplate: (region, parent) => 
-        `${parent ? `${parent} ` : ""}${region} 외벽도색 상담. 외벽 페인트 들뜸과 균열 상태를 확인하고 현장에 맞는 도색 작업 범위를 안내합니다.`
+        `${parent ? `${parent} ` : ""}${region} 외벽도색 상담. 외벽 표면의 노후·변색·손상 상태를 확인하고 필요한 도색 작업 범위를 안내합니다.`
     },
     hero: {
       headline: (region) => `${region} 외벽도색 현장 점검 및 상담`,
@@ -1153,16 +1153,16 @@ export const SERVICE_CONTENT_CONFIG: Record<string, ServiceContentItem> = {
       title: "외벽 도색 관련 자주 묻는 질문",
       faqs: (region) => [
         {
-          question: `${region} 빌라 외벽 도색 전 균열 보수도 같이 해주나요?`,
-          answer: "네, 페인트를 칠하기 전 들뜬 부위를 정리하고 눈에 띄는 벽면 균열을 보수한 후 도색을 진행해야 들뜸 없이 오래 유지됩니다."
+          question: `${region} 외벽도색 전에 벽면 손상도 함께 확인하나요?`,
+          answer: "외벽 표면의 들뜸이나 균열 등 눈에 보이는 상태를 확인한 뒤, 도색 작업이 필요한 범위와 추가 확인이 필요한 부위를 안내합니다."
         },
         {
-          question: "도색 공사 중 창문이나 주변 차량 보양은 어떻게 하나요?",
-          answer: "페인트가 튀지 않도록 창문과 주변 시설물에 대한 보양 작업을 사전에 철저히 진행합니다."
+          question: "외벽도색 작업 전에 주변 상태도 확인하나요?",
+          answer: "창문이나 주변 시설물 등 작업 구역의 상태를 함께 확인하고, 현장 상황에 따라 작업 전 필요한 준비 사항을 안내합니다."
         },
         {
           question: "색상 선택은 어떻게 진행되나요?",
-          answer: "건물 주변 분위기 및 고객 선호도를 고려하여 적합한 색상표를 기준으로 협의 후 결정합니다."
+          answer: "외벽 상태와 고객 요청 사항을 확인한 뒤 가능한 색상 범위를 상담하여 결정합니다."
         }
       ]
     }
