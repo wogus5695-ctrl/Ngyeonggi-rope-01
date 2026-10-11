@@ -24,6 +24,11 @@ import { getPilotMetadata } from "@/data/pilotMetadataConfig";
 import { resolveContentMode } from "@/lib/contentModeResolver";
 import { SERVICE_CONTENT_CONFIG } from "@/data/serviceContentConfig";
 import { resolveParentDistrict } from "@/lib/parentDistrictResolver";
+import { resolvePageTier, isP2F1ActivePilot, PageTierType } from "@/data/pageTierConfig";
+import { getTierPortfolioCase } from "@/data/tierPortfolioBinding";
+import { resolveDeterministicNav, DeterministicNavResult } from "@/lib/deterministicNavResolver";
+import TierEnhancedPortfolio from "@/components/sections/TierEnhancedPortfolio";
+import TierLocalNavigation from "@/components/sections/TierLocalNavigation";
 
 type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -212,6 +217,23 @@ export default async function Home({ searchParams }: Props) {
   const pilotContent = isLockedPilot ? PILOT_SERVICE_CONTENTS[service] : null;
   const p2ServiceContent = isP2Active ? SERVICE_CONTENT_CONFIG[service] : null;
 
+  // P2-F1 Tier Architecture 결합 (7 Pilot에 한해 활성화)
+  const isTierPilot = cleanK ? isP2F1ActivePilot(cleanK) : false;
+  const pageTier: PageTierType = cleanK ? resolvePageTier(cleanK) : 'STANDARD_ROLLOUT';
+
+  const isTierA = isTierPilot && pageTier === 'TIER_A';
+  const isTierB1 = isTierPilot && pageTier === 'TIER_B1';
+  const isTierB2 = isTierPilot && pageTier === 'TIER_B2';
+  const isTierC = isTierPilot && pageTier === 'TIER_C';
+
+  // Tier A 실제 포트폴리오 사례
+  const tierPortfolioCase = isTierA && cleanK ? getTierPortfolioCase(cleanK) : null;
+
+  // Tier B1/B2/C/A 결정론적 내비게이션 데이터
+  const tierNavData: DeterministicNavResult | null = isTierPilot && cleanK
+    ? resolveDeterministicNav(region, service, isTierB1)
+    : null;
+
   // WhyProfessional 동적 배너: P2 Active 시 안전 문구 우선 적용
   const whyProfessionalBanner = isP2Active && p2ServiceContent
     ? `${heroLocation} ${service} 점검 및 보수. 원인 확인부터 마감까지 체계적으로 안내합니다.`
@@ -369,50 +391,52 @@ export default async function Home({ searchParams }: Props) {
           }
         />
 
-        {/* 2. 문제 공감 섹션 */}
-        <LocalEmpathy
-          locationName={heroLocation}
-          dynamicIntro={
-            isLockedPilot
-              ? (service === "지붕보수"
-                  ? `${heroLocation}에서 지붕 부위 노후나 손상이 의심된다면 상태와 보수 범위를 함께 확인하는 것이 먼저입니다.`
-                  : undefined)
-              : isP2Active && p2ServiceContent
-              ? p2ServiceContent.empathy.description
-              : (dynamicIntro || undefined)
-          }
-          isWaterproofing={isWaterproofing}
-          empathyHeadline={
-            isLockedPilot
-              ? pilotContent?.empathy.headline
-              : isP2Active && p2ServiceContent
-              ? p2ServiceContent.empathy.headline
-              : undefined
-          }
-          empathyDesc={
-            isLockedPilot
-              ? pilotContent?.empathy.description
-              : isP2Active && p2ServiceContent
-              ? p2ServiceContent.empathy.description
-              : undefined
-          }
-          customCards={
-            isLockedPilot
-              ? pilotContent?.empathy.cards
-              : isP2Active && p2ServiceContent
-              ? p2ServiceContent.empathy.cards
-              : undefined
-          }
-          highlightText={
-            isP2Active && isWaterproofing ? (
-              <>
-                틈새케어는 ‘단순히 칠하기’보다 <span className="text-teal-400 font-extrabold">‘건물 전체의 방수 장벽’</span>을 체계적으로 보강합니다.
-              </>
-            ) : undefined
-          }
-        />
+        {/* 2. 문제 공감 섹션 (Tier C에서는 생략하여 슬림화) */}
+        {!isTierC && (
+          <LocalEmpathy
+            locationName={heroLocation}
+            dynamicIntro={
+              isLockedPilot
+                ? (service === "지붕보수"
+                    ? `${heroLocation}에서 지붕 부위 노후나 손상이 의심된다면 상태와 보수 범위를 함께 확인하는 것이 먼저입니다.`
+                    : undefined)
+                : isP2Active && p2ServiceContent
+                ? p2ServiceContent.empathy.description
+                : (dynamicIntro || undefined)
+            }
+            isWaterproofing={isWaterproofing}
+            empathyHeadline={
+              isLockedPilot
+                ? pilotContent?.empathy.headline
+                : isP2Active && p2ServiceContent
+                ? p2ServiceContent.empathy.headline
+                : undefined
+            }
+            empathyDesc={
+              isLockedPilot
+                ? pilotContent?.empathy.description
+                : isP2Active && p2ServiceContent
+                ? p2ServiceContent.empathy.description
+                : undefined
+            }
+            customCards={
+              isLockedPilot
+                ? pilotContent?.empathy.cards
+                : isP2Active && p2ServiceContent
+                ? p2ServiceContent.empathy.cards
+                : undefined
+            }
+            highlightText={
+              isP2Active && isWaterproofing ? (
+                <>
+                  틈새케어는 ‘단순히 칠하기’보다 <span className="text-teal-400 font-extrabold">‘건물 전체의 방수 장벽’</span>을 체계적으로 보강합니다.
+                </>
+              ) : undefined
+            }
+          />
+        )}
 
-        {/* 4. 진단 중심 작업 방식 섹션 */}
+        {/* 4. 진단 중심 작업 방식 섹션 (4단계 유지, Tier C는 description 간결화) */}
         <div id="process">
           <LocalProcess
             title={
@@ -431,7 +455,9 @@ export default async function Home({ searchParams }: Props) {
                 ? p2ServiceContent.process.steps.map((s) => ({
                     step: s.step,
                     title: s.title,
-                    description: s.description,
+                    description: isTierC
+                      ? s.description.split('.')[0] + '.'
+                      : s.description,
                     point: "현장 상태 확인"
                   }))
                 : undefined
@@ -460,21 +486,30 @@ export default async function Home({ searchParams }: Props) {
           />
         </div>
 
-        {/* 5. 왜 전문업체가 필요한지 설명하는 섹션 */}
-        <WhyProfessional
-          locationName={heroLocation}
-          dynamicBanner={whyProfessionalBanner}
-          isWaterproofing={isWaterproofing}
-          step01Desc={isP2Active && isWaterproofing ? "외벽 콘크리트 · 옥상 들뜸" : undefined}
-        />
-
-        {/* 7. 시공 레퍼런스 사례 */}
-        <div id="cases">
-          <LocalPortfolio
-            title={portfolioTitle}
+        {/* 5. 왜 전문업체가 필요한지 설명하는 섹션 (Tier Pilot에서는 제거) */}
+        {!isTierPilot && (
+          <WhyProfessional
+            locationName={heroLocation}
+            dynamicBanner={whyProfessionalBanner}
             isWaterproofing={isWaterproofing}
+            step01Desc={isP2Active && isWaterproofing ? "외벽 콘크리트 · 옥상 들뜸" : undefined}
           />
-        </div>
+        )}
+
+        {/* 7. 시공 레퍼런스 사례 / Tier A 실제 포트폴리오 바인딩 */}
+        {isTierA && tierPortfolioCase ? (
+          <TierEnhancedPortfolio
+            portfolioCase={tierPortfolioCase}
+            serviceName={service}
+          />
+        ) : !isTierPilot ? (
+          <div id="cases">
+            <LocalPortfolio
+              title={portfolioTitle}
+              isWaterproofing={isWaterproofing}
+            />
+          </div>
+        ) : null}
 
         {/* 8. FAQ 섹션 */}
         <div id="faq">
@@ -489,6 +524,14 @@ export default async function Home({ searchParams }: Props) {
             faqs={finalFaqList || BRAND_HUB_CONTENT.faqs}
           />
         </div>
+
+        {/* 9. P2-F1 Tier Local Navigation (7 Pilot 전용 결정론적 내부링크 및 허브 배너) */}
+        {isTierPilot && tierNavData && (
+          <TierLocalNavigation
+            navData={tierNavData}
+            serviceName={service}
+          />
+        )}
 
         {/* 마무리 CTA 및 상담 접수 폼 (강조 카드 리디자인) */}
         <section id="contact" className="py-24 bg-teal-50/15 relative overflow-hidden">
