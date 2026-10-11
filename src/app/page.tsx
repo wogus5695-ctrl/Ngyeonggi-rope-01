@@ -339,10 +339,10 @@ export default async function Home({ searchParams }: Props) {
                   "철저한 책임 A/S 보증"
                 ]
               : [
-                  "100% 전면 철거 원칙",
-                  analysisDynamicKeyword ? `${analysisDynamicKeyword} 정밀 검수` : "열화상 틈새 진단",
-                  "5단계 밀봉 전용 자재",
-                  "철저한 책임 A/S 보증"
+                  "기존 마감 상태 확인",
+                  analysisDynamicKeyword ? `${analysisDynamicKeyword} 정밀 검수` : "창호·외벽 상태 확인",
+                  "현장별 작업 범위 안내",
+                  "작업 후 상태 안내"
                 ]
           }
         />
