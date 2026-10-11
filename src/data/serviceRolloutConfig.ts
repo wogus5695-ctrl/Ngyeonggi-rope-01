@@ -15,7 +15,8 @@ export const SERVICE_INTENT_ROLLOUT_SERVICES: readonly string[] = [
   "옥상방수",
   "건물방수",
   "외벽도색",
-  "지붕방수"
+  "지붕방수",
+  "지붕보수"
 ] as const;
 
 /**
