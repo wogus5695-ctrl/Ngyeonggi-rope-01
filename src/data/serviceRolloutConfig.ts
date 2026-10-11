@@ -22,7 +22,8 @@ export const SERVICE_INTENT_ROLLOUT_SERVICES: readonly string[] = [
   "빗물누수",
   "창틀누수",
   "창틀코킹",
-  "창틀실리콘"
+  "창틀실리콘",
+  "샷시실리콘"
 ] as const;
 
 /**
