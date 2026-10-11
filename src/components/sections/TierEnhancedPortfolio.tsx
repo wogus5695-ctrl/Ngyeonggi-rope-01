@@ -2,10 +2,10 @@
 
 import React from "react";
 import Image from "next/image";
-import { PortfolioCase } from "@/data/portfolio";
+import { SafeTierPortfolioCase } from "@/data/tierPortfolioBinding";
 
 interface TierEnhancedPortfolioProps {
-  portfolioCase: PortfolioCase;
+  portfolioCase: SafeTierPortfolioCase;
   serviceName: string;
 }
 
