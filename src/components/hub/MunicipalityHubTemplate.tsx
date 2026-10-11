@@ -26,11 +26,30 @@ interface MunicipalityHubTemplateProps {
   hub: MunicipalityHubData;
 }
 
+interface SafeMunicipalityPortfolioCase {
+  id: string;
+  location: string;
+  serviceType: string;
+  date: string;
+  images: { before: string; after: string };
+}
+
 export default function MunicipalityHubTemplate({ hub }: MunicipalityHubTemplateProps) {
-  // Hub에 연계된 포트폴리오 사례 목록 (고양, 파주, 양주)
-  const relatedPortfolios = hub.portfolioRefs
+  // Hub에 연계된 포트폴리오 사례 목록 (고양, 파주, 양주) - Safe Allowlist Projection 적용
+  const rawPortfolios = hub.portfolioRefs
     ? portfolioCases.filter(p => hub.portfolioRefs?.includes(p.id))
     : [];
+
+  const safePortfolios: SafeMunicipalityPortfolioCase[] = rawPortfolios.map(item => ({
+    id: item.id,
+    location: item.location,
+    serviceType: item.serviceType,
+    date: item.date,
+    images: {
+      before: item.images.before,
+      after: item.images.after
+    }
+  }));
 
   const parentRegionPath = hub.regionType === 'seoul' ? '/sitemap-seoul' : '/sitemap-gyeonggi';
   const parentRegionName = hub.regionType === 'seoul' ? '서울특별시' : '경기도';
@@ -81,8 +100,8 @@ export default function MunicipalityHubTemplate({ hub }: MunicipalityHubTemplate
         </div>
       </header>
 
-      {/* Portfolio Section (고양, 파주, 양주 등 포트폴리오 바인딩이 있는 경우만 렌더링) */}
-      {relatedPortfolios.length > 0 && (
+      {/* Portfolio Section (고양, 파주, 양주 등 포트폴리오 바인딩이 있는 경우만 렌더링 - Safe Allowlist 적용) */}
+      {safePortfolios.length > 0 && (
         <section className="mb-14 bg-white border border-teal-500/20 rounded-3xl p-6.5 sm:p-8 shadow-xs">
           <div className="flex items-center gap-2.5 mb-5 pb-3.5 border-b border-slate-100">
             <span className="w-1.5 h-5 bg-teal-600 rounded-full"></span>
@@ -91,22 +110,56 @@ export default function MunicipalityHubTemplate({ hub }: MunicipalityHubTemplate
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4.5">
-            {relatedPortfolios.map((item) => (
+            {safePortfolios.map((item) => (
               <div
                 key={item.id}
-                className="bg-slate-50/70 border border-slate-100 rounded-2xl p-5 space-y-2.5"
+                className="bg-slate-50/70 border border-slate-100 rounded-2xl p-5 space-y-3"
               >
-                <div className="text-[12px] font-bold text-teal-600">
-                  {item.serviceType} · {item.date}
+                <div className="flex items-center justify-between">
+                  <span className="text-[12px] font-bold text-teal-700 bg-teal-50 px-2 py-0.5 rounded border border-teal-100">
+                    실제 시공 사례
+                  </span>
+                  <span className="text-[12px] text-slate-400 font-medium">
+                    작업일: {item.date}
+                  </span>
                 </div>
-                <h3 className="text-[15px] font-black text-slate-800 leading-snug">
-                  {item.title}
-                </h3>
-                <p className="text-[13px] text-slate-500 leading-relaxed line-clamp-2">
-                  {item.description}
-                </p>
-                <div className="pt-1 text-[12px] text-slate-400">
-                  현장 위치: {item.location}
+
+                <div className="space-y-1 text-[13px] text-slate-600">
+                  <div>
+                    <span className="font-bold text-slate-700">작업 지역:</span> {item.location}
+                  </div>
+                  <div>
+                    <span className="font-bold text-slate-700">작업 유형:</span> {item.serviceType}
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2 pt-1">
+                  <div className="relative rounded-lg overflow-hidden border border-slate-200 bg-slate-100">
+                    <img
+                      src={item.images.before}
+                      alt={`${item.location} 시공 전`}
+                      className="w-full h-28 object-cover"
+                      loading="lazy"
+                    />
+                    <div className="absolute bottom-1 left-1 bg-black/60 text-white text-[10px] px-1.5 py-0.5 rounded font-medium">
+                      시공 전
+                    </div>
+                  </div>
+                  <div className="relative rounded-lg overflow-hidden border border-slate-200 bg-slate-100">
+                    <img
+                      src={item.images.after}
+                      alt={`${item.location} 시공 완료`}
+                      className="w-full h-28 object-cover"
+                      loading="lazy"
+                    />
+                    <div className="absolute bottom-1 left-1 bg-teal-800/80 text-white text-[10px] px-1.5 py-0.5 rounded font-medium">
+                      시공 완료
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-2 border-t border-slate-200/60 text-[11.5px] text-slate-400 leading-relaxed">
+                  해당 지역의 등록된 실제 작업 사례입니다. 작업 지역, 작업 유형, 작업일과 시공 전·후 사진을 확인할 수 있습니다.
                 </div>
               </div>
             ))}

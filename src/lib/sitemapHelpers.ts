@@ -12,6 +12,8 @@ import {
   SERVICES
 } from '@/data/sitemapKeywords';
 import { portfolioCases } from '@/data/portfolio';
+import { ALL_MUNICIPALITIES } from '@/data/hubRegionConfig';
+import { isMunicipalityHubIndexable } from '@/config/hubIndexConfig';
 
 export const BASE_URL = 'https://www.teumsaecare.co.kr';
 
@@ -34,7 +36,7 @@ export interface SitemapUrlEntry {
 
 /**
  * 1. Static Sitemap URLs (/sitemap-static.xml)
- * 루트(/), 허브(/sitemap-gyeonggi-north), 포트폴리오 사례 3건
+ * 루트(/), 허브(/sitemap-gyeonggi-north), 색인 허용 기초지자체 허브(SSOT 연동), 포트폴리오 사례 3건
  */
 export function getStaticSitemapEntries(): SitemapUrlEntry[] {
   const staticList: SitemapUrlEntry[] = [
@@ -70,6 +72,19 @@ export function getStaticSitemapEntries(): SitemapUrlEntry[] {
     }
   ];
 
+  // SSOT Registry 기반 Indexable Municipality Hub 목록 수록 (goyang, paju, yangju 3개)
+  const indexableHubList: SitemapUrlEntry[] = ALL_MUNICIPALITIES
+    .filter((meta) => isMunicipalityHubIndexable(meta.slug))
+    .map((meta) => {
+      const parentPath = meta.regionType === 'seoul' ? 'sitemap-seoul' : 'sitemap-gyeonggi';
+      return {
+        url: `${BASE_URL}/${parentPath}/${meta.slug}`,
+        lastModified: new Date().toISOString(),
+        changeFrequency: 'weekly',
+        priority: 0.8,
+      };
+    });
+
   const portfolioList: SitemapUrlEntry[] = portfolioCases.map((post) => ({
     url: `${BASE_URL}/portfolio/${post.id}`,
     lastModified: new Date(post.date).toISOString(),
@@ -77,7 +92,7 @@ export function getStaticSitemapEntries(): SitemapUrlEntry[] {
     priority: 0.6,
   }));
 
-  return [...staticList, ...portfolioList];
+  return [...staticList, ...indexableHubList, ...portfolioList];
 }
 
 /**

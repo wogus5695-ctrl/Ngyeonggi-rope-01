@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import MunicipalityHubTemplate from "@/components/hub/MunicipalityHubTemplate";
 import { getSeoulHubBySlug, getSeoulMunicipalityHubs } from '@/lib/hubDataResolver';
 import { getMetadata } from '@/lib/seo';
+import { isMunicipalityHubIndexable } from '@/config/hubIndexConfig';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -23,7 +24,9 @@ export async function generateStaticParams() {
 
 /**
  * 서울 자치구 Hub 동적 메타데이터 생성
- * 임시 안전 정책: noindex, follow 적용
+ * SSOT 기반 robots index 분기:
+ * - Allowlist에 등록된 서울 허브: index, follow (noIndex: false)
+ * - 미포함(현재 서울 25개 전 자치구): noindex, follow (noIndex: true)
  */
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
@@ -36,11 +39,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
+  const isIndexable = isMunicipalityHubIndexable(slug);
+
   return getMetadata({
     title: `${hub.displayName} 서비스 지역 안내`,
     description: `서울특별시 ${hub.displayName} 관할 ${hub.assignedRegionNames.length}개 세부 구역의 창틀코킹, 빗물누수, 외벽·옥상 방수 서비스 안내 페이지 목록입니다.`,
     path: `/sitemap-seoul/${hub.slug}`,
-    noIndex: true, // P1-B-3 로컬 임시 안전 정책: noindex, follow
+    noIndex: !isIndexable,
   });
 }
 
