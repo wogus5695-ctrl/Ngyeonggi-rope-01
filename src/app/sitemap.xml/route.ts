@@ -5,7 +5,8 @@ export async function GET() {
   const childSitemaps = [
     `${BASE_URL}/sitemap-static.xml`,
     `${BASE_URL}/sitemap-seoul.xml`,
-    `${BASE_URL}/sitemap-gyeonggi.xml`
+    `${BASE_URL}/sitemap-gyeonggi.xml`,
+    `${BASE_URL}/sitemap-guides.xml`
   ];
 
   const xml = buildSitemapIndexXml(childSitemaps);
