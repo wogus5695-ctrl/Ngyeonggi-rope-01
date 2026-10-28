@@ -454,5 +454,74 @@ export const SERVICE_INTENT_CONFIGS: Record<string, ServiceIntentConfig> = {
       "지붕 틈새 누수 보수 방법"
     ],
     verifiedFactKeys: []
+  },
+
+  // ==========================================
+  // CLUSTER B: 서울 전용 외벽타일 계열 (RAINFIX)
+  // ==========================================
+  "외벽타일보수": {
+    serviceKey: "외벽타일보수",
+    cluster: "CLUSTER_B",
+    businessEntityId: "RAINFIX",
+    userTrigger: "외벽 타일이 갈라지거나 들떠 있어 낙하 사고가 우려될 때",
+    primaryIntent: "외벽 타일 들뜸 및 균열 상태 점검 후 부분 보수 가능 여부 확인",
+    primaryProblem: "노후 및 접착력 약화로 인한 외벽 타일 들뜸과 탈락 위험",
+    diagnosisTopics: [
+      "타일 들뜸 및 공동음 점검",
+      "줄눈 탈락 및 균열 상태 확인",
+      "외벽 부분 보수 범위 특정"
+    ],
+    solutionTopics: [
+      "들뜬 부위를 확인하고 전체 교체 전 부분 보수가 가능한지 현장 상태에 맞게 안내"
+    ],
+    shouldOwn: [
+      "외벽 타일 들뜸 점검 및 부분 타일 보수"
+    ],
+    shouldNotOwn: [
+      "실내 타일 인테리어 시공",
+      "건물 전체 외벽 대수선 신축 공사"
+    ],
+    heroPurpose: "외벽 타일 들뜸 점검 및 부분 보수 상담 안내",
+    metaTitlePurpose: "지역 외벽타일보수 들뜸 점검 및 부분 보수 상담",
+    metaDescriptionPurpose: "외벽 타일 갈라짐 및 들뜸 확인 후 부분 보수 범위 안내",
+    faqTopics: [
+      "외벽 타일 부분 보수 가능 여부",
+      "타일 들뜸 진단 방법",
+      "견적 및 상담 안내"
+    ],
+    verifiedFactKeys: []
+  },
+
+  "외벽타일교체": {
+    serviceKey: "외벽타일교체",
+    cluster: "CLUSTER_B",
+    businessEntityId: "RAINFIX",
+    userTrigger: "외벽 타일이 깨지거나 떨어져 있어 교체가 필요할 때",
+    primaryIntent: "깨지거나 탈락한 타일 확인 및 필요한 교체 범위 상담",
+    primaryProblem: "타일 파손 및 탈락으로 인한 외벽 마감 손상과 빗물 유입 위험",
+    diagnosisTopics: [
+      "깨지거나 탈락한 타일 부위 확인",
+      "속면 콘크리트 바탕면 상태 점검",
+      "인접 타일 접착 안정성 확인"
+    ],
+    solutionTopics: [
+      "탈락 및 파손 타일을 확인하고 주변 상태를 살펴 필요한 교체 범위를 체계적으로 안내"
+    ],
+    shouldOwn: [
+      "파손 타일 안전 철거 및 부분/구간 외벽 타일 교체"
+    ],
+    shouldNotOwn: [
+      "실내 욕실/주방 타일 교체",
+      "외벽 전체 자재 전면 변경 공사"
+    ],
+    heroPurpose: "깨진 외벽 타일 확인 및 필요한 교체 범위 상담 안내",
+    metaTitlePurpose: "지역 외벽타일교체 파손 타일 점검 및 교체 상담",
+    metaDescriptionPurpose: "외벽 타일 파손 부위 및 바탕면 점검 후 교체 범위 안내",
+    faqTopics: [
+      "외벽 타일 소규모 교체 가능 여부",
+      "유사 자재 조율 및 시공 방식",
+      "견적 및 상담 안내"
+    ],
+    verifiedFactKeys: []
   }
 };

@@ -27,6 +27,11 @@ const WATERPROOFING_SERVICES = [
   "지붕누수"
 ];
 
+export const SEOUL_TILE_SERVICES = [
+  "외벽타일보수",
+  "외벽타일교체"
+];
+
 export interface SitemapUrlEntry {
   url: string;
   lastModified?: string;
@@ -203,10 +208,58 @@ export function getSeoulSitemapEntries(): SitemapUrlEntry[] {
           });
         }
       });
+
+      // 서울 전용 신규 외벽타일 2종 서비스
+      SEOUL_TILE_SERVICES.forEach(service => {
+        const url = `${BASE_URL}/?k=${encodeURIComponent(`${area}-${service}`)}`;
+        if (!seenUrls.has(url)) {
+          seenUrls.add(url);
+          entries.push({
+            url,
+            changeFrequency: 'monthly',
+            priority: 0.8,
+          });
+        }
+      });
     });
   });
 
   return entries;
+}
+
+/**
+ * 서울 전용 229개 비충돌 지역명 Set 반환 (URL 화이트리스트 및 Hub 연계 검증용)
+ */
+export function getSeoulDeduplicatedAreas(): Set<string> {
+  const gyeonggiGroups = [
+    ...REGIONS_DB,
+    ...GYEONGGI_WEST_REGIONS_DB,
+    ...GYEONGGI_MID_REGIONS_DB,
+    ...GYEONGGI_SOUTH_EAST_REGIONS_DB,
+    ...GYEONGGI_SOUTH_REGIONS_DB
+  ];
+
+  const gyeonggiAreaSet = new Set<string>();
+  gyeonggiGroups.forEach(grp => grp.areas.forEach(area => gyeonggiAreaSet.add(area)));
+
+  const seoulGroups = [
+    ...SEOUL_EAST_REGIONS_DB,
+    ...SEOUL_WEST_REGIONS_DB,
+    ...SEOUL_CENTER_REGIONS_DB,
+    ...SEOUL_SOUTH_EAST_REGIONS_DB,
+    ...SEOUL_SOUTH_WEST_REGIONS_DB
+  ];
+
+  const seoulAreas = new Set<string>();
+  seoulGroups.forEach(grp => {
+    grp.areas.forEach(area => {
+      if (!gyeonggiAreaSet.has(area)) {
+        seoulAreas.add(area);
+      }
+    });
+  });
+
+  return seoulAreas;
 }
 
 /**

@@ -23,7 +23,9 @@ export const SERVICE_INTENT_ROLLOUT_SERVICES: readonly string[] = [
   "창틀누수",
   "창틀코킹",
   "창틀실리콘",
-  "샷시실리콘"
+  "샷시실리콘",
+  "외벽타일보수",
+  "외벽타일교체"
 ] as const;
 
 /**

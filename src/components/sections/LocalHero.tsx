@@ -73,9 +73,9 @@ export default function LocalHero({
 
           {/* Mobile Heading */}
           <div className="text-[34px] font-black text-white leading-[1.15] tracking-tight [text-shadow:0_2px_8px_rgba(0,0,0,0.6)]">
-            <span className="text-teal-400">{locationName}</span> {serviceName || (isWaterproofing ? "건물방수" : "창틀코킹")}
+            <span className="text-teal-400">{locationName}</span> {serviceName || (isWaterproofing ? "건물방수" : "창틀코킹")}{serviceSuffix?.startsWith(", ") ? ", " : ""}
             <br />
-            {serviceSuffix}
+            {serviceSuffix?.startsWith(", ") ? serviceSuffix.slice(2) : serviceSuffix}
           </div>
 
           {/* 설명 문구 */}
@@ -113,9 +113,9 @@ export default function LocalHero({
               <h1 className="text-[36px] lg:text-[48px] xl:text-[52px] font-black text-slate-900 leading-[1.2] tracking-tight">
                 <span className="block">
                   <span className="text-teal-600">{locationName}</span>{" "}
-                  <span>{serviceName || (isWaterproofing ? "건물방수" : "창틀코킹")}</span>
+                  <span>{serviceName || (isWaterproofing ? "건물방수" : "창틀코킹")}</span>{serviceSuffix?.startsWith(", ") ? ", " : ""}
                 </span>
-                <span className="block">{serviceSuffix}</span>
+                <span className="block">{serviceSuffix?.startsWith(", ") ? serviceSuffix.slice(2) : serviceSuffix}</span>
               </h1>
 
               {/* Sub-copy (강조 문장) */}

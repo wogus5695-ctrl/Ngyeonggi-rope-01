@@ -29,6 +29,9 @@ import { getTierPortfolioCase } from "@/data/tierPortfolioBinding";
 import { resolveDeterministicNav, DeterministicNavResult } from "@/lib/deterministicNavResolver";
 import TierEnhancedPortfolio from "@/components/sections/TierEnhancedPortfolio";
 import TierLocalNavigation from "@/components/sections/TierLocalNavigation";
+import { getSeoulDeduplicatedAreas, SEOUL_TILE_SERVICES } from "@/lib/sitemapHelpers";
+
+const SEOUL_DEDUPLICATED_AREAS = getSeoulDeduplicatedAreas();
 
 type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -50,6 +53,16 @@ function validateKeyword(k: string | undefined): { isValid: boolean; region: str
     (r) => r.name === rawRegion || r.slug === rawRegion || rawRegion.includes(r.name)
   );
 
+  // 1. 서울 전용 신규 외벽타일 작업명 검증 (서울 25개 자치구 및 등록 동명 229개 지역 전체 허용, 경기·인천 등 타 지역 404 차단)
+  if (SEOUL_TILE_SERVICES.includes(rawService)) {
+    const isSeoulAllowed = SEOUL_DEDUPLICATED_AREAS.has(rawRegion) && isRegionAllowed;
+    if (isSeoulAllowed) {
+      return { isValid: true, region: rawRegion, service: rawService };
+    }
+    return { isValid: false, region: "틈새케어", service: "창틀코킹" };
+  }
+
+  // 2. 기존 13개 작업명 화이트리스트 검증 (기존 전 지역 허용 로직 유지)
   const allowedServices = [
     "창틀코킹", "창틀누수", "빗물누수", "창틀실리콘", "샷시실리콘", "외벽누수",
     "외벽방수", "옥상방수", "건물방수", "외벽도색",
@@ -78,7 +91,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
 
     const hash = getHash(`${region}-${service}`);
     const data = getDynamicHomeData(region, service, hash);
-    const isWaterproofing = ["외벽방수", "옥상방수", "건물방수", "외벽도색", "지붕방수", "지붕보수", "지붕누수"].includes(service);
+    const isWaterproofing = ["외벽방수", "옥상방수", "건물방수", "외벽도색", "지붕방수", "지붕보수", "지붕누수", "외벽타일보수", "외벽타일교체"].includes(service);
     const cleanK = decodeURIComponent(k);
     const contentMode = resolveContentMode(cleanK, service);
 
@@ -146,7 +159,7 @@ export default async function Home({ searchParams }: Props) {
 
   const { isValid, region, service } = validateKeyword(k);
 
-  const isWaterproofing = isValid && ["외벽방수", "옥상방수", "건물방수", "외벽도색", "지붕방수", "지붕보수", "지붕누수"].includes(service);
+  const isWaterproofing = isValid && ["외벽방수", "옥상방수", "건물방수", "외벽도색", "지붕방수", "지붕보수", "지붕누수", "외벽타일보수", "외벽타일교체"].includes(service);
   const phone = isWaterproofing ? "010-4667-5568" : "010-3951-6831";
 
   // 기본 브랜드 설정 (Fallback)
@@ -299,7 +312,11 @@ export default async function Home({ searchParams }: Props) {
           serviceTitle={isP2Active && p2ServiceContent ? p2ServiceContent.hero.headline(heroLocation) : heroService}
           serviceName={isValid ? service : "창틀코킹"}
           serviceSuffix={
-            isP2Active
+            service === "외벽타일보수"
+              ? ", 들뜬 타일 그대로 두셨나요?"
+              : service === "외벽타일교체"
+              ? ", 전체 교체가 부담되시나요?"
+              : isP2Active
               ? "현장 점검 및 상담"
               : (isValid && service.startsWith("지붕") ? "전문 상담" : "전문 진단")
           }
@@ -550,16 +567,32 @@ export default async function Home({ searchParams }: Props) {
               {/* 메인 제목 */}
               <h2 className="text-[26px] sm:text-[32px] md:text-[36px] lg:text-[40px] font-black text-slate-900 tracking-tight leading-[1.25] max-w-3xl mx-auto">
                 <span className="block">
-                  {isValid ? `${heroLocation} ${service} 상담, ` : "틈새케어 빗물누수 상담, "}
+                  {service === "외벽타일보수" ? (
+                    `${heroLocation} ${service}, `
+                  ) : service === "외벽타일교체" ? (
+                    `${heroLocation} ${service}, `
+                  ) : (
+                    isValid ? `${heroLocation} ${service} 상담, ` : "틈새케어 빗물누수 상담, "
+                  )}
                 </span>
                 <span className="block mt-1 sm:mt-2">
-                  누수 원인부터 <span className="text-teal-600">빠르게 확인하세요</span>
+                  {service === "외벽타일보수" ? (
+                    <>타일이 떨어지기 전에 <span className="text-teal-600">보수 가능 여부를 확인하세요.</span></>
+                  ) : service === "외벽타일교체" ? (
+                    <>전체 공사가 부담된다면 <span className="text-teal-600">필요한 부분부터 상담하세요.</span></>
+                  ) : (
+                    <>누수 원인부터 <span className="text-teal-600">빠르게 확인하세요</span></>
+                  )}
                 </span>
               </h2>
               
               {/* 본문 설명 */}
               <p className="text-[14.5px] sm:text-[15.5px] text-slate-500 leading-[1.7] max-w-[620px] mx-auto">
-                {isWaterproofing 
+                {service === "외벽타일보수"
+                  ? "외벽 타일이 갈라지거나 들떠 있다면 전체 교체 전 부분 보수가 가능한지 현장 사진으로 먼저 상담해 드립니다."
+                  : service === "외벽타일교체"
+                  ? "외벽 타일이 깨지거나 떨어져 고민이시라면 주변 타일과 바탕면 상태를 확인해 필요한 교체 범위를 안내해 드립니다."
+                  : isWaterproofing 
                   ? "들뜬 부위만 대충 덮으면 재누수가 반복될 수 있습니다. 외벽 균열, 옥상 우레탄, 조인트 방수 상태를 함께 확인해 필요한 보수 방향을 안내해드립니다."
                   : "젖은 위치만 보고 덧방하면 재누수가 반복될 수 있습니다. 창틀·샷시·외벽 상태를 함께 확인해 필요한 보수 방향을 안내해드립니다."}
               </p>
@@ -575,7 +608,11 @@ export default async function Home({ searchParams }: Props) {
                   사진 상담 시 확인 항목
                 </div>
                 <div className="flex flex-wrap gap-2 justify-center">
-                  {(isWaterproofing 
+                  {(service === "외벽타일보수"
+                    ? ["타일 들뜸", "균열·틈새", "부분 보수", "탈락 위험"]
+                    : service === "외벽타일교체"
+                    ? ["타일 파손", "타일 탈락", "부분 교체", "교체 범위"]
+                    : isWaterproofing 
                     ? ["외벽 균열", "옥상 우레탄", "방수 코팅", "조인트 균열"]
                     : ["창틀 하부", "실리콘 갈라짐", "외벽 크랙", "샷시 접합부"]
                   ).map((tag) => (
@@ -591,7 +628,9 @@ export default async function Home({ searchParams }: Props) {
               
               {/* 추가 신뢰 문구 */}
               <div className="pt-2 text-[12.5px] text-slate-400 font-medium leading-relaxed">
-                현장 상태에 따라 덧방, 부분 제거, 올제거 여부를 구분해 안내합니다.
+                {["외벽타일보수", "외벽타일교체"].includes(service)
+                  ? "현장 사진을 보내주시면 전체 교체 또는 부분 보수 필요 여부를 먼저 확인해 드립니다."
+                  : "현장 상태에 따라 덧방, 부분 제거, 올제거 여부를 구분해 안내합니다."}
               </div>
               
             </div>

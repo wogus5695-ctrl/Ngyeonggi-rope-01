@@ -22,6 +22,11 @@ const WATERPROOFING_SERVICES = [
   "지붕누수"
 ];
 
+const SEOUL_TILE_SERVICES = [
+  "외벽타일보수",
+  "외벽타일교체"
+];
+
 interface MunicipalityHubTemplateProps {
   hub: MunicipalityHubData;
 }
@@ -51,8 +56,13 @@ export default function MunicipalityHubTemplate({ hub }: MunicipalityHubTemplate
     }
   }));
 
-  const parentRegionPath = hub.regionType === 'seoul' ? '/sitemap-seoul' : '/sitemap-gyeonggi';
-  const parentRegionName = hub.regionType === 'seoul' ? '서울특별시' : '경기도';
+  const isSeoul = hub.regionType === 'seoul';
+  const effectiveWaterproofingServices = isSeoul
+    ? [...WATERPROOFING_SERVICES, ...SEOUL_TILE_SERVICES]
+    : WATERPROOFING_SERVICES;
+
+  const parentRegionPath = isSeoul ? '/sitemap-seoul' : '/sitemap-gyeonggi';
+  const parentRegionName = isSeoul ? '서울특별시' : '경기도';
 
   return (
     <div className="max-w-5xl mx-auto">
@@ -182,7 +192,7 @@ export default function MunicipalityHubTemplate({ hub }: MunicipalityHubTemplate
                 </h2>
               </div>
               <span className="text-[12px] font-semibold text-slate-400">
-                13개 시공 분야
+                {isSeoul ? '15개 시공 분야' : '13개 시공 분야'}
               </span>
             </div>
 
@@ -207,11 +217,11 @@ export default function MunicipalityHubTemplate({ hub }: MunicipalityHubTemplate
                 </div>
               </div>
 
-              {/* Waterproofing Services (7개) */}
+              {/* Waterproofing Services (경기 7개 / 서울 9개) */}
               <div>
                 <div className="text-[12px] font-bold text-slate-400 mb-2">외벽 및 방수 시공</div>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-7 gap-2">
-                  {WATERPROOFING_SERVICES.map((service) => {
+                <div className={`grid grid-cols-2 sm:grid-cols-3 ${isSeoul ? 'md:grid-cols-5 lg:grid-cols-9' : 'md:grid-cols-7'} gap-2`}>
+                  {effectiveWaterproofingServices.map((service) => {
                     const fullKw = `${area}-${service}`;
                     const targetUrl = `/?k=${encodeURIComponent(fullKw)}`;
                     return (

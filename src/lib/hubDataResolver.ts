@@ -34,7 +34,13 @@ const WATERPROOFING_SERVICES = [
   "지붕누수"
 ];
 
+const SEOUL_TILE_SERVICES = [
+  "외벽타일보수",
+  "외벽타일교체"
+];
+
 const ALL_SERVICES = [...SERVICES, ...WATERPROOFING_SERVICES]; // 13개 서비스
+const SEOUL_ALL_SERVICES = [...SERVICES, ...WATERPROOFING_SERVICES, ...SEOUL_TILE_SERVICES]; // 15개 서비스
 
 export interface MunicipalityHubData extends MunicipalityMeta {
   assignedRegionNames: string[];
@@ -94,8 +100,8 @@ export function getSeoulMunicipalityHubs(): MunicipalityHubData[] {
 
       assignedRegionNames.push(area);
 
-      // 13개 서비스 동적 URL 생성
-      ALL_SERVICES.forEach(service => {
+      // 15개 서비스 동적 URL 생성 (서울 전용 외벽타일 2종 포함)
+      SEOUL_ALL_SERVICES.forEach(service => {
         const fullKeyword = `${area}-${service}`;
         const url = `${BASE_URL}/?k=${encodeURIComponent(fullKeyword)}`;
         dynamicUrls.push(url);
