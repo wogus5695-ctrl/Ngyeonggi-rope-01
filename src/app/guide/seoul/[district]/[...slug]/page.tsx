@@ -16,21 +16,22 @@ interface PageProps {
 }
 
 function resolveArticlePath(district: string, slug: string[]): string | null {
-  if (district !== 'gangseo') {
+  if (!district || !slug || slug.length === 0 || slug.length > 2) {
     return null;
   }
 
-  if (slug.length === 1) {
-    // District level: /guide/seoul/gangseo/{serviceSlug}
-    return `/guide/seoul/${district}/${slug[0]}`;
+  // Construct target candidate path
+  const candidatePath = slug.length === 1
+    ? `/guide/seoul/${district}/${slug[0]}`
+    : `/guide/seoul/${district}/${slug[0]}/${slug[1]}`;
+
+  // Validate against registry SSOT
+  const article = getArticleByPath(candidatePath);
+  if (!article) {
+    return null;
   }
 
-  if (slug.length === 2) {
-    // Dong level: /guide/seoul/gangseo/{dongSlug}/{serviceSlug}
-    return `/guide/seoul/${district}/${slug[0]}/${slug[1]}`;
-  }
-
-  return null;
+  return article.path;
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -51,9 +52,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const canonicalUrl = `${BASE_URL}${article.path}`;
   const description = article.bodyLines.slice(0, 2).join(' ');
 
+  const isTileService = article.service === '외벽타일보수' || article.service === '외벽타일교체';
+  const isWaterproofing = isTileService || article.service === '건물방수' || article.service === '외벽도색';
+  const ogImageUrl = isWaterproofing ? '/og-image-waterproof.jpg' : '/og-image.png';
+
   return {
     metadataBase: new URL(BASE_URL),
-    title: `${article.title} | 틈새케어`,
+    title: article.title,
     description,
     alternates: {
       canonical: canonicalUrl,
@@ -71,7 +76,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: 'article',
       images: [
         {
-          url: '/og-image.png',
+          url: ogImageUrl,
           width: 1200,
           height: 630,
           alt: `${article.title} - 틈새케어`,
@@ -95,6 +100,10 @@ export default async function GuideArticlePage({ params }: PageProps) {
   if (!article || article.contentStatus !== 'PUBLISHED') {
     notFound();
   }
+
+  const isTileService = article.service === '외벽타일보수' || article.service === '외벽타일교체';
+  const isWaterproofing = isTileService || article.service === '건물방수' || article.service === '외벽도색';
+  const phone = isWaterproofing ? '010-4667-5568' : '010-3951-6831';
 
   const breadcrumbItems: BreadcrumbItem[] = [
     { label: '서울', href: '/sitemap-seoul' },
@@ -161,7 +170,7 @@ export default async function GuideArticlePage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col font-sans text-slate-800">
-      <Header />
+      <Header phone={phone} isWaterproofing={isWaterproofing} />
 
       <script
         type="application/ld+json"
@@ -185,12 +194,30 @@ export default async function GuideArticlePage({ params }: PageProps) {
             </h1>
           </header>
 
-          <article className="space-y-4 text-slate-700 leading-relaxed text-base md:text-lg">
-            {article.bodyLines.map((line, idx) => (
-              <p key={idx} className="leading-relaxed">
-                {line}
-              </p>
-            ))}
+          <article className="space-y-6 text-slate-700 leading-relaxed text-base md:text-lg">
+            {article.sections && article.sections.length > 0 ? (
+              <div className="space-y-8">
+                {article.sections.map((sec, sIdx) => (
+                  <section key={sIdx} className="space-y-3">
+                    <h2 className="text-lg md:text-xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
+                      <span className="w-1.5 h-4 bg-teal-600 rounded-full inline-block"></span>
+                      {sec.heading}
+                    </h2>
+                    {sec.paragraphs.map((p, pIdx) => (
+                      <p key={pIdx} className="leading-relaxed text-slate-700">
+                        {p}
+                      </p>
+                    ))}
+                  </section>
+                ))}
+              </div>
+            ) : (
+              article.bodyLines.map((line, idx) => (
+                <p key={idx} className="leading-relaxed">
+                  {line}
+                </p>
+              ))
+            )}
           </article>
 
           <div className="mt-10 pt-6 border-t border-slate-100">
@@ -214,7 +241,7 @@ export default async function GuideArticlePage({ params }: PageProps) {
         </div>
       </main>
 
-      <Footer />
+      <Footer phone={phone} isWaterproofing={isWaterproofing} />
     </div>
   );
 }

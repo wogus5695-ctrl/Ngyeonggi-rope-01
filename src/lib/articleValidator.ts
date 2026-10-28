@@ -14,6 +14,15 @@ export const ALLOWED_PILOT_SERVICES: Record<TargetServiceKey, TargetServiceSlug>
   '빗물누수': 'rain-leak',
   '건물방수': 'building-waterproof',
   '외벽도색': 'wall-painting',
+  '외벽타일보수': 'tile-repair',
+  '외벽타일교체': 'tile-replace',
+};
+
+export const ALLOWED_PILOT_DISTRICTS: Record<string, string> = {
+  '강서구': 'gangseo',
+  '강남구': 'gangnam',
+  '마포구': 'mapo',
+  '송파구': 'songpa',
 };
 
 export const ALLOWED_PILOT_DISTRICT = {
@@ -66,12 +75,12 @@ export function validateArticle(article: GuideArticleSSOT, referenceTime: number
     errors.push(`[${article.id}] regionLevel must be 'district' or 'dong'.`);
   }
 
-  // 2. District & Scope Gate (Pilot: Gangseo-gu only)
-  if (article.parentDistrict !== ALLOWED_PILOT_DISTRICT.name) {
-    errors.push(`[${article.id}] parentDistrict must be '${ALLOWED_PILOT_DISTRICT.name}' in pilot.`);
-  }
-  if (article.districtSlug !== ALLOWED_PILOT_DISTRICT.slug) {
-    errors.push(`[${article.id}] districtSlug must be '${ALLOWED_PILOT_DISTRICT.slug}' in pilot.`);
+  // 2. District & Scope Gate (Pilot: Allowed districts)
+  const expectedDistrictSlug = ALLOWED_PILOT_DISTRICTS[article.parentDistrict];
+  if (!expectedDistrictSlug) {
+    errors.push(`[${article.id}] parentDistrict '${article.parentDistrict}' is not an allowed pilot district.`);
+  } else if (article.districtSlug !== expectedDistrictSlug) {
+    errors.push(`[${article.id}] districtSlug '${article.districtSlug}' does not match expected '${expectedDistrictSlug}'.`);
   }
 
   // 3. Service Scope & Slug Gate
@@ -105,8 +114,8 @@ export function validateArticle(article: GuideArticleSSOT, referenceTime: number
     errors.push(`[${article.id}] Title must be exactly 1 line with no newlines.`);
   }
 
-  if (!Array.isArray(article.bodyLines) || article.bodyLines.length !== 4) {
-    errors.push(`[${article.id}] Body must be exactly 4 lines.`);
+  if (!Array.isArray(article.bodyLines) || article.bodyLines.length < 4) {
+    errors.push(`[${article.id}] Body must be at least 4 lines.`);
   } else {
     article.bodyLines.forEach((line, idx) => {
       if (!line || !line.trim()) {
