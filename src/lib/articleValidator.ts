@@ -23,6 +23,10 @@ export const ALLOWED_PILOT_DISTRICTS: Record<string, string> = {
   '강남구': 'gangnam',
   '마포구': 'mapo',
   '송파구': 'songpa',
+  '서초구': 'seocho',
+  '영등포구': 'yeongdeungpo',
+  '성동구': 'seongdong',
+  '노원구': 'nowon',
 };
 
 export const ALLOWED_PILOT_DISTRICT = {
