@@ -169,7 +169,7 @@ export default async function GuideArticlePage({ params }: PageProps) {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col font-sans text-slate-800">
+    <div className="min-h-screen bg-slate-50 flex flex-col font-sans text-slate-800 overflow-x-hidden">
       <Header phone={phone} isWaterproofing={isWaterproofing} />
 
       <script
@@ -190,7 +190,7 @@ export default async function GuideArticlePage({ params }: PageProps) {
               {article.region} · {article.service} 기술 점검 리포트
             </span>
             <h1 className="text-2xl md:text-3xl font-extrabold text-slate-900 leading-tight">
-              {article.title}
+              {article.h1Title || article.title}
             </h1>
           </header>
 
@@ -208,6 +208,20 @@ export default async function GuideArticlePage({ params }: PageProps) {
                         {p}
                       </p>
                     ))}
+                    {sec.image && (
+                      <div className="my-5 rounded-2xl overflow-hidden border border-slate-200/80 bg-slate-50 p-2.5">
+                        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl">
+                          <img
+                            src={sec.image.src}
+                            alt={sec.image.alt}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <p className="text-xs text-slate-500 mt-2 px-1 text-center font-medium">
+                          {sec.image.caption}
+                        </p>
+                      </div>
+                    )}
                   </section>
                 ))}
               </div>

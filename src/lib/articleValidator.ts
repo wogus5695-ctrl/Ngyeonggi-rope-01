@@ -27,6 +27,13 @@ export const ALLOWED_PILOT_DISTRICTS: Record<string, string> = {
   '영등포구': 'yeongdeungpo',
   '성동구': 'seongdong',
   '노원구': 'nowon',
+  '용산구': 'yongsan',
+};
+
+export const ALLOWED_PILOT_GYEONGGI_DISTRICTS: Record<string, string> = {
+  '성남시 분당구': 'seongnam',
+  '성남시': 'seongnam',
+  '김포시': 'gimpo',
 };
 
 export const ALLOWED_PILOT_DISTRICT = {
@@ -74,15 +81,19 @@ export function validateArticle(article: GuideArticleSSOT, referenceTime: number
   // 1. Required Fields
   if (!article.id) errors.push(`[${article.id || 'unknown'}] id is required.`);
   if (!article.region) errors.push(`[${article.id}] region is required.`);
-  if (article.regionScope !== 'seoul') errors.push(`[${article.id}] regionScope must be 'seoul'.`);
+  if (article.regionScope !== 'seoul' && article.regionScope !== 'gyeonggi') {
+    errors.push(`[${article.id}] regionScope must be 'seoul' or 'gyeonggi'.`);
+  }
   if (article.regionLevel !== 'district' && article.regionLevel !== 'dong') {
     errors.push(`[${article.id}] regionLevel must be 'district' or 'dong'.`);
   }
 
   // 2. District & Scope Gate (Pilot: Allowed districts)
-  const expectedDistrictSlug = ALLOWED_PILOT_DISTRICTS[article.parentDistrict];
+  const isGyeonggi = article.regionScope === 'gyeonggi';
+  const districtMap = isGyeonggi ? ALLOWED_PILOT_GYEONGGI_DISTRICTS : ALLOWED_PILOT_DISTRICTS;
+  const expectedDistrictSlug = districtMap[article.parentDistrict];
   if (!expectedDistrictSlug) {
-    errors.push(`[${article.id}] parentDistrict '${article.parentDistrict}' is not an allowed pilot district.`);
+    errors.push(`[${article.id}] parentDistrict '${article.parentDistrict}' is not an allowed pilot district in ${article.regionScope}.`);
   } else if (article.districtSlug !== expectedDistrictSlug) {
     errors.push(`[${article.id}] districtSlug '${article.districtSlug}' does not match expected '${expectedDistrictSlug}'.`);
   }
@@ -97,8 +108,9 @@ export function validateArticle(article: GuideArticleSSOT, referenceTime: number
 
   // 4. Path Consistency
   let expectedPath = '';
+  const scopePrefix = isGyeonggi ? '/guide/gyeonggi' : '/guide/seoul';
   if (article.regionLevel === 'district') {
-    expectedPath = `/guide/seoul/${article.districtSlug}/${article.serviceSlug}`;
+    expectedPath = `${scopePrefix}/${article.districtSlug}/${article.serviceSlug}`;
     if (article.dongSlug) {
       errors.push(`[${article.id}] District article must not have dongSlug.`);
     }
@@ -106,7 +118,7 @@ export function validateArticle(article: GuideArticleSSOT, referenceTime: number
     if (!article.dongSlug) {
       errors.push(`[${article.id}] Dong article must have dongSlug.`);
     }
-    expectedPath = `/guide/seoul/${article.districtSlug}/${article.dongSlug}/${article.serviceSlug}`;
+    expectedPath = `${scopePrefix}/${article.districtSlug}/${article.dongSlug}/${article.serviceSlug}`;
   }
 
   if (article.path !== expectedPath) {

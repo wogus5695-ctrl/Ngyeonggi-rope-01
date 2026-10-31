@@ -30,6 +30,7 @@ import { resolveDeterministicNav, DeterministicNavResult } from "@/lib/determini
 import TierEnhancedPortfolio from "@/components/sections/TierEnhancedPortfolio";
 import TierLocalNavigation from "@/components/sections/TierLocalNavigation";
 import { getSeoulDeduplicatedAreas, SEOUL_TILE_SERVICES } from "@/lib/sitemapHelpers";
+import { getEnhancedLandingData } from "@/data/enhancedLandingConfig";
 
 const SEOUL_DEDUPLICATED_AREAS = getSeoulDeduplicatedAreas();
 
@@ -100,7 +101,14 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
     let ogTitle = data.metaTitle;
     let ogDescription = data.metaDesc;
 
-    if (contentMode === 'LOCKED_PILOT') {
+    const enhancedData = cleanK ? getEnhancedLandingData(cleanK) : null;
+
+    if (enhancedData) {
+      metaTitle = enhancedData.metaTitle;
+      metaDescription = enhancedData.metaDescription;
+      ogTitle = enhancedData.metaTitle;
+      ogDescription = enhancedData.metaDescription;
+    } else if (contentMode === 'LOCKED_PILOT') {
       const pilotMeta = getPilotMetadata(normalizeKeyword(cleanK));
       if (pilotMeta) {
         metaTitle = pilotMeta.title;
@@ -256,9 +264,15 @@ export default async function Home({ searchParams }: Props) {
         : undefined)
     : (dynamicBanner || undefined);
 
-  // FAQ 리스트 결정: P2 Active 시 serviceContentConfig.faq 사용
+  const enhancedLanding = cleanK ? getEnhancedLandingData(cleanK) : null;
+
+  // FAQ 리스트 결정: EnhancedLanding > P2 Active > LockedPilot > 기본 레거시
   const p2Faqs = isP2Active && p2ServiceContent ? p2ServiceContent.faq.faqs(heroLocation) : null;
-  const finalFaqList = isLockedPilot ? pilotContent?.faq.faqs : (isP2Active ? p2Faqs : faqList);
+  const finalFaqList = enhancedLanding
+    ? enhancedLanding.faqs
+    : isLockedPilot
+    ? pilotContent?.faq.faqs
+    : (isP2Active ? p2Faqs : faqList);
 
   const content = BRAND_HUB_CONTENT;
 
@@ -309,10 +323,16 @@ export default async function Home({ searchParams }: Props) {
         {/* 1. 히어로 섹션 */}
         <LocalHero
           locationName={heroLocation}
-          serviceTitle={isP2Active && p2ServiceContent ? p2ServiceContent.hero.headline(heroLocation) : heroService}
+          serviceTitle={
+            enhancedLanding
+              ? enhancedLanding.hero.headline
+              : (isP2Active && p2ServiceContent ? p2ServiceContent.hero.headline(heroLocation) : heroService)
+          }
           serviceName={isValid ? service : "창틀코킹"}
           serviceSuffix={
-            service === "외벽타일보수"
+            enhancedLanding
+              ? `, ${enhancedLanding.hero.h1Sub}`
+              : service === "외벽타일보수"
               ? ", 들뜬 타일 그대로 두셨나요?"
               : service === "외벽타일교체"
               ? ", 전체 교체가 부담되시나요?"
@@ -322,7 +342,9 @@ export default async function Home({ searchParams }: Props) {
           }
           phone={phone}
           intro={
-            isLockedPilot
+            enhancedLanding
+              ? enhancedLanding.hero.intro
+              : isLockedPilot
               ? (pilotContent?.hero.intro(heroLocation) ?? heroIntro)
               : isP2Active && p2ServiceContent
               ? p2ServiceContent.hero.subCopy
@@ -330,21 +352,27 @@ export default async function Home({ searchParams }: Props) {
           }
           isWaterproofing={isWaterproofing}
           subCopy={
-            isLockedPilot
+            enhancedLanding
+              ? enhancedLanding.hero.subCopy
+              : isLockedPilot
               ? pilotContent?.hero.subCopy
               : isP2Active && p2ServiceContent
               ? p2ServiceContent.hero.subCopy
               : undefined
           }
           badgeText={
-            isLockedPilot
+            enhancedLanding
+              ? enhancedLanding.hero.badgeText
+              : isLockedPilot
               ? pilotContent?.hero.badgeText
               : isP2Active && p2ServiceContent
               ? p2ServiceContent.hero.badgeText
               : undefined
           }
           keywords={
-            isLockedPilot && pilotContent
+            enhancedLanding
+              ? enhancedLanding.hero.badges
+              : isLockedPilot && pilotContent
               ? pilotContent.hero.badges
               : isP2Active && p2ServiceContent
               ? p2ServiceContent.hero.badges
@@ -368,28 +396,40 @@ export default async function Home({ searchParams }: Props) {
         <LocalDiagnostics
           isWaterproofing={isWaterproofing}
           diagnosticsBadge={
-            isLockedPilot
+            enhancedLanding
+              ? enhancedLanding.diagnostics.badge
+              : isLockedPilot
               ? pilotContent?.diagnostics.badge
               : isP2Active && p2ServiceContent
               ? "현장 상태 확인"
               : undefined
           }
           diagnosticsHeadline={
-            isLockedPilot
+            enhancedLanding
+              ? enhancedLanding.diagnostics.headline
+              : isLockedPilot
               ? pilotContent?.diagnostics.headline
               : isP2Active && p2ServiceContent
               ? p2ServiceContent.diagnostics.headline
               : undefined
           }
           diagnosticsDesc={
-            isLockedPilot
+            enhancedLanding
+              ? enhancedLanding.diagnostics.description
+              : isLockedPilot
               ? pilotContent?.diagnostics.description
               : isP2Active && p2ServiceContent
               ? p2ServiceContent.diagnostics.description
               : undefined
           }
           customCards={
-            isLockedPilot
+            enhancedLanding
+              ? enhancedLanding.diagnostics.cards.map((c) => ({
+                  titlePC: c.title,
+                  titleMO: c.title,
+                  description: c.description
+                }))
+              : isLockedPilot
               ? pilotContent?.diagnostics.cards
               : isP2Active && p2ServiceContent
               ? p2ServiceContent.diagnostics.cards.map((c) => ({
@@ -400,13 +440,83 @@ export default async function Home({ searchParams }: Props) {
               : undefined
           }
           alertText={
-            isLockedPilot
+            enhancedLanding
+              ? enhancedLanding.diagnostics.alertText
+              : isLockedPilot
               ? pilotContent?.diagnostics.alertText
               : isP2Active && p2ServiceContent
               ? p2ServiceContent.diagnostics.alertText
               : undefined
           }
         />
+
+        {/* 1-3. Enhanced Landing 전용 점검·판단 및 사진 가이드 섹션 */}
+        {enhancedLanding && (
+          <section className="py-12 md:py-16 bg-slate-50 border-y border-slate-200/80">
+            <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+              {/* 보수 판단 기준 가이드 */}
+              <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/80 shadow-sm">
+                <div className="max-w-3xl mb-8 space-y-2">
+                  <span className="inline-block text-xs font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
+                    시공 판단 기준
+                  </span>
+                  <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+                    {enhancedLanding.judgmentGuide.title}
+                  </h2>
+                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                    {enhancedLanding.judgmentGuide.description}
+                  </p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {enhancedLanding.judgmentGuide.points.map((pt, idx) => (
+                    <div key={idx} className="bg-slate-50 rounded-2xl p-6 border border-slate-200/60 flex flex-col justify-between">
+                      <div>
+                        <h3 className="text-base font-bold text-slate-900 mb-2.5">
+                          {pt.subtitle}
+                        </h3>
+                        <p className="text-sm text-slate-600 leading-relaxed">
+                          {pt.content}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* 전문가 전달 사진 가이드 */}
+              <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/80 shadow-sm">
+                <div className="max-w-3xl mb-8 space-y-2">
+                  <span className="inline-block text-xs font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
+                    사전 점검 가이드
+                  </span>
+                  <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+                    {enhancedLanding.photoGuide.title}
+                  </h2>
+                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                    {enhancedLanding.photoGuide.description}
+                  </p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {enhancedLanding.photoGuide.items.map((it, idx) => (
+                    <div key={idx} className="bg-teal-50/40 rounded-2xl p-6 border border-teal-500/20 flex flex-col justify-between">
+                      <div>
+                        <span className="text-xs font-black text-teal-600 tracking-wider mb-2 block">
+                          {it.step}
+                        </span>
+                        <h3 className="text-base font-bold text-slate-900 mb-2">
+                          {it.title}
+                        </h3>
+                        <p className="text-sm text-slate-600 leading-relaxed">
+                          {it.detail}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* 2. 문제 공감 섹션 (Tier C에서는 생략하여 슬림화) */}
         {!isTierC && (
