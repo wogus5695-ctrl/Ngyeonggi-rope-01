@@ -31,6 +31,8 @@ import TierEnhancedPortfolio from "@/components/sections/TierEnhancedPortfolio";
 import TierLocalNavigation from "@/components/sections/TierLocalNavigation";
 import { getSeoulDeduplicatedAreas, SEOUL_TILE_SERVICES } from "@/lib/sitemapHelpers";
 import { getEnhancedLandingData } from "@/data/enhancedLandingConfig";
+import { isJongnoCaulkingCohort, getJongnoCohortData } from "@/data/jongnoCohortConfig";
+import JongnoCohortView from "@/components/sections/JongnoCohortView";
 
 const SEOUL_DEDUPLICATED_AREAS = getSeoulDeduplicatedAreas();
 
@@ -265,11 +267,15 @@ export default async function Home({ searchParams }: Props) {
     : (dynamicBanner || undefined);
 
   const enhancedLanding = cleanK ? getEnhancedLandingData(cleanK) : null;
+  const isJongnoCohort = cleanK ? isJongnoCaulkingCohort(cleanK) : false;
+  const jongnoCohortData = isJongnoCohort ? getJongnoCohortData(region) : null;
 
-  // FAQ 리스트 결정: EnhancedLanding > P2 Active > LockedPilot > 기본 레거시
+  // FAQ 리스트 결정: EnhancedLanding > JongnoCohort > P2 Active > LockedPilot > 기본 레거시
   const p2Faqs = isP2Active && p2ServiceContent ? p2ServiceContent.faq.faqs(heroLocation) : null;
   const finalFaqList = enhancedLanding
     ? enhancedLanding.faqs
+    : jongnoCohortData
+    ? jongnoCohortData.faqs
     : isLockedPilot
     ? pilotContent?.faq.faqs
     : (isP2Active ? p2Faqs : faqList);
@@ -320,8 +326,12 @@ export default async function Home({ searchParams }: Props) {
       <Header phone={phone} isWaterproofing={isWaterproofing} />
 
       <main className="flex-grow bg-white">
-        {/* 1. 히어로 섹션 */}
-        <LocalHero
+        {jongnoCohortData ? (
+          <JongnoCohortView data={jongnoCohortData} phone={phone} />
+        ) : (
+          <>
+            {/* 1. 히어로 섹션 */}
+            <LocalHero
           locationName={heroLocation}
           serviceTitle={
             enhancedLanding
@@ -746,6 +756,8 @@ export default async function Home({ searchParams }: Props) {
             </div>
           </div>
         </section>
+          </>
+        )}
       </main>
 
       <Footer 
