@@ -148,11 +148,31 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
     };
   }
 
-  return getMetadata({
-    title: BRAND_HUB_CONTENT.subtitle,
-    description: BRAND_HUB_CONTENT.intro,
+  const mainTitle = "틈새케어 | 창틀코킹·창틀누수·빗물누수 전문";
+  const mainDesc = "틈새케어는 서울·경기·인천 지역의 창틀코킹, 창틀누수, 빗물누수 점검과 보수 상담을 안내합니다.";
+
+  const baseMeta = getMetadata({
+    title: mainTitle,
+    description: mainDesc,
     path: "/",
   });
+
+  return {
+    ...baseMeta,
+    title: {
+      absolute: mainTitle,
+    },
+    openGraph: {
+      ...baseMeta.openGraph,
+      title: mainTitle,
+      description: mainDesc,
+    },
+    twitter: {
+      ...baseMeta.twitter,
+      title: mainTitle,
+      description: mainDesc,
+    },
+  };
 }
 
 export default async function Home({ searchParams }: Props) {
