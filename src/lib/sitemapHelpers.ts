@@ -32,6 +32,24 @@ export const SEOUL_TILE_SERVICES = [
   "외벽타일교체"
 ];
 
+export const MAPO_PATH_COHORT_AREAS = new Set([
+  "마포구",
+  "공덕동",
+  "아현동",
+  "도화동",
+  "용강동",
+  "대흥동",
+  "염리동",
+  "신수동",
+  "서강동",
+  "서교동",
+  "합정동",
+  "망원동",
+  "연남동",
+  "성산동",
+  "상암동"
+]);
+
 export interface SitemapUrlEntry {
   url: string;
   lastModified?: string;
@@ -185,7 +203,11 @@ export function getSeoulSitemapEntries(): SitemapUrlEntry[] {
 
       // 6대 코킹 서비스
       SERVICES.forEach(service => {
-        const url = `${BASE_URL}/?k=${encodeURIComponent(`${area}-${service}`)}`;
+        const isMapoPathCohort = MAPO_PATH_COHORT_AREAS.has(area) && service === "창틀누수";
+        const url = isMapoPathCohort
+          ? `${BASE_URL}/${encodeURIComponent(area)}/${encodeURIComponent(service)}`
+          : `${BASE_URL}/?k=${encodeURIComponent(`${area}-${service}`)}`;
+
         if (!seenUrls.has(url)) {
           seenUrls.add(url);
           entries.push({

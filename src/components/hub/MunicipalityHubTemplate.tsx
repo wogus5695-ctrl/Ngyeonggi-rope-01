@@ -27,6 +27,24 @@ const SEOUL_TILE_SERVICES = [
   "외벽타일교체"
 ];
 
+const MAPO_PATH_COHORT_AREAS = new Set([
+  "마포구",
+  "공덕동",
+  "아현동",
+  "도화동",
+  "용강동",
+  "대흥동",
+  "염리동",
+  "신수동",
+  "서강동",
+  "서교동",
+  "합정동",
+  "망원동",
+  "연남동",
+  "성산동",
+  "상암동"
+]);
+
 interface MunicipalityHubTemplateProps {
   hub: MunicipalityHubData;
 }
@@ -203,7 +221,10 @@ export default function MunicipalityHubTemplate({ hub }: MunicipalityHubTemplate
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2">
                   {CAULKING_SERVICES.map((service) => {
                     const fullKw = `${area}-${service}`;
-                    const targetUrl = `/?k=${encodeURIComponent(fullKw)}`;
+                    const isMapoPath = MAPO_PATH_COHORT_AREAS.has(area) && service === "창틀누수";
+                    const targetUrl = isMapoPath
+                      ? `/${encodeURIComponent(area)}/${encodeURIComponent(service)}`
+                      : `/?k=${encodeURIComponent(fullKw)}`;
                     return (
                       <Link
                         key={service}
